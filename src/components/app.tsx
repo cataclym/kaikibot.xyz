@@ -79,7 +79,7 @@ export default class App extends Component {
             Embed builder
             <img id="3" alt="" className="icon" src={embedIcon} />
           </a>
-          <a className="button5 discord" href="https://embed.kaikibot.xyz/">
+          <a className="button5 discord" href="https://discord.gg/8G3AqjnFfX">
             Support server
             <img id="4" alt="" className="icon" src={discordIcon} />
           </a>
