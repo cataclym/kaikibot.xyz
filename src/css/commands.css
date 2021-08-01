@@ -1,0 +1,37 @@
+.categoryTitle {
+    font-size: 40px;
+    font-weight: bold;
+    color: #5865F2;
+}
+
+.categoryTitle:hover {
+    color: #EB459E;
+    cursor: pointer;
+}
+
+.bounds {
+    margin: auto;
+    max-width: 70%;
+    align-content: center;
+    text-align: left;
+}
+
+.command {
+    color: #FEE75C;
+    margin-left: 0vw;
+    font-size: 35px;
+}
+
+.key {
+    color: #57F287;
+    margin-left: 2vw;
+    font-size: 30px;
+}
+
+.value {
+    color: lightgray;
+    font-weight: lighter;
+    margin-left: 2vw;
+    font-size: 23px;
+}
+
