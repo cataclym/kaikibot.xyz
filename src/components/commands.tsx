@@ -41,7 +41,7 @@ export enum Channel {
 export default class Commands extends Component {
   render() {
     return commandslist.map((c) => (
-      <div className="bounds">
+      <div className="bounds" id={c[0].toString()}>
         <h2 onClick={() => collapse(c[0] as any)} className="categoryTitle">
           {c[0]}
         </h2>
@@ -72,11 +72,18 @@ export default class Commands extends Component {
 
 function collapse(c: any) {
   const doc = document.getElementsByName(c);
-  doc.forEach((e) =>
-    e.style.display !== "none"
-      ? (e.style.display = "none")
-      : (e.style.display = "inline")
-  );
+  doc.forEach((e) => {
+    if (e.style.display !== "none") {
+      const bounds = document.getElementById(c);
+      if (bounds) bounds.style.backgroundColor = "#424549";
+      e.style.display = "none";
+    } else {
+      const bounds = document.getElementById(c);
+      e.style.display = "inline";
+      if (bounds) bounds.style.backgroundColor = "#36393e";
+    }
+    return;
+  });
 }
 
 class JSONCommand {
@@ -88,6 +95,7 @@ class JSONCommand {
   private readonly userPermissions: string[] | string | undefined;
   private readonly usage: string[] | string | undefined;
   createOutput: () => JSX.Element;
+
   constructor(props: Command) {
     this.id = props.id;
     this.aliases = props.aliases;
@@ -107,7 +115,7 @@ class JSONCommand {
         <div>
           {this.id.toUpperCase()}
           <p className="key">
-            Aliases:
+            Aliases:{" "}
             {
               <text className="value">
                 {Array.isArray(this.aliases)

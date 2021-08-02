@@ -4,7 +4,6 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background-color: #111111;
 }
 .bg img {
     padding-top: 2%;
@@ -17,28 +16,34 @@
 
 .p1S1 {
     text-align:center;
-    color: white;
-    font-size: 700%;
+    color: #FFFFFF;
+    font-size: 20vw;
     font-family: Cyber;
     src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
     font-display: swap;
     margin: auto;
-    width: 45%;
+    width: 100%;
+    text-shadow: black 0.2vw 0.2vw;
 }
 
 .p1S2 {
     text-align:center;
-    color: white;
-    font-size: 200%;
+    color: #FFFFFF;
+    font-size: 7vw;
     font-family: "sans-serif";
     margin: auto;
-    width: 45%;
+    width: 100%;
+    text-shadow: black 0.12vw 0.12vw;
 }
 
 .header1 {
     position: sticky;
-    /*padding: 20px;*/
-    background-color: dimgray;
+    padding: 0.8vw;
+    background-color: #5865F2;
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    /*background-image: url("../images/c7c37dd6-8d36-492a-8c1e-90b52b45fe2e.png");*/
     width: 100%;
     margin: auto;
     text-align: center;
@@ -58,7 +63,7 @@ body {
     flex-direction: column;
     justify-content: center;
     font-family: 'Cyber', sans-serif;
-    background: #111111;
+    background: #424549;
 }
 
 a.button5{
@@ -70,7 +75,7 @@ a.button5{
     box-sizing: border-box;
     text-decoration:none;
     font-family:'Roboto',sans-serif;
-    font-size: 200%;
+    font-size: 2vw;
     font-weight: 350;
     color:#000000;
     min-height: 9vh;
@@ -78,14 +83,14 @@ a.button5{
     background-color:#FFFFFF;
     text-align:center;
     transition: all 0.15s;
-    max-width: 26%;
-    letter-spacing: 3px;
+    max-width: 26vw;
+    letter-spacing: 2px;
     white-space: nowrap;
 }
 
 a.button5:hover {
     color: white;
-    background-color: #5865F2;
+    background-color: #EB459E;
     border-color: black;
     font-weight: bold;
 }
@@ -99,11 +104,9 @@ a.button5:hover {
 
 img.icon {
     transition: all 0.15s;
-    padding-top: 0.5em;
     display: flex;
     margin: auto;
-    /*max-width: 70%;*/
-    height: auto;
+    /*height: auto;*/
     max-height: 10vw;
 }
 
@@ -115,13 +118,7 @@ a.gitlab {
     background-color: #6b4fbb;
 }
 
-a.gitlab img {
-}
-
-a.support {
-    background-color: white;
-}
-
+a.support
 a.white {
     background-color: white;
 }

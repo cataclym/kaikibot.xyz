@@ -114,7 +114,13 @@ export default class App extends Component {
             color: "white",
           }}
         >
-          <a href="https://www.streamlinehq.com">
+          <a
+            style={{
+              textDecoration: "none",
+              color: "#FEE75C",
+            }}
+            href="https://www.streamlinehq.com"
+          >
             Free vectors icons and illustrations from Streamline
           </a>
         </p>

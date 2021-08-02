@@ -10,28 +10,30 @@
 }
 
 .bounds {
-    margin: auto;
+    padding-left: 2vw;
+    padding-top: 0.2vw;
+    margin: 2vw auto auto auto;
     max-width: 70%;
     align-content: center;
     text-align: left;
 }
 
 .command {
-    color: #FEE75C;
+    color: #EB459E;
     margin-left: 0vw;
     font-size: 35px;
 }
 
 .key {
-    color: #57F287;
+    color: #ED4245;
     margin-left: 2vw;
     font-size: 30px;
 }
 
 .value {
-    color: lightgray;
+    color: white;
     font-weight: lighter;
-    margin-left: 2vw;
+    /*margin-left: 2vw;*/
     font-size: 23px;
 }
 
