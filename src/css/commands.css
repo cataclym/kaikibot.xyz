@@ -12,6 +12,7 @@
 .bounds {
     padding-left: 2vw;
     padding-top: 0.2vw;
+    padding-bottom: 0.5vw;
     margin: 2vw auto auto auto;
     max-width: 70%;
     align-content: center;
@@ -37,3 +38,10 @@
     font-size: 23px;
 }
 
+.usage {
+    background-color: #424549;
+}
+
+.joined {
+    margin-left: 90px;
+}

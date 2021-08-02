@@ -87,7 +87,7 @@ function collapse(c: any) {
 }
 
 class JSONCommand {
-  private id: string;
+  private readonly id: string;
   private readonly aliases: string[];
   private channel: Channel | null;
   private readonly description: string;
@@ -119,7 +119,9 @@ class JSONCommand {
             {
               <text className="value">
                 {Array.isArray(this.aliases)
-                  ? this.aliases.join(", ")
+                  ? this.aliases
+                      .sort((a, b) => b.length - a.length || a.localeCompare(b))
+                      .join(", ")
                   : this.aliases}
               </text>
             }
@@ -129,7 +131,23 @@ class JSONCommand {
           </p>
 
           <p className="key">
-            Usage: <text className="value">{this.usage}</text>
+            Usage:{" "}
+            <text className="value usage">
+              {this.usage
+                ? Array.isArray(this.usage)
+                  ? this.usage.map((u, i) => {
+                      if (i > 0) {
+                        return (
+                          <p className="value usage joined">
+                            ;{this.id} {u}
+                          </p>
+                        );
+                      }
+                      return `;${this.id}`;
+                    })
+                  : `;${this.id} ${this.usage}`
+                : `;${this.id}`}
+            </text>
           </p>
 
           {perms && (
