@@ -40,33 +40,43 @@ export enum Channel {
 
 export default class Commands extends Component {
   render() {
-    return commandslist.map((c) => (
-      <div className="bounds" id={c[0].toString()}>
-        <h2 onClick={() => collapse(c[0] as any)} className="categoryTitle">
-          {c[0]}
-        </h2>
-        {c.map((com) => {
-          // @ts-ignore
-          if (Categories[com] || com === c[0] || ["etc"].includes(com)) return;
-          console.log(com);
-          // @ts-ignore
-          return com.map((cmd) => {
+    return commandslist.map((c) => {
+      if ("Etc" === c[0].toString()) return;
+      return (
+        <div className="bounds" id={c[0].toString()}>
+          <h2 onClick={() => collapse(c[0] as any)} className="categoryTitle">
+            {c[0]}
+            <text id={c[0].toString()} className="click2Exp">
+              Click to expand
+            </text>
+          </h2>
+          {c.map((com) => {
+            console.log(c[0]);
+            // @ts-ignore
+            if (Categories[com] || com === c[0]) return;
             return (
-              <object
-                name={c[0].toString()}
-                style={{
-                  display: "none",
-                }}
-              >
-                <p className="command">
-                  {new JSONCommand(cmd as any).createOutput()}
-                </p>
-              </object>
+              com
+                // @ts-ignore
+                .map((cmd) => {
+                  if (!cmd.aliases.length) return;
+                  return (
+                    <object
+                      name={c[0].toString()}
+                      style={{
+                        display: "none",
+                      }}
+                    >
+                      <p className="command">
+                        {new JSONCommand(cmd as any).createOutput()}
+                      </p>
+                    </object>
+                  );
+                })
             );
-          });
-        })}
-      </div>
-    ));
+          })}
+        </div>
+      );
+    });
   }
 }
 
@@ -75,12 +85,18 @@ function collapse(c: any) {
   doc.forEach((e) => {
     if (e.style.display !== "none") {
       const bounds = document.getElementById(c);
-      if (bounds) bounds.style.backgroundColor = "#424549";
+      const thing = document.getElementById(c);
+      console.log(thing);
+      if (thing)
+        thing.getElementsByTagName("text")[0].textContent = "Click to expand";
       e.style.display = "none";
     } else {
       const bounds = document.getElementById(c);
+      const thing = document.getElementById(c);
+      console.log(thing);
+      if (thing)
+        thing.getElementsByTagName("text")[0].textContent = "Click to minimize";
       e.style.display = "inline";
-      if (bounds) bounds.style.backgroundColor = "#36393e";
     }
     return;
   });

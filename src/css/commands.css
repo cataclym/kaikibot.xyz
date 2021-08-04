@@ -2,6 +2,7 @@
     font-size: 40px;
     font-weight: bold;
     color: #5865F2;
+    margin: 0;
 }
 
 .categoryTitle:hover {
@@ -10,13 +11,15 @@
 }
 
 .bounds {
-    padding-left: 2vw;
-    padding-top: 0.2vw;
-    padding-bottom: 0.5vw;
-    margin: 2vw auto auto auto;
+    border: solid 1px black;
+    padding-left: 1vw;
+    /*padding-top: 0.2vw;*/
+    /*padding-bottom: 0.5vw;*/
+    margin: 0.5vw auto;
     max-width: 70%;
     align-content: center;
-    text-align: left;
+    background-color: #36393e;
+    transition: all 0.15s;
 }
 
 .command {
@@ -44,4 +47,11 @@
 
 .joined {
     margin-left: 90px;
+}
+
+.click2Exp {
+    font-size: 12px;
+    color: #EB459E;
+    margin-left: 0.2vw;
+    font-weight: lighter;
 }
