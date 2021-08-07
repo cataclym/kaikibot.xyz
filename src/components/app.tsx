@@ -54,7 +54,7 @@ export default class App extends Component {
       cmdButton = (
         <a
           className="button5 white"
-          href="#commands"
+          href="#title"
           onClick={this.handleCommandClick}
         >
           Commands
@@ -64,7 +64,7 @@ export default class App extends Component {
     }
     return (
       <div>
-        <div className="header1">
+        <div className="header1" id="title">
           <p className="p1S1">KAIKIBOT</p>
           <p className="p1S2">Your dad isn't this cool</p>
           <a

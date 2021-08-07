@@ -16,29 +16,30 @@
     /*padding-top: 0.2vw;*/
     /*padding-bottom: 0.5vw;*/
     margin: 0.5vw auto;
-    max-width: 70%;
+    max-width: 100%;
     align-content: center;
     background-color: #36393e;
     transition: all 0.15s;
+    /*scroll-behavior: smooth;*/
 }
 
 .command {
     color: #EB459E;
     margin-left: 0vw;
-    font-size: 35px;
+    font-size: 25px;
 }
 
 .key {
     color: #ED4245;
     margin-left: 2vw;
-    font-size: 30px;
+    font-size: 23px;
 }
 
 .value {
     color: white;
     font-weight: lighter;
     /*margin-left: 2vw;*/
-    font-size: 23px;
+    font-size: 19px;
 }
 
 .usage {
@@ -46,7 +47,7 @@
 }
 
 .joined {
-    margin-left: 90px;
+    margin-left: 69px;
 }
 
 .click2Exp {
