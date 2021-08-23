@@ -92,18 +92,7 @@ export default class App extends Component {
           </a>
         </div>
         {bg}
-        <p
-          style={{
-            alignContent: "center",
-            textAlign: "center",
-            margin: "auto",
-            marginTop: "1vw",
-            width: 100,
-            color: "white",
-          }}
-        >
-          © cata 2021
-        </p>
+        <p className="footer">© cata 2021</p>
         <p
           style={{
             alignContent: "center",

@@ -16,7 +16,7 @@ export interface Command {
   ratelimit: number;
   description: string;
   clientPermissions?: string[] | string;
-  userPermissions?: string[] | string;
+  userPermissions?: string;
   usage?: string[] | string;
 }
 
@@ -113,7 +113,7 @@ class JSONCommand {
   private channel: Channel | null;
   private readonly description: string;
   private ownerOnly: boolean;
-  private readonly userPermissions: string[] | string | undefined;
+  private readonly userPermissions: string | undefined;
   private readonly usage: string[] | string | undefined;
   createOutput: () => JSX.Element;
 
@@ -126,14 +126,8 @@ class JSONCommand {
     this.usage = props.usage;
     this.userPermissions = props.userPermissions;
     this.createOutput = () => {
-      const perms = this.userPermissions
-        ? Array.isArray(this.userPermissions)
-          ? this.userPermissions.join("\u000A")
-          : this.userPermissions
-        : null;
-
       return (
-        <div>
+        <div className="cmd_outline">
           {this.id.toUpperCase()}
           <p className="key">
             Aliases:{" "}
@@ -171,9 +165,10 @@ class JSONCommand {
             </text>
           </p>
 
-          {perms && (
+          {this.userPermissions && (
             <p className="key">
-              Required permissions: <text className="value">{perms}</text>
+              Required permissions:{" "}
+              <text className="value">{this.userPermissions}</text>
             </p>
           )}
         </div>

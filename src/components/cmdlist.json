@@ -1,1437 +1,1693 @@
 [
+  [
+    "Administration",
     [
-        "Administration",
-        [
-            {
-                "id": "ban",
-                "aliases": [
-                    "ban",
-                    "bean",
-                    "b"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@notdreb Your behaviour is harmful.",
-                "userPermissions": [
-                    "BAN_MEMBERS"
-                ]
-            },
-            {
-                "id": "clear",
-                "aliases": [
-                    "clear",
-                    "prune"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "69",
-                "userPermissions": "MANAGE_MESSAGES"
-            },
-            {
-                "id": "deletechannel",
-                "aliases": [
-                    "deletechannel",
-                    "dtchnl",
-                    "delchan"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "#channel1 #channel2 #channel3",
-                "userPermissions": "16"
-            },
-            {
-                "id": "kick",
-                "aliases": [
-                    "kick",
-                    "k"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "<@some Guy> Your behaviour is harmful.",
-                "userPermissions": [
-                    "KICK_MEMBERS"
-                ]
-            },
-            {
-                "id": "nsfwtgl",
-                "aliases": [
-                    "nsfwtgl",
-                    "nsfw",
-                    "nsfwtoggle"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "",
-                "userPermissions": "MANAGE_CHANNELS"
-            },
-            {
-                "id": "savechat",
-                "aliases": [
-                    "savechat"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "100",
-                "userPermissions": "MANAGE_MESSAGES"
-            },
-            {
-                "id": "unban",
-                "aliases": [
-                    "unban",
-                    "ub"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "BAN_MEMBERS"
-            }
-        ]
-    ],
-    [
-        "Anime",
-        [
-            {
-                "id": "anime",
-                "aliases": [
-                    "anime"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "Tsukimonogatari"
-            },
-            {
-                "id": "animequote",
-                "aliases": [
-                    "animequote",
-                    "aq"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "manga",
-                "aliases": [
-                    "manga"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "Tsukimonogatari"
-            }
-        ]
-    ],
-    [
-        "Etc",
-        [
-            {
-                "id": "dadbot",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false
-            },
-            {
-                "id": "mention",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false
-            }
-        ]
-    ],
-    [
-        "Fun",
-        [
-            {
-                "id": "compress",
-                "aliases": [
-                    "compress"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "dadjoke",
-                "aliases": [
-                    "dadjoke",
-                    "dadjokes"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "deadbeat",
-                "aliases": [
-                    "dead",
-                    "deadbeat"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "meow",
-                "aliases": [
-                    "meow"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "names",
-                "aliases": [
-                    "name",
-                    "names"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "reddit",
-                "aliases": [
-                    "reddit"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "anime"
-            },
-            {
-                "id": "squish",
-                "aliases": [
-                    "squish"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "stretch",
-                "aliases": [
-                    "stretch"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "woof",
-                "aliases": [
-                    "woof"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            }
-        ]
-    ],
-    [
-        "Gambling",
-        [
-            {
-                "id": "award",
-                "aliases": [
-                    "award"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": "50 @Cata"
-            },
-            {
-                "id": "cash",
-                "aliases": [
-                    "cash",
-                    "currency",
-                    "cur",
-                    "$",
-                    "¥",
-                    "£",
-                    "€"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "daily",
-                "aliases": [
-                    "daily"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "give",
-                "aliases": [
-                    "give"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "50 @Cata"
-            },
-            {
-                "id": "take",
-                "aliases": [
-                    "take"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": "50 @Cata"
-            }
-        ]
-    ],
-    [
-        "NSFW",
-        [
-            {
-                "id": "e621",
-                "aliases": [
-                    "e621"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "hentai",
-                "aliases": [
-                    "hentai"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "hentaibomb",
-                "aliases": [
-                    "hentaibomb",
-                    "hb"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "waifu",
-                    "neko",
-                    "trap",
-                    "blowjob"
-                ]
-            },
-            {
-                "id": "hentainuke",
-                "aliases": [
-                    "hentainuke",
-                    "hn"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "waifu",
-                    "neko",
-                    "trap",
-                    "blowjob"
-                ]
-            }
-        ]
-    ],
-    [
-        "Owner only",
-        [
-            {
-                "id": "botconfig",
-                "aliases": [
-                    "botconfig",
-                    "bc"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": [
-                    "<setting> <value>",
-                    "currencyname Europe Dollars"
-                ]
-            },
-            {
-                "id": "dailyreset",
-                "aliases": [
-                    "dailyreset",
-                    "resetdaily"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": ""
-            },
-            {
-                "id": "die",
-                "aliases": [
-                    "die",
-                    "kill",
-                    "shutdown"
-                ],
-                "channel": null,
-                "ownerOnly": true
-            },
-            {
-                "id": "emit",
-                "aliases": [
-                    "emit"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": "ratelimit <info about event>"
-            },
-            {
-                "id": "eval",
-                "aliases": [
-                    "eval"
-                ],
-                "channel": null,
-                "ownerOnly": true
-            },
-            {
-                "id": "exec",
-                "aliases": [
-                    "exec"
-                ],
-                "channel": null,
-                "ownerOnly": true
-            },
-            {
-                "id": "gencmdlist",
-                "aliases": [
-                    "gencmdlist",
-                    "gencmdlst"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": ""
-            },
-            {
-                "id": "reload",
-                "aliases": [
-                    "re",
-                    "reload"
-                ],
-                "channel": null,
-                "ownerOnly": true
-            },
-            {
-                "id": "setactivity",
-                "aliases": [
-                    "setactivity",
-                    "setac"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": [
-                    "<type> <Activity>",
-                    "playing with Dreb"
-                ]
-            },
-            {
-                "id": "setavatar",
-                "aliases": [
-                    "setavatar",
-                    "setav"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": "http://discord.com/media/1231231231231312321/1231231312323132.png"
-            },
-            {
-                "id": "setdaily",
-                "aliases": [
-                    "setdaily",
-                    "dailyset"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": ""
-            },
-            {
-                "id": "setname",
-                "aliases": [
-                    "setname"
-                ],
-                "channel": null,
-                "ownerOnly": true,
-                "usage": "Medusa"
-            },
-            {
-                "id": "update",
-                "aliases": [
-                    "update"
-                ],
-                "channel": null,
-                "ownerOnly": true
-            }
-        ]
-    ],
-    [
-        "Reactions",
-        [
-            {
-                "id": "bite",
-                "aliases": [
-                    "bite"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "blush",
-                "aliases": [
-                    "blush"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "bonk",
-                "aliases": [
-                    "bonk"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "bully",
-                "aliases": [
-                    "bully",
-                    "bulli"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "cuddle",
-                "aliases": [
-                    "cuddle"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "feed",
-                "aliases": [
-                    "feed"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "hug",
-                "aliases": [
-                    "hug",
-                    "hugs"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "kiss",
-                "aliases": [
-                    "kiss",
-                    "smooch"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "lick",
-                "aliases": [
-                    "lick"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "miku",
-                "aliases": [
-                    "miku"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "neko",
-                "aliases": [
-                    "neko"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "nom",
-                "aliases": [
-                    "nom"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "pat",
-                "aliases": [
-                    "pat"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "peek",
-                "aliases": [
-                    "peek"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "pout",
-                "aliases": [
-                    "pout"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "run",
-                "aliases": [
-                    "run"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "simp",
-                "aliases": [
-                    "simp"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "slap",
-                "aliases": [
-                    "slap"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "spank",
-                "aliases": [
-                    "spank"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            },
-            {
-                "id": "waifu",
-                "aliases": [
-                    "waifu"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "yeet",
-                "aliases": [
-                    "yeet"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@dreb"
-                ]
-            }
-        ]
-    ],
-    [
-        "Roles",
-        [
-            {
-                "id": "roleassign",
-                "aliases": [
-                    "roleassign",
-                    "setrole",
-                    "sr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Dreb Gamer",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "rolecolor",
-                "aliases": [
-                    "rolecolor",
-                    "roleclr",
-                    "rclr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Gamer ff00ff"
-            },
-            {
-                "id": "rolecreate",
-                "aliases": [
-                    "rolecreate",
-                    "createrole",
-                    "rc",
-                    "cr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "GAMERS",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "roledelete",
-                "aliases": [
-                    "roledelete",
-                    "deleterole",
-                    "dr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@gamers @streamers @weebs",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "rolehoist",
-                "aliases": [
-                    "rolehoist",
-                    "hoistrole",
-                    "hoist"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@gamers",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "roleinfo",
-                "aliases": [
-                    "roleinfo",
-                    "role",
-                    "rinfo"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Gamers"
-            },
-            {
-                "id": "inrole",
-                "aliases": [
-                    "inrole"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "rolelist",
-                "aliases": [
-                    "rolelist",
-                    "roles"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "listuserroles",
-                "aliases": [
-                    "listuserroles",
-                    "lur"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "rolementionable",
-                "aliases": [
-                    "rolementionable",
-                    "rolem",
-                    "mentionable"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@gamers",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "myrole",
-                "aliases": [
-                    "myrole",
-                    "mr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "color FF0000",
-                    "name Dreb"
-                ]
-            },
-            {
-                "id": "roleremove",
-                "aliases": [
-                    "roleremove",
-                    "removerole",
-                    "rr"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Dreb Gamer",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "rolerename",
-                "aliases": [
-                    "rolerename",
-                    "rolename",
-                    "rn"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Gamer weeb",
-                "userPermissions": "MANAGE_ROLES"
-            },
-            {
-                "id": "restore",
-                "aliases": [
-                    "restore"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@dreb",
-                "userPermissions": [
-                    "ADMINISTRATOR"
-                ]
-            },
-            {
-                "id": "setuserrole",
-                "aliases": [
-                    "setuserrole",
-                    "sur"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "@Platinum [role]",
-                "userPermissions": [
-                    "MANAGE_ROLES"
-                ]
-            },
-            {
-                "id": "myrolecolor",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false
-            },
-            {
-                "id": "myrolename",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false
-            }
-        ]
-    ],
-    [
-        "Server settings",
-        [
-            {
-                "id": "addemotereact",
-                "aliases": [
-                    "addemotereact",
-                    "emotereact",
-                    "aer"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "red :red:",
-                    "anime :weeaboosgetout:"
-                ],
-                "userPermissions": "1073741824"
-            },
-            {
-                "id": "config-anniversary",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "ADMINISTRATOR"
-            },
-            {
-                "id": "config",
-                "aliases": [
-                    "config",
-                    "configure",
-                    "conf"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "dadbot enable",
-                    "anniversary enable",
-                    "prefix !",
-                    "okcolor <hex>",
-                    "errorcolor <hex>"
-                ]
-            },
-            {
-                "id": "config-dadbot",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "ADMINISTRATOR"
-            },
-            {
-                "id": "config-errorcolor",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "ADMINISTRATOR"
-            },
-            {
-                "id": "excludechannel",
-                "aliases": [
-                    "excludechannel",
-                    "excludechnl",
-                    "echnl"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "#channel"
-                ],
-                "userPermissions": "MANAGE_CHANNELS"
-            },
-            {
-                "id": "goodbye",
-                "aliases": [
-                    "goodbyetoggle",
-                    "goodbye",
-                    "byetoggle",
-                    "bye"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "#leave-channel"
-                ],
-                "userPermissions": "32"
-            },
-            {
-                "id": "goodbyedelete",
-                "aliases": [
-                    "goodbyedelete",
-                    "goodbyedel",
-                    "byedel"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "10"
-                ],
-                "userPermissions": "32"
-            },
-            {
-                "id": "goodbyemessage",
-                "aliases": [
-                    "goodbyemessage",
-                    "goodbyemsg",
-                    "byemsg"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "32"
-            },
-            {
-                "id": "goodbyetest",
-                "aliases": [
-                    "goodbyetest",
-                    "byetest"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "",
-                "userPermissions": "32"
-            },
-            {
-                "id": "listreacts",
-                "aliases": [
-                    "listreacts",
-                    "ler"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    ""
-                ]
-            },
-            {
-                "id": "config-okcolor",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "ADMINISTRATOR"
-            },
-            {
-                "id": "config-prefix",
-                "aliases": [],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": [
-                    "ADMINISTRATOR"
-                ]
-            },
-            {
-                "id": "removereact",
-                "aliases": [
-                    "removereact",
-                    "rer"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "anime"
-                ],
-                "userPermissions": "1073741824"
-            },
-            {
-                "id": "togglecategory",
-                "aliases": [
-                    "togglecategory",
-                    "tc"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "Anime",
-                "userPermissions": "ADMINISTRATOR"
-            },
-            {
-                "id": "welcometoggle",
-                "aliases": [
-                    "welcometoggle",
-                    "welcome"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "#welcome-channel"
-                ],
-                "userPermissions": "32"
-            },
-            {
-                "id": "welcomedelete",
-                "aliases": [
-                    "welcomedelete",
-                    "welcomedel"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "10"
-                ],
-                "userPermissions": "32"
-            },
-            {
-                "id": "welcomemessage",
-                "aliases": [
-                    "welcomemessage",
-                    "welcomemsg"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "userPermissions": "32"
-            },
-            {
-                "id": "welcometest",
-                "aliases": [
-                    "welcometest"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "",
-                "userPermissions": "32"
-            }
-        ]
-    ],
-    [
-        "Utility",
-        [
-            {
-                "id": "addemote",
-                "aliases": [
-                    "addemote",
-                    "ae"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "image-link Emotename",
-                "userPermissions": "1073741824"
-            },
-            {
-                "id": "addemotes",
-                "aliases": [
-                    "addemotes",
-                    "aes"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "img-link1 img-link2 img-link3",
-                "userPermissions": "1073741824"
-            },
-            {
-                "id": "avatar",
-                "aliases": [
-                    "avatar",
-                    "av"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "@dreb"
-            },
-            {
-                "id": "checkpermissions",
-                "aliases": [
-                    "checkperms",
-                    "cp",
-                    "perms"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "@user",
-                    "@role",
-                    "@user #channel"
-                ]
-            },
-            {
-                "id": "cmdlist",
-                "aliases": [
-                    "commands",
-                    "cmds",
-                    "cmdlist"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "admin"
-                ]
-            },
-            {
-                "id": "color",
-                "aliases": [
-                    "color",
-                    "clr"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "#ff00ff",
-                    "list"
-                ]
-            },
-            {
-                "id": "colorlist",
-                "aliases": [
-                    "colorlist"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "deleteemote",
-                "aliases": [
-                    "deleteemote",
-                    "de"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "<:NadekoSip:>",
-                "userPermissions": "1073741824"
-            },
-            {
-                "id": "emotecount",
-                "aliases": [
-                    "emotecount",
-                    "emojicount",
-                    "ec"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "-s",
-                    "--small"
-                ]
-            },
-            {
-                "id": "exclude",
-                "aliases": [
-                    "exclude",
-                    "e",
-                    "excl"
-                ],
-                "channel": "guild",
-                "ownerOnly": false
-            },
-            {
-                "id": "fetch",
-                "aliases": [
-                    "fu",
-                    "fetch"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "<id>"
-            },
-            {
-                "id": "help",
-                "aliases": [
-                    "help",
-                    "h"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": "ping"
-            },
-            {
-                "id": "info",
-                "aliases": [
-                    "info"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "#channel",
-                    "@member",
-                    "@role",
-                    ":coolCustomEmoji:",
-                    "messageID"
-                ]
-            },
-            {
-                "id": "invite",
-                "aliases": [
-                    "invite",
-                    "inv"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "mcping",
-                "aliases": [
-                    "mcping"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": ""
-            },
-            {
-                "id": "neofetch",
-                "aliases": [
-                    "neofetch",
-                    "neo"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "opensuse",
-                    "list"
-                ]
-            },
-            {
-                "id": "ping",
-                "aliases": [
-                    "p",
-                    "ping"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "random",
-                "aliases": [
-                    "random",
-                    "rng"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "1 10",
-                    "25"
-                ]
-            },
-            {
-                "id": "say",
-                "aliases": [
-                    "say"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": [
-                    "#general hello"
-                ],
-                "userPermissions": "8192"
-            },
-            {
-                "id": "serverinfo",
-                "aliases": [
-                    "serverinfo",
-                    "sinfo"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "shardstats",
-                "aliases": [
-                    "shards",
-                    "shardstats"
-                ],
-                "channel": "guild",
-                "ownerOnly": false
-            },
-            {
-                "id": "stats",
-                "aliases": [
-                    "stats"
-                ],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "todo",
-                "aliases": [
-                    "todo",
-                    "note"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "",
-                    "add make cake 07/07/2020",
-                    "remove 5",
-                    "remove last",
-                    "remove first",
-                    "remove all",
-                    "rm 1"
-                ]
-            },
-            {
-                "id": "add",
-                "aliases": [],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "remove",
-                "aliases": [],
-                "channel": null,
-                "ownerOnly": false
-            },
-            {
-                "id": "uinfo",
-                "aliases": [
-                    "user",
-                    "uinfo"
-                ],
-                "channel": "guild",
-                "ownerOnly": false,
-                "usage": "<member>"
-            },
-            {
-                "id": "urbandict",
-                "aliases": [
-                    "urbandict",
-                    "urban",
-                    "ud"
-                ],
-                "channel": null,
-                "ownerOnly": false,
-                "usage": [
-                    "Watermelon",
-                    "anime"
-                ]
-            }
-        ]
+      {
+        "id": "ban",
+        "aliases": [
+          "ban",
+          "bean",
+          "b"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@notdreb Your behaviour is harmful.",
+        "userPermissions": "BAN_MEMBERS",
+        "description": "Bans a user by ID or name with an optional message."
+      },
+      {
+        "id": "clear",
+        "aliases": [
+          "clear",
+          "prune"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "69",
+        "userPermissions": "MANAGE_MESSAGES",
+        "description": "Clears up to 100 messages in the current channel."
+      },
+      {
+        "id": "deletechannel",
+        "aliases": [
+          "deletechannel",
+          "dtchnl",
+          "delchan"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "#channel1 #channel2 #channel3",
+        "userPermissions": "MANAGE_CHANNELS",
+        "description": "Deletes one or more channels. Also deletes categories and voice channels."
+      },
+      {
+        "id": "kick",
+        "aliases": [
+          "kick",
+          "k"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "<@some Guy> Your behaviour is harmful.",
+        "userPermissions": "KICK_MEMBERS",
+        "description": "Kicks a user by ID or name with an optional message."
+      },
+      {
+        "id": "nsfwtgl",
+        "aliases": [
+          "nsfwtgl",
+          "nsfw",
+          "nsfwtoggle"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "MANAGE_CHANNELS",
+        "description": "Toggles NSFW in current channel"
+      },
+      {
+        "id": "savechat",
+        "aliases": [
+          "savechat"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "100",
+        "userPermissions": "MANAGE_MESSAGES",
+        "description": "Saves a number of messages, and sends it to you."
+      },
+      {
+        "id": "unban",
+        "aliases": [
+          "unban",
+          "ub"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "BAN_MEMBERS",
+        "description": ""
+      }
     ]
+  ],
+  [
+    "Anime",
+    [
+      {
+        "id": "anime",
+        "aliases": [
+          "anime"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "Tsukimonogatari",
+        "userPermissions": "",
+        "description": "Shows the first result of a query to Anilist"
+      },
+      {
+        "id": "animequote",
+        "aliases": [
+          "animequote",
+          "aq"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Shows a random anime quote..."
+      },
+      {
+        "id": "manga",
+        "aliases": [
+          "manga"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "Tsukimonogatari",
+        "userPermissions": "",
+        "description": "Shows the first result of a query to Anilist"
+      }
+    ]
+  ],
+  [
+    "Etc",
+    [
+      {
+        "id": "dadbot",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "mention",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      }
+    ]
+  ],
+  [
+    "Fun",
+    [
+      {
+        "id": "compress",
+        "aliases": [
+          "compress"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Compresses given member's avatar..."
+      },
+      {
+        "id": "dadjoke",
+        "aliases": [
+          "dadjoke",
+          "dadjokes"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Returns a dadjoke."
+      },
+      {
+        "id": "deadbeat",
+        "aliases": [
+          "dead",
+          "deadbeat"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Just try it"
+      },
+      {
+        "id": "meow",
+        "aliases": [
+          "meow"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Meow."
+      },
+      {
+        "id": "names",
+        "aliases": [
+          "name",
+          "names"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Returns all your daddy nicknames"
+      },
+      {
+        "id": "reddit",
+        "aliases": [
+          "reddit"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "anime",
+        "userPermissions": "",
+        "description": "Returns a random reddit post, from a specified subreddit."
+      },
+      {
+        "id": "squish",
+        "aliases": [
+          "squish"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Squishes given member's avatar"
+      },
+      {
+        "id": "stretch",
+        "aliases": [
+          "stretch"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Stretches given member's avatar"
+      },
+      {
+        "id": "woof",
+        "aliases": [
+          "woof"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Woof."
+      }
+    ]
+  ],
+  [
+    "Gambling",
+    [
+      {
+        "id": "award",
+        "aliases": [
+          "award"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "50 @Cata",
+        "userPermissions": "",
+        "description": "For bot owner to award currency"
+      },
+      {
+        "id": "betflip",
+        "aliases": [
+          "betflip",
+          "bf"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "5 heads",
+          "10 t"
+        ],
+        "userPermissions": "",
+        "description": "Bet on tails or heads. Guessing correct awards you 1.95x the currency you've bet."
+      },
+      {
+        "id": "betroll",
+        "aliases": [
+          "betroll",
+          "br"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "69",
+        "userPermissions": "",
+        "description": "Bet an amount of currency and roll the dice. Rolling above 66 yields x2 the amount bet. Above 90 - x4 and 100 gives x10!"
+      },
+      {
+        "id": "cash",
+        "aliases": [
+          "cash",
+          "currency",
+          "cur",
+          "$",
+          "¥",
+          "£",
+          "€"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Shows specified user's current balance. If no user is specified, shows your balance"
+      },
+      {
+        "id": "daily",
+        "aliases": [
+          "daily"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Claim your daily currency allowance"
+      },
+      {
+        "id": "give",
+        "aliases": [
+          "give"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "50 @Cata",
+        "userPermissions": "",
+        "description": "Gives money to another user"
+      },
+      {
+        "id": "take",
+        "aliases": [
+          "take"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "50 @Cata",
+        "userPermissions": "",
+        "description": "Takes money from the specified user"
+      }
+    ]
+  ],
+  [
+    "NSFW",
+    [
+      {
+        "id": "e621",
+        "aliases": [
+          "e621"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "e621 :hahaa:"
+      },
+      {
+        "id": "hentai",
+        "aliases": [
+          "hentai"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Fetches hentai images from Booru boards"
+      },
+      {
+        "id": "hentaibomb",
+        "aliases": [
+          "hentaibomb",
+          "hb"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "waifu",
+          "neko",
+          "trap",
+          "blowjob"
+        ],
+        "userPermissions": "",
+        "description": "Posts 5 NSFW images, using the waifu.pics API"
+      },
+      {
+        "id": "hentainuke",
+        "aliases": [
+          "hentainuke",
+          "hn"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "waifu",
+          "neko",
+          "trap",
+          "blowjob"
+        ],
+        "userPermissions": "",
+        "description": "Posts 30 NSFW images, using the waifu.pics API"
+      }
+    ]
+  ],
+  [
+    "Owner only",
+    [
+      {
+        "id": "botconfig",
+        "aliases": [
+          "botconfig",
+          "bc"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": [
+          "<setting> <value>",
+          "currencyname Europe Dollars"
+        ],
+        "userPermissions": "",
+        "description": "Change various bot configurations. Run without arguments to see current settings."
+      },
+      {
+        "id": "dailyreset",
+        "aliases": [
+          "dailyreset",
+          "resetdaily"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Resets daily claims that have been made"
+      },
+      {
+        "id": "die",
+        "aliases": [
+          "die",
+          "kill",
+          "shutdown"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "userPermissions": "",
+        "description": "Shuts down bot."
+      },
+      {
+        "id": "emit",
+        "aliases": [
+          "emit"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "ratelimit <info about event>",
+        "userPermissions": "",
+        "description": "Emits a specified event. (WIP)"
+      },
+      {
+        "id": "eval",
+        "aliases": [
+          "eval"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "exec",
+        "aliases": [
+          "exec"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "gencmdlist",
+        "aliases": [
+          "gencmdlist",
+          "gencmdlst"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Uploads a JSON file containing all commands."
+      },
+      {
+        "id": "reload",
+        "aliases": [
+          "re",
+          "reload"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "userPermissions": "",
+        "description": "Reloads a command. Note: It does not run the TypeScript compiler."
+      },
+      {
+        "id": "setactivity",
+        "aliases": [
+          "setactivity",
+          "setac"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": [
+          "<type> <Activity>",
+          "playing with Dreb"
+        ],
+        "userPermissions": "",
+        "description": "Set the bot's activity."
+      },
+      {
+        "id": "setavatar",
+        "aliases": [
+          "setavatar",
+          "setav"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "http://discord.com/media/1231231231231312321/1231231312323132.png",
+        "userPermissions": "",
+        "description": "Assigns the bot a new avatar."
+      },
+      {
+        "id": "setdaily",
+        "aliases": [
+          "setdaily",
+          "dailyset"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Sets the daily currency allowance amount for users. Set to 0 to disable."
+      },
+      {
+        "id": "setname",
+        "aliases": [
+          "setname"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "usage": "Medusa",
+        "userPermissions": "",
+        "description": "Assigns the bot a new name/username."
+      },
+      {
+        "id": "update",
+        "aliases": [
+          "update"
+        ],
+        "channel": null,
+        "ownerOnly": true,
+        "userPermissions": "",
+        "description": ""
+      }
+    ]
+  ],
+  [
+    "Reactions",
+    [
+      {
+        "id": "bite",
+        "aliases": [
+          "bite"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Bite someone >:)"
+      },
+      {
+        "id": "blush",
+        "aliases": [
+          "blush"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "O//////O"
+      },
+      {
+        "id": "bonk",
+        "aliases": [
+          "bonk"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "When you need to bonk some horny teens"
+      },
+      {
+        "id": "bully",
+        "aliases": [
+          "bully",
+          "bulli"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Be a bully to someone"
+      },
+      {
+        "id": "cuddle",
+        "aliases": [
+          "cuddle"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Cuddle someone!"
+      },
+      {
+        "id": "feed",
+        "aliases": [
+          "feed"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "When you need to feed someone...?"
+      },
+      {
+        "id": "hug",
+        "aliases": [
+          "hug",
+          "hugs"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Hug a good friend, or maybe someone special ;>"
+      },
+      {
+        "id": "kiss",
+        "aliases": [
+          "kiss",
+          "smooch"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "OwO 2lood4me"
+      },
+      {
+        "id": "lick",
+        "aliases": [
+          "lick"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Lick someone... I guess...?"
+      },
+      {
+        "id": "miku",
+        "aliases": [
+          "miku"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Spawn a Miku picture"
+      },
+      {
+        "id": "neko",
+        "aliases": [
+          "neko"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Spawn a neko picture"
+      },
+      {
+        "id": "nom",
+        "aliases": [
+          "nom"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Nom someone, cus you're hungry"
+      },
+      {
+        "id": "pat",
+        "aliases": [
+          "pat"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Pat a cat!\nOr a guildmember..."
+      },
+      {
+        "id": "peek",
+        "aliases": [
+          "peek"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Peek around the corner"
+      },
+      {
+        "id": "pout",
+        "aliases": [
+          "pout"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "I am not angry, b-baka"
+      },
+      {
+        "id": "run",
+        "aliases": [
+          "run"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Gotta go fast~"
+      },
+      {
+        "id": "simp",
+        "aliases": [
+          "simp"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Embarrass your simp friend"
+      },
+      {
+        "id": "slap",
+        "aliases": [
+          "slap"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Slap someone who's being stupid"
+      },
+      {
+        "id": "spank",
+        "aliases": [
+          "spank"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "OwO Being naughty are we?"
+      },
+      {
+        "id": "waifu",
+        "aliases": [
+          "waifu"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "Spawn a waifu picture"
+      },
+      {
+        "id": "yeet",
+        "aliases": [
+          "yeet"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": "",
+        "description": "Yeeeeeeeeeeeeeeeeeee\neeeeeeeeeeeeeeeet"
+      }
+    ]
+  ],
+  [
+    "Roles",
+    [
+      {
+        "id": "rolecolor",
+        "aliases": [
+          "rolecolor",
+          "roleclr",
+          "rclr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Gamer ff00ff",
+        "userPermissions": "",
+        "description": "Displays the color of a given role, or your highest role."
+      },
+      {
+        "id": "rolecreate",
+        "aliases": [
+          "rolecreate",
+          "createrole",
+          "rc",
+          "cr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "GAMERS",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Creates a role with a given name."
+      },
+      {
+        "id": "roledelete",
+        "aliases": [
+          "roledelete",
+          "deleterole",
+          "dr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@gamers @streamers @weebs",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Deletes one or more roles"
+      },
+      {
+        "id": "rolehoist",
+        "aliases": [
+          "rolehoist",
+          "hoistrole",
+          "hoist"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@gamers",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Hoists or unhoists a role"
+      },
+      {
+        "id": "roleinfo",
+        "aliases": [
+          "roleinfo",
+          "role",
+          "rinfo"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Gamers",
+        "userPermissions": "",
+        "description": "Shows info about a given role. If no role is supplied, it defaults to current one."
+      },
+      {
+        "id": "inrole",
+        "aliases": [
+          "inrole"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Lists all users in role"
+      },
+      {
+        "id": "rolelist",
+        "aliases": [
+          "rolelist",
+          "roles"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Lists all roles"
+      },
+      {
+        "id": "listuserroles",
+        "aliases": [
+          "listuserroles",
+          "lur"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "List all custom assigned roles."
+      },
+      {
+        "id": "rolementionable",
+        "aliases": [
+          "rolementionable",
+          "rolem",
+          "mentionable"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@gamers",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Toggles if a role is mentionable"
+      },
+      {
+        "id": "myrole",
+        "aliases": [
+          "myrole",
+          "mr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "color FF0000",
+          "name Dreb"
+        ],
+        "userPermissions": "",
+        "description": "Checks your assigned user role. Add a hexcode to change the colour."
+      },
+      {
+        "id": "roleremove",
+        "aliases": [
+          "roleremove",
+          "removerole",
+          "rr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Dreb Gamer",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Takes away a user's role. The role you specify has to be lower in the role hierarchy than your highest role."
+      },
+      {
+        "id": "rolerename",
+        "aliases": [
+          "rolerename",
+          "rolename",
+          "rn"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Gamer weeb",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Renames a given role. The role you specify has to be lower in the role hierarchy than your highest role. Use 'quotes around rolename with spaces'."
+      },
+      {
+        "id": "restore",
+        "aliases": [
+          "restore"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "ADMINISTRATOR",
+        "description": "Restores roles for a user who has previously left the server."
+      },
+      {
+        "id": "setrole",
+        "aliases": [
+          "setrole",
+          "sr"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Dreb Gamer",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Gives a role to a user. The role you specify has to be lower in the role hierarchy than your highest role."
+      },
+      {
+        "id": "setuserrole",
+        "aliases": [
+          "setuserrole",
+          "sur"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Platinum [role]",
+        "userPermissions": "MANAGE_ROLES",
+        "description": "Assigns a role to a user."
+      },
+      {
+        "id": "myrolecolor",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "myrolename",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      }
+    ]
+  ],
+  [
+    "Server settings",
+    [
+      {
+        "id": "addemotereact",
+        "aliases": [
+          "addemotereact",
+          "emotereact",
+          "aer"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "red :red:",
+          "anime :weeaboosgetout:"
+        ],
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Add triggers for the bot to react with emojis/emotes to. Use quotes for triggers with spaces."
+      },
+      {
+        "id": "config-anniversary",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "ADMINISTRATOR",
+        "description": ""
+      },
+      {
+        "id": "config",
+        "aliases": [
+          "config",
+          "configure",
+          "conf"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "dadbot enable",
+          "anniversary enable",
+          "prefix !",
+          "okcolor <hex>",
+          "errorcolor <hex>"
+        ],
+        "userPermissions": "",
+        "description": "Configure or display guild specific settings. Will always respond to default prefix."
+      },
+      {
+        "id": "config-dadbot",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "ADMINISTRATOR",
+        "description": ""
+      },
+      {
+        "id": "config-errorcolor",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "ADMINISTRATOR",
+        "description": ""
+      },
+      {
+        "id": "excludechannel",
+        "aliases": [
+          "excludechannel",
+          "excludechnl",
+          "echnl"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#channel"
+        ],
+        "userPermissions": "MANAGE_CHANNELS",
+        "description": "Exclude or include a channel from dadbot. Provide no parameter to show a list of excluded channels. "
+      },
+      {
+        "id": "goodbye",
+        "aliases": [
+          "goodbyetoggle",
+          "goodbye",
+          "byetoggle",
+          "bye"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#leave-channel"
+        ],
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Toggles leave messages. Bot defaults to current channel if no channel is provided."
+      },
+      {
+        "id": "goodbyedelete",
+        "aliases": [
+          "goodbyedelete",
+          "goodbyedel",
+          "byedel"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "10"
+        ],
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Set the time it takes for goodbye messages to be deleted by the bot"
+      },
+      {
+        "id": "goodbyemessage",
+        "aliases": [
+          "goodbyemessage",
+          "goodbyemsg",
+          "byemsg"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "MANAGE_GUILD",
+        "description": ""
+      },
+      {
+        "id": "goodbyetest",
+        "aliases": [
+          "goodbyetest",
+          "byetest"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Tests goodbye message as it would appear when triggered."
+      },
+      {
+        "id": "listreacts",
+        "aliases": [
+          "listreacts",
+          "ler"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": "",
+        "description": "List emotereact triggers."
+      },
+      {
+        "id": "config-okcolor",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "ADMINISTRATOR",
+        "description": ""
+      },
+      {
+        "id": "config-prefix",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "ADMINISTRATOR",
+        "description": ""
+      },
+      {
+        "id": "removereact",
+        "aliases": [
+          "removereact",
+          "rer"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "anime"
+        ],
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Remove emotereact triggers."
+      },
+      {
+        "id": "stickyroles",
+        "aliases": [
+          "stickyroles",
+          "sticky"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "ADMINISTRATOR",
+        "description": "Toggles whether bot will give all roles back when someone re-joins the server"
+      },
+      {
+        "id": "togglecategory",
+        "aliases": [
+          "togglecategory",
+          "tc"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "Anime",
+        "userPermissions": "ADMINISTRATOR",
+        "description": "Toggles a category"
+      },
+      {
+        "id": "welcometoggle",
+        "aliases": [
+          "welcometoggle",
+          "welcome"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#welcome-channel"
+        ],
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Toggles welcome messages. Bot defaults to current channel if no channel is provided."
+      },
+      {
+        "id": "welcomedelete",
+        "aliases": [
+          "welcomedelete",
+          "welcomedel"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "10"
+        ],
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Set the time it takes for welcome messages to be deleted by the bot"
+      },
+      {
+        "id": "welcomemessage",
+        "aliases": [
+          "welcomemessage",
+          "welcomemsg"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "MANAGE_GUILD",
+        "description": ""
+      },
+      {
+        "id": "welcometest",
+        "aliases": [
+          "welcometest"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "MANAGE_GUILD",
+        "description": "Tests welcome message as it would appear for new members."
+      }
+    ]
+  ],
+  [
+    "Utility",
+    [
+      {
+        "id": "addemote",
+        "aliases": [
+          "addemote",
+          "ae"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "image-link Emotename",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Adds an emote from an image link or attached image, with an optional name."
+      },
+      {
+        "id": "addemotes",
+        "aliases": [
+          "addemotes",
+          "aes"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "img-link1 img-link2 img-link3",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Adds multiple emotes. Cannot specify names."
+      },
+      {
+        "id": "avatar",
+        "aliases": [
+          "avatar",
+          "av"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": "",
+        "description": "Shows a mentioned person's avatar."
+      },
+      {
+        "id": "checkpermissions",
+        "aliases": [
+          "checkperms",
+          "cp",
+          "perms"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@user",
+          "@role",
+          "@user #channel"
+        ],
+        "userPermissions": "",
+        "description": "Lists perms for role/member"
+      },
+      {
+        "id": "cmdlist",
+        "aliases": [
+          "commands",
+          "cmds",
+          "cmdlist"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "admin"
+        ],
+        "userPermissions": "",
+        "description": "Shows categories, or commands if provided with a category."
+      },
+      {
+        "id": "color",
+        "aliases": [
+          "color",
+          "clr"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "#ff00ff",
+          "list"
+        ],
+        "userPermissions": "",
+        "description": "Returns a representation of a color string, or shows list of available color names to use."
+      },
+      {
+        "id": "colorlist",
+        "aliases": [
+          "colorlist"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Shows a list of all supported color names for the bot"
+      },
+      {
+        "id": "deleteemote",
+        "aliases": [
+          "deleteemote",
+          "de"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "<:NadekoSip:>",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Deletes one or multiple emotes/emoji. Multiple emotes take longer, to avoid ratelimits. Keep a space between all emotes you wish to delete."
+      },
+      {
+        "id": "emotecount",
+        "aliases": [
+          "emotecount",
+          "emojicount",
+          "ec"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "-s",
+          "--small"
+        ],
+        "userPermissions": "",
+        "description": "Shows amount of times each emote has been used"
+      },
+      {
+        "id": "exclude",
+        "aliases": [
+          "exclude",
+          "e",
+          "excl"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Adds or removes excluded role from user. Excludes the user from being targeted by dad-bot."
+      },
+      {
+        "id": "fetch",
+        "aliases": [
+          "fu",
+          "fetch"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "<id>",
+        "userPermissions": "",
+        "description": "Fetches a discord user, shows relevant information. 30sec cooldown."
+      },
+      {
+        "id": "forgetme",
+        "aliases": [
+          "forgetme"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Deletes all information about you in the database"
+      },
+      {
+        "id": "help",
+        "aliases": [
+          "help",
+          "h"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "ping",
+        "userPermissions": "",
+        "description": "Shows command info"
+      },
+      {
+        "id": "info",
+        "aliases": [
+          "info"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "#channel",
+          "@member",
+          "@role",
+          ":coolCustomEmoji:",
+          "messageID"
+        ],
+        "userPermissions": "",
+        "description": "Returns info on a channel, role, member, emoji, or message"
+      },
+      {
+        "id": "invite",
+        "aliases": [
+          "invite",
+          "inv"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": "Get a link to invite the bot to your server."
+      },
+      {
+        "id": "mcping",
+        "aliases": [
+          "mcping"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "neofetch",
+        "aliases": [
+          "neofetch",
+          "neo"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "opensuse",
+          "list"
+        ],
+        "userPermissions": "",
+        "description": "Displays neofetch ascii art"
+      },
+      {
+        "id": "ping",
+        "aliases": [
+          "p",
+          "ping"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Ping the bot and websocket to see if there are latency issues."
+      },
+      {
+        "id": "random",
+        "aliases": [
+          "random",
+          "rng"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "1 10",
+          "25"
+        ],
+        "userPermissions": "",
+        "description": "Sends a random number between your two inputs."
+      },
+      {
+        "id": "say",
+        "aliases": [
+          "say"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "#general hello"
+        ],
+        "userPermissions": "MANAGE_MESSAGES",
+        "description": "Bot will send the message you typed in the specified channel. It also takes embeds"
+      },
+      {
+        "id": "serverinfo",
+        "aliases": [
+          "serverinfo",
+          "sinfo"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Shows information about the current server."
+      },
+      {
+        "id": "shardstats",
+        "aliases": [
+          "shards",
+          "shardstats"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Shows state of shards"
+      },
+      {
+        "id": "stats",
+        "aliases": [
+          "stats"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": "Statistics and information"
+      },
+      {
+        "id": "todo",
+        "aliases": [
+          "todo",
+          "note"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "add make cake 07/07/2020",
+          "remove 5",
+          "remove last",
+          "remove first",
+          "remove all",
+          "rm 1"
+        ],
+        "userPermissions": "",
+        "description": "A personal todo list. The items are limited to 204 characters. Intended for small notes, not detailed cooking recipies."
+      },
+      {
+        "id": "add",
+        "aliases": [],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "remove",
+        "aliases": [],
+        "channel": null,
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "uinfo",
+        "aliases": [
+          "user",
+          "uinfo"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "<member>",
+        "userPermissions": "",
+        "description": "Shows relevant member info"
+      },
+      {
+        "id": "urbandict",
+        "aliases": [
+          "urbandict",
+          "urban",
+          "ud"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": [
+          "Watermelon",
+          "anime"
+        ],
+        "userPermissions": "",
+        "description": "Searches Urban Dictionary for a word or sentence"
+      }
+    ]
+  ]
 ]
