@@ -1,12 +1,12 @@
 .categoryTitle {
     font-size: 40px;
     font-weight: bold;
-    color: #5865F2;
+    color: lightgray;
     margin: 0;
 }
 
 .categoryTitle:hover {
-    color: #EB459E;
+    color: cornflowerblue;
     cursor: pointer;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .command {
-    color: #EB459E;
+    color: lightgray;
     margin-left: 0vw;
     font-size: 25px;
 }
@@ -38,7 +38,7 @@
 }
 
 .key {
-    color: #ED4245;
+    color: cornflowerblue;
     margin-left: 2vw;
     font-size: 23px;
 }
@@ -53,7 +53,7 @@
 .usage {
     background-color: #36393e;
     max-width: fit-content;
-    color: #57F287;
+    color: white;
     /*letter-spacing: 2px;*/
     /*font-size: 17px;*/
     /*font-family: "Source Sans Pro";*/
@@ -66,7 +66,7 @@
 
 .click2Exp {
     font-size: 12px;
-    color: #EB459E;
+    color: cornflowerblue;
     margin-left: 0.2vw;
     font-weight: lighter;
 }
@@ -75,4 +75,10 @@
     .bounds {
         max-width: 100%;
     }
+}
+
+h1.center {
+    margin: 1vw auto 2vw auto !important;
+    text-align: center;
+    color: lightgray;
 }

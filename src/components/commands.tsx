@@ -42,7 +42,7 @@ export default class Commands extends Component {
   render() {
     return (
       <object id="commands">
-        {" "}
+        <h1 className="center">Command categories</h1>{" "}
         {commandslist.map((c) => {
           if ("Etc" === c[0].toString()) return;
           return (

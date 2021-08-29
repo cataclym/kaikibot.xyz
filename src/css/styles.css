@@ -30,18 +30,17 @@
     color: #FFFFFF;
     font-size: 2vw;
     font-family: "sans-serif";
-    margin: auto;
+    margin: auto auto 4vw;
     width: 100%;
     text-shadow: black 0.1vw 0.1vw;
 }
 
 .header1 {
     position: sticky;
-    padding: 0.0vw 0.0vw 0.2vw 0.0vw;
-    background-color: #5865F2;
+    /*background-color: #5865F2;*/
+    background-image: url("https://i.imgur.com/A55r4Tz.png");
     width: 100%;
     margin: auto;
-    text-align: center;
     border-radius:0.23em;
 }
 
@@ -67,30 +66,32 @@ body {
 }
 
 a.button5 {
-    display:inline-block;
-    padding:0.23em 0em 0.1em;
-    margin: 0.2vw 0.2vw;
-    border-radius:0.23em;
+    display: inline-flex;
+    margin: 0 auto 0 auto;
+    padding: 0.23vw 0 0.4vw 0;
     box-sizing: border-box;
     text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-size: 1.3vw;
-    font-weight: 350;
-    color: black;
-    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-    background-color:#FFFFFF;
-    text-align:center;
-    transition: all 0.15s;
-    width: 12%;
-    letter-spacing: 2px;
+    width: 14.285714285714286%;
     white-space: nowrap;
 }
 
-a.button5:hover {
+div.button5 {
+    font-family:'Roboto',sans-serif;
+    font-size: 1.2vw;
+    font-weight: 400;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
     color: white;
-    background-color: #EB459E;
-    border-color: black;
-    font-weight: bold;
+    line-height: 37px;
+    transition: font-weight 0.15s, letter-spacing 0.15s;
+}
+
+a.button5:hover {
+    background-color: black;
+}
+
+a.button5:hover > div.button5 {
+    font-weight: bolder;
+    letter-spacing: 1px;
 }
 
 p.footer {
@@ -104,42 +105,45 @@ p.footer {
 
 img.icon {
     transition: all 0.15s;
-    display: flex;
-    margin: auto;
-    /*height: auto;*/
-    max-height: 5vw;
-}
-
-a.discord {
-    background-color: white;
+    display: inline;
+    position: absolute;
+    margin: auto 0 auto 1vw;
+    max-height: 100%;
+    max-width: 2vw;
 }
 
 a.gitlab {
     background-color: #6b4fbb;
 }
 
-a.support
-a.white {
-    background-color: white;
-}
-
 a.toggled {
-    background-color: #EB459E;
+    background-color: cornflowerblue;
 }
 
 a.toggled .img.icon {
     visibility: hidden;
 }
 
+a.patreon {
+    background-color: #FF424D;
+}
+
+a.paypal {
+    background-color: #003087;
+}
+
+.center {
+    margin: auto !important;
+}
+
 @media all and (max-width:75em) {
-    a.button5 {
+    a.button5, a.button6 {
         display:block;
-        margin:0.4em auto;
+        margin:0 auto;
         padding:0.4em 0em 0.2em;
         font-size: 4vw;
         width: auto;
-        min-width: 19.5%;
-        max-width: 98%;
+        max-width: 100%;
     }
     .bg {
         top: 0;
@@ -180,7 +184,6 @@ a.toggled .img.icon {
 
     .header1 {
         position: sticky;
-        padding: 0.0vw 0.0vw 0.4vw 0.0vw;
         background-color: #5865F2;
         width: 100%;
         margin: auto;

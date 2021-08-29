@@ -6,6 +6,8 @@ import discordIcon from "../images/streamline-icon-customer-server-imac-4@400x40
 import gitLabIcon from "../images/gitlab-icon-rgb_resized.png";
 import inviteIcon from "../images/streamline-avatar-neutral-add-2--users--400x400.png";
 import listIcon from "../images/streamline-invoice-spreadsheet-1--business--400x400.png";
+import paypal from "../images/PayPal/PP_Transparent_Vertical.png";
+import patreon from "../images/patreon_brand_kit/Patreon Brand Assets/Patreon Logo/PNG/Digital-Patreon-Logo_White.png";
 
 export default class App extends Component {
   constructor(props: any) {
@@ -41,8 +43,8 @@ export default class App extends Component {
           href="#commands"
           onClick={this.handleCommandClick}
         >
-          Back
-          <img id="2" alt="" className="icon" src={listIcon} />
+          <img id="2" alt="" className="icon" src={listIcon} />{" "}
+          <div className="button5 center"> Back </div>
         </a>
       );
     } else {
@@ -57,8 +59,8 @@ export default class App extends Component {
           href="#title"
           onClick={this.handleCommandClick}
         >
-          Commands
-          <img id="2" alt="" className="icon" src={listIcon} />
+          <img id="2" alt="" className="icon" src={listIcon} />{" "}
+          <div className="button5 center"> Commands </div>
         </a>
       );
     }
@@ -67,28 +69,36 @@ export default class App extends Component {
         <div className="header1" id="title">
           <p className="p1S1">KAIKIBOT</p>
           <p className="p1S2">Your dad isn't this cool</p>
-          <a
-            className="button5 white"
-            href="https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot"
-          >
-            Invite
-            <img id="1" alt="" className="icon" src={inviteIcon} />
+          <a className="button5" href="https://discord.gg/8G3AqjnFfX">
+            <img id="4" alt="" className="icon" src={discordIcon} />{" "}
+            <div className="button5 center"> Support</div>
           </a>
           {cmdButton}
-          <a className="button5 white" href="https://embed.kaikibot.xyz/">
-            Embed builder
-            <img id="3" alt="" className="icon" src={embedIcon} />
+          <a className="button5" href="https://embed.kaikibot.xyz/">
+            <img id="3" alt="" className="icon" src={embedIcon} />{" "}
+            <div className="button5 center"> Embeds </div>
           </a>
-          <a className="button5 discord" href="https://discord.gg/8G3AqjnFfX">
-            Support server
-            <img id="4" alt="" className="icon" src={discordIcon} />
+          <a
+            className="button5"
+            href="https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot"
+          >
+            <img id="1" alt="" className="icon" src={inviteIcon} />{" "}
+            <div className="button5 center"> Invite </div>
           </a>
           <a
             className="button5 gitlab"
             href="https://gitlab.com/cataclym/KaikiDeishuBot"
           >
-            GitLab
-            <img id="5" alt="" className="icon" src={gitLabIcon} />
+            <img id="5" alt="" className="icon" src={gitLabIcon} />{" "}
+            <div className="button5 center"> GitLab </div>
+          </a>
+          <a className="button5 paypal" href="">
+            <img id="5" alt="" className="icon" src={paypal} />
+            <div className="button5 center"> Donate </div>
+          </a>
+          <a className="button5 patreon" href="">
+            <img id="5" alt="" className="icon" src={patreon} />{" "}
+            <div className="button5 center"> Patreon </div>
           </a>
         </div>
         {bg}
@@ -106,7 +116,7 @@ export default class App extends Component {
           <a
             style={{
               textDecoration: "none",
-              color: "#FEE75C",
+              color: "cornflowerblue",
             }}
             href="https://www.streamlinehq.com"
           >
