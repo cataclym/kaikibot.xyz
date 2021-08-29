@@ -81,7 +81,7 @@ div.button5 {
     font-weight: 400;
     text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
     color: white;
-    line-height: 37px;
+    line-height: 1.8vw;
     transition: font-weight 0.15s, letter-spacing 0.15s;
 }
 
@@ -112,38 +112,32 @@ img.icon {
     max-width: 2vw;
 }
 
-a.gitlab {
-    background-color: #6b4fbb;
-}
-
-a.toggled {
-    background-color: cornflowerblue;
-}
-
-a.toggled .img.icon {
-    visibility: hidden;
-}
-
-a.patreon {
-    background-color: #FF424D;
-}
-
-a.paypal {
-    background-color: #003087;
-}
-
-.center {
-    margin: auto !important;
-}
-
 @media all and (max-width:75em) {
-    a.button5, a.button6 {
+    a.button5 {
         display:block;
-        margin:0 auto;
+        margin: 2px auto;
         padding:0.4em 0em 0.2em;
         font-size: 4vw;
         width: auto;
         max-width: 100%;
+        background-color: cornflowerblue;
+    }
+    div.button5 {
+        font-family:'Roboto',sans-serif;
+        font-size: 2.5vw;
+        font-weight: 400;
+        text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+        color: white;
+        line-height: 1.8vw;
+        transition: font-weight 0.15s, letter-spacing 0.15s;
+    }
+    img.icon {
+        transition: all 0.15s;
+        display: inline;
+        position: relative;
+        margin: auto -10vw;
+        max-height: 100%;
+        max-width: 5vw;
     }
     .bg {
         top: 0;
@@ -196,3 +190,26 @@ a.paypal {
     }
 }
 
+a.gitlab {
+    background-color: #6b4fbb;
+}
+
+a.toggled {
+    background-color: cornflowerblue;
+}
+
+a.toggled .img.icon {
+    visibility: hidden;
+}
+
+a.patreon {
+    background-color: #FF424D;
+}
+
+a.paypal {
+    background-color: #003087;
+}
+
+.center {
+    margin: auto !important;
+}
