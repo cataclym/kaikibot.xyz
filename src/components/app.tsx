@@ -9,6 +9,9 @@ import listIcon from "../images/streamline-invoice-spreadsheet-1--business--400x
 import paypal from "../images/PayPal/PP_Transparent_Vertical.png";
 import patreon from "../images/patreon_brand_kit/Patreon Brand Assets/Patreon Logo/PNG/Digital-Patreon-Logo_White.png";
 
+const ppLink = "https://paypal.me/Cataclym?locale.x=no_NO";
+const patreonLink = "https://www.patreon.com/user?u=52353582";
+
 export default class App extends Component {
   constructor(props: any) {
     super(props);
@@ -92,11 +95,11 @@ export default class App extends Component {
             <img id="5" alt="" className="icon" src={gitLabIcon} />{" "}
             <div className="button5 center"> GitLab </div>
           </a>
-          <a className="button5 paypal" href="">
+          <a className="button5 paypal" href={ppLink}>
             <img id="5" alt="" className="icon" src={paypal} />
             <div className="button5 center"> Donate </div>
           </a>
-          <a className="button5 patreon" href="">
+          <a className="button5 patreon" href={patreonLink}>
             <img id="5" alt="" className="icon" src={patreon} />{" "}
             <div className="button5 center"> Patreon </div>
           </a>
