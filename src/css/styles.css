@@ -116,7 +116,7 @@ img.icon {
     a.button5 {
         display:block;
         margin: 2px auto;
-        padding:0.4em 0em 0.2em;
+        padding:0.4em 0em 0.6em;
         font-size: 4vw;
         width: auto;
         max-width: 100%;
@@ -124,7 +124,7 @@ img.icon {
     }
     div.button5 {
         font-family:'Roboto',sans-serif;
-        font-size: 2.5vw;
+        font-size: 6vw;
         font-weight: 400;
         text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
         color: white;
@@ -186,7 +186,7 @@ img.icon {
     }
 
     p.footer {
-        font-size: 3vw;
+        font-size: 5vw;
     }
 }
 
@@ -212,4 +212,8 @@ a.paypal {
 
 .center {
     margin: auto !important;
+}
+
+.fixed_button {
+    position: sticky;
 }

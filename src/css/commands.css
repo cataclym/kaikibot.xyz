@@ -75,6 +75,12 @@
     .bounds {
         max-width: 100%;
     }
+    .categoryTitle {
+        font-size: 30px;
+        font-weight: bold;
+        color: lightgray;
+        margin: 0;
+    }
 }
 
 h1.center {
