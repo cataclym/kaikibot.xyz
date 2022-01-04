@@ -44,7 +44,7 @@ export default class Commands extends Component {
       <object id="commands">
         <h1 className="center">Command categories</h1>{" "}
         {commandslist.map((c) => {
-          if ("Etc" === c[0].toString()) return;
+          if ("Etc" === c[0].toString()) return undefined;
           return (
             <div className="bounds" id={c[0].toString()}>
               <h2
@@ -58,12 +58,12 @@ export default class Commands extends Component {
               </h2>
               {c.map((com) => {
                 // @ts-ignore
-                if (Categories[com] || com === c[0]) return;
+                if (Categories[com] || com === c[0]) return undefined;
                 return (
                   com
                     // @ts-ignore
                     .map((cmd) => {
-                      if (!cmd.aliases.length) return;
+                      if (!cmd.aliases.length) return undefined;
                       return (
                         <object
                           name={c[0].toString()}
@@ -91,13 +91,11 @@ function collapse(c: any) {
   const doc = document.getElementsByName(c);
   doc.forEach((e) => {
     if (e.style.display !== "none") {
-      const bounds = document.getElementById(c);
       const thing = document.getElementById(c);
       if (thing)
         thing.getElementsByTagName("text")[0].textContent = "Click to expand";
       e.style.display = "none";
     } else {
-      const bounds = document.getElementById(c);
       const thing = document.getElementById(c);
       if (thing)
         thing.getElementsByTagName("text")[0].textContent = "Click to minimize";

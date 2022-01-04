@@ -9,7 +9,7 @@ import listIcon from "../images/streamline-invoice-spreadsheet-1--business--400x
 import paypal from "../images/PayPal/PP_Transparent_Vertical.png";
 import patreon from "../images/patreon_brand_kit/Patreon Brand Assets/Patreon Logo/PNG/Digital-Patreon-Logo_White.png";
 
-const ppLink = "https://paypal.me/Cataclym?locale.x=no_NO";
+const ppLink = "https://paypal.me/kaikibot";
 const patreonLink = "https://www.patreon.com/user?u=52353582";
 
 export default class App extends Component {

@@ -5,8 +5,8 @@
       {
         "id": "ban",
         "aliases": [
-          "ban",
           "bean",
+          "ban",
           "b"
         ],
         "channel": "guild",
@@ -31,8 +31,8 @@
         "id": "deletechannel",
         "aliases": [
           "deletechannel",
-          "dtchnl",
-          "delchan"
+          "delchan",
+          "dtchnl"
         ],
         "channel": "guild",
         "ownerOnly": false,
@@ -55,9 +55,9 @@
       {
         "id": "nsfwtgl",
         "aliases": [
+          "nsfwtoggle",
           "nsfwtgl",
-          "nsfw",
-          "nsfwtoggle"
+          "nsfw"
         ],
         "channel": "guild",
         "ownerOnly": false,
@@ -125,6 +125,64 @@
         "usage": "Tsukimonogatari",
         "userPermissions": "",
         "description": "Shows the first result of a query to Anilist"
+      }
+    ]
+  ],
+  [
+    "Emotes",
+    [
+      {
+        "id": "addemote",
+        "aliases": [
+          "addemote",
+          "ae"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "image-link Emotename",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Adds an emote from an image link or attached image, with an optional name."
+      },
+      {
+        "id": "addemotes",
+        "aliases": [
+          "addemotes",
+          "aes"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "img-link1 img-link2 img-link3",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Adds multiple emotes. Cannot specify names."
+      },
+      {
+        "id": "deleteemote",
+        "aliases": [
+          "deleteemote",
+          "de"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "<:NadekoSip:>",
+        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
+        "description": "Deletes one or multiple emotes/emoji. Multiple emotes take longer, to avoid ratelimits. Keep a space between all emotes you wish to delete."
+      },
+      {
+        "id": "emotecount",
+        "aliases": [
+          "emotecount",
+          "emojicount",
+          "ec"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "-s",
+          "--small"
+        ],
+        "userPermissions": "",
+        "description": "Shows amount of times each emote has been used"
       }
     ]
   ],
@@ -243,6 +301,18 @@
         "description": "Stretches given member's avatar"
       },
       {
+        "id": "tictactoe",
+        "aliases": [
+          "tictactoe",
+          "ttt"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "@Dreb",
+        "userPermissions": "",
+        "description": "Starts a TicTacToe game, where you play against an @mentioned person."
+      },
+      {
         "id": "woof",
         "aliases": [
           "woof"
@@ -336,6 +406,30 @@
         "description": "Gives money to another user"
       },
       {
+        "id": "leaderboard",
+        "aliases": [
+          "leaderboard",
+          "lb"
+        ],
+        "channel": "guild",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": "",
+        "description": ""
+      },
+      {
+        "id": "Slots",
+        "aliases": [
+          "slots",
+          "slot"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "69",
+        "userPermissions": "",
+        "description": "Bet a certan amount in the slot machine."
+      },
+      {
         "id": "take",
         "aliases": [
           "take"
@@ -382,7 +476,7 @@
         "usage": [
           "waifu",
           "neko",
-          "trap",
+          "femboy",
           "blowjob"
         ],
         "userPermissions": "",
@@ -399,7 +493,7 @@
         "usage": [
           "waifu",
           "neko",
-          "trap",
+          "femboy",
           "blowjob"
         ],
         "userPermissions": "",
@@ -440,9 +534,9 @@
       {
         "id": "die",
         "aliases": [
-          "die",
+          "shutdown",
           "kill",
-          "shutdown"
+          "die"
         ],
         "channel": null,
         "ownerOnly": true,
@@ -495,8 +589,8 @@
       {
         "id": "reload",
         "aliases": [
-          "re",
-          "reload"
+          "reload",
+          "re"
         ],
         "channel": null,
         "ownerOnly": true,
@@ -533,8 +627,8 @@
       {
         "id": "setdaily",
         "aliases": [
-          "setdaily",
-          "dailyset"
+          "dailyset",
+          "setdaily"
         ],
         "channel": null,
         "ownerOnly": true,
@@ -982,10 +1076,12 @@
         "ownerOnly": false,
         "usage": [
           "color FF0000",
-          "name Dreb"
+          "name Dreb",
+          "icon 📘",
+          "icon reset"
         ],
         "userPermissions": "",
-        "description": "Checks your assigned user role. Add a hexcode to change the colour."
+        "description": "Checks your assigned user role. Can set role color, name and icon."
       },
       {
         "id": "roleremove",
@@ -1057,6 +1153,14 @@
         "description": ""
       },
       {
+        "id": "myroleicon",
+        "aliases": [],
+        "channel": "guild",
+        "ownerOnly": false,
+        "userPermissions": "",
+        "description": ""
+      },
+      {
         "id": "myrolename",
         "aliases": [],
         "channel": "guild",
@@ -1096,8 +1200,8 @@
       {
         "id": "config",
         "aliases": [
-          "config",
           "configure",
+          "config",
           "conf"
         ],
         "channel": "guild",
@@ -1149,8 +1253,8 @@
         "id": "goodbye",
         "aliases": [
           "goodbyetoggle",
-          "goodbye",
           "byetoggle",
+          "goodbye",
           "bye"
         ],
         "channel": "guild",
@@ -1326,30 +1430,6 @@
     "Utility",
     [
       {
-        "id": "addemote",
-        "aliases": [
-          "addemote",
-          "ae"
-        ],
-        "channel": "guild",
-        "ownerOnly": false,
-        "usage": "image-link Emotename",
-        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
-        "description": "Adds an emote from an image link or attached image, with an optional name."
-      },
-      {
-        "id": "addemotes",
-        "aliases": [
-          "addemotes",
-          "aes"
-        ],
-        "channel": "guild",
-        "ownerOnly": false,
-        "usage": "img-link1 img-link2 img-link3",
-        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
-        "description": "Adds multiple emotes. Cannot specify names."
-      },
-      {
         "id": "avatar",
         "aliases": [
           "avatar",
@@ -1422,35 +1502,6 @@
         "description": "Shows a list of all supported color names for the bot"
       },
       {
-        "id": "deleteemote",
-        "aliases": [
-          "deleteemote",
-          "de"
-        ],
-        "channel": "guild",
-        "ownerOnly": false,
-        "usage": "<:NadekoSip:>",
-        "userPermissions": "MANAGE_EMOJIS_AND_STICKERS",
-        "description": "Deletes one or multiple emotes/emoji. Multiple emotes take longer, to avoid ratelimits. Keep a space between all emotes you wish to delete."
-      },
-      {
-        "id": "emotecount",
-        "aliases": [
-          "emotecount",
-          "emojicount",
-          "ec"
-        ],
-        "channel": "guild",
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "-s",
-          "--small"
-        ],
-        "userPermissions": "",
-        "description": "Shows amount of times each emote has been used"
-      },
-      {
         "id": "exclude",
         "aliases": [
           "exclude",
@@ -1484,6 +1535,19 @@
         "usage": "",
         "userPermissions": "",
         "description": "Deletes all information about you in the database"
+      },
+      {
+        "id": "google",
+        "aliases": [
+          "google",
+          "search",
+          "g"
+        ],
+        "channel": null,
+        "ownerOnly": false,
+        "usage": "bing",
+        "userPermissions": "",
+        "description": "Search google for something ."
       },
       {
         "id": "help",
@@ -1639,7 +1703,8 @@
           "remove last",
           "remove first",
           "remove all",
-          "rm 1"
+          "rm 1",
+          "2"
         ],
         "userPermissions": "",
         "description": "A personal todo list. The items are limited to 204 characters. Intended for small notes, not detailed cooking recipies."
@@ -1659,18 +1724,6 @@
         "ownerOnly": false,
         "userPermissions": "",
         "description": ""
-      },
-      {
-        "id": "uinfo",
-        "aliases": [
-          "user",
-          "uinfo"
-        ],
-        "channel": "guild",
-        "ownerOnly": false,
-        "usage": "<member>",
-        "userPermissions": "",
-        "description": "Shows relevant member info"
       },
       {
         "id": "urbandict",
