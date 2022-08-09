@@ -16,22 +16,22 @@
         {/each}
     {/each}
 
-    <div class="w-full m-auto mt-10 mb-5 inline-flex">
-        <div class="cmd align-middle">
-            Command
+    <div class="w-full m-auto mt-10 mb-5 flex">
+        <div class="cmd">
+            <p class="description">Command</p>
         </div>
-        <div class="cmdDesc align-middle">
-            Description
+        <div class="cmdDesc">
+            <p class="description">Description</p>
         </div>
-        <div class="cmdUsage align-middle">
-            Usage
+        <div class="cmdUsage">
+            <p class="description">Usage</p>
         </div>
     </div>
 
     {#each Object.entries(commands) as categories}
         {#each categories[1] as category}
             {#each category[1] as cmd}
-                <div class="w-full m-auto inline-flex">
+                <div class="m-auto flex mb-1 cmdContainer">
                     <div class="cmd">
                             +{cmd.id}
                         <p class="categoryTxt">
@@ -39,17 +39,19 @@
                         </p>
                     </div>
                     <div class="cmdDesc">
-                        {cmd.description}
+                        <p class="description">
+                            {cmd.description}
                     </div>
                     <div class="cmdUsage">
-                        +{cmd.id} {cmd.usage}
+                        <p class="description">
+                            +{cmd.id} {Array.isArray(cmd.usage) ? cmd.usage.join(`\n+${cmd.id} `) : cmd.usage || ""}
+                        </p>
                     </div>
                 </div>
             {/each}
         {/each}
     {/each}
 </div>
-
 <style>
     @tailwind base;
     @tailwind components;
@@ -70,23 +72,26 @@
     }
 
     .cmd {
-        display: inline-block;
-        width: 33%;
-        height: 5rem;
+        padding-top: 1rem;
+        width: 33.3333%;
         background-color: #353535;
-    }
-    .cmdDesc {
-        display: inline-block;
-        width: 33%;
-        height: 5rem;
-        background-color: #1f1f1f;
+        vertical-align: middle;
+        display: inline;
 
     }
+    .cmdDesc {
+        padding-top: 1rem;
+        width: 33.3333%;
+        background-color: #1f1f1f;
+        vertical-align: middle;
+        display: inline;
+    }
     .cmdUsage {
-        display: inline-block;
-        width: 33%;
-        height: 5rem;
+        padding-top: 1rem;
+        width: 33.3333%;
         background-color: #353535;
+        vertical-align: middle;
+        display: inline;
     }
 
     .cmdButton {
@@ -97,10 +102,22 @@
         background-color: #1f1f1f;
     }
 
+    .description {
+        max-width: 90%;
+        white-space: pre-wrap;
+        overflow: hidden;
+        margin: auto auto 1rem;
+    }
+
     .cmdCategory:hover {
         border-bottom-color: rgb(234 88 12);
         background-color: #0A0A0AFF;
         cursor: pointer;
+    }
+
+    .cmdContainer {
+        max-height: 10rem;
+        width: 100%;
     }
 
     .categoryTxt {
