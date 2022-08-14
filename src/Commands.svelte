@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {TextBox} from "fluent-svelte";
+  import { TextBox } from "fluent-svelte";
   import "fluent-svelte/theme.css";
   import commands from "./cmdlist.js";
   import search from "./methods/search";
@@ -28,15 +28,6 @@
       on:abort={resetCats}
     />
   </div>
-
-<!--      <p class="whitespace-pre text-left">{JSON.stringify(Object.entries(commands.commands)-->
-<!--          .map(cm => cm[1]), null, 12)-->
-<!--      }</p>-->
-  <!--<br>-->
-  <!--    <p>{JSON.stringify(commands.commands-->
-  <!--        .map(cb => cb[1])-->
-  <!--        .flat())-->
-  <!--    }</p>-->
 
   {#each Object.entries(commands) as categories}
     {#each categories[1] as category}

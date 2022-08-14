@@ -1,7 +1,18 @@
 <script lang="ts">
   import Commands from "./Commands.svelte";
+  import { ListItem } from "fluent-svelte";
   export let name: string;
   let isActive = true;
+
+  const links = {
+    discord: "https://discord.gg/8G3AqjnFfX",
+    embed: "https://embed.kaikibot.xyz/",
+    invite:
+      "https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot",
+    source: "https://gitlab.com/cataclym/KaikiDeishuBot",
+    paypal: "https://paypal.me/kaikibot",
+    patreon: "https://www.patreon.com/user?u=52353582",
+  };
 </script>
 
 <main>
@@ -10,49 +21,47 @@
     Your <mark>dad</mark> isn't <em>this</em> cool
   </h2>
   <div class="flex-auto">
-    <a href="https://discord.gg/8G3AqjnFfX">
+    <a href={links.discord}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
         >SUPPORT SERVER
       </button>
     </a>
-    <a href="#">
-      <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
-        on:click={() => (isActive = !isActive)}
-      >
-        COMMANDS
-      </button>
-    </a>
-    <a href="https://embed.kaikibot.xyz/">
+    <!--    -->
+    <button
+      class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
+      on:click={() => (isActive = !isActive)}
+    >
+      COMMANDS
+    </button>
+    <!--    </a>-->
+    <a href={links.embed}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
         >EMBED BUILDER
       </button>
     </a>
-    <a
-      href="https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot"
-    >
+    <a href={links.invite}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
         >INVITE KAIKI
       </button>
     </a>
-    <a href="https://gitlab.com/cataclym/KaikiDeishuBot">
+    <a href={links.source}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 gitlab"
       >
         SOURCE CODE
       </button></a
     >
-    <a href="https://paypal.me/kaikibot">
+    <a href={links.paypal}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 paypal"
       >
         DONATE
       </button>
     </a>
-    <a href="https://www.patreon.com/user?u=52353582">
+    <a href={links.patreon}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 patreon"
       >
@@ -88,16 +97,16 @@
     <div class="m-2 max-w-full md:flex md:mt-52">
       <div class="text-center md:w-72 md:m-auto">
         <h3 class="text-gray-400 font-bold text-2xl">
-          Don't forget that thought!
+          Manage a large todo list
         </h3>
         <h4 class="text-orange-600">
-          Save and manage a large todo list. Create goals or just save a link
-          you just found.
+          Create goals, save a link you just found or keep a tab on your loaning
+          business.
         </h4>
         <img src="" />
       </div>
       <div class="text-center md:w-72 md:m-auto">
-        <h3 class="text-gray-400 font-bold text-2xl">Economy</h3>
+        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
         <h4 class="text-orange-600">
           Spend your hard earned yen on the casino and compete in the currency
           leaderboard!
@@ -126,9 +135,37 @@
   <div class:active={isActive}>
     <Commands />
   </div>
+
+  <div
+    class="grid m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-8/12 2xl:w-1/2 text-gray-400"
+  >
+    <div class="grid">
+      <h3 class="mt-1 text-orange-600 text-xl text-left">Kaiki</h3>
+      <h3 class="mt-1 flex-col text-left"><a href={links.invite}>Invite</a></h3>
+      <h3
+        class="mt-1 flex-col text-left cursor-pointer"
+        on:click={() => (isActive = !isActive)}
+      >
+        Commands
+      </h3>
+      <h3 class="flex-col text-left"><a href={links.paypal}>Donate ♥️</a></h3>
+    </div>
+    <div class="grid">
+      <h2 class="mt-1 text-orange-600 text-xl text-left">Selfhosting</h2>
+      <h3 class="mt-1 flex-col text-left"><a href={links.source}>Source code</a></h3>
+      <h3 class="mt-1 flex-col text-left">Changelog</h3>
+      <h3 class="mt-1 flex-col text-left">Docs</h3>
+    </div>
+    <div class="grid">
+      <h2 class="mt-1 text-orange-600 text-xl text-left">Utilities</h2>
+      <h3 class="mt-1 flex-col text-left" href={links.source}>Source code</h3>
+      <h3 class="mt-1 flex-col text-left">Changelog</h3>
+      <h3 class="mt-1 flex-col text-left">Docs</h3>
+    </div>
+  </div>
 </main>
 
-<footer>@Cata 2022</footer>
+<footer class="alignment-center">© Cata 2022</footer>
 
 <style>
   @tailwind base;
