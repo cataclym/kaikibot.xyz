@@ -1,6 +1,5 @@
 <script lang="ts">
   import Commands from "./Commands.svelte";
-  import { ListItem } from "fluent-svelte";
   export let name: string;
   let isActive = true;
 
@@ -148,24 +147,36 @@
       >
         Commands
       </h3>
-      <h3 class="flex-col text-left"><a href={links.paypal}>Donate ♥️</a></h3>
     </div>
     <div class="grid">
-      <h2 class="mt-1 text-orange-600 text-xl text-left">Selfhosting</h2>
-      <h3 class="mt-1 flex-col text-left"><a href={links.source}>Source code</a></h3>
-      <h3 class="mt-1 flex-col text-left">Changelog</h3>
-      <h3 class="mt-1 flex-col text-left">Docs</h3>
+      <h2 class="text-orange-600 text-xl text-left">Selfhosting</h2>
+      <h3 class="flex-col text-left"><a href={links.source}>Source code</a></h3>
+      <h3 class="flex-col text-left">Changelog</h3>
+      <h3 class="flex-col text-left">Docs</h3>
     </div>
     <div class="grid">
-      <h2 class="mt-1 text-orange-600 text-xl text-left">Utilities</h2>
-      <h3 class="mt-1 flex-col text-left" href={links.source}>Source code</h3>
-      <h3 class="mt-1 flex-col text-left">Changelog</h3>
-      <h3 class="mt-1 flex-col text-left">Docs</h3>
+      <h2 class="text-orange-600 text-xl text-left">Utilities</h2>
+      <h3 class="flex-col text-left" href={links.source}>Source code</h3>
+      <h3 class="flex-col text-left">Changelog</h3>
+      <h3 class="flex-col text-left">Docs</h3>
     </div>
   </div>
 </main>
-
-<footer class="alignment-center">© Cata 2022</footer>
+<footer class="alignment-center grid grid-cols-3">
+  <div class="grid">
+    <h3 class="flex-col text-xl" style="line-height: 95%">
+      <a href={links.paypal}>Donate ♥️</a>
+    </h3>
+  </div>
+  <div class="grid">
+    <h3 class="flex-col text-xl" style="line-height: 95%">© Cata 2022</h3>
+  </div>
+  <div class="grid">
+    <h3 class="flex-col text-xl" style="line-height: 95%">
+      <a href={links.patreon}>Patreon️</a>
+    </h3>
+  </div>
+</footer>
 
 <style>
   @tailwind base;

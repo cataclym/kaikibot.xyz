@@ -3,7 +3,12 @@ import commands from "../cmdlist.js";
 const cats = Object.entries(commands.commands);
 
 export default function search(input, category: { [key: string]: true }) {
-  const inputText = input.originalTarget.value.toLowerCase().trim();
+  /**
+   * Get input value in both firefox and chrome
+   */
+  const inputText = (input.originalTarget || input.target)?.value
+    ?.toLowerCase()
+    ?.trim();
 
   let mapped = cats.map((cm) => cm[1]);
 
@@ -16,7 +21,7 @@ export default function search(input, category: { [key: string]: true }) {
     .map((cb) => cb[1])
     .flat()
     .filter((a: { id: string; aliases: any[] }) =>
-      a.id.toLowerCase().includes(inputText)
+      a.id.toLowerCase().includes(inputText || "")
     );
 
   return filtered
