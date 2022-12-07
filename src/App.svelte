@@ -119,15 +119,13 @@
     <div class="text-left text-gray-400 md:w-8/12 m-auto mt-52">
       <h3 class="text-gray-400 font-bold text-2xl">Open source</h3>
       <h4 class="text-orange-600">
-        Save and manage a large todo list. Create goals or just save a link you
-        just found.
+        The codebase is transparent and available on GitLab. Fork it, clone it and/or contribute!
       </h4>
     </div>
     <div class="text-right text-gray-400 md:w-8/12 m-auto mt-10 mb-52">
       <h3 class="text-gray-400 font-bold text-2xl">Donations</h3>
       <h4 class="text-orange-600">
-        Save and manage a large todo list. Create goals or just save a link you
-        just found.
+        KaikiBot is completely free and open source. Donations are completely optional, but highly appreciated.<br>Donations will go towards server costs and support the developer(s), as well as give you reward through Patreon on the Discord server.
       </h4>
     </div>
   </div>
