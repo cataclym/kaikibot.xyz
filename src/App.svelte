@@ -3,15 +3,17 @@
   export let name: string;
   let isActive = true;
 
-  const links = {
+  const links = Object.freeze({
+    changelog: "https://gitlab.com/cataclym/KaikiDeishuBot/-/blob/master/CHANGELOG.md",
     discord: "https://discord.gg/8G3AqjnFfX",
+    docs: "https://gitlab.com/cataclym/KaikiDeishuBot/-/blob/master/docs/GUIDE.md",
     embed: "https://embed.kaikibot.xyz/",
     invite:
-      "https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot",
-    source: "https://gitlab.com/cataclym/KaikiDeishuBot",
-    paypal: "https://paypal.me/kaikibot",
+            "https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot",
     patreon: "https://www.patreon.com/user?u=52353582",
-  };
+    paypal: "https://paypal.me/kaikibot",
+    source: "https://gitlab.com/cataclym/KaikiDeishuBot",
+  });
 </script>
 
 <main>
@@ -90,7 +92,7 @@
           A wide variety of commands from fun and goofy commands to utility and
           server management focused commands.
         </h4>
-        <img src="" />
+        <img src=""  alt=""/>
       </div>
     </div>
     <div class="m-2 max-w-full md:flex md:mt-52">
@@ -149,25 +151,22 @@
     <div class="grid">
       <h2 class="text-orange-600 text-xl text-left">Selfhosting</h2>
       <h3 class="flex-col text-left"><a href={links.source}>Source code</a></h3>
-      <h3 class="flex-col text-left">Changelog</h3>
-      <h3 class="flex-col text-left">Docs</h3>
+      <h3 class="flex-col text-left"> <a href={links.docs}>Docs</a></h3>
     </div>
     <div class="grid">
       <h2 class="text-orange-600 text-xl text-left">Utilities</h2>
-      <h3 class="flex-col text-left" href={links.source}>Source code</h3>
-      <h3 class="flex-col text-left">Changelog</h3>
-      <h3 class="flex-col text-left">Docs</h3>
+      <h3 class="flex-col text-left"> <a href={links.changelog}>Changelog </a></h3>
     </div>
   </div>
 </main>
 <footer class="alignment-center grid grid-cols-3">
   <div class="grid">
     <h3 class="flex-col text-xl" style="line-height: 95%">
-      <a href={links.paypal}>Donate ♥️</a>
+      <a href={links.paypal}>Buy me a coffee ☕</a>
     </h3>
   </div>
   <div class="grid">
-    <h3 class="flex-col text-xl" style="line-height: 95%">© Cata 2022</h3>
+    <h3 class="flex-col text-xl" style="line-height: 95%">© Cata 2023</h3>
   </div>
   <div class="grid">
     <h3 class="flex-col text-xl" style="line-height: 95%">
