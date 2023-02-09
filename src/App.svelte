@@ -1,5 +1,6 @@
 <script lang="ts">
   import Commands from "./Commands.svelte";
+
   export let name: string;
   let isActive = true;
 
@@ -13,6 +14,7 @@
     patreon: "https://www.patreon.com/user?u=52353582",
     paypal: "https://paypal.me/kaikibot",
     source: "https://gitlab.com/cataclym/KaikiDeishuBot",
+    kofi: "https://ko-fi.com/catadev"
   });
 </script>
 
@@ -162,7 +164,7 @@
 <footer class="alignment-center grid grid-cols-3">
   <div class="grid">
     <h3 class="flex-col text-xl" style="line-height: 95%">
-      <a href={links.paypal}>Buy me a coffee ☕</a>
+      <a href={links.kofi}>Buy me a coffee ☕</a>
     </h3>
   </div>
   <div class="grid">
