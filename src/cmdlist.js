@@ -107,18 +107,6 @@ export default {
           "description": "Adds an emote from an image link or attached image, with an optional name."
         },
         {
-          "id": "addemotes",
-          "aliases": [
-            "addemotes",
-            "aes"
-          ],
-          "channel": "guild",
-          "ownerOnly": false,
-          "usage": "img-link1 img-link2 img-link3",
-          "userPermissions": "ManageEmojisAndStickers",
-          "description": "Adds multiple emotes. Cannot specify names."
-        },
-        {
           "id": "deleteemote",
           "aliases": [
             "deleteemote",
@@ -151,24 +139,7 @@ export default {
     ],
     [
       "Etc",
-      [
-        {
-          "id": "dadbot",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "",
-          "description": ""
-        },
-        {
-          "id": "mention",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "",
-          "description": ""
-        }
-      ]
+      []
     ],
     [
       "Fun",
@@ -419,7 +390,7 @@ export default {
           "ownerOnly": false,
           "usage": "69",
           "userPermissions": "",
-          "description": "Bet a certan amount in the slot machine."
+          "description": "Bet a certain amount in the slot machine."
         },
         {
           "id": "take",
@@ -430,6 +401,119 @@ export default {
           "usage": "50 @Cata",
           "userPermissions": "",
           "description": "Takes money from the specified user"
+        }
+      ]
+    ],
+    [
+      "Images",
+      [
+        {
+          "id": "catgirl",
+          "aliases": [
+            "catgirl"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Spawn a shinobu picture"
+        },
+        {
+          "id": "maid",
+          "aliases": [
+            "maid"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Returns anime maids."
+        },
+        {
+          "id": "marin",
+          "aliases": [
+            "marin"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Returns an image of Marin Kitagawa"
+        },
+        {
+          "id": "megumin",
+          "aliases": [
+            "megumin"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Spawn a shinobu picture"
+        },
+        {
+          "id": "neko",
+          "aliases": [
+            "neko"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Spawn a neko picture"
+        },
+        {
+          "id": "selfies",
+          "aliases": [
+            "selfies"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Returns anime girl selfies"
+        },
+        {
+          "id": "shinobu",
+          "aliases": [
+            "shinobu"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Spawn a shinobu picture"
+        },
+        {
+          "id": "uniform",
+          "aliases": [
+            "uniform"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Returns anime girls in uniforms."
+        },
+        {
+          "id": "waifu",
+          "aliases": [
+            "waifu"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Spawn a waifu picture"
         }
       ]
     ],
@@ -554,18 +638,6 @@ export default {
           "description": "Lick someone... I guess...?"
         },
         {
-          "id": "neko",
-          "aliases": [
-            "neko"
-          ],
-          "ownerOnly": false,
-          "usage": [
-            ""
-          ],
-          "userPermissions": "",
-          "description": "Spawn a neko picture"
-        },
-        {
           "id": "nom",
           "aliases": [
             "nom"
@@ -654,18 +726,6 @@ export default {
           "description": "OwO Being naughty are we?"
         },
         {
-          "id": "waifu",
-          "aliases": [
-            "waifu"
-          ],
-          "ownerOnly": false,
-          "usage": [
-            ""
-          ],
-          "userPermissions": "",
-          "description": "Spawn a waifu picture"
-        },
-        {
           "id": "yeet",
           "aliases": [
             "yeet"
@@ -731,6 +791,18 @@ export default {
           "ownerOnly": false,
           "userPermissions": "",
           "description": "e621 :hahaa:"
+        },
+        {
+          "id": "ero",
+          "aliases": [
+            "ero"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            ""
+          ],
+          "userPermissions": "",
+          "description": "Returns a nsfw ero picture"
         },
         {
           "id": "hentai",
@@ -804,11 +876,21 @@ export default {
           "description": "Resets daily claims that have been made"
         },
         {
+          "id": "deregister",
+          "aliases": [
+            "deregister",
+            "dereg"
+          ],
+          "ownerOnly": true,
+          "userPermissions": "",
+          "description": "Deregister a command, until bot restarts."
+        },
+        {
           "id": "die",
           "aliases": [
-            "shutdown",
+            "die",
             "kill",
-            "die"
+            "shutdown"
           ],
           "ownerOnly": true,
           "userPermissions": "",
@@ -856,8 +938,8 @@ export default {
         {
           "id": "reload",
           "aliases": [
-            "reload",
-            "re"
+            "re",
+            "reload"
           ],
           "ownerOnly": true,
           "userPermissions": "",
@@ -891,8 +973,8 @@ export default {
         {
           "id": "setdaily",
           "aliases": [
-            "dailyset",
-            "setdaily"
+            "setdaily",
+            "dailyset"
           ],
           "ownerOnly": true,
           "usage": "",
@@ -1134,30 +1216,6 @@ export default {
           "usage": "@Platinum [role]",
           "userPermissions": "ManageRoles",
           "description": "Assigns a role to a user. Provide the command again to remove the role."
-        },
-        {
-          "id": "myrolecolor",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "",
-          "description": ""
-        },
-        {
-          "id": "myroleicon",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "",
-          "description": ""
-        },
-        {
-          "id": "myrolename",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "",
-          "description": ""
         }
       ]
     ],
@@ -1181,14 +1239,6 @@ export default {
           "description": "Add triggers for the bot to react with emojis/emotes to. Use quotes for triggers with spaces."
         },
         {
-          "id": "config-anniversary",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "Administrator",
-          "description": ""
-        },
-        {
           "id": "config",
           "aliases": [
             "config",
@@ -1207,22 +1257,6 @@ export default {
           ],
           "userPermissions": "ManageMessages",
           "description": "Configure or display guild specific settings. Will always respond to default prefix regardless of server prefix."
-        },
-        {
-          "id": "config-dadbot",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "Administrator",
-          "description": ""
-        },
-        {
-          "id": "config-errorcolor",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "Administrator",
-          "description": ""
         },
         {
           "id": "excludechannel",
@@ -1326,22 +1360,6 @@ export default {
           ],
           "userPermissions": "",
           "description": "List emotereact triggers."
-        },
-        {
-          "id": "config-okcolor",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "Administrator",
-          "description": ""
-        },
-        {
-          "id": "config-prefix",
-          "aliases": [],
-          "channel": "guild",
-          "ownerOnly": false,
-          "userPermissions": "Administrator",
-          "description": ""
         },
         {
           "id": "removereact",
@@ -1517,7 +1535,7 @@ export default {
           "channel": "guild",
           "ownerOnly": false,
           "userPermissions": "",
-          "description": "Adds or removes excluded role from user. Excludes the user from being targeted by dad-bot."
+          "description": "Excludes you from being targeted by dad-bot. Execute command again to reverse this action."
         },
         {
           "id": "fetch",
@@ -1648,6 +1666,20 @@ export default {
           "ownerOnly": false,
           "userPermissions": "",
           "description": "Shows information about the current server."
+        },
+        {
+          "id": "serverlist",
+          "aliases": [
+            "serverlist",
+            "listservers"
+          ],
+          "ownerOnly": false,
+          "usage": [
+            "",
+            "7"
+          ],
+          "userPermissions": "",
+          "description": "Lists all servers the bot is in. 15 servers per page."
         },
         {
           "id": "shardstats",
