@@ -57,6 +57,7 @@
 
   {#each Object.entries(commands) as categories}
     {#each categories[1] as category}
+      {#if category[1].length}
       <div
         class={active[category[0]] ? "cmdCategoryActive" : "cmdCategory"}
         on:click={() => {
@@ -77,6 +78,7 @@
       >
         {category[0]}
       </div>
+        {/if}
     {/each}
   {/each}
 
@@ -94,6 +96,7 @@
 
   {#each cats as category}
     {#each category[1] as group}
+      {#if group.length}
       {#if typeof group !== "string"}
         {#each group as cmd}
           <div class="m-auto flex mb-1 cmdContainer">
@@ -119,6 +122,7 @@
           </div>
         {/each}
       {/if}
+        {/if}
     {/each}
   {/each}
 </div>
