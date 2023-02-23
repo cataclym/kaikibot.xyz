@@ -1,20 +1,20 @@
 <script lang="ts">
   import "fluent-svelte/theme.css";
-  import commands from "./cmdlist.js";
+  import * as commands from "../cmdlist.json";
   import search from "./methods/search";
 
   let active = {};
 
   let originalColor;
 
-  let cats = Object.entries(commands.commands);
+  let cats = Object.entries(commands.default);
 
   function searchbarOnInput(c, category) {
     cats = search(c, category);
   }
 
   function resetCats() {
-    cats = Object.entries(commands.commands);
+    cats = Object.entries(commands.default);
     active = {};
   }
 </script>

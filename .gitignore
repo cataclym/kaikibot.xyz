@@ -27,3 +27,4 @@ yarn-error.log*
 public/build/
 
 .env
+cmdlist.json

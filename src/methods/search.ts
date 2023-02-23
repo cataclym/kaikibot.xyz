@@ -1,6 +1,9 @@
-import commands from "../cmdlist.js";
+import * as commands from "../../cmdlist.json";
 
-const cats = Object.entries(commands.commands);
+// @ts-ignore
+const cats = Object.entries(commands.default);
+
+console.log(cats)
 
 export default function search(input, category: { [key: string]: true }) {
   /**
@@ -12,6 +15,7 @@ export default function search(input, category: { [key: string]: true }) {
 
   let mapped = cats.map((cm) => cm[1]);
 
+  // Filter based on enabled category??
   if (Object.keys(category).length) {
     const cat = Object.keys(category).shift();
     mapped = mapped.filter((a) => a[0] === cat);
