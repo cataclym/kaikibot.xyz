@@ -3,8 +3,6 @@ import * as commands from "../../cmdlist.json";
 // @ts-ignore
 const cats = Object.entries(commands.default);
 
-console.log(cats)
-
 export default function search(input, category: { [key: string]: true }) {
   /**
    * Get input value in both firefox and chrome
