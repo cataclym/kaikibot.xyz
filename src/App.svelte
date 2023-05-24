@@ -5,15 +5,15 @@
   let isActive = true;
 
   const links = Object.freeze({
-    changelog: "https://gitlab.com/cataclym/KaikiDeishuBot/-/blob/master/CHANGELOG.md",
+    changelog: "https://gitlab.com/catadev/KaikiDeishuBot/-/blob/master/CHANGELOG.md",
     discord: "https://discord.gg/8G3AqjnFfX",
-    docs: "https://gitlab.com/cataclym/KaikiDeishuBot/-/blob/master/docs/GUIDE.md",
+    docs: "https://gitlab.com/catadev/KaikiDeishuBot/-/blob/master/docs/GUIDE.md",
     embed: "https://embed.kaikibot.xyz/",
     invite:
             "https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot",
     patreon: "https://www.patreon.com/user?u=52353582",
     paypal: "https://paypal.me/kaikibot",
-    source: "https://gitlab.com/cataclym/KaikiDeishuBot",
+    source: "https://gitlab.com/catadev/KaikiDeishuBot",
     kofi: "https://ko-fi.com/catadev"
   });
 </script>
