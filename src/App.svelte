@@ -1,5 +1,6 @@
 <script lang="ts">
   import Commands from "./Commands.svelte";
+  import Placeholders from "./Placeholders.svelte";
 
   export let name: string;
   let isActive = true;
@@ -84,8 +85,7 @@
           He will respond, like a dad, whenever you declare yourself with the
           use of 'I am'.
         </h4>
-        <img src="" />
-      </div>
+    </div>
       <div class="text-center md:w-72 md:m-auto">
         <h3 class="text-gray-400 font-bold text-2xl">
           Useful, fun and silly commands
@@ -94,10 +94,17 @@
           A wide variety of commands from fun and goofy commands to utility and
           server management focused commands.
         </h4>
-        <img src=""  alt=""/>
       </div>
     </div>
-    <div class="m-2 max-w-full md:flex md:mt-52">
+    <div class="m-2 max-w-full md:flex md:mt-10">
+      <div class="text-center md:flex md:w-96 md:m-auto">
+        <Placeholders/>
+      </div>
+      <div class="text-center md:flex md:w-96 md:m-auto">
+        <Placeholders/>
+      </div>
+    </div>
+    <div class="m-2 max-w-full md:flex md:mt-20">
       <div class="text-center md:w-72 md:m-auto">
         <h3 class="text-gray-400 font-bold text-2xl">
           Manage a large todo list
@@ -106,7 +113,6 @@
           Create goals, save a link you just found or keep a tab on your loaning
           business.
         </h4>
-        <img src="" />
       </div>
       <div class="text-center md:w-72 md:m-auto">
         <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
@@ -114,12 +120,18 @@
           Spend your hard earned yen on the casino and compete in the currency
           leaderboard!
         </h4>
-        <img src="" />
+      </div>
+    </div>
+    <div class="m-2 max-w-full md:flex md:mt-10">
+      <div class="text-center md:flex md:w-96 md:m-auto">
+        <Placeholders/>
+      </div>
+      <div class="text-center md:flex md:w-96 md:m-auto">
+        <Placeholders/>
       </div>
     </div>
 
     <!-- Large bottom features -->
-
     <div class="text-left text-gray-400 md:w-8/12 m-auto mt-52">
       <h3 class="text-gray-400 font-bold text-2xl">Open source</h3>
       <h4 class="text-orange-600">
