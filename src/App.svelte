@@ -27,13 +27,13 @@
   <div class="flex-auto">
     <a href={links.discord}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
         >SUPPORT SERVER
       </button>
     </a>
     <!--    -->
     <button
-      class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
+      class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
       on:click={() => (isActive = !isActive)}
     >
       COMMANDS
@@ -41,43 +41,98 @@
     <!--    </a>-->
     <a href={links.embed}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
         >EMBED BUILDER
       </button>
     </a>
     <a href={links.invite}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
         >INVITE KAIKI
       </button>
     </a>
     <a href={links.source}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 gitlab"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 gitlab custom-width-1_7"
       >
         SOURCE CODE
       </button></a
     >
     <a href={links.paypal}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 paypal"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 paypal custom-width-1_7"
       >
         DONATE
       </button>
     </a>
     <a href={links.patreon}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 w-full md:w-24 lg:w-36 xl:w-44 2xl:w-64 text-gray-400 patreon"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 patreon custom-width-1_7"
       >
         PATREON
       </button>
     </a>
   </div>
-  <div class:active={!isActive} class="inline-block w-10/12">
+  <div class:active={!isActive} class="inline-block w-11/12 mt-10">
     <!-- 2x2 Medium feature list -->
 
+    <div class="max-w-full md:flex">
+      <div class="text-center md:w-96 ml-96">
+        <h3 class="text-gray-400 font-bold text-2xl">
+          Kaiki is a <mark class="italic">dad</mark>.
+        </h3>
+        <h4 class="text-orange-600">
+          He will respond, like a dad, whenever you declare yourself with the
+          use of 'I am'.
+        </h4>
+      </div>
+      <div class="text-center md:w-96">
+        <Placeholders/>
+      </div>
+    </div>
+    <div class="max-w-full md:flex flex-row-reverse">
+      <div class="text-center md:w-96 mr-96">
+        <h3 class="text-gray-400 font-bold text-2xl">
+          Useful, fun and silly commands
+        </h3>
+        <h4 class="text-orange-600">
+          A wide variety of commands from fun and goofy commands to utility and
+          server management focused commands.
+        </h4>
+      </div>
+      <div class="text-center md:w-96">
+        <Placeholders/>
+      </div>
+    </div>
+    <div class="max-w-full md:flex">
+      <div class="text-center md:w-96 ml-96">
+        <h3 class="text-gray-400 font-bold text-2xl">
+          Manage a large todo list
+        </h3>
+        <h4 class="text-orange-600">
+          Create goals, save a link you just found or keep a tab on your loaning
+          business.
+        </h4>
+      </div>
+      <div class="text-center md:w-96">
+        <Placeholders/>
+      </div>
+    </div>
+    <div class="max-w-full md:flex flex-row-reverse">
+      <div class="text-center md:w-96 mr-96">
+        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
+        <h4 class="text-orange-600">
+          Spend your hard earned yen on the casino and compete in the currency
+          leaderboard!
+        </h4>
+      </div>
+      <div class="text-center md:w-96">
+        <Placeholders/>
+      </div>
+    </div>
+
     <div class="m-2 max-w-full md:flex md:mt-52">
-      <div class="text-center md:w-72 md:m-auto">
+      <div class="text-center md:w-96 md:m-auto">
         <h3 class="text-gray-400 font-bold text-2xl">
           Kaiki is a <mark class="italic">dad</mark>.
         </h3>
@@ -135,7 +190,7 @@
     <div class="text-left text-gray-400 md:w-8/12 m-auto mt-52">
       <h3 class="text-gray-400 font-bold text-2xl">Open source</h3>
       <h4 class="text-orange-600">
-        The codebase is transparent and available on GitLab. Fork it, clone it and/or contribute!
+        The codebase is transparent and available on GitLab. Fork it, clone it and contribute!
       </h4>
     </div>
     <div class="text-right text-gray-400 md:w-8/12 m-auto mt-10 mb-52">
@@ -292,5 +347,9 @@
 
   .full-width {
     width: 100%;
+  }
+
+  .custom-width-1_7 {
+    width: 14%;
   }
 </style>

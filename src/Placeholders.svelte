@@ -1,7 +1,3 @@
-<script>
-    import {TextBox} from "fluent-svelte";
-</script>
-
 <svg width="24rem" height="15rem" class="svg-class">
     <rect style="fill: rgba(234,88,12,0.5)" width="24rem" height="15rem"/>
 </svg>
