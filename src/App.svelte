@@ -73,11 +73,11 @@
       </button>
     </a>
   </div>
-  <div class:active={!isActive} class="inline-block w-11/12 mt-10">
+  <div class:active={!isActive} class="inline-block w-11/12 mt-24">
     <!-- 2x2 Medium feature list -->
 
-    <div class="max-w-full md:flex">
-      <div class="text-center md:w-96 ml-96">
+    <div class="max-w-full md:flex justify-evenly mb-24">
+      <div class="text-center md:w-96">
         <h3 class="text-gray-400 font-bold text-2xl">
           Kaiki is a <mark class="italic">dad</mark>.
         </h3>
@@ -90,8 +90,9 @@
         <Placeholders/>
       </div>
     </div>
-    <div class="max-w-full md:flex flex-row-reverse">
-      <div class="text-center md:w-96 mr-96">
+
+    <div class="max-w-full md:flex flex-row-reverse justify-evenly mb-24">
+      <div class="text-center md:w-96">
         <h3 class="text-gray-400 font-bold text-2xl">
           Useful, fun and silly commands
         </h3>
@@ -104,8 +105,9 @@
         <Placeholders/>
       </div>
     </div>
-    <div class="max-w-full md:flex">
-      <div class="text-center md:w-96 ml-96">
+
+    <div class="max-w-full md:flex justify-evenly mb-24">
+      <div class="text-center md:w-96">
         <h3 class="text-gray-400 font-bold text-2xl">
           Manage a large todo list
         </h3>
@@ -118,8 +120,9 @@
         <Placeholders/>
       </div>
     </div>
-    <div class="max-w-full md:flex flex-row-reverse">
-      <div class="text-center md:w-96 mr-96">
+
+    <div class="max-w-full md:flex flex-row-reverse justify-evenly mb-24">
+      <div class="text-center md:w-96">
         <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
         <h4 class="text-orange-600">
           Spend your hard earned yen on the casino and compete in the currency
@@ -131,60 +134,60 @@
       </div>
     </div>
 
-    <div class="m-2 max-w-full md:flex md:mt-52">
-      <div class="text-center md:w-96 md:m-auto">
-        <h3 class="text-gray-400 font-bold text-2xl">
-          Kaiki is a <mark class="italic">dad</mark>.
-        </h3>
-        <h4 class="text-orange-600">
-          He will respond, like a dad, whenever you declare yourself with the
-          use of 'I am'.
-        </h4>
-    </div>
-      <div class="text-center md:w-72 md:m-auto">
-        <h3 class="text-gray-400 font-bold text-2xl">
-          Useful, fun and silly commands
-        </h3>
-        <h4 class="text-orange-600">
-          A wide variety of commands from fun and goofy commands to utility and
-          server management focused commands.
-        </h4>
-      </div>
-    </div>
-    <div class="m-2 max-w-full md:flex md:mt-10">
-      <div class="text-center md:flex md:w-96 md:m-auto">
-        <Placeholders/>
-      </div>
-      <div class="text-center md:flex md:w-96 md:m-auto">
-        <Placeholders/>
-      </div>
-    </div>
-    <div class="m-2 max-w-full md:flex md:mt-20">
-      <div class="text-center md:w-72 md:m-auto">
-        <h3 class="text-gray-400 font-bold text-2xl">
-          Manage a large todo list
-        </h3>
-        <h4 class="text-orange-600">
-          Create goals, save a link you just found or keep a tab on your loaning
-          business.
-        </h4>
-      </div>
-      <div class="text-center md:w-72 md:m-auto">
-        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
-        <h4 class="text-orange-600">
-          Spend your hard earned yen on the casino and compete in the currency
-          leaderboard!
-        </h4>
-      </div>
-    </div>
-    <div class="m-2 max-w-full md:flex md:mt-10">
-      <div class="text-center md:flex md:w-96 md:m-auto">
-        <Placeholders/>
-      </div>
-      <div class="text-center md:flex md:w-96 md:m-auto">
-        <Placeholders/>
-      </div>
-    </div>
+<!--    <div class="m-2 max-w-full md:flex md:mt-52">-->
+<!--      <div class="text-center md:w-96 md:m-auto">-->
+<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
+<!--          Kaiki is a <mark class="italic">dad</mark>.-->
+<!--        </h3>-->
+<!--        <h4 class="text-orange-600">-->
+<!--          He will respond, like a dad, whenever you declare yourself with the-->
+<!--          use of 'I am'.-->
+<!--        </h4>-->
+<!--    </div>-->
+<!--      <div class="text-center md:w-72 md:m-auto">-->
+<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
+<!--          Useful, fun and silly commands-->
+<!--        </h3>-->
+<!--        <h4 class="text-orange-600">-->
+<!--          A wide variety of commands from fun and goofy commands to utility and-->
+<!--          server management focused commands.-->
+<!--        </h4>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="m-2 max-w-full md:flex md:mt-10">-->
+<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
+<!--        <Placeholders/>-->
+<!--      </div>-->
+<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
+<!--        <Placeholders/>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="m-2 max-w-full md:flex md:mt-20">-->
+<!--      <div class="text-center md:w-72 md:m-auto">-->
+<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
+<!--          Manage a large todo list-->
+<!--        </h3>-->
+<!--        <h4 class="text-orange-600">-->
+<!--          Create goals, save a link you just found or keep a tab on your loaning-->
+<!--          business.-->
+<!--        </h4>-->
+<!--      </div>-->
+<!--      <div class="text-center md:w-72 md:m-auto">-->
+<!--        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>-->
+<!--        <h4 class="text-orange-600">-->
+<!--          Spend your hard earned yen on the casino and compete in the currency-->
+<!--          leaderboard!-->
+<!--        </h4>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="m-2 max-w-full md:flex md:mt-10">-->
+<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
+<!--        <Placeholders/>-->
+<!--      </div>-->
+<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
+<!--        <Placeholders/>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- Large bottom features -->
     <div class="text-left text-gray-400 md:w-8/12 m-auto mt-52">
