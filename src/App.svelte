@@ -33,8 +33,8 @@
     </a>
     <!--    -->
     <button
-      class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
-      on:click={() => (isActive = !isActive)}
+            class="h-16 whitespace-nowrap md:h-20 border-b-2 border-b-orange-600 text-gray-400 custom-width-1_7"
+            on:click={() => (isActive = !isActive)}
     >
       COMMANDS
     </button>
