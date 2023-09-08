@@ -4,7 +4,20 @@
 </svg>
 
 <style>
+    .svg-class {
+        transition: 0.5s;
+    }
     .svg-class:hover {
-        background-color: var(--accent4);
+        transform: scale(110%);
+        transition: 0.5s;
+    }
+
+    @media (max-width: 640px) {
+        svg.svg-class {
+            transition: 0s;
+        }
+        svg.svg-class:hover {
+            transform: scale(100%);
+        }
     }
 </style>

@@ -190,13 +190,13 @@
 <!--    </div>-->
 
     <!-- Large bottom features -->
-    <div class="text-left text-gray-400 md:w-8/12 m-auto mt-52">
+    <div class="text-left text-gray-400 md:w-8/12 sm:w-10/12 m-auto mt-52">
       <h3 class="text-gray-400 font-bold text-2xl">Open source</h3>
       <h4 class="text-accent1">
-        The codebase is transparent and available on GitLab. Fork it, clone it and contribute!
+        The codebase is fully open source software and available on GitLab. Fork it, clone it and contribute!
       </h4>
     </div>
-    <div class="text-right text-gray-400 md:w-8/12 m-auto mt-10 mb-52">
+    <div class="text-right text-gray-400 md:w-8/12 sm:w-10/12 m-auto mt-36 mb-52">
       <h3 class="text-gray-400 font-bold text-2xl">Donations</h3>
       <h4 class="text-accent1">
         KaikiBot is completely free and open source. Donations are completely optional, but highly appreciated.<br>Donations will go towards server costs and support the developer(s), as well as give you reward through Patreon on the Discord server.
@@ -302,10 +302,6 @@
     display: inline-block;
   }
 
-  .buttons {
-    margin-top: 1em;
-  }
-
   .active {
     display: none;
   }
@@ -318,12 +314,6 @@
   a {
     text-decoration: none;
     /*color: #f4f4f4;*/
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 
   button {
@@ -350,9 +340,23 @@
     cursor: pointer;
     background-color: var(--background);
     color: var(--accent1) !important;
-    border-color: var(--accent4);
-    transform: scale(105%);
-    transition: 0.5s;
+    border: var(--background) 2px solid;
+    /*border-bottom: var(--accent1) 4px solid;*/
+    transform: scale(101%);
+    transition: 0.1s;
+    box-shadow: 0 4px var(--accent4);
+  }
+
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    button.custom-width-1_7 {
+      width: 100%;
+    }
   }
 
   .gitlab:hover {
@@ -365,33 +369,6 @@
 
   .paypal:hover {
     /*border-bottom-color: var(--paypal);*/
-  }
-
-  @keyframes gitlabColor {
-    from {
-
-    }
-    to {
-      transform: translateY(1em);
-    }
-  }
-
-  @keyframes paypalColor {
-    from {
-      background-color: var(--background);
-    }
-    to {
-      background-color: var(--paypal);
-    }
-  }
-
-  @keyframes patreonbColor {
-    from {
-      background-color: var(--background);
-    }
-    to {
-      background-color: var(--patreon);
-    }
   }
 
   footer {
@@ -411,6 +388,6 @@
   }
 
   .custom-width-1_7 {
-    width: 14%;
+    width: calc(100%/7.3);
   }
 </style>
