@@ -7,30 +7,48 @@
 
   let originalColor;
 
-  let cats = Object.entries(commands.default);
+  let cats = Object.entries((commands as any).default);
   let classes = ["searchbar", "inputSearchbar"];
   function searchbarOnInput(c, category) {
     cats = search(c, category);
   }
 
   function resetCats() {
-    cats = Object.entries(commands.default);
+    cats = Object.entries((commands as any).default);
     active = {};
   }
 
   function colorSearchbar(color) {
-      const searchBar = document.getElementById("searchbar1");
-      originalColor = searchBar.style.backgroundColor;
+    const searchBar = document.getElementById("searchbar1");
+    originalColor = searchBar.style.backgroundColor;
     searchBar.style.backgroundColor = color;
+
     if (searchBar.style.boxShadow) {
       searchBar.style.boxShadow = null;
     }
     else {
       searchBar.style.boxShadow = "0 2px var(--accent4)";
     }
+
     ["searchbar2", "searchbar3"].forEach(name => {
       document.getElementById(name).style.backgroundColor = color
     })
+  }
+
+  function manageCategories(categoryElement: string) {
+    if (active[categoryElement]) {
+      if (Object.keys(active).length !== 1) {
+        resetCats();
+      }
+      active[categoryElement] = !active[categoryElement];
+      resetCats();
+    } else {
+      active[categoryElement] = !active[categoryElement];
+      cats = cats.filter((a) => a[1][0] === categoryElement);
+      if (Object.keys(active).length !== 1) {
+        resetCats();
+      }
+    }
   }
 </script>
 
@@ -46,8 +64,7 @@
         on:reset={resetCats}
         on:abort={resetCats}
         on:focus={() => colorSearchbar("#252422")}
-        on:focusout={() => colorSearchbar(originalColor)
-        }
+        on:focusout={() => colorSearchbar(originalColor)}
       />
       <div class="searchThingy"></div>
       <div class="searchBottom">
@@ -71,28 +88,15 @@
 
   {#each Object.entries(commands) as categories}
     {#each categories[1] as category}
-      {#if category[1].length}
+      {@const cat = category[0]}
+      {#if typeof cat === "string"}
       <div
-        class={active[category[0]] ? "cmdCategoryActive" : "cmdCategory"}
-        on:click={() => {
-          if (active[category[0]]) {
-            if (Object.keys(active).length !== 1) {
-              resetCats();
-            }
-            active[category[0]] = !active[category[0]];
-            resetCats();
-          } else {
-            active[category[0]] = !active[category[0]];
-            cats = cats.filter((a) => a[1][0] === category[0]);
-            if (Object.keys(active).length !== 1) {
-              resetCats();
-            }
-          }
-        }}
+        class={active[cat] ? "cmdCategoryActive" : "cmdCategory"}
+        on:click={() => manageCategories(cat)}
       >
-        {category[0]}
+        {cat}
       </div>
-        {/if}
+      {/if}
     {/each}
   {/each}
 
