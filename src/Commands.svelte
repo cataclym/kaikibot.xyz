@@ -8,7 +8,7 @@
   let originalColor;
 
   let cats = Object.entries(commands.default);
-
+  let classes = ["searchbar", "inputSearchbar"];
   function searchbarOnInput(c, category) {
     cats = search(c, category);
   }
@@ -17,27 +17,41 @@
     cats = Object.entries(commands.default);
     active = {};
   }
+
+  function colorSearchbar(color) {
+      const searchBar = document.getElementById("searchbar1");
+      originalColor = searchBar.style.backgroundColor;
+    searchBar.style.backgroundColor = color;
+    if (searchBar.style.boxShadow) {
+      searchBar.style.boxShadow = null;
+    }
+    else {
+      searchBar.style.boxShadow = "0 2px var(--accent4)";
+    }
+    ["searchbar2", "searchbar3"].forEach(name => {
+      document.getElementById(name).style.backgroundColor = color
+    })
+  }
 </script>
 
 <div class="w-10/12 text-gray-300 m-auto mt-10 mb-52 flow-root">
-  <div class="bgColor mb-10">
-    <div class="searchbar" id="searchbar">
+  <div class="mb-10">
+    <div class="searchbar" id="searchbar1">
       <input
         class="inputSearchbar"
         type="text"
+        id="searchbar2"
         placeholder="Search commands"
         on:input={(c) => searchbarOnInput(c, (() => active)())}
         on:reset={resetCats}
         on:abort={resetCats}
-        on:focus={(c) => {
-          originalColor = document.getElementById("searchbar").style.backgroundColor;
-          document.getElementById("searchbar").style.backgroundColor = "#353535"
-         }}
-        on:focusout={(c) => document.getElementById("searchbar").style.backgroundColor = originalColor}
+        on:focus={() => colorSearchbar("#252422")}
+        on:focusout={() => colorSearchbar(originalColor)
+        }
       />
       <div class="searchThingy"></div>
       <div class="searchBottom">
-        <button class="searchButton">
+        <button class="searchButton" id="searchbar3" disabled>
           <svg
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
@@ -84,13 +98,13 @@
 
   <div class="w-full m-auto mt-10 mb-5 flex">
     <div class="cmd">
-      <p class="description">Command</p>
+      <p class="description text-2xl">Command</p>
     </div>
     <div class="cmdDesc">
-      <p class="description">Description</p>
+      <p class="description text-2xl">Description</p>
     </div>
     <div class="cmdUsage">
-      <p class="description">Usage</p>
+      <p class="description text-2xl">Usage</p>
     </div>
   </div>
 
@@ -133,11 +147,11 @@
   @tailwind utilities;
 
   :root {
-    --input-color: rgb(156 163 175);
+    --input-color: var(--accent1);
   }
 
   .bgColor {
-    background-color: #353535;
+    background-color: var(--accent2);
   }
 
   .cmdCategory {
@@ -146,8 +160,8 @@
     font-size: xx-large;
     display: inline-flex;
     padding: 0.2rem 0.5rem;
-    border: #1f1f1f 2px solid;
-    background-color: #1f1f1f;
+    /*border: var(--accent2) 2px solid;*/
+    background-color: var(--accent2);
     user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -155,19 +169,19 @@
   }
 
   .cmdCategory:hover {
-    border-bottom-color: rgb(234 88 12);
-    background-color: #0a0a0aff;
+    background-color: var(--background);
     cursor: pointer;
+    box-shadow: 0 4px var(--accent4);
   }
 
   .cmdCategoryActive {
-    color: #0a0a0aff;
+    color: var(--background);
     margin: 0.5rem 0.5rem;
     font-size: xx-large;
     display: inline-flex;
     padding: 0.2rem 0.5rem;
-    border: #1f1f1f 2px solid;
-    background-color: rgb(234 88 12);
+    border: var(--accent2) 2px solid;
+    background-color: var(--accent4);
     user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -175,38 +189,38 @@
   }
 
   .cmdCategoryActive:hover {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--background);
     cursor: pointer;
   }
 
   .cmd {
     padding-top: 1rem;
     width: 33.3333%;
-    background-color: #353535;
+    background-color: var(--accent2);
     vertical-align: middle;
     display: inline;
   }
   .cmdDesc {
     padding-top: 1rem;
     width: 33.3333%;
-    background-color: #1f1f1f;
+    background-color: var(--background);
     vertical-align: middle;
     display: inline;
   }
   .cmdUsage {
     padding-top: 1rem;
     width: 33.3333%;
-    background-color: #353535;
+    background-color: var(--accent2);
     vertical-align: middle;
     display: inline;
   }
 
   .cmdButton {
-    color: var(--input-color);
+    color: var(--accent1);
     margin: 0.2rem 0.5rem;
     padding: 0.2rem 0.5rem;
-    border: #1f1f1f 2px solid;
-    background-color: #1f1f1f;
+    border: var(--background) 2px solid;
+    background-color: var(--background);
   }
 
   .description {
@@ -228,8 +242,7 @@
   .searchbar {
     align-items: center;
     background-clip: padding-box;
-    background-color: hsl(0, 0%, 25.9%);
-    border: 1px solid var(--fds-control-stroke-default);
+    background-color: var(--accent2);
     border-radius: var(--fds-control-corner-radius);
     cursor: text;
     display: flex;
@@ -237,12 +250,16 @@
     position: relative;
   }
 
+  /*.searchbar:hover {*/
+  /*  box-shadow: 0 2px var(--accent4);*/
+  /*}*/
+
   .inputSearchbar {
-    background-color: transparent;
+    background-color: var(--accent2);
     border: none;
     border-radius: var(--fds-control-corner-radius);
     box-sizing: border-box;
-    color: var(--input-color);
+    color: var(--accent3);
     cursor: unset;
     flex: 1 1 auto;
     font-family: var(--fds-font-family-text);
@@ -254,9 +271,6 @@
     min-block-size: 30px;
     outline: none;
     padding-inline: 10px;
-    /*-webkit-user-select: none;*/
-    /*-moz-user-select: none;*/
-    /*user-select: none;*/
   }
 
   .searchThingy {
@@ -273,6 +287,7 @@
   .searchThingy::after {
     block-size: 100%;
     border-bottom: 1px solid var(--fds-control-strong-stroke-default);
+    color: var(--accent1);
     box-sizing: border-box;
     inline-size: 100%;
     inset-block-end: 0;
@@ -289,11 +304,10 @@
 
   .searchButton {
     align-items: center;
-    /*background-color: var(--fds-subtle-fill-transparent);*/
     border: none;
-    /*border-radius: var(--fds-control-corner-radius);*/
     box-sizing: border-box;
-    color: hsla(0, 0%, 100%, 78.6%);
+    color: var(--accent1);
+    background-color: var(--accent2);
     display: flex;
     justify-content: center;
     min-block-size: 22px;

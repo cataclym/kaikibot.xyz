@@ -20,7 +20,7 @@
 </script>
 
 <main>
-  <h1 class="text-8xl mt-10 mb-5 font-bold text-accent1">KAIKIBOT</h1>
+  <h1 class="text-8xl md:text-6xlmt-10 mb-5 font-bold text-accent1 title mt-10">KAIKIBOT</h1>
   <h2 class="text-2xl mt-5 mb-10 text-gray-400">
     Your <mark>dad</mark> isn't <em>this</em> cool
   </h2>
@@ -31,14 +31,12 @@
         >SUPPORT SERVER
       </button>
     </a>
-    <!--    -->
     <button
             class="h-16 whitespace-nowrap md:h-20 border-b-2  text-accent1 custom-width-1_7"
             on:click={() => (isActive = !isActive)}
     >
       COMMANDS
     </button>
-    <!--    </a>-->
     <a href={links.embed}>
       <button
         class="h-16 whitespace-nowrap md:h-20 border-b-2  text-accent1 custom-width-1_7"
