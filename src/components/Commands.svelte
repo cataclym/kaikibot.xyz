@@ -1,7 +1,7 @@
 <script lang="ts">
   import "fluent-svelte/theme.css";
-  import * as commands from "../cmdlist.json";
-  import search from "./methods/search";
+  import * as commands from "../../cmdlist.json";
+  import search from "./../methods/search";
 
   let active = {};
 

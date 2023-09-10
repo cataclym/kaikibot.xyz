@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Commands from "./Commands.svelte";
-  import Placeholders from "./Placeholders.svelte";
-
+  import Commands from "./components/Commands.svelte";
+  import Placeholders from "./components/Placeholders.svelte";
+  import OrangeBar from "./components/OrangeBar.svelte";
   export let name: string;
   let isActive = true;
 
@@ -20,14 +20,14 @@
 </script>
 
 <main>
-  <h1 class="text-8xl md:text-6xlmt-10 mb-5 font-bold text-accent1 title mt-10">KAIKIBOT</h1>
-  <h2 class="text-2xl mt-5 mb-10 text-gray-400">
+  <h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl">KAIKIBOT</h1>
+  <h2 class="text-2xl mt-5 mb-10 text-accent1">
     Your <mark>dad</mark> isn't <em>this</em> cool
   </h2>
   <div class="flex-auto">
     <a href={links.discord}>
       <button
-        class="h-16 whitespace-nowrap md:h-20 border-b-2  text-accent1 custom-width-1_7"
+        class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 custom-width-1_7"
         >SUPPORT SERVER
       </button>
     </a>
@@ -76,13 +76,15 @@
 
     <div class="max-w-full md:flex justify-evenly mb-24">
       <div class="text-center md:w-96">
-        <h3 class="text-gray-400 font-bold text-2xl">
+        <h3 class="text-accent3 font-bold text-2xl">
+
           Kaiki is a <mark class="italic">dad</mark>.
         </h3>
-        <h4 class="text-accent1">
+        <h4 class="text-accent1 mb-3.5">
           He will respond, like a dad, whenever you declare yourself with the
           use of 'I am'.
         </h4>
+      <OrangeBar/>
       </div>
       <div class="text-center md:w-96">
         <Placeholders/>
@@ -91,13 +93,16 @@
 
     <div class="max-w-full md:flex flex-row-reverse justify-evenly mb-24">
       <div class="text-center md:w-96">
-        <h3 class="text-gray-400 font-bold text-2xl">
+        <h3 class="text-accent3 font-bold text-2xl">
+
           Useful, fun and silly commands
         </h3>
-        <h4 class="text-accent1">
+        <h4 class="text-accent1 mb-3.5">
+
           A wide variety of commands from fun and goofy commands to utility and
           server management focused commands.
         </h4>
+        <OrangeBar/>
       </div>
       <div class="text-center md:w-96">
         <Placeholders/>
@@ -106,13 +111,16 @@
 
     <div class="max-w-full md:flex justify-evenly mb-24">
       <div class="text-center md:w-96">
-        <h3 class="text-gray-400 font-bold text-2xl">
+        <h3 class="text-accent3 font-bold text-2xl">
+
           Manage a large todo list
         </h3>
-        <h4 class="text-accent1">
+        <h4 class="text-accent1 mb-3.5">
+
           Create goals, save a link you just found or keep a tab on your loaning
           business.
         </h4>
+        <OrangeBar/>
       </div>
       <div class="text-center md:w-96">
         <Placeholders/>
@@ -121,81 +129,31 @@
 
     <div class="max-w-full md:flex flex-row-reverse justify-evenly mb-24">
       <div class="text-center md:w-96">
-        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>
-        <h4 class="text-accent1">
+        <h3 class="text-accent3 font-bold text-2xl">
+Economy and gambling</h3>
+        <h4 class="text-accent1 mb-3.5">
+
           Spend your hard earned yen on the casino and compete in the currency
           leaderboard!
         </h4>
+        <OrangeBar/>
       </div>
       <div class="text-center md:w-96">
         <Placeholders/>
       </div>
     </div>
 
-<!--    <div class="m-2 max-w-full md:flex md:mt-52">-->
-<!--      <div class="text-center md:w-96 md:m-auto">-->
-<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
-<!--          Kaiki is a <mark class="italic">dad</mark>.-->
-<!--        </h3>-->
-<!--        <h4 class="text-accent1">-->
-<!--          He will respond, like a dad, whenever you declare yourself with the-->
-<!--          use of 'I am'.-->
-<!--        </h4>-->
-<!--    </div>-->
-<!--      <div class="text-center md:w-72 md:m-auto">-->
-<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
-<!--          Useful, fun and silly commands-->
-<!--        </h3>-->
-<!--        <h4 class="text-accent1">-->
-<!--          A wide variety of commands from fun and goofy commands to utility and-->
-<!--          server management focused commands.-->
-<!--        </h4>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="m-2 max-w-full md:flex md:mt-10">-->
-<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
-<!--        <Placeholders/>-->
-<!--      </div>-->
-<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
-<!--        <Placeholders/>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="m-2 max-w-full md:flex md:mt-20">-->
-<!--      <div class="text-center md:w-72 md:m-auto">-->
-<!--        <h3 class="text-gray-400 font-bold text-2xl">-->
-<!--          Manage a large todo list-->
-<!--        </h3>-->
-<!--        <h4 class="text-accent1">-->
-<!--          Create goals, save a link you just found or keep a tab on your loaning-->
-<!--          business.-->
-<!--        </h4>-->
-<!--      </div>-->
-<!--      <div class="text-center md:w-72 md:m-auto">-->
-<!--        <h3 class="text-gray-400 font-bold text-2xl">Economy and gambling</h3>-->
-<!--        <h4 class="text-accent1">-->
-<!--          Spend your hard earned yen on the casino and compete in the currency-->
-<!--          leaderboard!-->
-<!--        </h4>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="m-2 max-w-full md:flex md:mt-10">-->
-<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
-<!--        <Placeholders/>-->
-<!--      </div>-->
-<!--      <div class="text-center md:flex md:w-96 md:m-auto">-->
-<!--        <Placeholders/>-->
-<!--      </div>-->
-<!--    </div>-->
-
     <!-- Large bottom features -->
-    <div class="text-left text-gray-400 md:w-8/12 sm:w-10/12 m-auto mt-52">
-      <h3 class="text-gray-400 font-bold text-2xl">Open source</h3>
+    <div class="text-left text-accent1 md:w-8/12 sm:w-10/12 m-auto mt-52">
+      <h3 class="text-accent3 font-bold text-2xl">
+Open source</h3>
       <h4 class="text-accent1">
         The codebase is fully open source software and available on GitLab. Fork it, clone it and contribute!
       </h4>
     </div>
-    <div class="text-right text-gray-400 md:w-8/12 sm:w-10/12 m-auto mt-36 mb-52">
-      <h3 class="text-gray-400 font-bold text-2xl">Donations</h3>
+    <div class="text-right text-accent1 md:w-8/12 sm:w-10/12 m-auto mt-36 mb-52">
+      <h3 class="text-accent3 font-bold text-2xl">
+Donations</h3>
       <h4 class="text-accent1">
         KaikiBot is completely free and open source. Donations are completely optional, but highly appreciated.<br>Donations will go towards server costs and support the developer(s), as well as give you reward through Patreon on the Discord server.
       </h4>
@@ -206,40 +164,41 @@
   </div>
 
   <div
-    class="grid m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-8/12 2xl:w-1/2 text-accent1"
+    class="grid m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1"
   >
     <div class="grid">
-      <h3 class="mt-1 text-accent1 text-xl text-left">Kaiki</h3>
+      <h3 class="mt-1 text-accent1 text-2xl text-left">Kaiki</h3>
       <h3 class="mt-1 flex-col text-left"><a href={links.invite}>Invite</a></h3>
       <h3
         class="mt-1 flex-col text-left cursor-pointer"
         on:click={() => (isActive = !isActive)}
-      >
+      ><a>
         Commands
+      </a>
       </h3>
     </div>
     <div class="grid">
-      <h2 class="text-accent1 text-xl text-left">Selfhosting</h2>
+      <h2 class="text-accent1 text-2xl text-left">Selfhosting</h2>
       <h3 class="flex-col text-left"><a href={links.source}>Source code</a></h3>
       <h3 class="flex-col text-left"> <a href={links.docs}>Docs</a></h3>
     </div>
     <div class="grid">
-      <h2 class="text-accent1 text-xl text-left">Utilities</h2>
+      <h2 class="text-accent1 text-2xl text-left">Utilities</h2>
       <h3 class="flex-col text-left"> <a href={links.changelog}>Changelog </a></h3>
     </div>
   </div>
 </main>
 <footer class="alignment-center grid grid-cols-3">
   <div class="grid">
-    <h3 class="flex-col text-xl" style="line-height: 95%">
+    <h3 class="flex-col text-sm lg:text-xl">
       <a href={links.kofi}>Buy me a coffee ☕</a>
     </h3>
   </div>
   <div class="grid">
-    <h3 class="flex-col text-xl" style="line-height: 95%">© Cata 2023</h3>
+    <h3 class="flex-col text-sm lg:text-xl">© Cata 2023</h3>
   </div>
   <div class="grid">
-    <h3 class="flex-col text-xl" style="line-height: 95%">
+    <h3 class="flex-col text-sm lg:text-xl">
       <a href={links.patreon}>Patreon️</a>
     </h3>
   </div>
@@ -313,6 +272,9 @@
     text-decoration: none;
     /*color: #f4f4f4;*/
   }
+  a:hover {
+    color: var(--accent4)
+  }
 
   button {
     /*font-family: Ubuntu,sans-serif;*/
@@ -374,7 +336,7 @@
     background: var(--accent2);
     width: 100%;
     height: 3em;
-    padding: 0.7% 0 0 0;
+    padding: 0.7em 0 0 0;
     position: fixed;
     bottom: 0;
     left: 0;
