@@ -167,7 +167,7 @@ Donations</h3>
     class="grid m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1"
   >
     <div class="grid">
-      <h3 class="mt-1 text-accent1 text-2xl text-left">Kaiki</h3>
+      <h2 class="mt-1 text-accent1 text-2xl text-left">Kaiki</h2>
       <h3 class="mt-1 flex-col text-left"><a href={links.invite}>Invite</a></h3>
       <h3
         class="mt-1 flex-col text-left cursor-pointer"
@@ -317,18 +317,6 @@ Donations</h3>
     button.custom-width-1_7 {
       width: 100%;
     }
-  }
-
-  .gitlab:hover {
-    /*border-bottom-color: var(--gitlab);*/
-  }
-
-  .patreon:hover {
-    /*border-bottom-color: var(--patreon);*/
-  }
-
-  .paypal:hover {
-    /*border-bottom-color: var(--paypal);*/
   }
 
   footer {

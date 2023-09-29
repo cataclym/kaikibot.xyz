@@ -102,13 +102,13 @@
 
   <div class="w-full m-auto mt-10 mb-5 flex">
     <div class="cmd">
-      <p class="description text-2xl">Command</p>
+      <h2 class="description text-2xl">Command</h2>
     </div>
     <div class="cmdDesc">
-      <p class="description text-2xl">Description</p>
+      <h2 class="description text-2xl">Description</h2>
     </div>
     <div class="cmdUsage">
-      <p class="description text-2xl">Usage</p>
+      <h2 class="description text-2xl">Usage</h2>
     </div>
   </div>
 
