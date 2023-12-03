@@ -1,8 +1,7 @@
 <script lang="ts">
-  import Commands from "./components/Commands.svelte";
-  import Placeholders from "./components/Placeholders.svelte";
-  import OrangeBar from "./components/OrangeBar.svelte";
-  export let name: string;
+  import Commands from "../components/Commands.svelte";
+  import Placeholders from "../components/Placeholders.svelte";
+  import OrangeBar from "../components/OrangeBar.svelte";
   let isActive = true;
 
   const links = Object.freeze({
@@ -86,8 +85,8 @@
         </h4>
       <OrangeBar/>
       </div>
-      <div class="text-center md:w-96">
-        <Placeholders/>
+      <div class="text-center md:w-96 md:h-96">
+        <Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe"}/>
       </div>
     </div>
 
@@ -104,8 +103,8 @@
         </h4>
         <OrangeBar/>
       </div>
-      <div class="text-center md:w-96">
-        <Placeholders/>
+      <div class="text-center md:w-96 md:h-96">
+        <Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=1"}/>
       </div>
     </div>
 
@@ -122,8 +121,8 @@
         </h4>
         <OrangeBar/>
       </div>
-      <div class="text-center md:w-96">
-        <Placeholders/>
+      <div class="text-center md:w-96 md:h-96">
+        <Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=2"}/>
       </div>
     </div>
 
@@ -138,8 +137,8 @@ Economy and gambling</h3>
         </h4>
         <OrangeBar/>
       </div>
-      <div class="text-center md:w-96">
-        <Placeholders/>
+      <div class="text-center md:w-96 md:h-96">
+        <Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=8"}/>
       </div>
     </div>
 
