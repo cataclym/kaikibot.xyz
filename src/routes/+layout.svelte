@@ -1,15 +1,34 @@
-<script>
+<script lang="ts">
   import SEO from "../components/SEO.svelte";
+  import { page } from "$app/stores";
+  import {beforeNavigate, afterNavigate } from '$app/navigation';
+  import navigationState from "../stores/navigationState";
+  import { fade } from 'svelte/transition';
+  import PageLoader from '../components/PageLoader.svelte';
 
   export let data;
   const links = data.links;
-  import {page} from "$app/stores";
-  const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
+  const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1)
+
+  beforeNavigate(() => {
+    navigationState.set('loading');
+  });
+
+  afterNavigate(() => {
+    navigationState.set('loaded');
+  });
 </script>
+
 <SEO/>
 <svelte:head>
   <title>KaikiBot - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
 </svelte:head>
+
+{#if $navigationState === "loading"}
+  <div out:fade={{ delay: 500 }}>
+    <PageLoader />
+  </div>
+{/if}
 
 <h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">KAIKIBOT</h1>
 <h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
