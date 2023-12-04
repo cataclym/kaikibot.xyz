@@ -1,8 +1,15 @@
 <script>
+  import SEO from "../components/SEO.svelte";
+
   export let data;
   const links = data.links;
   import {page} from "$app/stores";
+  const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 </script>
+<SEO/>
+<svelte:head>
+  <title>KaikiBot - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
+</svelte:head>
 
 <h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">KAIKIBOT</h1>
 <h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
