@@ -1,6 +1,6 @@
-import type { Cmds } from "../ICmds";
+import type { Cmd, Cmds } from "../ICmds";
 
-export default function search(commands: Cmds, input:  Event & {currentTarget: (EventTarget & HTMLInputElement)}, category: { [key: string]: true }) {
+export default function search(commands: Cmds, input:  Event & {currentTarget: (EventTarget & HTMLInputElement)}, category: { [key: string]: true }): [string, [string, Cmd[]]][] {
   const cats = Object.entries(commands);
 
   /**
@@ -26,14 +26,12 @@ export default function search(commands: Cmds, input:  Event & {currentTarget: (
       a.id.toLowerCase().includes(inputText || "")
     );
 
-  return filtered
-    .map((res, i) => {
+  return filtered.map((res, i): [string, [string, Cmd[]]] => {
 
-      if (!cat) return;
+    const cat = cats
+      .map((a) => a[1])
+      .find((a) => a[1].find((b) => b.id === res.id));
 
-      return [String(cats.findIndex((a) => a[0] === cat)), [cat, [res]]];
-    })
-    .filter(Boolean as any as ExcludesFalse);
+    return [cats.findIndex((a) => a[0] === cat![0]).toString(), [cat![0], [res]]]
+  })
 }
-
-type ExcludesFalse = <T>(x: T | false) => x is T;

@@ -14,7 +14,8 @@
 
   let originalColor: string;
 
-  let cats = Object.entries(commands);
+  let cats: [string, [string, Cmd[]]][];
+  resetCats();
   let classes = ["searchbar", "inputSearchbar"];
 
   function searchbarOnInput(c: Event & {
