@@ -103,29 +103,23 @@
       </h4>
     </div>
   </div>
-  <div
-    class="grid m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1"
-  >
-    <div class="grid">
-      <h2 class="mt-1 text-accent1 text-2xl text-left">Kaiki</h2>
-      <h3 class="mt-1 flex-col text-left"><a href={links.invite}>Invite</a></h3>
-      <h3
-        class="mt-1 flex-col text-left cursor-pointer"
-      ><a href="/commands">
-        Commands
-      </a>
-      </h3>
+  <div class="grid items-start m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1">
+    <div class="grid text-accent1">
+      <h1 class="text-accent3 text-left">Kaiki</h1>
+      <p class="flex-col text-left"><a href={links.invite}>Invite</a></p>
+      <p class="flex-col text-left cursor-pointer"><a href="/commands">Commands</a></p>
     </div>
-    <div class="grid">
-      <h2 class="text-accent1 text-2xl text-left">Selfhosting</h2>
-      <h3 class="flex-col text-left"><a href={links.source}>Source code</a></h3>
-      <h3 class="flex-col text-left"><a href={links.docs}>Docs</a></h3>
+
+    <div class="grid text-accent1">
+      <h1 class="text-accent3 text-left">Selfhosting</h1>
+      <p class="flex-col text-left"><a href={links.source}>Source code</a></p>
+      <p class="flex-col text-left"><a href="/README.md">Docs and guides</a></p>
     </div>
-    <div class="grid">
-      <h2 class="text-accent1 text-2xl text-left">Utilities</h2>
-      <h3 class="flex-col text-left"><a href={links.changelog}>Changelog</a></h3>
-      <h3 class="flex-col text-left"><a href="/about">About</a></h3>
-      <h3 class="flex-col text-left"><a href="/guides">Guides</a></h3>
+
+    <div class="grid text-accent1">
+      <h1 class="text-accent3 text-left">Utilities</h1>
+      <p class="flex-col text-left"><a href={links.changelog}>Changelog</a></p>
+      <p class="flex-col text-left"><a href="/about">About</a></p>
     </div>
   </div>
 </main>

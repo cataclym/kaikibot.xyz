@@ -217,6 +217,8 @@
         background-color: var(--accent2);
         vertical-align: middle;
         display: inline;
+        color: var(--accent3);
+        padding-left: 2rem;
     }
 
     .cmdDesc {
@@ -225,14 +227,16 @@
         background-color: var(--background);
         vertical-align: middle;
         display: inline;
+        color: var(--accent3);
     }
 
     .cmdUsage {
         padding-top: 1rem;
         width: 33.3333%;
         background-color: var(--accent2);
-        vertical-align: middle;
+        align-self: stretch;
         display: inline;
+        color: var(--accent3);
     }
 
     .cmdButton {
@@ -241,6 +245,14 @@
         padding: 0.2rem 0.5rem;
         border: var(--background) 2px solid;
         background-color: var(--background);
+    }
+
+    .cmd,.cmdDesc,.cmdUsage {
+        border: 1px solid transparent;
+    }
+
+    .cmd:hover,.cmdUsage:hover,.cmdDesc:hover {
+        border: 1px solid var(--accent4);
     }
 
     .description {
@@ -257,6 +269,7 @@
 
     .categoryTxt {
         font-size: small;
+        color: var(--accent1);
     }
 
     .searchbar {

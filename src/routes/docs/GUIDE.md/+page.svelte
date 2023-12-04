@@ -1,7 +1,7 @@
-
 <script>
-    import SvelteMarkdown from 'svelte-markdown'
-    const source = `
+  import SvelteMarkdown from "svelte-markdown";
+
+  const source = `
 ### Paths
 - [Readme](../README.md)
 - Docs
@@ -40,7 +40,6 @@ https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID_HERE&scope=bot
     `;
 </script>
 
-<div class="w-10/12 text-gray-300 m-auto mt-10 mb-52">
-
-    <SvelteMarkdown {source} />
+<div class="text-accent1 m-auto w-11/12">
+  <SvelteMarkdown {source} />
 </div>

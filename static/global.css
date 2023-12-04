@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+/*@tailwind utilities;*/
 
 :root {
     --background: #252422;
@@ -63,11 +63,15 @@ mark {
 
 a {
     text-decoration: none;
-    /*color: #f4f4f4;*/
+    color: inherit;
 }
 
 a:hover {
-    color: var(--accent4)
+    color: var(--accent4) !important
+}
+
+a:visited {
+    color: inherit;
 }
 
 button.layout {
@@ -76,7 +80,6 @@ button.layout {
     color: var(--accent1) !important;
     text-shadow: var(--background) 2px !important;
     transition: 0.5s;
-    /*border-bottom: 4px solid var(--orange);*/
 }
 
 button:hover.layout {
@@ -84,7 +87,6 @@ button:hover.layout {
     background-color: var(--background) !important;
     color: var(--accent1) !important;
     border: var(--background) 2px solid;
-    /*border-bottom: var(--accent1) 4px solid;*/
     transform: scale(101%);
     transition: 0.1s;
     box-shadow: 0 4px var(--accent4);
@@ -106,8 +108,6 @@ footer {
     color: var(--accent3);
     background: var(--accent2);
     width: 100%;
-    height: 3em;
-    padding: 0.7em 0 0 0;
     position: fixed;
     bottom: 0;
     left: 0;

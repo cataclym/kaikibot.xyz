@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 const links = Object.freeze({
   changelog: process.env.CHANGELOG,
   discord: process.env.DISCORD,
