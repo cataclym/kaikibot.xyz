@@ -11,7 +11,7 @@
 </script>
 
 <main>
-  <div class:active={!data.isActive} class="inline-block w-11/12 mt-24">
+  <div class="inline-block w-11/12 mt-24">
     <!-- 2x2 Medium feature list -->
 
     <div class="max-w-full md:flex justify-evenly mb-24">
@@ -125,6 +125,7 @@
       <h2 class="text-accent1 text-2xl text-left">Utilities</h2>
       <h3 class="flex-col text-left"><a href={links.changelog}>Changelog</a></h3>
       <h3 class="flex-col text-left"><a href="/about">About</a></h3>
+      <h3 class="flex-col text-left"><a href="/guides">Guides</a></h3>
     </div>
   </div>
 </main>

@@ -17,11 +17,11 @@
     >SUPPORT SERVER
     </button>
   </a>
-  <a class="link_flex" href="{$page.url.pathname === '/commands' ? '/' : '/commands'}">
+  <a class="link_flex" href="{$page.url.pathname !== '/' ? '/' : '/commands'}">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2  text-accent1 custom-width-1_7 layout"
     >
-      {$page.url.pathname === '/commands' ? 'HOME' : 'COMMANDS'}
+      {$page.url.pathname !== '/' ? 'HOME' : 'COMMANDS'}
     </button>
   </a>
   <a href={links.embed} class="link_flex">
