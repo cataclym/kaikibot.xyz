@@ -10,7 +10,7 @@
   <mark>dad</mark>
   isn't <em>this</em> cool
 </h2>
-<div class="flex justify-evenly gap-1 ">
+<div class="flex justify-evenly gap-1 smol">
   <a href={links.discord} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl custom-width-1_7 layout"

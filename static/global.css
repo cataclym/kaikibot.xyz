@@ -98,12 +98,6 @@ button:hover.layout {
     }
 }
 
-@media (max-width: 640px) {
-    button.custom-width-1_7 {
-        width: 100%;
-    }
-}
-
 footer {
     color: var(--accent3);
     background: var(--accent2);
@@ -125,4 +119,15 @@ footer {
 .link_flex {
     flex-grow: 1;
     flex-basis: calc(100% / 7.3);
+}
+
+@media (max-width: 1024px) {
+    .link_flex {
+        flex-grow: 1;
+        flex-basis: 100%;
+    }
+
+    .smol {
+        flex-direction: column !important;
+    }
 }
