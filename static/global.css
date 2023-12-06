@@ -12,6 +12,8 @@
     --gitlab: #6b4fbb;
     --paypal: #003087;
     --patreon: #ff424d;
+
+    font-family: sans-serif;
 }
 
 body {
@@ -92,12 +94,6 @@ button:hover.layout {
     box-shadow: 0 4px var(--accent4);
 }
 
-@media (min-width: 640px) {
-    main {
-        max-width: none;
-    }
-}
-
 footer {
     color: var(--accent3);
     background: var(--accent2);
@@ -129,5 +125,12 @@ footer {
 
     .smol {
         flex-direction: column !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .smol-bottom {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        justify-items: flex-start !important;
     }
 }

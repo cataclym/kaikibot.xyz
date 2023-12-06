@@ -5,7 +5,7 @@
 ### Paths
 - [Readme](../README.md)
 - Docs
-- [.env setup](ENV.md)
+    - [.env setup](ENV.md)
 
 ## Requirements
 * Linux (Can work on other OS, but not supported)

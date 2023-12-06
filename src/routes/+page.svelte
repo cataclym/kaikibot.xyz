@@ -103,7 +103,7 @@
       </h4>
     </div>
   </div>
-  <div class="grid items-start m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1">
+  <div class="grid items-start m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1 smol-bottom">
     <div class="grid text-accent1">
       <h1 class="text-accent3 text-left">Kaiki</h1>
       <p class="flex-col text-left"><a href={links.invite}>Invite</a></p>
