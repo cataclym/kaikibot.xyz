@@ -5,9 +5,8 @@
   import navigationState from "../stores/navigationState";
   import { fade } from 'svelte/transition';
   import PageLoader from '../components/PageLoader.svelte';
+  import {LINKS} from "../CONSTANTS";
 
-  export let data;
-  const links = data.LINKS;
   const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1)
 
   beforeNavigate(() => {
@@ -37,7 +36,7 @@
   isn't <em>this</em> cool
 </h2>
 <div class="flex justify-evenly gap-1 smol">
-  <a href={links.discord} class="link_flex">
+  <a href={LINKS.discord} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl custom-width-1_7 layout"
     >SUPPORT SERVER
@@ -50,19 +49,19 @@
       {$page.url.pathname !== '/' ? 'HOME' : 'COMMANDS'}
     </button>
   </a>
-  <a href={links.embed} class="link_flex">
+  <a href={LINKS.embed} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
     >EMBED BUILDER
     </button>
   </a>
-  <a href={links.invite} class="link_flex">
+  <a href={LINKS.invite} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
     >INVITE KAIKI
     </button>
   </a>
-  <a href={links.source} class="link_flex">
+  <a href={LINKS.source} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab custom-width-1_7 layout"
     >
@@ -70,14 +69,14 @@
     </button>
   </a
   >
-  <a href={links.paypal} class="link_flex">
+  <a href={LINKS.paypal} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal custom-width-1_7 layout"
     >
       DONATE
     </button>
   </a>
-  <a href={links.patreon} class="link_flex">
+  <a href={LINKS.patreon} class="link_flex">
     <button
       class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
     >
@@ -89,7 +88,7 @@
 <slot />
 <div class="mt-20"/>
 <footer class="items-center grid grid-cols-3">
-    <a class="self-center" href={links.kofi}><h3 class="">Buy me a coffee ☕</h3></a>
+    <a class="self-center" href={LINKS.kofi}><h3 class="">Buy me a coffee ☕</h3></a>
     <h3 class="flex-col">© Cata 2023</h3>
-    <a class="" href={links.patreon}><h3 class="">Patreon️</h3></a>
+    <a class="" href={LINKS.patreon}><h3 class="">Patreon️</h3></a>
 </footer>

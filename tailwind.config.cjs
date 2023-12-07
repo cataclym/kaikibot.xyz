@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  purge: ['./src/**/*.{html,js,svelte,ts}'],
   corePlugins: {
     preflight: false,
   }
