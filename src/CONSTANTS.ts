@@ -1,7 +1,6 @@
 import 'dotenv/config';
-import { error } from "@sveltejs/kit";
 
-const links = Object.freeze({
+export const LINKS = Object.freeze({
   changelog: process.env.CHANGELOG,
   discord: process.env.DISCORD,
   docs: process.env.DOCS,
@@ -12,8 +11,3 @@ const links = Object.freeze({
   source: process.env.SOURCE,
   kofi: process.env.KOFI
 });
-
-/** @type {import('./$types').PageServerLoad} */
-export async function load() {
-  return { links };
-}

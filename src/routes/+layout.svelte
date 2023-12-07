@@ -7,7 +7,7 @@
   import PageLoader from '../components/PageLoader.svelte';
 
   export let data;
-  const links = data.links;
+  const links = data.LINKS;
   const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1)
 
   beforeNavigate(() => {

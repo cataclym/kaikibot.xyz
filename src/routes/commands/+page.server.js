@@ -5,7 +5,7 @@ export async function load({ fetch }) {
 
   const url = process.env.JSON;
 
-  if (!url) throw new Error("Missing commandlist JSON!")
+  if (!url) throw new Error("Missing commandlist URL!")
 
   const res = await fetch(url);
   const commands = (await res.json()).sort();
