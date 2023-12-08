@@ -1,12 +1,14 @@
 <script lang="ts">
+  import "../app.css";
   import SEO from "../components/SEO.svelte";
   import { page } from "$app/stores";
-  import {beforeNavigate, afterNavigate } from '$app/navigation';
+  import { beforeNavigate, afterNavigate } from '$app/navigation';
   import navigationState from "../stores/navigationState";
   import { fade } from 'svelte/transition';
   import PageLoader from '../components/PageLoader.svelte';
-  import {LINKS} from "../CONSTANTS";
 
+  export let data;
+  const LINKS = data.LINKS;
   const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1)
 
   beforeNavigate(() => {

@@ -16,7 +16,6 @@
 
   let cats: [string, [string, Cmd[]]][];
   resetCats();
-  let classes = ["searchbar", "inputSearchbar"];
 
   function searchbarOnInput(c: Event & {
     currentTarget: (EventTarget & HTMLInputElement)
@@ -105,12 +104,12 @@
   {#each Object.entries(commands) as categories}
     {#each categories[1] as category}
       {#if typeof category === "string"}
-        <div
+        <button
           class={active[category] ? "cmdCategoryActive" : "cmdCategory"}
           on:click={() => manageCategories(category)}
         >
           {category}
-        </div>
+        </button>
       {/if}
     {/each}
   {/each}
@@ -170,16 +169,12 @@
         --input-color: var(--accent1);
     }
 
-    .bgColor {
-        background-color: var(--accent2);
-    }
-
     .cmdCategory {
         color: var(--input-color);
         margin: 0.5rem 0.5rem;
         font-size: xx-large;
         padding: 0.2rem 0.5rem;
-        /*border: var(--accent2) 2px solid;*/
+        border: transparent 2px solid;
         background-color: var(--accent2);
         user-select: none;
         -moz-user-select: none;
@@ -201,6 +196,7 @@
         display: inline-flex;
         padding: 0.2rem 0.5rem;
         background-color: var(--accent4);
+        border: transparent 2px solid;
         user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -208,8 +204,9 @@
     }
 
     .cmdCategoryActive:hover {
-        border-bottom: 2px solid var(--background);
+        box-shadow: 0 4px var(--accent2);
         cursor: pointer;
+        background-color: var(--accent1);
     }
 
     .cmd {

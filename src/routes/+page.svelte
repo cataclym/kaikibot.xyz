@@ -7,7 +7,7 @@
   /** @type {import("./$types").PageServerData} */
   export let data;
 
-  const links = data.links;
+  const links = data.LINKS;
 </script>
 
 <main>

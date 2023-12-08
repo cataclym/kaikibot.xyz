@@ -1,6 +1,7 @@
 import 'dotenv/config';
 
 export const LINKS = Object.freeze({
+  JSON: process.env.JSON,
   changelog: process.env.CHANGELOG,
   discord: process.env.DISCORD,
   docs: process.env.DOCS,
