@@ -1,6 +1,6 @@
 {
 	"name": "kaikibotpage",
-	"version": "2.3.5",
+	"version": "2.3.6",
 	"scripts": {
 		"build": "vite build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
