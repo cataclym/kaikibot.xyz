@@ -5,6 +5,7 @@
 ### Paths
 - [Readme](../README.md)
 - Docs
+    - [Placeholders](PLACEHOLDERS.md)
     - [.env setup](ENV.md)
 
 ## Requirements
