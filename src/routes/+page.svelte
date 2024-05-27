@@ -1,8 +1,6 @@
 <script lang="ts">
-	import Commands from "./commands/+page.svelte";
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
-	import type { PageServerData } from "../../.svelte-kit/types/src/routes/$types";
 
 	/** @type {import("./$types").PageServerData} */
 	export let data;

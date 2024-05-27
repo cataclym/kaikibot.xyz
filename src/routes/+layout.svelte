@@ -89,7 +89,7 @@
 <slot />
 <div class="mt-20" />
 <footer class="items-center grid grid-cols-3">
-	<a class="self-center" href={LINKS.kofi}><h3 class="">Buy me a coffee ☕</h3></a>
+	<a class="self-center" href={LINKS.kofi}><h3>Buy me a coffee ☕</h3></a>
 	<h3 class="flex-col">© Cata 2023</h3>
-	<a class="" href={LINKS.patreon}><h3 class="">Patreon️</h3></a>
+	<a href={LINKS.patreon}><h3>Patreon️</h3></a>
 </footer>
