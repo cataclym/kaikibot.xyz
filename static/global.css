@@ -3,134 +3,133 @@
 @tailwind utilities;
 
 :root {
-    --background: #252422;
-    --accent1: #CCC5B9;
-    --accent2: #403D39;
-    --accent3: #FFFCF2;
-    --accent4: #E85E28;
+	--background: #252422;
+	--accent1: #ccc5b9;
+	--accent2: #403d39;
+	--accent3: #fffcf2;
+	--accent4: #e85e28;
 
-    --gitlab: #6b4fbb;
-    --paypal: #003087;
-    --patreon: #ff424d;
+	--gitlab: #6b4fbb;
+	--paypal: #003087;
+	--patreon: #ff424d;
 
-    font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 body {
-    background-color: var(--background);
-    padding: 1px !important;
-    overflow-y: auto; /* vertical scrollbar */
-    overflow-x: hidden; /* horizontal scrollbar */
+	background-color: var(--background);
+	padding: 1px !important;
+	overflow-y: auto; /* vertical scrollbar */
+	overflow-x: hidden; /* horizontal scrollbar */
 }
 
 main {
-    text-align: center;
-    padding: 0.01em;
-    max-width: none;
-    margin: 0 auto;
+	text-align: center;
+	padding: 0.01em;
+	max-width: none;
+	margin: 0 auto;
 }
 
 .text-accent1 {
-    color: var(--accent1)
+	color: var(--accent1);
 }
 
 .text-accent2 {
-    color: var(--accent2)
+	color: var(--accent2);
 }
 
 .text-accent3 {
-    color: var(--accent3)
+	color: var(--accent3);
 }
 
 .text-accent4 {
-    color: var(--accent4)
+	color: var(--accent4);
 }
 
-
 .feature-block {
-    margin-top: 3em;
-    width: 35%;
-    box-sizing: border-box;
-    display: inline-block;
+	margin-top: 3em;
+	width: 35%;
+	box-sizing: border-box;
+	display: inline-block;
 }
 
 .active {
-    display: none;
+	display: none;
 }
 
 mark {
-    color: var(--accent4);
-    background-color: inherit;
+	color: var(--accent4);
+	background-color: inherit;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 a:hover {
-    color: var(--accent4) !important
+	color: var(--accent4) !important;
 }
 
 a:visited {
-    color: inherit;
+	color: inherit;
 }
 
 button.layout {
-    background-color: var(--accent2) !important;
-    border: var(--accent2) 2px solid;
-    color: var(--accent1) !important;
-    text-shadow: var(--background) 2px !important;
-    transition: 0.5s;
+	background-color: var(--accent2) !important;
+	border: var(--accent2) 2px solid;
+	color: var(--accent1) !important;
+	text-shadow: var(--background) 2px !important;
+	transition: 0.5s;
 }
 
 button:hover.layout {
-    cursor: pointer;
-    background-color: var(--background) !important;
-    color: var(--accent1) !important;
-    border: var(--background) 2px solid;
-    transform: scale(101%);
-    transition: 0.1s;
-    box-shadow: 0 4px var(--accent4);
+	cursor: pointer;
+	background-color: var(--background) !important;
+	color: var(--accent1) !important;
+	border: var(--background) 2px solid;
+	transform: scale(101%);
+	transition: 0.1s;
+	box-shadow: 0 4px var(--accent4);
 }
 
 footer {
-    color: var(--accent3);
-    background: var(--accent2);
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    text-align: center;
+	color: var(--accent3);
+	background: var(--accent2);
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	text-align: center;
 }
 
 .full-width {
-    width: 100%;
+	width: 100%;
 }
 
 .custom-width-1_7 {
-    width: 100%;
+	width: 100%;
 }
 
 .link_flex {
-    flex-grow: 1;
-    flex-basis: calc(100% / 7.3);
+	flex-grow: 1;
+	flex-basis: calc(100% / 7.3);
 }
 
 @media (max-width: 1024px) {
-    .link_flex {
-        flex-grow: 1;
-        flex-basis: 100%;
-    }
+	.link_flex {
+		flex-grow: 1;
+		flex-basis: 100%;
+	}
 
-    .smol {
-        flex-direction: column !important;
-    }
+	.smol {
+		flex-direction: column !important;
+	}
 }
 
 @media (max-width: 768px) {
-    .smol-bottom {
-        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-        justify-items: flex-start !important;
-    }
+	.smol-bottom {
+		grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+		justify-items: flex-start !important;
+	}
 }

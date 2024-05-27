@@ -1,13 +1,12 @@
 <script>
-  import SvelteMarkdown from "svelte-markdown";
+	import SvelteMarkdown from "svelte-markdown";
 
-  const source = `
-### Paths
+	const source = `### Paths
 
-- [Readme](../README.md)
-- Docs
-    - [Guide](GUIDE.md)
-    - [Placeholders](PLACEHOLDERS.md)
+-   [Readme](../README.md)
+-   Docs
+    -   [Guide](GUIDE.md)
+    -   [Placeholders](PLACEHOLDERS.md)
 
 # .env setup guide
 
@@ -17,28 +16,17 @@ The .env file is important for the bot to run at all. Read below how to populate
 
 Create a bot application
 
-* Go to your discord bot applications (https://discord.com/developers/applications/)
-* Click \`New Application\` in top right corner
-* Fill in a name, and assign it to personal team.
-* Click \`Bot\` under \`SETTINGS\` on the menu, on the left.
-* Click \`Add Bot\`
-* Click \`Copy\` under \`TOKEN\`
-* Paste the token in the .env file. Make sure it looks like the example below.
+-   Go to your discord bot applications (https://discord.com/developers/applications/)
+-   Click \`New Application\` in top right corner
+-   Fill in a name, and assign it to personal team.
+-   Click \`Bot\` under \`SETTINGS\` on the menu, on the left.
+-   Click \`Add Bot\`
+-   Click \`Copy\` under \`TOKEN\`
+-   Paste the token in the .env file. Make sure it looks like the example below.
 
 Example
 
     CLIENT_TOKEN=MND5MTA2MzY2MzgwNzU5Fjgw.O08nDN.Bl6rIwtlAg9Hxuz8CLPD0l23sun
-
-## OWNER
-
-* Enable developer mode in Discord
-    * Navigate to Discord settings
-    * Under settings, click \`Advanced\`
-    * Tick \`Developer mode\`. Make sure it's green.
-
-Example
-
-    OWNER=142788173885276162
 
 ## PREFIX
 
@@ -46,57 +34,65 @@ Decide what prefix the bot should default to on new servers.
 
 Example
 
-    PREFIX=;
+    PREFIX=+
 
-## KAWAIIKEY
-
-* Login to https://kawaii.red/dashboard/ with your Discord account
-* Reveal and copy the token
-* Paste the token in the .env file. Make sure it looks like the example below.
-
-Example
-
-    KAWAIIKEY=142788173885276162.DspDpD0isjuXAKD73vWs
+Prefix is \`+\`
 
 ## MySQL
 
 Replace \`yourUsername\` and \`yourPassword\` with your MySQL user and password credentials
-- Note: In some cases you need to change \`localhost\` with \`127.0.0.1\`
+
+-   Note: In some cases you need to change \`localhost\` with \`127.0.0.1\`
 
 Example
 
     DATABASE_URL="mysql://yourUsername:yourPassword@localhost:3306/kaikidb"
+    DB_HOST=localhost
+    DB_USER=yourUsername
+    DB_PASSWORD=yourPassword
+    DB_ROOT_PASSWORD=yourRootPassword
+    DB_NAME=kaikidb
+
+## KAWAIIKEY (Optional)
+
+-   Login to https://kawaii.red/dashboard/ with your Discord account
+-   Reveal and copy the token
+-   Paste the token in the .env file. Make sure it looks like the example below.
+
+Example
+
+    KAWAIIKEY=142788173885276162.DspDpD0isjuXAKD73vWs
 
 ## The rest of the file
 
 Please leave this as is, unless you know what you're doing
 
-    DADBOT_MAX_LENGTH=256
-
-    DADBOT_NICKNAME_LENGTH=32
-
-    NODE_ENV=production
-
 ## Example of finished .env file
 
+    # Bot
     CLIENT_TOKEN=MND5MTA2MzY2MzgwNzU5Fjgw.O08nDN.Bl6rIwtlAg9Hxuz8CLPD0l23sun
-
-    OWNER=142788173885276162
-
-    PREFIX=;
-
-    DATABASE_URL="mysql://yourUsername:yourPassword@localhost:3306/kaikidb"
-
+    PREFIX=+
     KAWAIIKEY=142788173885276162.DspDpD0isjuXAKD73vWs
 
-    DADBOT_MAX_LENGTH=256
+    # Database
+    DATABASE_URL="mysql://yourUsername:yourPassword@localhost:3306/kaikidb"
+    DB_HOST=localhost
+    DB_USER=yourUsername
+    DB_PASSWORD=yourPassword
+    DB_ROOT_PASSWORD=yourRootPassword
+    DB_NAME=kaikidb
 
-    DADBOT_NICKNAME_LENGTH=32
-
+    # Docker
+    NODE_DOCKER_PORT=8080
     NODE_ENV=production
-    `;
+
+    # Bot settings
+    DADBOT_MAX_LENGTH=256
+    DADBOT_NICKNAME_LENGTH=32
+    DADBOT_DEFAULT_ROLENAME=Dadbot-excluded
+`;
 </script>
 
 <div class="text-accent1 m-auto w-11/12">
-  <SvelteMarkdown {source} />
+	<SvelteMarkdown {source} />
 </div>

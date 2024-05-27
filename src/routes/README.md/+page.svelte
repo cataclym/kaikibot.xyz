@@ -1,40 +1,54 @@
-<script>
-  import SvelteMarkdown from "svelte-markdown";
+<script lang="ts">
+	import SvelteMarkdown from "svelte-markdown";
 
-  const source = `
-  ### Paths
+	const source = `# Welcome to KaikiBot
 
-- Docs
-    - [Guide](docs/GUIDE.md)
-    - [Placeholders](docs/PLACEHOLDERS.md) for greet and bye messages
-    - [.env setup](docs/ENV.md)
+[![](https://tokei.rs/b1/github/cataclym/KaikiBot?category=code&style=for-the-badge&color=ea580c)](https://github.com/cataclym/KaikiBot)
+[![](https://tokei.rs/b1/github/cataclym/KaikiBot?category=files&style=for-the-badge&color=ea580c)](https://github.com/cataclym/KaikiBot)
+[![](https://tokei.rs/b1/github/cataclym/KaikiBot?showLanguage=true&languageRank=1&label=Most%20Used%20Language&style=for-the-badge&color=3178c6)](https://github.com/XAMPPRocky/tokei)
+[![](https://tokei.rs/b1/github/cataclym/KaikiBot?showLanguage=true&languageRank=2&label=2nd%20Most%20Used%20Language&style=for-the-badge&color=ea580c)](https://github.com/XAMPPRocky/tokei)
+[![](https://tokei.rs/b1/github/cataclym/KaikiBot?showLanguage=true&languageRank=3&label=3rd%20Most%20Used%20Language&style=for-the-badge&color=ea580c)](https://github.com/XAMPPRocky/tokei)
 
-# Welcome to Kaiki Deishu Bot
+### Kaiki is a unique Discord bot, written in Typescript.
 
-KaikiBot is a personal project for me and my server. Feel free to selfhost, fork, support this project!
+| [Website](https://kaikibot.xyz) | [Add Kaiki to your server](https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot) |
+|:--------------------------------|:-------------------------------------------------------------------------------------------------------:|
 
-[Add Kaiki to your server](https://discord.com/oauth2/authorize?client_id=714695773534814238&scope=bot)
+#### Economy
+Gambling commands, daily currency claims, currency transactions
 
-# Guide
+### Interactions
+Anime reaction gifs for most situations, always +pat your homies
 
-[Selfhosting guide](docs/GUIDE.md)
+### Unique
 
-# Contributing
+-   See how many times each emote has been used in the server
+-   Ping your minecraft server to check it's status
+-   Manage your personal todo list
+-   See +info of a channel, member, role, emoji or message
 
-Consider contributing. I appreciate all the help I can get!
+... and much more.
 
-1. Fork the bot!
-1. Create your feature branch: \`git checkout -b cool-new-branch\`
-1. Commit your changes: \`git commit -am "Added x feature!"\`
-1. Push to the branch: \`git push origin My-new-feature\`
-1. Submit a pull request!
+## Documentation
+
+-   [Selfhosting guide](docs/GUIDE.md)
+-   [Placeholders](docs/PLACEHOLDERS.md) for greet and bye messages
+-   [.env setup](docs/ENV.md)
+
+## Contributing
+
+Consider contributing! I appreciate all the help I can get.
+
+### Upcoming plans
+* Rework todo (TodoRework branch)
+* Serve/Update commandlist to website automatically
 
 ---
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C3IJV8A)
-  `
+`;
 </script>
 
 <div class="text-accent1 m-auto w-11/12">
-  <SvelteMarkdown {source}/>
+	<SvelteMarkdown {source} />
 </div>

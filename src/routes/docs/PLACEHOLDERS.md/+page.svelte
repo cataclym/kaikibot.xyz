@@ -1,7 +1,7 @@
 <script>
-  import SvelteMarkdown from "svelte-markdown";
+	import SvelteMarkdown from "svelte-markdown";
 
-  const source = `
+	const source = `
 ### Paths
 
 -  [Readme](../README.md)
@@ -24,5 +24,5 @@
 </script>
 
 <div class="text-accent1 m-auto w-11/12">
-  <SvelteMarkdown {source} />
+	<SvelteMarkdown {source} />
 </div>
