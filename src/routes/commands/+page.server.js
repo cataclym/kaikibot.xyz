@@ -1,14 +1,17 @@
 import "dotenv/config";
-import { LINKS } from "../../CONSTANTS";
+import fs from "fs";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ fetch }) {
-	const url = LINKS.JSON;
+export async function load() {
 
-	if (!url) throw new Error("Missing commandlist URL!");
-
-	const res = await fetch(url);
-	const commands = (await res.json()).sort();
+	// Reads commands.json if it exists, otherwise return empty object
+	const commands = await new Promise((resolve) => {
+		fs.readFile("./static/commands/commands.json", "utf8", (err, data) => {
+			return err
+				? resolve({})
+				: resolve(JSON.parse(data).sort());
+		})
+	});
 
 	return {
 		commands
