@@ -4,7 +4,7 @@
 	import type { Cmd, Cmds } from "../../ICmds";
 
 	let active: {
-		[id: string]: any;
+		[id: string]: boolean;
 	} = {};
 
 	export let data: {
@@ -21,7 +21,7 @@
 		c: Event & {
 			currentTarget: EventTarget & HTMLInputElement;
 		},
-		category: {}
+		category: Record<string, boolean>
 	) {
 		cats = search(commands, c, category);
 	}
