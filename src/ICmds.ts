@@ -41,7 +41,7 @@ export interface Cmd {
 	aliases: string[];
 	ownerOnly: boolean;
 	usage: any;
-	userPermissions: string;
+	userPermissions: string[];
 	description: string;
 	channel?: string;
 }

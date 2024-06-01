@@ -3,6 +3,77 @@
     "Utility",
     [
       {
+        "id": "colorlist",
+        "aliases": [
+          "colors",
+          "clrs"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shows a list of all supported color names for the bot"
+      },
+      {
+        "id": "todo",
+        "aliases": [
+          "note"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "2"
+        ],
+        "userPermissions": [],
+        "description": "A personal todo list. The items are limited to 204 characters. Intended for small notes."
+      },
+      {
+        "id": "serverlist",
+        "aliases": [
+          "listservers",
+          "servers"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "7"
+        ],
+        "userPermissions": [],
+        "description": "Lists all servers the bot is in. 15 servers per page."
+      },
+      {
+        "id": "help",
+        "aliases": [
+          "h"
+        ],
+        "ownerOnly": false,
+        "usage": "ping",
+        "userPermissions": [],
+        "description": "Shows command info"
+      },
+      {
+        "id": "stats",
+        "aliases": [
+          "stats"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Statistics and information"
+      },
+      {
+        "id": "color",
+        "aliases": [
+          "clr"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "#ff00ff #dc143c",
+          "--list"
+        ],
+        "userPermissions": [],
+        "description": "Returns up to 10 representations the inputted color, or shows list of available color names to use."
+      },
+      {
         "id": "say",
         "aliases": [],
         "channel": "GuildOnly",
@@ -11,7 +82,9 @@
           "#general hello from another channel",
           "<embed code>"
         ],
-        "userPermissions": "ManageMessages",
+        "userPermissions": [
+          "ManageMessages"
+        ],
         "description": "Bot will send the message you typed in the specified channel. It also takes embeds"
       },
       {
@@ -26,161 +99,8 @@
           ":coolCustomEmoji:",
           "messageID"
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Returns info on a channel, role, member, emoji, or message"
-      },
-      {
-        "id": "ping",
-        "aliases": [
-          "p"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Ping the bot and websocket to see if there are latency issues."
-      },
-      {
-        "id": "todo",
-        "aliases": [
-          "note"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "2"
-        ],
-        "userPermissions": "",
-        "description": "A personal todo list. The items are limited to 204 characters. Intended for small notes."
-      },
-      {
-        "id": "help",
-        "aliases": [
-          "h"
-        ],
-        "ownerOnly": false,
-        "usage": "ping",
-        "userPermissions": "",
-        "description": "Shows command info"
-      },
-      {
-        "id": "color",
-        "aliases": [
-          "clr"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "#ff00ff #dc143c",
-          "--list"
-        ],
-        "userPermissions": "",
-        "description": "Returns up to 10 representations the inputted color, or shows list of available color names to use."
-      },
-      {
-        "id": "stats",
-        "aliases": [
-          "stats"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Statistics and information"
-      },
-      {
-        "id": "fetch",
-        "aliases": [
-          "fu"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "<id>"
-        ],
-        "userPermissions": "",
-        "description": "Fetches a discord user, shows relevant information. 30sec cooldown."
-      },
-      {
-        "id": "avatar",
-        "aliases": [
-          "av"
-        ],
-        "ownerOnly": false,
-        "usage": "@dreb",
-        "userPermissions": "",
-        "description": "Shows a mentioned person's avatar."
-      },
-      {
-        "id": "invite",
-        "aliases": [
-          "inv"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Get a link to invite the bot to your server."
-      },
-      {
-        "id": "mcping",
-        "aliases": [
-          "mcp"
-        ],
-        "ownerOnly": false,
-        "usage": "2b2t.org",
-        "userPermissions": "",
-        "description": "Ping a minecraft server address to see if it is online"
-      },
-      {
-        "id": "exclude",
-        "aliases": [
-          "excl",
-          "e"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Excludes you from being targeted by dad-bot. Execute command again to reverse this action."
-      },
-      {
-        "id": "commands",
-        "aliases": [
-          "cmds",
-          "cmdlist"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "admin"
-        ],
-        "userPermissions": "",
-        "description": "Shows categories, or commands if provided with a category."
-      },
-      {
-        "id": "forgetme",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Deletes all information about you in the database"
-      },
-      {
-        "id": "cmdstats",
-        "aliases": [
-          "commandstats"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Displays command statistics. Stats are updated at interval."
-      },
-      {
-        "id": "colorlist",
-        "aliases": [
-          "colors",
-          "clrs"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shows a list of all supported color names for the bot"
       },
       {
         "id": "urbandict",
@@ -193,8 +113,75 @@
           "Watermelon",
           "anime"
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Searches Urban Dictionary for a word or sentence"
+      },
+      {
+        "id": "commands",
+        "aliases": [
+          "cmds",
+          "cmdlist"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "admin"
+        ],
+        "userPermissions": [],
+        "description": "Shows categories, or commands if provided with a category."
+      },
+      {
+        "id": "ping",
+        "aliases": [
+          "p"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Ping the bot and websocket to see if there are latency issues."
+      },
+      {
+        "id": "cmdstats",
+        "aliases": [
+          "commandstats"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Displays command statistics. Stats are updated at interval."
+      },
+      {
+        "id": "avatar",
+        "aliases": [
+          "av"
+        ],
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": [],
+        "description": "Shows a mentioned person's avatar."
+      },
+      {
+        "id": "shardstats",
+        "aliases": [
+          "shards"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Displays the states of all shards"
+      },
+      {
+        "id": "exclude",
+        "aliases": [
+          "excl",
+          "e"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Excludes you from being targeted by dad-bot. Execute command again to reverse this action."
       },
       {
         "id": "serverinfo",
@@ -207,33 +194,48 @@
           "1233109312930920391023",
           "CoolServerName"
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Shows information about the current server."
       },
       {
-        "id": "serverlist",
+        "id": "invite",
         "aliases": [
-          "listservers",
-          "servers"
+          "inv"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Get a link to invite the bot to your server."
+      },
+      {
+        "id": "mcping",
+        "aliases": [
+          "mcp"
+        ],
+        "ownerOnly": false,
+        "usage": "2b2t.org",
+        "userPermissions": [],
+        "description": "Ping a minecraft server address to see if it is online"
+      },
+      {
+        "id": "fetch",
+        "aliases": [
+          "fu"
         ],
         "ownerOnly": false,
         "usage": [
-          "",
-          "7"
+          "<id>"
         ],
-        "userPermissions": "",
-        "description": "Lists all servers the bot is in. 15 servers per page."
+        "userPermissions": [],
+        "description": "Fetches a discord user, shows relevant information. 30sec cooldown."
       },
       {
-        "id": "shardstats",
-        "aliases": [
-          "shards"
-        ],
-        "channel": "GuildOnly",
+        "id": "forgetme",
+        "aliases": [],
         "ownerOnly": false,
         "usage": "",
-        "userPermissions": "",
-        "description": "Displays the states of all shards"
+        "userPermissions": [],
+        "description": "Deletes all information about you in the database"
       }
     ]
   ],
@@ -241,27 +243,32 @@
     "Administration",
     [
       {
-        "id": "ban",
+        "id": "deletechannel",
         "aliases": [
-          "bean",
-          "b"
+          "dtchnl",
+          "delchan"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "#channel1 #channel2 #channel3",
+        "userPermissions": [
+          "ManageChannels"
+        ],
+        "description": "Deletes one or more channels. Also deletes categories, threads and voice channels."
+      },
+      {
+        "id": "softban",
+        "aliases": [
+          "sb"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": "@notdreb Your behaviour is harmful",
-        "userPermissions": "BanMembers",
-        "description": "Bans a user by ID or name with an optional message."
-      },
-      {
-        "id": "unban",
-        "aliases": [
-          "ub"
+        "userPermissions": [
+          "KickMembers",
+          "ManageMessages"
         ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "103020509395056",
-        "userPermissions": "BanMembers",
-        "description": ""
+        "description": "Bans and unbans a user by ID or name, with an optional message. Also removes all the users messages."
       },
       {
         "id": "nsfwtgl",
@@ -272,765 +279,37 @@
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": "",
-        "userPermissions": "ManageChannels",
+        "userPermissions": [
+          "ManageChannels"
+        ],
         "description": "Toggles NSFW in current channel"
       },
       {
-        "id": "softban",
+        "id": "ban",
         "aliases": [
-          "sb"
+          "bean",
+          "b"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": "@notdreb Your behaviour is harmful",
-        "userPermissions": "KickMembers,ManageMessages",
-        "description": "Bans and unbans a user by ID or name, with an optional message. Also removes all the users messages."
+        "userPermissions": [
+          "BanMembers"
+        ],
+        "description": "Bans a user by ID or name with an optional message."
       },
       {
-        "id": "deletechannel",
+        "id": "unban",
         "aliases": [
-          "dtchnl",
-          "delchan"
+          "ub"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
-        "usage": "#channel1 #channel2 #channel3",
-        "userPermissions": "ManageChannels",
-        "description": "Deletes one or more channels. Also deletes categories, threads and voice channels."
-      }
-    ]
-  ],
-  [
-    "Owner only",
-    [
-      {
-        "id": "die",
-        "aliases": [
-          "shutdown",
-          "kill"
-        ],
-        "ownerOnly": true,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shuts down bot."
-      },
-      {
-        "id": "exec",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": "ls",
-        "userPermissions": "",
-        "description": "Use with caution"
-      },
-      {
-        "id": "eval",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": "2+2",
-        "userPermissions": "",
-        "description": ""
-      },
-      {
-        "id": "reload",
-        "aliases": [
-          "re"
-        ],
-        "ownerOnly": true,
-        "usage": "todo",
-        "userPermissions": "",
-        "description": "Reloads a command.."
-      },
-      {
-        "id": "setname",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": [
-          "Medusa"
-        ],
-        "userPermissions": "",
-        "description": "Assigns the bot a new name/username."
-      },
-      {
-        "id": "sqlexec",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": [
-          "UPDATE DiscordUsers SET amount=amount+69420"
-        ],
-        "userPermissions": "",
-        "description": "Executes sql queries and returns the number of affected rows. Dangerous."
-      },
-      {
-        "id": "setdaily",
-        "aliases": [
-          "dailyset"
-        ],
-        "ownerOnly": true,
-        "usage": "120",
-        "userPermissions": "",
-        "description": "Sets the daily currency allowance amount. Set to 0 to disable."
-      },
-      {
-        "id": "botconfig",
-        "aliases": [
-          "bc"
-        ],
-        "ownerOnly": true,
-        "userPermissions": "",
-        "description": "Change various bot configurations. Run without arguments to see current settings."
-      },
-      {
-        "id": "setbanner",
-        "aliases": [
-          "setbanner"
-        ],
-        "ownerOnly": true,
-        "usage": [
-          "https://discord.com/media/1231231231231312321/1231231312323132.png"
-        ],
-        "userPermissions": "",
-        "description": "Assigns the bot a new banner."
-      },
-      {
-        "id": "sqlselect",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": [
-          "SELECT * FROM DiscordUsers LIMIT 5"
-        ],
-        "userPermissions": "",
-        "description": "Executes sql queries and returns the number of affected rows. Dangerous."
-      },
-      {
-        "id": "setavatar",
-        "aliases": [
-          "setav"
-        ],
-        "ownerOnly": true,
-        "usage": [
-          "https://discord.com/media/1231231231231312321/1231231312323132.png"
-        ],
-        "userPermissions": "",
-        "description": "Assigns the bot a new avatar."
-      },
-      {
-        "id": "deregister",
-        "aliases": [
-          "dereg"
-        ],
-        "ownerOnly": true,
-        "usage": "todo",
-        "userPermissions": "",
-        "description": "Deregister a command, until bot restarts."
-      },
-      {
-        "id": "dailyreset",
-        "aliases": [
-          "resetdaily"
-        ],
-        "ownerOnly": true,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Resets daily claims that have been made"
-      },
-      {
-        "id": "gencmdlist",
-        "aliases": [
-          "gencmdlst"
-        ],
-        "ownerOnly": true,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Uploads a JSON file containing all commands."
-      },
-      {
-        "id": "setactivity",
-        "aliases": [
-          "setac"
-        ],
-        "ownerOnly": true,
-        "usage": [
-          "<type> <Activity>",
-          "Playing with Dreb"
-        ],
-        "userPermissions": "",
-        "description": "Set the bot's activity.\n"
-      }
-    ]
-  ],
-  [
-    "NSFW",
-    [
-      {
-        "id": "ero",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Returns a nsfw ero picture"
-      },
-      {
-        "id": "e621",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "dragon flying"
-        ],
-        "userPermissions": "",
-        "description": "e621 :hahaa:"
-      },
-      {
-        "id": "hentai",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "waifu",
-          "neko",
-          "femboy",
-          "blowjob"
-        ],
-        "userPermissions": "",
-        "description": "Fetches hentai images from Booru boards"
-      },
-      {
-        "id": "danbooru",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "thighs wet_skin"
-        ],
-        "userPermissions": "",
-        "description": "Search for random images on Danbooru image board"
-      },
-      {
-        "id": "hentaibomb",
-        "aliases": [
-          "hb"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "blowjob",
-          "femboy",
-          "waifu",
-          "neko"
-        ],
-        "userPermissions": "",
-        "description": "Posts 5 NSFW images, using the waifu.pics API"
-      },
-      {
-        "id": "hentainuke",
-        "aliases": [
-          "hn"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "waifu",
-          "neko",
-          "femboy",
-          "blowjob"
-        ],
-        "userPermissions": "",
-        "description": "Posts 30 NSFW images, using the waifu.pics API"
-      }
-    ]
-  ],
-  [
-    "Interactions",
-    [
-      {
-        "id": "nom",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Nom someone, cus you're hungry"
-      },
-      {
-        "id": "pat",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Pat a cat! Or a guildmember..."
-      },
-      {
-        "id": "run",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Gotta go fast~"
-      },
-      {
-        "id": "hug",
-        "aliases": [],
-        "ownerOnly": false,
-        "userPermissions": "",
-        "description": ""
-      },
-      {
-        "id": "bonk",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "When you need to bonk some horny teens"
-      },
-      {
-        "id": "kiss",
-        "aliases": [
-          "smooch"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "OwO 2lood4me"
-      },
-      {
-        "id": "feed",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "When you need to feed someone...?"
-      },
-      {
-        "id": "lick",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Lick someone... I guess...?"
-      },
-      {
-        "id": "yeet",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet"
-      },
-      {
-        "id": "pout",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "I am not angry, b-baka"
-      },
-      {
-        "id": "slap",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Slap someone who's being stupid"
-      },
-      {
-        "id": "peek",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Peek around the corner"
-      },
-      {
-        "id": "bite",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Bite someone >:)"
-      },
-      {
-        "id": "spank",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "OwO Being naughty are we?"
-      },
-      {
-        "id": "bully",
-        "aliases": [
-          "bulli"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Be a bully to someone"
-      },
-      {
-        "id": "blush",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "O//////O"
-      },
-      {
-        "id": "cuddle",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Cuddle someone!"
-      }
-    ]
-  ],
-  [
-    "Moderation",
-    [
-      {
-        "id": "kick",
-        "aliases": [
-          "k"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "<@some Guy> Your behaviour is harmful."
-        ],
-        "userPermissions": "KickMembers",
-        "description": "Kicks a user by ID or name with an optional message."
-      },
-      {
-        "id": "clear",
-        "aliases": [
-          "prune"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "69"
-        ],
-        "userPermissions": "ManageMessages",
-        "description": "Clears up to 100 messages in the current channel. Minimum 2."
-      },
-      {
-        "id": "savechat",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "100"
-        ],
-        "userPermissions": "ManageMessages",
-        "description": "Saves a number of messages, and sends it to you."
-      }
-    ]
-  ],
-  [
-    "Gambling",
-    [
-      {
-        "id": "give",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          "50 @Cata"
-        ],
-        "userPermissions": "",
-        "description": "Gives money to another user"
-      },
-      {
-        "id": "take",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": [
-          "50 @Cata"
-        ],
-        "userPermissions": "",
-        "description": "Takes money from the specified user"
-      },
-      {
-        "id": "cash",
-        "aliases": [
-          "currency",
-          "cur",
-          "$",
-          "£",
-          "¥",
-          "€"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shows specified user's current balance. If no user is specified, shows your balance"
-      },
-      {
-        "id": "vote",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Vote for me on DiscordBotList, receive a currency reward!"
-      },
-      {
-        "id": "daily",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Claim your daily currency allowance"
-      },
-      {
-        "id": "slots",
-        "aliases": [
-          "slots",
-          "slot"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "69"
-        ],
-        "userPermissions": "",
-        "description": "Bet a certain amount in the slot machine."
-      },
-      {
-        "id": "award",
-        "aliases": [],
-        "ownerOnly": true,
-        "usage": [
-          "50 @Cata"
-        ],
-        "userPermissions": "",
-        "description": "For bot owner to award currency"
-      },
-      {
-        "id": "economy",
-        "aliases": [
-          "eco"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Displays overall currency statistics."
-      },
-      {
-        "id": "betflip",
-        "aliases": [
-          "bf"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "5 heads",
-          "10 t"
-        ],
-        "userPermissions": "",
-        "description": "Bet on tails or heads. Guessing correct awards you 1.95x the currency you've bet."
-      },
-      {
-        "id": "betroll",
-        "aliases": [
-          "br"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "69"
-        ],
-        "userPermissions": "",
-        "description": "Bet an amount of currency and roll the dice. Rolling above 66 yields x2 the amount bet. Above 90 - x4 and 100 gives x10!"
-      },
-      {
-        "id": "leaderboard",
-        "aliases": [
-          "lb"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shows currency leaderboard for the current server."
-      },
-      {
-        "id": "globalleaderboard",
-        "aliases": [
-          "glb"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shows global currency leaderboard for the current server."
-      },
-      {
-        "id": "currencytransactions",
-        "aliases": [
-          "curtrs"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "7",
-          "10 @drev"
-        ],
-        "userPermissions": "",
-        "description": "Shows your currency transactions. Bot owner can see other people's transactions."
-      }
-    ]
-  ],
-  [
-    "Fun",
-    [
-      {
-        "id": "meow",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Meow."
-      },
-      {
-        "id": "woof",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Woof."
-      },
-      {
-        "id": "simp",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "@dreb",
-        "userPermissions": "",
-        "description": "Expose your friend as a disgusting simp!"
-      },
-      {
-        "id": "names",
-        "aliases": [
-          "name"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@dreb",
-          "delete"
-        ],
-        "userPermissions": "",
-        "description": "Returns yours or mentioned user's daddy nicknames. Delete your nicknames with 'delete' argument."
-      },
-      {
-        "id": "squish",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Squishes given member's avatar"
-      },
-      {
-        "id": "stretch",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Stretches given member's avatar"
-      },
-      {
-        "id": "deadbeat",
-        "aliases": [
-          "dead"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Just try it"
-      },
-      {
-        "id": "neofetch",
-        "aliases": [
-          "neo",
-          "fastfetch"
-        ],
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "opensuse",
-          "--list"
-        ],
-        "userPermissions": "",
-        "description": "Displays neofetch/fastfetch ascii art. Provide argument '--list' to get a list of all supported distros."
-      },
-      {
-        "id": "compress",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@dreb"
-        ],
-        "userPermissions": "",
-        "description": "Compresses given member's avatar..."
-      },
-      {
-        "id": "tictactoe",
-        "aliases": [
-          "ttt"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Dreb"
-        ],
-        "userPermissions": "",
-        "description": "Starts a TicTacToe game, where you play against an @mentioned person."
+        "usage": "103020509395056",
+        "userPermissions": [
+          "BanMembers"
+        ],
+        "description": "Unbans a given user by ID"
       }
     ]
   ],
@@ -1038,14 +317,24 @@
     "Images",
     [
       {
-        "id": "girl",
+        "id": "marin",
         "aliases": [],
         "ownerOnly": false,
         "usage": [
           ""
         ],
-        "userPermissions": "",
-        "description": "Spawn art of a girl"
+        "userPermissions": [],
+        "description": "Returns an image of Marin Kitagawa"
+      },
+      {
+        "id": "shinobu",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "Spawn a shinobu picture"
       },
       {
         "id": "neko",
@@ -1054,48 +343,18 @@
         "usage": [
           ""
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Spawn a neko picture"
       },
       {
-        "id": "maid",
+        "id": "girl",
         "aliases": [],
         "ownerOnly": false,
         "usage": [
           ""
         ],
-        "userPermissions": "",
-        "description": "Returns anime maids."
-      },
-      {
-        "id": "waifu",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Spawn a waifu picture"
-      },
-      {
-        "id": "marin",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Returns an image of Marin Kitagawa"
-      },
-      {
-        "id": "uniform",
-        "aliases": [],
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "Returns anime girls in uniforms."
+        "userPermissions": [],
+        "description": "Spawn art of a girl"
       },
       {
         "id": "catgirl",
@@ -1104,18 +363,18 @@
         "usage": [
           ""
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Spawn a catgirl picture"
       },
       {
-        "id": "megumin",
+        "id": "maid",
         "aliases": [],
         "ownerOnly": false,
         "usage": [
           ""
         ],
-        "userPermissions": "",
-        "description": "Spawn a shinobu picture"
+        "userPermissions": [],
+        "description": "Returns anime maids."
       },
       {
         "id": "selfies",
@@ -1126,469 +385,86 @@
         "usage": [
           ""
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Returns anime girl selfies"
       },
       {
-        "id": "shinobu",
+        "id": "waifu",
         "aliases": [],
         "ownerOnly": false,
         "usage": [
           ""
         ],
-        "userPermissions": "",
+        "userPermissions": [],
+        "description": "Spawn a waifu picture"
+      },
+      {
+        "id": "uniform",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "Returns anime girls in uniforms."
+      },
+      {
+        "id": "megumin",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
         "description": "Spawn a shinobu picture"
       }
     ]
   ],
   [
-    "Anime",
+    "Moderation",
     [
       {
-        "id": "anime",
+        "id": "clear",
         "aliases": [
-          ""
-        ],
-        "ownerOnly": false,
-        "usage": "Tsukimonogatari",
-        "userPermissions": "",
-        "description": "Shows the first result of a query to Anilist"
-      },
-      {
-        "id": "manga",
-        "aliases": [
-          ""
-        ],
-        "ownerOnly": false,
-        "usage": "Tsukimonogatari",
-        "userPermissions": "",
-        "description": "Shows the first result of a query to Anilist"
-      },
-      {
-        "id": "animequote",
-        "aliases": [
-          "aq"
-        ],
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Shows a random anime quote..."
-      }
-    ]
-  ],
-  [
-    "Server settings",
-    [
-      {
-        "id": "config",
-        "aliases": [
-          "configure",
-          "conf"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "userPermissions": "ManageMessages",
-        "description": "Configure or display guild specific settings.\nYou can use any of the following\n`'1', 'true', '+', 't', 'yes', 'y'` to enable configs or \n`'0', 'false', '-', 'f', 'no', 'n'` to disable them."
-      },
-      {
-        "id": "goodbye",
-        "aliases": [
-          "goodbyetoggle",
-          "byetoggle",
-          "bye"
+          "prune"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": [
-          "",
-          "#leave-channel"
+          "69"
         ],
-        "userPermissions": "ManageGuild",
-        "description": "Toggles leave messages. Bot defaults to current channel if no channel is provided."
+        "userPermissions": [
+          "ManageMessages"
+        ],
+        "description": "Clears up to 100 messages in the current channel. Minimum 2."
       },
       {
-        "id": "listreacts",
-        "aliases": [
-          "ler"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          ""
-        ],
-        "userPermissions": "",
-        "description": "List emotereact triggers."
-      },
-      {
-        "id": "welcometest",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "ManageGuild",
-        "description": "Tests welcome message as it would appear for new members."
-      },
-      {
-        "id": "removereact",
-        "aliases": [
-          "rer"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "anime"
-        ],
-        "userPermissions": "ManageEmojisAndStickers,ManageGuildExpressions",
-        "description": "Remove emotereact triggers."
-      },
-      {
-        "id": "stickyroles",
-        "aliases": [
-          "sticky"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "Administrator",
-        "description": "Toggles whether bot will give all roles back when someone re-joins the server"
-      },
-      {
-        "id": "goodbyetest",
-        "aliases": [
-          "byetest"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "ManageGuild",
-        "description": "Tests goodbye message as it would appear when triggered."
-      },
-      {
-        "id": "welcometoggle",
-        "aliases": [
-          "welcome"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "#welcome-channel"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Toggles welcome messages. Bot defaults to current channel if no channel is provided."
-      },
-      {
-        "id": "addemotereact",
-        "aliases": [
-          "emotereact",
-          "aer"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "red :red:",
-          "anime :weeaboosgetout:"
-        ],
-        "userPermissions": "ManageEmojisAndStickers,ManageGuildExpressions",
-        "description": "Add triggers for the bot to react with emojis/emotes to. Use quotes for triggers with spaces."
-      },
-      {
-        "id": "goodbyedelete",
-        "aliases": [
-          "goodbyedel",
-          "byedel"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "10"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Set the time, in seconds, it takes for goodbye messages to be deleted by the bot. Set to 0 to disable."
-      },
-      {
-        "id": "welcomedelete",
-        "aliases": [
-          "welcomedel"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "10"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Set the time it takes for welcome messages to be deleted by the bot"
-      },
-      {
-        "id": "excludechannel",
-        "aliases": [
-          "excludechnl",
-          "echnl"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "#channel"
-        ],
-        "userPermissions": "ManageChannels",
-        "description": "Exclude or include, one or more, channels from dadbot. Provide no parameter to show a list of excluded channels. "
-      },
-      {
-        "id": "togglecategory",
-        "aliases": [
-          "tc"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "Anime",
-          ""
-        ],
-        "userPermissions": "Administrator",
-        "description": "Toggles a category. Provide no parameter to see a list of disabled categories."
-      },
-      {
-        "id": "welcomemessage",
-        "aliases": [
-          "welcomemsg"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "Hii welcome, %member.name%!",
-          "{ embed data }"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Set message to display when someone joins the guild. Provide either text, or valid JSON from the [embed creator](https://embed.kaikibot.xyz)"
-      },
-      {
-        "id": "goodbyemessage",
-        "aliases": [
-          "goodbyemsg",
-          "byemessage",
-          "byemsg"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "Bye, %member.name%!",
-          "{ embed data }"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Set message to display when someone leaves the guild. Provide either text, or valid JSON from the [embed creator](https://embed.kaikibot.xyz)"
-      },
-      {
-        "id": "excludestickyroles",
-        "aliases": [
-          "estickyroles",
-          "estickyrole",
-          "esrole"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "",
-          "@excludedRole @anotherRole"
-        ],
-        "userPermissions": "ManageGuild",
-        "description": "Exclude or include one or multiple roles from stickyroles. Provide no parameter to show a list of excluded roles.\n    If someone who had one or more excluded roles, re-joins this server, they wont get any excluded roles."
-      }
-    ]
-  ],
-  [
-    "Roles",
-    [
-      {
-        "id": "myrole",
-        "aliases": [
-          "mr"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "userPermissions": "",
-        "description": "Checks your assigned user role. Can set role color, name and icon."
-      },
-      {
-        "id": "inrole",
-        "aliases": [],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "@Gamers",
-        "userPermissions": "",
-        "description": "Lists all users in role"
-      },
-      {
-        "id": "restore",
+        "id": "savechat",
         "aliases": [],
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": [
-          "@dreb"
+          "100"
         ],
-        "userPermissions": "Administrator",
-        "description": "Restores roles for a user who has previously left the server."
+        "userPermissions": [
+          "ManageMessages"
+        ],
+        "description": "Saves a number of messages, and sends it to you."
       },
       {
-        "id": "setrole",
+        "id": "kick",
         "aliases": [
-          "sr"
+          "k"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": [
-          "@Dreb Gamer"
+          "<@some Guy> Your behaviour is harmful."
         ],
-        "userPermissions": "ManageRoles",
-        "description": "Gives a role to a user. The role you specify has to be lower in the role hierarchy than your highest role."
-      },
-      {
-        "id": "roleinfo",
-        "aliases": [
-          "role",
-          "rinfo"
+        "userPermissions": [
+          "KickMembers"
         ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Gamers"
-        ],
-        "userPermissions": "",
-        "description": "Shows info about a given role. If no role is supplied, it defaults to current one."
-      },
-      {
-        "id": "rolelist",
-        "aliases": [
-          "roles"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "Lists all roles"
-      },
-      {
-        "id": "rolecolor",
-        "aliases": [
-          "roleclr",
-          "rclr"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Gamer ff00ff"
-        ],
-        "userPermissions": "",
-        "description": "Sets or displays the color of a given role, or your highest role."
-      },
-      {
-        "id": "rolehoist",
-        "aliases": [
-          "hoistrole",
-          "hoist"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@gamers"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Hoists or unhoists a role"
-      },
-      {
-        "id": "rolecreate",
-        "aliases": [
-          "createrole",
-          "rc",
-          "cr"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "GAMERS"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Creates a role with a given name."
-      },
-      {
-        "id": "roleremove",
-        "aliases": [
-          "removerole",
-          "rr"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Dreb Gamer"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Takes away a user's role. The role you specify has to be lower in the role hierarchy than your highest role."
-      },
-      {
-        "id": "roledelete",
-        "aliases": [
-          "deleterole",
-          "dr"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@gamers @streamers @weebs"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Deletes one or more roles"
-      },
-      {
-        "id": "rolerename",
-        "aliases": [
-          "rolename",
-          "rn"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Gamer weeb"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Renames a given role. The role you specify has to be lower in the role hierarchy than your highest role. Use 'quotes around rolename with spaces'."
-      },
-      {
-        "id": "setuserrole",
-        "aliases": [
-          "sur"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@Platinum [role]"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Assigns a role to a user. Provide the command again to remove the role."
-      },
-      {
-        "id": "listuserroles",
-        "aliases": [
-          "lur"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": "",
-        "userPermissions": "",
-        "description": "List all custom user roles."
-      },
-      {
-        "id": "rolementionable",
-        "aliases": [
-          "rolem",
-          "mentionable"
-        ],
-        "channel": "GuildOnly",
-        "ownerOnly": false,
-        "usage": [
-          "@gamers"
-        ],
-        "userPermissions": "ManageRoles",
-        "description": "Toggles if a role is mentionable"
+        "description": "Kicks a user by ID or name with an optional message."
       }
     ]
   ],
@@ -1603,8 +479,25 @@
         "channel": "GuildOnly",
         "ownerOnly": false,
         "usage": "image-link Emotename",
-        "userPermissions": "ManageEmojisAndStickers,ManageGuildExpressions",
+        "userPermissions": [
+          "ManageEmojisAndStickers",
+          "ManageGuildExpressions"
+        ],
         "description": "Adds an emote from an image link or attached image, with an optional name."
+      },
+      {
+        "id": "deleteemote",
+        "aliases": [
+          "de"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": ":NadekoSip:",
+        "userPermissions": [
+          "ManageEmojisAndStickers",
+          "ManageGuildExpressions"
+        ],
+        "description": "Deletes one or multiple emotes/emoji. Multiple emotes take longer, to avoid ratelimits. Keep a space between all emotes you wish to delete."
       },
       {
         "id": "emotecount",
@@ -1619,19 +512,1177 @@
           "--small",
           "--clean"
         ],
-        "userPermissions": "",
+        "userPermissions": [],
         "description": "Shows amount of times each emote has been used.\nUse --small for a more compact display.\nUse --clean to display *only* available emotes."
+      }
+    ]
+  ],
+  [
+    "Interactions",
+    [
+      {
+        "id": "blush",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "O//////O"
       },
       {
-        "id": "deleteemote",
+        "id": "kiss",
         "aliases": [
-          "de"
+          "smooch"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "OwO 2lood4me"
+      },
+      {
+        "id": "cuddle",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Cuddle someone!"
+      },
+      {
+        "id": "slap",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Slap someone who's being stupid"
+      },
+      {
+        "id": "bonk",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "When you need to bonk some horny teens"
+      },
+      {
+        "id": "spank",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "OwO Being naughty are we?"
+      },
+      {
+        "id": "feed",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "When you need to feed someone...?"
+      },
+      {
+        "id": "pat",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Pat a cat! Or a guildmember..."
+      },
+      {
+        "id": "hug",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@drev"
+        ],
+        "userPermissions": [],
+        "description": "Hug a homie"
+      },
+      {
+        "id": "yeet",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet"
+      },
+      {
+        "id": "bite",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "Bite someone >:)"
+      },
+      {
+        "id": "nom",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Nom someone, cus you're hungry"
+      },
+      {
+        "id": "bully",
+        "aliases": [
+          "bulli"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Be a bully to someone"
+      }
+    ]
+  ],
+  [
+    "NSFW",
+    [
+      {
+        "id": "hentainuke",
+        "aliases": [
+          "hn"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "waifu",
+          "neko",
+          "femboy",
+          "blowjob"
+        ],
+        "userPermissions": [],
+        "description": "Posts 30 NSFW images, using the waifu.pics API"
+      },
+      {
+        "id": "e621",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "dragon flying"
+        ],
+        "userPermissions": [],
+        "description": "e621 :hahaa:"
+      },
+      {
+        "id": "hentai",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "waifu",
+          "neko",
+          "femboy",
+          "blowjob"
+        ],
+        "userPermissions": [],
+        "description": "Fetches hentai images from Booru boards"
+      },
+      {
+        "id": "danbooru",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "thighs wet_skin"
+        ],
+        "userPermissions": [],
+        "description": "Search for random images on Danbooru image board"
+      },
+      {
+        "id": "ero",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "Returns a nsfw ero picture"
+      },
+      {
+        "id": "hentaibomb",
+        "aliases": [
+          "hb"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "waifu",
+          "neko",
+          "femboy",
+          "blowjob"
+        ],
+        "userPermissions": [],
+        "description": "Posts 5 NSFW images, using the waifu.pics API"
+      }
+    ]
+  ],
+  [
+    "Gambling",
+    [
+      {
+        "id": "slots",
+        "aliases": [
+          "slots",
+          "slot"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "69"
+        ],
+        "userPermissions": [],
+        "description": "Bet a certain amount in the slot machine."
+      },
+      {
+        "id": "economy",
+        "aliases": [
+          "eco"
         ],
         "channel": "GuildOnly",
         "ownerOnly": false,
-        "usage": ":NadekoSip:",
-        "userPermissions": "ManageEmojisAndStickers,ManageGuildExpressions",
-        "description": "Deletes one or multiple emotes/emoji. Multiple emotes take longer, to avoid ratelimits. Keep a space between all emotes you wish to delete."
+        "usage": "",
+        "userPermissions": [],
+        "description": "Displays overall currency statistics."
+      },
+      {
+        "id": "award",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": [
+          "50 @Cata"
+        ],
+        "userPermissions": [],
+        "description": "For bot owner to award currency"
+      },
+      {
+        "id": "currencytransactions",
+        "aliases": [
+          "curtrs"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "7",
+          "10 @drev"
+        ],
+        "userPermissions": [],
+        "description": "Shows your currency transactions. Bot owner can see other people's transactions."
+      },
+      {
+        "id": "cash",
+        "aliases": [
+          "currency",
+          "cur",
+          "$",
+          "£",
+          "¥",
+          "€"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shows specified user's current balance. If no user is specified, shows your balance"
+      },
+      {
+        "id": "flip",
+        "aliases": [
+          ""
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "5"
+        ],
+        "userPermissions": [],
+        "description": "Flip one or multiple coins. Up to 10."
+      },
+      {
+        "id": "take",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": [
+          "50 @Cata"
+        ],
+        "userPermissions": [],
+        "description": "Takes money from the specified user"
+      },
+      {
+        "id": "vote",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Vote for me on DiscordBotList, receive a currency reward!"
+      },
+      {
+        "id": "give",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": [
+          "50 @Cata"
+        ],
+        "userPermissions": [],
+        "description": "Gives money to another user"
+      },
+      {
+        "id": "leaderboard",
+        "aliases": [
+          "lb"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shows currency leaderboard for the current server."
+      },
+      {
+        "id": "betflip",
+        "aliases": [
+          "bf"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "5 heads",
+          "10 t"
+        ],
+        "userPermissions": [],
+        "description": "Bet on tails or heads. Guessing correct awards you 1.95x the currency you've bet."
+      },
+      {
+        "id": "globalleaderboard",
+        "aliases": [
+          "glb"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shows global currency leaderboard for the current server."
+      },
+      {
+        "id": "betroll",
+        "aliases": [
+          "br"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "69"
+        ],
+        "userPermissions": [],
+        "description": "Bet an amount of currency and roll the dice. Rolling above 66 yields x2 the amount bet. Above 90 - x4 and 100 gives x10!"
+      },
+      {
+        "id": "daily",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Claim your daily currency allowance"
+      }
+    ]
+  ],
+  [
+    "Fun",
+    [
+      {
+        "id": "woof",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Woof."
+      },
+      {
+        "id": "squish",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Squishes given member's avatar"
+      },
+      {
+        "id": "stretch",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Stretches given member's avatar"
+      },
+      {
+        "id": "simp",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "@dreb",
+        "userPermissions": [],
+        "description": "Expose your friend as a disgusting simp!"
+      },
+      {
+        "id": "neofetch",
+        "aliases": [
+          "neo",
+          "fastfetch"
+        ],
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "opensuse",
+          "--list"
+        ],
+        "userPermissions": [],
+        "description": "Displays neofetch/fastfetch ascii art. Provide argument '--list' to get a list of all supported distros."
+      },
+      {
+        "id": "compress",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Compresses given member's avatar..."
+      },
+      {
+        "id": "deadbeat",
+        "aliases": [
+          "dead"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb"
+        ],
+        "userPermissions": [],
+        "description": "Just try it"
+      },
+      {
+        "id": "meow",
+        "aliases": [],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Meow."
+      },
+      {
+        "id": "names",
+        "aliases": [
+          "name"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb",
+          "delete"
+        ],
+        "userPermissions": [],
+        "description": "Returns yours or mentioned user's daddy nicknames. Delete your nicknames with 'delete' argument."
+      },
+      {
+        "id": "tictactoe",
+        "aliases": [
+          "ttt"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Dreb"
+        ],
+        "userPermissions": [],
+        "description": "Starts a TicTacToe game, where you play against an @mentioned person."
+      }
+    ]
+  ],
+  [
+    "Owner only",
+    [
+      {
+        "id": "sqlselect",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": [
+          "SELECT * FROM DiscordUsers LIMIT 5"
+        ],
+        "userPermissions": [],
+        "description": "Executes sql queries and returns the number of affected rows. Dangerous."
+      },
+      {
+        "id": "setname",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": [
+          "Medusa"
+        ],
+        "userPermissions": [],
+        "description": "Assigns the bot a new name/username."
+      },
+      {
+        "id": "setactivity",
+        "aliases": [
+          "setac"
+        ],
+        "ownerOnly": true,
+        "usage": [
+          "<type> <Activity>",
+          "Playing with Dreb"
+        ],
+        "userPermissions": [],
+        "description": "Set the bot's activity.\n"
+      },
+      {
+        "id": "die",
+        "aliases": [
+          "shutdown",
+          "kill"
+        ],
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shuts down bot."
+      },
+      {
+        "id": "deregister",
+        "aliases": [
+          "dereg"
+        ],
+        "ownerOnly": true,
+        "usage": "todo",
+        "userPermissions": [],
+        "description": "Deregister a command, until bot restarts."
+      },
+      {
+        "id": "reload",
+        "aliases": [
+          "re"
+        ],
+        "ownerOnly": true,
+        "usage": "todo",
+        "userPermissions": [],
+        "description": "Reloads a command.."
+      },
+      {
+        "id": "setdaily",
+        "aliases": [
+          "dailyset"
+        ],
+        "ownerOnly": true,
+        "usage": "120",
+        "userPermissions": [],
+        "description": "Sets the daily currency allowance amount. Set to 0 to disable."
+      },
+      {
+        "id": "dailyreset",
+        "aliases": [
+          "resetdaily"
+        ],
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Resets daily claims that have been made"
+      },
+      {
+        "id": "setavatar",
+        "aliases": [
+          "setav"
+        ],
+        "ownerOnly": true,
+        "usage": [
+          "https://discord.com/media/1231231231231312321/1231231312323132.png"
+        ],
+        "userPermissions": [],
+        "description": "Assigns the bot a new avatar."
+      },
+      {
+        "id": "botconfig",
+        "aliases": [
+          "bc"
+        ],
+        "ownerOnly": true,
+        "userPermissions": [],
+        "description": "Change various bot configurations. Run without arguments to see current settings."
+      },
+      {
+        "id": "sqlexec",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": [
+          "UPDATE DiscordUsers SET amount=amount+69420"
+        ],
+        "userPermissions": [],
+        "description": "Executes sql queries and returns the number of affected rows. Dangerous."
+      },
+      {
+        "id": "exec",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": "ls",
+        "userPermissions": [],
+        "description": "Use with caution"
+      },
+      {
+        "id": "setbanner",
+        "aliases": [
+          "setbanner"
+        ],
+        "ownerOnly": true,
+        "usage": [
+          "https://discord.com/media/1231231231231312321/1231231312323132.png"
+        ],
+        "userPermissions": [],
+        "description": "Assigns the bot a new banner."
+      },
+      {
+        "id": "gencmdlist",
+        "aliases": [
+          "gencmdlst",
+          "gencmds"
+        ],
+        "ownerOnly": true,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Uploads a JSON file containing all commands. Supports uploading to a specific endpoint."
+      },
+      {
+        "id": "eval",
+        "aliases": [],
+        "ownerOnly": true,
+        "usage": "2+2",
+        "userPermissions": [],
+        "description": ""
+      }
+    ]
+  ],
+  [
+    "Server settings",
+    [
+      {
+        "id": "excludechannel",
+        "aliases": [
+          "excludechnl",
+          "echnl"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#channel"
+        ],
+        "userPermissions": [
+          "ManageChannels"
+        ],
+        "description": "Exclude or include, one or more, channels from dadbot. Provide no parameter to show a list of excluded channels. "
+      },
+      {
+        "id": "removereact",
+        "aliases": [
+          "rer"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "anime"
+        ],
+        "userPermissions": [
+          "ManageEmojisAndStickers",
+          "ManageGuildExpressions"
+        ],
+        "description": "Remove emotereact triggers."
+      },
+      {
+        "id": "goodbye",
+        "aliases": [
+          "goodbyetoggle",
+          "byetoggle",
+          "bye"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#leave-channel"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Toggles leave messages. Bot defaults to current channel if no channel is provided."
+      },
+      {
+        "id": "goodbyedelete",
+        "aliases": [
+          "goodbyedel",
+          "byedel"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "10"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Set the time, in seconds, it takes for goodbye messages to be deleted by the bot. Set to 0 to disable."
+      },
+      {
+        "id": "config",
+        "aliases": [
+          "configure",
+          "conf"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "userPermissions": [
+          "ManageMessages"
+        ],
+        "description": "Configure or display guild specific settings.\nYou can use any of the following\n`'1', 'true', '+', 't', 'yes', 'y'` to enable configs or \n`'0', 'false', '-', 'f', 'no', 'n'` to disable them."
+      },
+      {
+        "id": "welcomemessage",
+        "aliases": [
+          "welcomemsg"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "Hii welcome, %member.name%!",
+          "{ embed data }"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Set message to display when someone joins the guild. Provide either text, or valid JSON from the [embed creator](https://embed.kaikibot.xyz)"
+      },
+      {
+        "id": "togglecategory",
+        "aliases": [
+          "tc"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "Anime",
+          ""
+        ],
+        "userPermissions": [
+          "Administrator"
+        ],
+        "description": "Toggles a category. Provide no parameter to see a list of disabled categories."
+      },
+      {
+        "id": "listreacts",
+        "aliases": [
+          "ler"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          ""
+        ],
+        "userPermissions": [],
+        "description": "List emotereact triggers."
+      },
+      {
+        "id": "welcometoggle",
+        "aliases": [
+          "welcome"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "#welcome-channel"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Toggles welcome messages. Bot defaults to current channel if no channel is provided."
+      },
+      {
+        "id": "welcometest",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Tests welcome message as it would appear for new members."
+      },
+      {
+        "id": "stickyroles",
+        "aliases": [
+          "sticky"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [
+          "Administrator"
+        ],
+        "description": "Toggles whether bot will give all roles back when someone re-joins the server"
+      },
+      {
+        "id": "excludestickyroles",
+        "aliases": [
+          "estickyroles",
+          "estickyrole",
+          "esrole"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "",
+          "@excludedRole @anotherRole"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Exclude or include one or multiple roles from stickyroles. Provide no parameter to show a list of excluded roles.\n    If someone who had one or more excluded roles, re-joins this server, they wont get any excluded roles."
+      },
+      {
+        "id": "addemotereact",
+        "aliases": [
+          "emotereact",
+          "aer"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "red :red:",
+          "anime :weeaboosgetout:"
+        ],
+        "userPermissions": [
+          "ManageEmojisAndStickers",
+          "ManageGuildExpressions"
+        ],
+        "description": "Add triggers for the bot to react with emojis/emotes to. Use quotes for triggers with spaces."
+      },
+      {
+        "id": "welcomedelete",
+        "aliases": [
+          "welcomedel"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "10"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Set the time it takes for welcome messages to be deleted by the bot"
+      },
+      {
+        "id": "goodbyetest",
+        "aliases": [
+          "byetest"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Tests goodbye message as it would appear when triggered."
+      },
+      {
+        "id": "goodbyemessage",
+        "aliases": [
+          "goodbyemsg",
+          "byemessage",
+          "byemsg"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "Bye, %member.name%!",
+          "{ embed data }"
+        ],
+        "userPermissions": [
+          "ManageGuild"
+        ],
+        "description": "Set message to display when someone leaves the guild. Provide either text, or valid JSON from the [embed creator](https://embed.kaikibot.xyz)"
+      }
+    ]
+  ],
+  [
+    "Anime",
+    [
+      {
+        "id": "anime",
+        "aliases": [
+          ""
+        ],
+        "ownerOnly": false,
+        "usage": "Tsukimonogatari",
+        "userPermissions": [],
+        "description": "Shows the first result of a query to Anilist"
+      },
+      {
+        "id": "manga",
+        "aliases": [
+          ""
+        ],
+        "ownerOnly": false,
+        "usage": "Tsukimonogatari",
+        "userPermissions": [],
+        "description": "Shows the first result of a query to Anilist"
+      },
+      {
+        "id": "animequote",
+        "aliases": [
+          "aq"
+        ],
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Shows a random anime quote..."
+      }
+    ]
+  ],
+  [
+    "Roles",
+    [
+      {
+        "id": "roleinfo",
+        "aliases": [
+          "role",
+          "rinfo"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Gamers"
+        ],
+        "userPermissions": [],
+        "description": "Shows info about a given role. If no role is supplied, it defaults to current one."
+      },
+      {
+        "id": "inrole",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "@Gamers",
+        "userPermissions": [],
+        "description": "Lists all users in role"
+      },
+      {
+        "id": "restore",
+        "aliases": [],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@dreb"
+        ],
+        "userPermissions": [
+          "Administrator"
+        ],
+        "description": "Restores roles for a user who has previously left the server."
+      },
+      {
+        "id": "rolelist",
+        "aliases": [
+          "roles"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "Lists all roles"
+      },
+      {
+        "id": "rolecolor",
+        "aliases": [
+          "roleclr",
+          "rclr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Gamer ff00ff"
+        ],
+        "userPermissions": [],
+        "description": "Sets or displays the color of a given role, or your highest role."
+      },
+      {
+        "id": "roledelete",
+        "aliases": [
+          "deleterole",
+          "dr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@gamers @streamers @weebs"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Deletes one or more roles"
+      },
+      {
+        "id": "setrole",
+        "aliases": [
+          "sr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Dreb Gamer"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Gives a role to a user. The role you specify has to be lower in the role hierarchy than your highest role."
+      },
+      {
+        "id": "rolecreate",
+        "aliases": [
+          "createrole",
+          "rc",
+          "cr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "GAMERS"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Creates a role with a given name."
+      },
+      {
+        "id": "rolehoist",
+        "aliases": [
+          "hoistrole",
+          "hoist"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@gamers"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Hoists or unhoists a role"
+      },
+      {
+        "id": "myrole",
+        "aliases": [
+          "mr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "userPermissions": [],
+        "description": "Checks your assigned user role. Can set role color, name and icon."
+      },
+      {
+        "id": "setuserrole",
+        "aliases": [
+          "sur"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Platinum [role]"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Assigns a role to a user. Provide the command again to remove the role."
+      },
+      {
+        "id": "rolementionable",
+        "aliases": [
+          "rolem",
+          "mentionable"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@gamers"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Toggles if a role is mentionable"
+      },
+      {
+        "id": "rolerename",
+        "aliases": [
+          "rolename",
+          "rn"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Gamer weeb"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Renames a given role. The role you specify has to be lower in the role hierarchy than your highest role. Use 'quotes around rolename with spaces'."
+      },
+      {
+        "id": "listuserroles",
+        "aliases": [
+          "lur"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": "",
+        "userPermissions": [],
+        "description": "List all custom user roles."
+      },
+      {
+        "id": "roleremove",
+        "aliases": [
+          "removerole",
+          "rr"
+        ],
+        "channel": "GuildOnly",
+        "ownerOnly": false,
+        "usage": [
+          "@Dreb Gamer"
+        ],
+        "userPermissions": [
+          "ManageRoles"
+        ],
+        "description": "Takes away a user's role. The role you specify has to be lower in the role hierarchy than your highest role."
       }
     ]
   ]

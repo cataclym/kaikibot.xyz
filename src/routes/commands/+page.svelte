@@ -118,13 +118,13 @@
 
 	<div class="w-full m-auto mt-10 mb-5 flex">
 		<div class="cmd">
-			<h2 class="description text-2xl">Command</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Command</h2>
 		</div>
 		<div class="cmdDesc">
-			<h2 class="description text-2xl">Description</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Description</h2>
 		</div>
 		<div class="cmdUsage">
-			<h2 class="description text-2xl">Usage</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Usage</h2>
 		</div>
 	</div>
 
@@ -136,7 +136,13 @@
 						<div class="m-auto flex mb-1 cmdContainer">
 							<div class="cmd">
 								+{cmd.id}
-								<p class="categoryTxt">
+								<br>
+								{#if cmd.aliases?.length && cmd.aliases[0]}
+									<p class="subText">
+									+{cmd.aliases.join("\n+")}
+									</p>
+								{/if}
+								<p class="subText categoryText">
 									{categories[1][0]}
 								</p>
 							</div>
@@ -144,12 +150,27 @@
 								<p class="description">
 									{cmd.description}
 								</p>
+								{#if cmd.ownerOnly}
+									<p class="subText categoryText">
+										Bot Owner Only
+									</p>
+								{/if}
 							</div>
 							<div class="cmdUsage">
 								<p class="description">
 									+{cmd.id}
 									{Array.isArray(cmd.usage) ? cmd.usage.join(`\n+${cmd.id} `) : cmd.usage || ""}
 								</p>
+								{#if cmd.userPermissions.length && cmd.userPermissions[0]}
+									<p class="subText categoryText permText">
+										{cmd.userPermissions.join("\n")}
+									</p>
+								{/if}
+								{#if cmd.channel}
+									<p class="subText categoryText">
+										{cmd.channel}
+									</p>
+								{/if}
 							</div>
 						</div>
 					{/each}
@@ -261,16 +282,28 @@
 		white-space: pre-wrap;
 		overflow: hidden;
 		margin: auto auto 1rem;
+			font-size: 0.95rem !important;
 	}
 
 	.cmdContainer {
-		max-height: 10rem;
+		max-height: 20rem;
 		width: 100%;
 	}
 
-	.categoryTxt {
-		font-size: small;
-		color: var(--accent1);
+	.subText {
+			white-space: pre-line;
+			font-size: small;
+			color: var(--accent1);
+	}
+
+	.categoryText {
+			padding: 0 1.5rem;
+			text-align: right;
+  }
+
+	.permText {
+			left: 0;
+			right: auto !important;
 	}
 
 	.searchbar {
@@ -284,9 +317,9 @@
 		position: relative;
 	}
 
-	/*.searchbar:hover {*/
-	/*  box-shadow: 0 2px var(--accent4);*/
-	/*}*/
+	.searchbar:hover {
+	  box-shadow: 0 2px var(--accent4);
+	}
 
 	.inputSearchbar {
 		background-color: var(--accent2);
@@ -349,4 +382,15 @@
 		outline: none;
 		padding: 3px 5px;
 	}
+	
+	@media (max-width: 768px) {
+      .cmdContainer {
+          max-height: 20rem;
+					min-height: 8rem;
+      }
+
+			.permText {
+					position: relative;
+			}
+  }
 </style>

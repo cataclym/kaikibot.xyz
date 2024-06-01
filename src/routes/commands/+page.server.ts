@@ -9,7 +9,9 @@ export async function load() {
 		fs.readFile("./static/commands/commands.json", "utf8", (err, data) => {
 			return err
 				? resolve({})
-				: resolve(JSON.parse(data).sort());
+				: resolve(JSON.parse(data)
+					.sort()
+				);
 		})
 	});
 
