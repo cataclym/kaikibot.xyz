@@ -6,6 +6,7 @@
 	export let data;
 
 	const links = data.LINKS;
+	const images = data.IMAGES;
 </script>
 
 <main>
@@ -25,7 +26,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe"} />
+				<Placeholders url={images[0]} />
 			</div>
 		</div>
 
@@ -39,7 +40,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=1"} />
+				<Placeholders url={images[1]} />
 			</div>
 		</div>
 
@@ -52,7 +53,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=2"} />
+				<Placeholders url={images[2]} />
 			</div>
 		</div>
 
@@ -65,7 +66,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={"https://api.nekosapi.com/v3/images/random/file?rating=safe&tag=8"} />
+				<Placeholders url={images[3]} />
 			</div>
 		</div>
 

@@ -2,7 +2,7 @@
 <p class="text-accent3 text-center">
 	Images on this websites are retrieved from <a
 		class="underline decoration-orange-700 decoration-2"
-		href="https://nekosapi.com">NekosAPI</a
+		href="https://www.waifu.im/">Waifu.im</a
 	>.
 </p>
 <p class="text-accent3 text-center">
