@@ -1,5 +1,10 @@
 import { writable } from "svelte/store";
 
-type NavigationState = "loading" | "loaded" | null;
+export enum KaikiNavigationState {
+	loading = "loading",
+	loaded = "loaded"
+}
 
-export default writable<NavigationState>(null);
+type NavigationState = KaikiNavigationState | null;
+
+export const navigationState = writable<NavigationState>(null);

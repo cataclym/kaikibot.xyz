@@ -9,10 +9,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://kaikibot.xyz/" />
 	<meta property="og:title" content="KaikiBot - Discord Bot - Home" />
-	<meta
-		property="og:description"
-		content="Invite Kaiki to your server now - Fun and unique commands! Open source and selfhosting, and much more! "
-	/>
+	<meta property="og:description" />
 	<meta property="og:image" content="/kaikibot.png" />
 
 	<!-- Twitter -->

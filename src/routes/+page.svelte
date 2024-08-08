@@ -6,7 +6,7 @@
 	export let data;
 
 	const links = data.LINKS;
-	const images = data.IMAGES;
+	const images: string[] = data.IMAGES;
 </script>
 
 <main>

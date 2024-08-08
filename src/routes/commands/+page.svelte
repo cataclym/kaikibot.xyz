@@ -118,13 +118,19 @@
 
 	<div class="w-full m-auto mt-10 mb-5 flex">
 		<div class="cmd">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Command</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+				Command
+			</h2>
 		</div>
 		<div class="cmdDesc">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Description</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+				Description
+			</h2>
 		</div>
 		<div class="cmdUsage">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">Usage</h2>
+			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+				Usage
+			</h2>
 		</div>
 	</div>
 
@@ -136,10 +142,10 @@
 						<div class="m-auto flex mb-1 cmdContainer">
 							<div class="cmd">
 								+{cmd.id}
-								<br>
+								<br />
 								{#if cmd.aliases?.length && cmd.aliases[0]}
 									<p class="subText">
-									+{cmd.aliases.join("\n+")}
+										+{cmd.aliases.join("\n+")}
 									</p>
 								{/if}
 								<p class="subText categoryText">
@@ -151,9 +157,7 @@
 									{cmd.description}
 								</p>
 								{#if cmd.ownerOnly}
-									<p class="subText categoryText">
-										Bot Owner Only
-									</p>
+									<p class="subText categoryText">Bot Owner Only</p>
 								{/if}
 							</div>
 							<div class="cmdUsage">
@@ -282,7 +286,7 @@
 		white-space: pre-wrap;
 		overflow: hidden;
 		margin: auto auto 1rem;
-			font-size: 0.95rem !important;
+		font-size: 0.95rem !important;
 	}
 
 	.cmdContainer {
@@ -291,19 +295,19 @@
 	}
 
 	.subText {
-			white-space: pre-line;
-			font-size: small;
-			color: var(--accent1);
+		white-space: pre-line;
+		font-size: small;
+		color: var(--accent1);
 	}
 
 	.categoryText {
-			padding: 0 1.5rem;
-			text-align: right;
-  }
+		padding: 0 1.5rem;
+		text-align: right;
+	}
 
 	.permText {
-			left: 0;
-			right: auto !important;
+		left: 0;
+		right: auto !important;
 	}
 
 	.searchbar {
@@ -318,7 +322,7 @@
 	}
 
 	.searchbar:hover {
-	  box-shadow: 0 2px var(--accent4);
+		box-shadow: 0 2px var(--accent4);
 	}
 
 	.inputSearchbar {
@@ -382,15 +386,15 @@
 		outline: none;
 		padding: 3px 5px;
 	}
-	
-	@media (max-width: 768px) {
-      .cmdContainer {
-          max-height: 20rem;
-					min-height: 8rem;
-      }
 
-			.permText {
-					position: relative;
-			}
-  }
+	@media (max-width: 768px) {
+		.cmdContainer {
+			max-height: 20rem;
+			min-height: 8rem;
+		}
+
+		.permText {
+			position: relative;
+		}
+	}
 </style>

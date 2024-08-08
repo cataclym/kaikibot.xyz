@@ -83,7 +83,8 @@ button.layout {
 	transition: 0.5s;
 }
 
-button:hover.layout {
+button:hover.layout,
+button[aria-current="true"] {
 	cursor: pointer;
 	background-color: var(--background) !important;
 	color: var(--accent1) !important;
@@ -92,7 +93,6 @@ button:hover.layout {
 	transition: 0.1s;
 	box-shadow: 0 4px var(--accent4);
 }
-
 footer {
 	color: var(--accent3);
 	background: var(--accent2);

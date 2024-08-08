@@ -2,21 +2,27 @@
 	import "../app.css";
 	import SEO from "../components/SEO.svelte";
 	import { page } from "$app/stores";
-	import { beforeNavigate, afterNavigate } from "$app/navigation";
-	import navigationState from "../stores/navigationState";
+	import { afterNavigate, beforeNavigate, goto } from "$app/navigation";
+	import { KaikiNavigationState, navigationState } from "../stores/navigationState";
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
+	import capitalize from "../methods/capitalize";
 
-	export let data;
+	export let data: {
+		docs: string[];
+		LINKS: { [key: string]: string };
+	};
+
 	const LINKS = data.LINKS;
-	const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1);
+	const docs = data.docs.map((page) => `/docs/${page}`);
+	docs.push("/README.md");
 
 	beforeNavigate(() => {
-		navigationState.set("loading");
+		navigationState.set(KaikiNavigationState.loading);
 	});
 
 	afterNavigate(() => {
-		navigationState.set("loaded");
+		navigationState.set(KaikiNavigationState.loaded);
 	});
 </script>
 
@@ -25,18 +31,36 @@
 	<title>KaikiBot - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
 </svelte:head>
 
-{#if $navigationState === "loading"}
-	<div out:fade={{ delay: 500 }}>
+{#if $navigationState === KaikiNavigationState.loading}
+	<div out:fade={{ delay: 400 }}>
 		<PageLoader />
 	</div>
 {/if}
 
-<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">KAIKIBOT</h1>
-<h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
-	Your
-	<mark>dad</mark>
-	isn't <em>this</em> cool
-</h2>
+{#if $page.url.pathname === "/"}
+	<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
+		<a class="text-center" href="/">KAIKIBOT</a>
+	</h1>
+	<h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
+		Your
+		<mark>dad</mark>
+		isn't <em>this</em> cool
+	</h2>
+{:else}
+	<div class="m-auto w-2/12 flex mb-2 justify-center items-center content-center">
+		<div class="h-full w-full">
+			<p class="font-bold text-accent1 text-xl text-accent1 text-center">
+				<a class="text-center" href="/">KAIKIBOT</a>
+			</p>
+		</div>
+		<button
+			on:click={() => goto("/")}
+			class="whitespace-nowrap h-10 border-b-2 text-accent1 layout w-full text-2xl text-accent1 text-center"
+		>
+			Home
+		</button>
+	</div>
+{/if}
 <div class="flex justify-evenly gap-1 smol">
 	<a href={LINKS.discord} class="link_flex">
 		<button
@@ -44,11 +68,12 @@
 			>SUPPORT SERVER
 		</button>
 	</a>
-	<a class="link_flex" href={$page.url.pathname !== "/" ? "/" : "/commands"}>
+	<a class="link_flex" href={$page.url.pathname === "/commands" ? "/" : "/commands"}>
 		<button
+			aria-current={$page.url.pathname === "/commands"}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
 		>
-			{$page.url.pathname !== "/" ? "HOME" : "COMMANDS"}
+			COMMANDS
 		</button>
 	</a>
 	<a href={LINKS.embed} class="link_flex">
@@ -70,18 +95,19 @@
 			SOURCE CODE
 		</button>
 	</a>
-	<a href={LINKS.paypal} class="link_flex">
+	<a href={docs.includes($page.url.pathname) ? "/" : "/README.md"} class="link_flex">
 		<button
+			aria-current={docs.includes($page.url.pathname)}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal custom-width-1_7 layout"
 		>
-			DONATE
+			DOCUMENTATION
 		</button>
 	</a>
-	<a href={LINKS.patreon} class="link_flex">
+	<a href="/donate" class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
 		>
-			PATREON
+			DONATE
 		</button>
 	</a>
 </div>
@@ -90,6 +116,6 @@
 <div class="mt-20" />
 <footer class="items-center grid grid-cols-3">
 	<a class="self-center" href={LINKS.kofi}><h3>Buy me a coffee ☕</h3></a>
-	<h3 class="flex-col">© Cata 2023</h3>
+	<h3 class="flex-col">© Cata 2024</h3>
 	<a href={LINKS.patreon}><h3>Patreon️</h3></a>
 </footer>

@@ -1,7 +1,5 @@
-import { LINKS } from "../CONSTANTS";
 import fs from "fs";
 
-/** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	const docs = await new Promise((resolve) => {
 		fs.readdir(
@@ -13,5 +11,7 @@ export async function load() {
 		);
 	});
 
-	return { LINKS, docs };
+	return {
+		docs
+	};
 }
