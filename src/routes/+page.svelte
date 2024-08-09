@@ -6,7 +6,7 @@
 	export let data;
 
 	const links = data.LINKS;
-	const images: string[] = data.IMAGES;
+	const images: { url: string, alt: string }[] = data.IMAGES;
 </script>
 
 <main>
@@ -26,7 +26,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={images[0]} />
+				<Placeholders img={images[0]} />
 			</div>
 		</div>
 
@@ -40,7 +40,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={images[1]} />
+				<Placeholders img={images[1]} />
 			</div>
 		</div>
 
@@ -53,7 +53,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={images[2]} />
+				<Placeholders img={images[2]} />
 			</div>
 		</div>
 
@@ -66,7 +66,7 @@
 				<OrangeBar />
 			</div>
 			<div class="text-center md:w-96 md:h-96">
-				<Placeholders url={images[3]} />
+				<Placeholders img={images[3]} />
 			</div>
 		</div>
 
