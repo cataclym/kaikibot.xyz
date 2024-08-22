@@ -88,6 +88,13 @@
 			>INVITE KAIKI
 		</button>
 	</a>
+	<a href="/dashboard" class="link_flex">
+		<button
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
+		>
+			DASHBOARD
+		</button>
+	</a>
 	<a href={LINKS.source} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab custom-width-1_7 layout"
@@ -101,13 +108,6 @@
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal custom-width-1_7 layout"
 		>
 			DOCUMENTATION
-		</button>
-	</a>
-	<a href="/donate" class="link_flex">
-		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
-		>
-			DONATE
 		</button>
 	</a>
 </div>

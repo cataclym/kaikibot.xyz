@@ -6,12 +6,12 @@
 	export let data;
 
 	const links = data.LINKS;
-	const images: { url: string, alt: string }[] = data.IMAGES;
+	const images: { url: string; alt: string }[] = data.IMAGES;
 </script>
 
 <main>
 	<div class="inline-block w-11/12 mt-24">
-		<!-- 2x2 Medium feature list -->
+		<!-- 2x2 Medium SignOutfeature list -->
 
 		<div class="max-w-full md:flex justify-evenly mb-24">
 			<div class="text-center md:w-96">

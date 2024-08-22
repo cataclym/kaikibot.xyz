@@ -1,29 +1,29 @@
 export interface WaifuImJSON {
-	images: Image[]
+	images: Image[];
 }
 
 export interface Image {
-	signature: string
-	extension: string
-	image_id: number
-	favorites: number
-	dominant_color: string
-	source: string
-	artist: any
-	uploaded_at: string
-	liked_at: any
-	is_nsfw: boolean
-	width: number
-	height: number
-	byte_size: number
-	url: string
-	preview_url: string
-	tags: Tag[]
+	signature: string;
+	extension: string;
+	image_id: number;
+	favorites: number;
+	dominant_color: string;
+	source: string;
+	artist: any;
+	uploaded_at: string;
+	liked_at: any;
+	is_nsfw: boolean;
+	width: number;
+	height: number;
+	byte_size: number;
+	url: string;
+	preview_url: string;
+	tags: Tag[];
 }
 
 export interface Tag {
-	tag_id: number
-	name: string
-	description: string
-	is_nsfw: boolean
+	tag_id: number;
+	name: string;
+	description: string;
+	is_nsfw: boolean;
 }
