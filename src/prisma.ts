@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { type DiscordUsers, type GuildUsers, PrismaClient } from "@prisma/client";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 
@@ -7,7 +7,7 @@ export const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 export function getUserFromDb(userId: string): PrismaClient {
-	const data = {};
+	const data: UserDBData = {};
 
 	data["user"] = prisma.discordUsers.findUnique({
 		where: {
@@ -15,11 +15,16 @@ export function getUserFromDb(userId: string): PrismaClient {
 		}
 	});
 
-	data["guilds"] = prisma.guildUsers.findMany({
+	data["guildMemberships"] = prisma.guildUsers.findMany({
 		where: {
 			UserId: userId
 		}
 	})
 
 	return data;
+}
+
+export type UserDBData = {
+	user: DiscordUsers,
+	guildMemberships: GuildUsers[],
 }

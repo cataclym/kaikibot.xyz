@@ -17,6 +17,9 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 			return token;
 		},
 		async session({ session, token }) {
+
+
+
 			// Send properties to the client, like an access_token and user id from a provider.
 			session.user.id = token.discordSnowflake;
 			session.user.data = token.dbData;
