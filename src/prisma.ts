@@ -6,22 +6,26 @@ export const prisma = globalForPrisma.prisma || new PrismaClient()
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
-export function getUserFromDb(userId: string): PrismaClient {
-	const data: UserDBData = {};
+export async function getUserFromDb(userId: string): Promise<UserDBData> {
 
-	data["user"] = prisma.discordUsers.findUnique({
+	const UserId = BigInt(userId);
+
+	const user = await prisma.discordUsers.findUnique({
 		where: {
-			UserId: userId
+			UserId,
 		}
 	});
 
-	data["guildMemberships"] = prisma.guildUsers.findMany({
-		where: {
-			UserId: userId
-		}
-	})
+	if (!user) throw new Error("User not found");
 
-	return data;
+	return {
+		user,
+		guildMemberships: await prisma.guildUsers.findMany({
+			where: {
+				UserId,
+			}
+		})
+	};
 }
 
 export type UserDBData = {
