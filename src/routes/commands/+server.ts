@@ -1,15 +1,14 @@
-import { error, json } from "@sveltejs/kit";
-import fs from "fs";
-import { TOKEN } from "$lib/server/secrets";
+import { error, json } from '@sveltejs/kit';
+import fs from 'fs';
+import { TOKEN } from '$lib/server/secrets';
 
 export async function POST(event) {
-	const token = event.url.searchParams.get("token");
+
+	const { list = [], token = "defaultTokenValue" } = await event.request.json();
 
 	if (token !== TOKEN) {
 		throw error(401, "Unauthorized");
 	}
-
-	const { list } = await event.request.json();
 
 	try {
 		fs.writeFile("./static/commands/commands.json", list, (err) =>
