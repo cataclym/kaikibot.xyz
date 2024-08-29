@@ -1,9 +1,8 @@
-import { error, json } from '@sveltejs/kit';
-import fs from 'fs';
-import { TOKEN } from '$lib/server/secrets';
+import { error, json } from "@sveltejs/kit";
+import fs from "fs";
+import { TOKEN } from "$lib/server/secrets";
 
 export async function POST(event) {
-
 	const { list = [], token = "defaultTokenValue" } = await event.request.json();
 
 	if (token !== TOKEN) {

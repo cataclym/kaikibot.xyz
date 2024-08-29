@@ -1,18 +1,17 @@
 import { type DiscordUsers, type GuildUsers, PrismaClient } from "@prisma/client";
 
-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
+const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
-export const prisma = globalForPrisma.prisma || new PrismaClient()
+export const prisma = globalForPrisma.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 export async function getUserFromDb(userId: string): Promise<UserDBData> {
-
 	const UserId = BigInt(userId);
 
 	const user = await prisma.discordUsers.findUnique({
 		where: {
-			UserId,
+			UserId
 		}
 	});
 
@@ -22,13 +21,28 @@ export async function getUserFromDb(userId: string): Promise<UserDBData> {
 		user,
 		guildMemberships: await prisma.guildUsers.findMany({
 			where: {
-				UserId,
+				UserId
 			}
 		})
 	};
 }
 
-export type UserDBData = {
-	user: DiscordUsers,
-	guildMemberships: GuildUsers[],
+export async function getUserCache(userId: string) {
+	await fetch(
+		`${process.env.USERCACHE_URL}:${process.env.USERCACHE_PORT}/API/UserCache/140788173885276160`,
+		{
+			method: "POST",
+			body: JSON.stringify({
+				token: process.env.TOKEN
+			}),
+			headers: {
+				"content-type": "application/json"
+			}
+		}
+	);
 }
+
+export type UserDBData = {
+	user: DiscordUsers;
+	guildMemberships: GuildUsers[];
+};

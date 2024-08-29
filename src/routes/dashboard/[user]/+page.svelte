@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { page } from "$app/stores"
+	import { page } from "$app/stores";
 	import { error } from "@sveltejs/kit";
 	import type { User } from "@auth/sveltekit";
 	import type { UserDBData } from "../../../prisma.js";
 
-	const user = <undefined | User & {data: UserDBData}> $page.data.session?.user;
+	const user = <undefined | (User & { data: UserDBData })>$page.data.session?.user;
 	if (!user || user.data) throw error(500, "User does not exist");
 </script>
 
 <main>
 	<div>
-		<img src={user.image} alt="Avatar">
+		<img src={user.image} alt="Avatar" />
 	</div>
 	<h1 class="text-accent3">Hi {user?.name || "User"}</h1>
 	<div class="text-accent3">

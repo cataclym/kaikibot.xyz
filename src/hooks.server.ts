@@ -3,7 +3,13 @@ import { handle as authenticationHandle } from "./auth";
 import { sequence } from "@sveltejs/kit/hooks";
 import type { MaybePromise } from "$app/navigation";
 
-async function authorizationHandle({ event, resolve }: { event: RequestEvent, resolve: (event: RequestEvent) => MaybePromise<Response> }) {
+async function authorizationHandle({
+	event,
+	resolve
+}: {
+	event: RequestEvent;
+	resolve: (event: RequestEvent) => MaybePromise<Response>;
+}) {
 	// Protect any routes under /authenticated
 	if (event.url.pathname.startsWith("/dashboard") && event.url.pathname !== "/dashboard") {
 		const session = await event.locals.auth();
