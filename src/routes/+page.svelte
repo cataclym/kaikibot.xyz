@@ -21,7 +21,8 @@
 					.
 				</h3>
 				<h4 class="text-accent1 mb-3.5">
-					He will respond, like a dad, whenever you declare yourself with the use of 'I am'.
+					He will respond, like a dad, whenever you declare yourself with the use of 'I
+					am'.
 				</h4>
 				<OrangeBar />
 			</div>
@@ -34,8 +35,8 @@
 			<div class="text-center md:w-96">
 				<h3 class="text-accent3 font-bold text-2xl">Useful, fun and silly commands</h3>
 				<h4 class="text-accent1 mb-3.5">
-					A wide variety of commands from fun and goofy commands to utility and server management
-					focused commands.
+					A wide variety of commands from fun and goofy commands to utility and server
+					management focused commands.
 				</h4>
 				<OrangeBar />
 			</div>
@@ -61,7 +62,8 @@
 			<div class="text-center md:w-96">
 				<h3 class="text-accent3 font-bold text-2xl">Economy and gambling</h3>
 				<h4 class="text-accent1 mb-3.5">
-					Spend your hard earned yen on the casino and compete in the currency leaderboard!
+					Spend your hard earned yen on the casino and compete in the currency
+					leaderboard!
 				</h4>
 				<OrangeBar />
 			</div>
@@ -74,16 +76,16 @@
 		<div class="text-left text-accent1 md:w-8/12 sm:w-10/12 m-auto mt-52">
 			<h3 class="text-accent3 font-bold text-2xl">Open source</h3>
 			<h4 class="text-accent1">
-				The codebase is fully open source software and available on GitLab. Fork it, clone it and
-				contribute!
+				The codebase is fully open source software and available on GitLab. Fork it, clone
+				it and contribute!
 			</h4>
 		</div>
 		<div class="text-right text-accent1 md:w-8/12 sm:w-10/12 m-auto mt-36 mb-52">
 			<h3 class="text-accent3 font-bold text-2xl">Donations</h3>
 			<h4 class="text-accent1">
-				KaikiBot is completely free and open source. Donations are completely optional, but highly
-				appreciated.<br />Donations will go towards server costs and support the developer(s), as
-				well as give you reward through Patreon on the Discord server.
+				KaikiBot is completely free and open source. Donations are completely optional, but
+				highly appreciated.<br />Donations will go towards server costs and support the
+				developer(s), as well as give you reward through Patreon on the Discord server.
 			</h4>
 		</div>
 	</div>

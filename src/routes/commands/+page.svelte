@@ -118,17 +118,26 @@
 
 	<div class="w-full m-auto mt-10 mb-5 flex">
 		<div class="cmd">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+			<h2
+				class="description"
+				style="font-size: 1.5rem !important; line-height: 2rem !important;"
+			>
 				Command
 			</h2>
 		</div>
 		<div class="cmdDesc">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+			<h2
+				class="description"
+				style="font-size: 1.5rem !important; line-height: 2rem !important;"
+			>
 				Description
 			</h2>
 		</div>
 		<div class="cmdUsage">
-			<h2 class="description" style="font-size: 1.5rem !important; line-height: 2rem !important;">
+			<h2
+				class="description"
+				style="font-size: 1.5rem !important; line-height: 2rem !important;"
+			>
 				Usage
 			</h2>
 		</div>
@@ -163,7 +172,9 @@
 							<div class="cmdUsage">
 								<p class="description">
 									+{cmd.id}
-									{Array.isArray(cmd.usage) ? cmd.usage.join(`\n+${cmd.id} `) : cmd.usage || ""}
+									{Array.isArray(cmd.usage)
+										? cmd.usage.join(`\n+${cmd.id} `)
+										: cmd.usage || ""}
 								</p>
 								{#if cmd.userPermissions.length && cmd.userPermissions[0]}
 									<p class="subText categoryText permText">

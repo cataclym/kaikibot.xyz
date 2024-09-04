@@ -1,5 +1,6 @@
 import { type DiscordUsers, type GuildUsers, PrismaClient } from "@prisma/client";
 import { error } from "@sveltejs/kit";
+import type { User } from "@auth/sveltekit";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
@@ -30,7 +31,7 @@ export async function getUserFromDb(userId: string): Promise<UserDBData> {
 	};
 }
 
-export async function getUserCache(userId: string): Promise<UserDBData> {
+export async function getUserCache(userId: string): Promise<UserCacheData> {
 	const res = await fetch(
 		`${process.env.USERCACHE_URL}:${process.env.USERCACHE_PORT}/API/UserCache/140788173885276160`,
 		{
@@ -43,7 +44,7 @@ export async function getUserCache(userId: string): Promise<UserDBData> {
 			}
 		});
 
-	if (!res.ok) throw new error(res.status, res.statusText);
+	if (!res.ok) throw error(res.status, res.statusText);
 
 	return res.json();
 }
@@ -52,3 +53,8 @@ export type UserDBData = {
 	user: DiscordUsers;
 	guildMemberships: GuildUsers[];
 };
+
+export type UserCacheData = {
+	user: User,
+	guilds: { id: string, name: string }[]
+}
