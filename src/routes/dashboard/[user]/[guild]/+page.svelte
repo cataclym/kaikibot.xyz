@@ -1,18 +1,16 @@
 <script lang="ts">
-	import type { CustomSession } from "../../../../auth";
 	import { isUserData } from "../../../../methods/isUserData";
 	import { error } from "@sveltejs/kit";
 	import { page } from "$app/stores";
 	import { Button, InfoBadge, ToggleSwitch } from "fluent-svelte";
 
-	const session = <undefined | CustomSession> $page.data.session;
+	const session = $page.data.session;
 	if (!isUserData(session)) throw error(500, "User does not exist");
+
 	const { user } = session;
-
-	const guildData = user.data.guildMemberships.find(g => g.GuildId === BigInt($page.params.guild))
-	if (!guildData) throw error(500, "Failed retrieving guild data!");
-
-	let { DadBot, Anniversary,  } = guildData.Guilds;
+	export let data;
+	const { guildData } = data;
+	let { DadBot, Anniversary,  } = guildData;
 </script>
 
 <main>

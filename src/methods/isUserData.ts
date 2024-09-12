@@ -1,12 +1,8 @@
-import type { CustomSession } from "../auth";
-import type { AdapterSession, AdapterUser } from "@auth/core/adapters";
-import type { BotResData, UserDBData } from "../UserData";
-
+import type { Session } from "@auth/sveltekit";
+import type { AdapterUser } from "@auth/core/adapters";
 export function isUserData(
-	session: CustomSession | undefined
-): session is AdapterSession & {
-	user: AdapterUser & { id: string; data: UserDBData; cache: BotResData };
-} {
-	if (session?.user?.data) return true;
+	session: Session | undefined | null
+): session is Session & { user: AdapterUser } {
+	if (session?.user != null) return true;
 	return false;
 }

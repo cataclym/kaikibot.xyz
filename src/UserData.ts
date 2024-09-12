@@ -1,4 +1,4 @@
-import { type DiscordUsers, type GuildUsers } from "@prisma/client";
+import { type DiscordUsers, type GuildUsers, type Guilds } from "@prisma/client";
 import { error } from "@sveltejs/kit";
 import type { User } from "@auth/sveltekit";
 
@@ -30,7 +30,7 @@ export default class UserData {
 
 export type UserDBData = {
 	user: DiscordUsers;
-	guildMemberships: GuildUsers[];
+	guildMemberships: GuildUsers[] & Guilds[];
 };
 
 export type BotResData = {
