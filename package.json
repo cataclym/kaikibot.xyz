@@ -1,5 +1,5 @@
 {
-	"name": "kaikibotpage",
+	"name": "kaikibot.xyz",
 	"version": "2.3.12",
 	"scripts": {
 		"build": "vite build",

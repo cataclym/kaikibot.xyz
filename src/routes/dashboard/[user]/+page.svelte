@@ -9,6 +9,7 @@
 	const session = <undefined | CustomSession> $page.data.session;
 	if (!isUserData(session)) throw error(500, "User does not exist");
 	const { user } = session;
+
 </script>
 
 <main>
