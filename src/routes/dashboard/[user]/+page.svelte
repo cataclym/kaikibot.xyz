@@ -6,7 +6,7 @@
 	import { isUserData } from "../../../methods/isUserData";
 	import { Button } from "fluent-svelte";
 
-	const session = <undefined | CustomSession> $page.data.session;
+	const session = <undefined | CustomSession>$page.data.session;
 	if (!isUserData(session)) throw error(500, "User does not exist");
 	const { user } = session;
 
@@ -23,7 +23,9 @@
 	<div>
 		<h3>Guilds</h3>
 		{#each user.data.guildMemberships as guild}
-			<h4>{user.cache.guilds.find(g => BigInt(g.id) === guild.GuildId)?.name || ""} | {guild.GuildId}</h4>
+			<h4>
+				{user.cache.guilds.find((g) => BigInt(g.id) === guild.GuildId)?.name || ""} | {guild.GuildId}
+			</h4>
 			<Button href="/dashboard/{user.id}/{guild.GuildId}">Edit settings</Button>
 		{/each}
 	</div>
