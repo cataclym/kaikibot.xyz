@@ -18,13 +18,8 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<KaikiSvelteKitAuthConf
 			// This callback is called whenever a JWT is created (i.e. at sign in)
 			// or updated (i.e whenever a session is accessed in the client)
 			if (profile?.id) {
-				const [db, cache] = await Promise.all([
-					getUserFromDb(profile.id),
-					getUserCache(profile.id)
-				]);
 				token.discordSnowflake = profile.id;
-				token.cache = cache;
-				token.dbData = db;
+
 			}
 			return token;
 		},
@@ -35,8 +30,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<KaikiSvelteKitAuthConf
 			if (token.discordSnowflake != null) {
 				session.user.id = token.discordSnowflake;
 			}
-			session.user.cache = token.cache;
-			session.user.data = token.dbData;
 
 			return session;
 		}
