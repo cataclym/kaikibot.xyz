@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `Guilds` MODIFY `Prefix` VARCHAR(50) NOT NULL DEFAULT ';';
