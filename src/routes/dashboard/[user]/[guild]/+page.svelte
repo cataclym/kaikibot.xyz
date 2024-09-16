@@ -1,26 +1,35 @@
 <script lang="ts">
-	import { isUserData } from "../../../../methods/isUserData";
-	import { error } from "@sveltejs/kit";
-	import { page } from "$app/stores";
-	import { Button, InfoBadge, ToggleSwitch } from "fluent-svelte";
+	import { Button, InfoBadge, TextBox, ToggleSwitch } from "fluent-svelte";
 
-	const session = $page.data.session;
-	if (!isUserData(session)) throw error(500, "User does not exist");
-
-	const { user } = session;
 	export let data;
 	const { guildData } = data;
-	let { DadBot, Anniversary,  } = guildData;
+	let { DadBot, Anniversary, Name, Prefix, OkColor, ErrorColor, ByeChannel, ByeMessage, ByeTimeout, WelcomeTimeout, WelcomeMessage, WelcomeChannel StickyRoles } = guildData;
 </script>
 
 <main>
-	<h2>{user.cache.guilds.find(g => g.id === $page.params.guild)?.name || $page.params.guild}</h2>
+	<h2>{Name || guildData.GuildId}</h2>
 
-	<h4>Dadbot</h4> <InfoBadge severity="information"/>
-	<ToggleSwitch bind:DadBot />
+	<h4>Prefix</h4> <InfoBadge severity="information"/> <p>Prefix</p>
+	
 
-	<h4>Anniversary roles</h4> <InfoBadge severity="information"/>
-	<ToggleSwitch bind:Anniversary />
+	<h3>Toggles</h3>
+	<div class="indent">
+		<h4>Dadbot</h4> <InfoBadge severity="information"/> <p>Dadbot</p>
+		<ToggleSwitch bind:DadBot />
+
+		<h4>Anniversary roles</h4> <InfoBadge severity="information"/> <p>Anniversary</p>
+		<ToggleSwitch bind:Anniversary />
+
+		<h4>Sticky-roles</h4> <InfoBadge severity="information"/> <p>Sticky-roles</p>
+		<ToggleSwitch bind:StickyRoles />
+	</div>
+
+	<h3>Command embed colors</h3>
+	<h4>Ok color</h4> <InfoBadge severity="information"/> <p>Explain</p>
+	<TextBox bind:OkColor />
+
+	<h4>Error color</h4> <InfoBadge severity="information"/> <p>Explain</p>
+	<TextBox bind:Anniversary />
 
 	<Button variant="accent">Save changes</Button>
 </main>

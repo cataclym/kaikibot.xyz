@@ -1,7 +1,5 @@
-import { LINKS } from "../CONSTANTS";
-import type { WaifuImJSON } from "../WaifuImAPI";
+import type { WaifuImJSON } from "../IWaifuIm";
 
-/** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	const res = await fetch(`https://api.waifu.im/search?included_tags=maid&is_nsfw=false&limit=4`);
 	const json: WaifuImJSON = await res.json();
@@ -13,5 +11,5 @@ export async function load() {
 	}))
 		: Array(4).fill({ url: "", alt: "" });
 
-	return { LINKS, IMAGES };
+	return { IMAGES };
 }

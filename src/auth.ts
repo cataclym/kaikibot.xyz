@@ -5,7 +5,7 @@ import { error } from "@sveltejs/kit";
 export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 	providers: [Discord],
 	callbacks: {
-		async jwt({ token, user, account, profile }) {
+		async jwt({ token, profile }) {
 			// This callback is called whenever a JWT is created (i.e. at sign in)
 			// or updated (i.e whenever a session is accessed in the client)
 			if (profile?.id) {

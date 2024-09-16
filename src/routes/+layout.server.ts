@@ -1,8 +1,6 @@
-import { LINKS } from "../CONSTANTS";
-import type { LayoutServerLoad } from "./$types";
 import fs from "fs";
 
-export async function load(event): Promise<LayoutServerLoad> {
+export async function load(event) {
 	const docs = await new Promise((resolve) => {
 		fs.readdir(
 			"./src/routes/(docs)/docs",
@@ -14,5 +12,5 @@ export async function load(event): Promise<LayoutServerLoad> {
 	});
 
 	const session = await event.locals.auth();
-	return { LINKS, docs, session };
+	return { docs, session };
 }

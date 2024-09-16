@@ -1,11 +1,9 @@
 <script lang="ts">
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
+	import { INVITE, SOURCE, CHANGELOG } from "$env/static/private";
 
-	/** @type {import("./$types").PageServerData} */
 	export let data;
-
-	const links = data.LINKS;
 	const images: { url: string; alt: string }[] = data.IMAGES;
 </script>
 
@@ -94,19 +92,19 @@
 	>
 		<div class="grid text-accent1">
 			<h1 class="text-accent3 text-left">Kaiki</h1>
-			<p class="flex-col text-left"><a href={links.invite}>Invite</a></p>
+			<p class="flex-col text-left"><a href={INVITE}>Invite</a></p>
 			<p class="flex-col text-left cursor-pointer"><a href="/commands">Commands</a></p>
 		</div>
 
 		<div class="grid text-accent1">
 			<h1 class="text-accent3 text-left">Selfhosting</h1>
-			<p class="flex-col text-left"><a href={links.source}>Source code</a></p>
+			<p class="flex-col text-left"><a href={SOURCE}>Source code</a></p>
 			<p class="flex-col text-left"><a href="/README.md">Docs and guides</a></p>
 		</div>
 
 		<div class="grid text-accent1">
 			<h1 class="text-accent3 text-left">Utilities</h1>
-			<p class="flex-col text-left"><a href={links.changelog}>Changelog</a></p>
+			<p class="flex-col text-left"><a href={CHANGELOG}>Changelog</a></p>
 			<p class="flex-col text-left"><a href="/about">About</a></p>
 		</div>
 	</div>

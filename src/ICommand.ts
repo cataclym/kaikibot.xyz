@@ -40,7 +40,7 @@ export interface Cmd {
 	id: string;
 	aliases: string[];
 	ownerOnly: boolean;
-	usage: any;
+	usage?: string | string[];
 	userPermissions: string[];
 	description: string;
 	channel?: string;

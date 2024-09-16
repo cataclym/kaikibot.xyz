@@ -9,9 +9,9 @@ export interface Image {
 	favorites: number;
 	dominant_color: string;
 	source: string;
-	artist: any;
+	artist: unknown;
 	uploaded_at: string;
-	liked_at: any;
+	liked_at: unknown;
 	is_nsfw: boolean;
 	width: number;
 	height: number;

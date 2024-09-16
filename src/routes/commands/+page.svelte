@@ -1,7 +1,6 @@
 <script lang="ts">
-	import "fluent-svelte/theme.css";
 	import search from "../../methods/search";
-	import type { Cmd, Cmds } from "../../ICmds";
+	import type { Cmd, Cmds } from "../../ICommand";
 
 	let active: {
 		[id: string]: boolean;
@@ -270,14 +269,6 @@
 		align-self: stretch;
 		display: inline;
 		color: var(--accent3);
-	}
-
-	.cmdButton {
-		color: var(--accent1);
-		margin: 0.2rem 0.5rem;
-		padding: 0.2rem 0.5rem;
-		border: var(--background) 2px solid;
-		background-color: var(--background);
 	}
 
 	.cmd,

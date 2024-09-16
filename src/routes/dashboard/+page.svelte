@@ -8,7 +8,7 @@
 	<h1 class="text-accent1">KaikiBot dashboard</h1>
 	<h3 class="text-accent3">Manage your servers</h3>
 	{#if $page.data.session}
-		<button on:click={goto(`/dashboard/${$page.data.session.user?.id}`)}>Goto</button>
+		{goto(`/dashboard/${$page.data.session.user?.id}`)}
 	{:else}
 		<SignIn provider="discord" signInPage="signin" />
 	{/if}

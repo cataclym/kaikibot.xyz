@@ -1,17 +1,13 @@
-import { redirect, type Handle, error, type RequestEvent } from "@sveltejs/kit";
+import { redirect, type Handle, error } from "@sveltejs/kit";
 import { handle as authenticationHandle } from "./auth";
 import { sequence } from "@sveltejs/kit/hooks";
-import type { MaybePromise } from "$app/navigation";
 
-async function authorizationHandle({
+const authorizationHandle: Handle = async ({
 	event,
 	resolve
-}: {
-	event: RequestEvent;
-	resolve: (event: RequestEvent) => MaybePromise<Response>;
-}) {
+}) => {
 	// Protect any routes under /authenticated
-	if (event.url.pathname.startsWith("/dashboard") && event.url.pathname !== "/dashboard") {
+	if (event.url.pathname.startsWith("/dashboard") && !(event.url.pathname === "/dashboard")) {
 		const session = await event.locals.auth();
 		if (!session || !session.user) {
 			// Redirect to the signin page

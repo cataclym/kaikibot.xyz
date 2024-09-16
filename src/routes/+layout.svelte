@@ -7,13 +7,12 @@
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
 	import capitalize from "../methods/capitalize";
+	import { DISCORD, EMBED, INVITE, KOFI, SOURCE } from "$env/static/private";
 
 	export let data: {
 		docs: string[];
-		LINKS: { [key: string]: string };
 	};
 
-	const LINKS = data.LINKS;
 	const docs = data.docs.map((page) => `/docs/${page}`);
 	docs.push("/README.md");
 
@@ -62,7 +61,7 @@
 	</div>
 {/if}
 <div class="flex justify-evenly gap-1 smol">
-	<a href={LINKS.discord} class="link_flex">
+	<a href={DISCORD} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl custom-width-1_7 layout"
 			>SUPPORT SERVER
@@ -76,13 +75,13 @@
 			COMMANDS
 		</button>
 	</a>
-	<a href={LINKS.embed} class="link_flex">
+	<a href={EMBED} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
 			>EMBED BUILDER
 		</button>
 	</a>
-	<a href={LINKS.invite} class="link_flex">
+	<a href={INVITE} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
 			>INVITE KAIKI
@@ -95,7 +94,7 @@
 			DASHBOARD
 		</button>
 	</a>
-	<a href={LINKS.source} class="link_flex">
+	<a href={SOURCE} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab custom-width-1_7 layout"
 		>
@@ -115,7 +114,6 @@
 <slot />
 <div class="mt-20" />
 <footer class="items-center grid grid-cols-3">
-	<a class="self-center" href={LINKS.kofi}><h3>Buy me a coffee ☕</h3></a>
+	<a class="self-center" href={KOFI}><h3>Buy me a coffee ☕</h3></a>
 	<h3 class="flex-col">© Cata 2024</h3>
-	<a href={LINKS.patreon}><h3>Patreon️</h3></a>
 </footer>

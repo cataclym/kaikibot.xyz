@@ -1,4 +1,4 @@
-import type { Cmd, Cmds } from "../ICmds";
+import type { Cmd, Cmds } from "../ICommand";
 
 export default function search(
 	commands: Cmds,

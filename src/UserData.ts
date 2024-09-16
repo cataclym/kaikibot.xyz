@@ -1,6 +1,7 @@
 import { type DiscordUsers, type GuildUsers, type Guilds } from "@prisma/client";
 import { error } from "@sveltejs/kit";
 import type { User } from "@auth/sveltekit";
+import { USER_API_URL, USER_API_PORT } from "$env/static/private";
 
 export default class UserData {
 	userId: string;
@@ -10,7 +11,7 @@ export default class UserData {
 
 	async init(): Promise<BotResData> {
 		const res = await fetch(
-			`${process.env.USER_API_URL}:${process.env.USER_API_PORT}/API/POSTUser/${this.userId}`,
+			`${USER_API_URL}:${USER_API_PORT}/API/POSTUser/${this.userId}`,
 			{
 				method: "POST",
 				body: JSON.stringify({
@@ -30,7 +31,7 @@ export default class UserData {
 
 export type UserDBData = {
 	user: DiscordUsers;
-	guildMemberships: GuildUsers[] & Guilds[];
+	guildMemberships: (GuildUsers & Guilds)[];
 };
 
 export type BotResData = {
