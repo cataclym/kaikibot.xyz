@@ -9,6 +9,7 @@ export default {
 		extend: {
 			colors: {
 				// flowbite-svelte
+				orange: "#e85e28",
 				primary: {
 					50: '#FFF5F2',
 					100: '#FFF1EE',
@@ -25,5 +26,8 @@ export default {
 		}
 	},
 
-	plugins: [flowbitePlugin]
+	plugins: [flowbitePlugin],
+	corePlugins: {
+		preflight: false
+	}
 } as Config;

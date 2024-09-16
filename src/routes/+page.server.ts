@@ -1,4 +1,5 @@
 import type { WaifuImJSON } from "../IWaifuIm";
+import { CHANGELOG, INVITE, SOURCE } from "$env/static/private";
 
 export async function load() {
 	const res = await fetch(`https://api.waifu.im/search?included_tags=maid&is_nsfw=false&limit=4`);
@@ -11,5 +12,5 @@ export async function load() {
 	}))
 		: Array(4).fill({ url: "", alt: "" });
 
-	return { IMAGES };
+	return { IMAGES, INVITE, SOURCE, CHANGELOG };
 }

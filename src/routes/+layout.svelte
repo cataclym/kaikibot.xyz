@@ -7,11 +7,10 @@
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
 	import capitalize from "../methods/capitalize";
-	import { DISCORD, EMBED, INVITE, KOFI, SOURCE } from "$env/static/private";
 
-	export let data: {
-		docs: string[];
-	};
+	export let data;
+
+	const { DISCORD, EMBED, INVITE, KOFI, SOURCE } = data;
 
 	const docs = data.docs.map((page) => `/docs/${page}`);
 	docs.push("/README.md");

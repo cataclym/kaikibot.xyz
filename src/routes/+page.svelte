@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
-	import { INVITE, SOURCE, CHANGELOG } from "$env/static/private";
 
 	export let data;
+	const { INVITE, SOURCE, CHANGELOG } = data;
 	const images: { url: string; alt: string }[] = data.IMAGES;
 </script>
 

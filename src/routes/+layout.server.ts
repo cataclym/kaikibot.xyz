@@ -1,7 +1,8 @@
+import { DISCORD, EMBED, KOFI, INVITE, SOURCE } from "$env/static/private";
 import fs from "fs";
 
 export async function load(event) {
-	const docs = await new Promise((resolve) => {
+	const docs: string[] = await new Promise((resolve) => {
 		fs.readdir(
 			"./src/routes/(docs)/docs",
 			{ encoding: "utf-8", withFileTypes: true },
@@ -12,5 +13,5 @@ export async function load(event) {
 	});
 
 	const session = await event.locals.auth();
-	return { docs, session };
+	return { docs, session, DISCORD, EMBED, INVITE, KOFI, SOURCE };
 }

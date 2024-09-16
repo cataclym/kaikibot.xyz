@@ -1,5 +1,4 @@
 import { error } from "@sveltejs/kit";
-import type { UserDBData } from "../../../../UserData";
 import type { Guilds, GuildUsers } from "@prisma/client";
 
 export async function load({ parent, params }) {
