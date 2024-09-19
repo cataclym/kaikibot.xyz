@@ -1,13 +1,25 @@
 <script lang="ts">
 	import ColorPicker from "svelte-awesome-color-picker";
-	import { Button, Input, Label, NumberInput, Range, Select, Textarea, Toast, Toggle, Tooltip } from "flowbite-svelte";
+	import {
+		Avatar,
+		Button,
+		Input,
+		Label,
+		NumberInput,
+		Select,
+		Textarea,
+		Toast,
+		Toggle,
+		Tooltip
+	} from "flowbite-svelte";
 
 	export let data;
-	const { guildData, guildChannels, EMBED } = data;
+	const { guildData, EMBED } = data;
 	let {
 		DadBot,
 		Anniversary,
-		Name,
+		name,
+		icon,
 		Prefix,
 		OkColor,
 		ErrorColor,
@@ -23,8 +35,10 @@
 	let hexOkColor = OkColor.toString(16);
 	let hexErrorColor = ErrorColor.toString(16);
 
-	const channelOptions: { name: string; value: bigint | null }[] = guildChannels.map(g => ({ name: `#${g.name}`, value: BigInt(g.id) }));
-	channelOptions.push({ name: "None (Disable)", value: null })
+	const channelOptions: { name: string; value: bigint | null }[] = guildData.guildChannels.map(
+		(g) => ({ name: `#${g.name}`, value: BigInt(g.id) })
+	);
+	channelOptions.push({ name: "None (Disable)", value: null });
 
 	function saveChanges() {
 		throw new Error("Not implemented");
@@ -32,8 +46,9 @@
 </script>
 
 <main>
-	<h2>Edit configuration of: {Name || guildData.GuildId}</h2>
-	<Toast dismissable={false} color="orange">Changes wont apply before they are saved</Toast>
+	<Avatar src={icon}></Avatar>
+	<h2>Edit configuration of: {name || guildData.GuildId}</h2>
+	<Toast dismissable={false} color="primary">Changes wont apply before they are saved</Toast>
 
 	<div class="indent">
 		<Label for="prefix">Change server prefix</Label>
@@ -51,14 +66,20 @@
 
 	<h3>Command embed colors</h3>
 	<div class="indent">
-		<ColorPicker bind:hex={hexOkColor} />
+		<Label
+			>Select Ok-Color
+			<ColorPicker bind:hex={hexOkColor} />
+		</Label>
 
-		<ColorPicker bind:hex={hexErrorColor} />
+		<Label
+			>Select Error-color
+			<ColorPicker bind:hex={hexErrorColor} />
+		</Label>
 	</div>
 
 	<h3>Welcome and Bye messages</h3>
+	<h4>Welcome configuration</h4>
 	<div class="indent">
-
 		<Label>
 			Select channel
 			<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} />
@@ -70,17 +91,60 @@
 		</Label>
 
 		<form>
-			<label for="welcomeMessage" class="sr-only">Welcome message
+			<label for="welcomeMessage" class="sr-only"
+				>Welcome message
 				<Button>Embed</Button>
 				<Tooltip>
-					If you want fancy messages with embeds, create one <a target="_blank" href={EMBED}>here</a>, copy the code and paste it below. Use <a target="_blank" href="/docs/PLACEHOLDERS.md">placeholders</a> if you want to mention users or servername in your message.
+					If you want fancy messages with embeds, create one <a
+						target="_blank"
+						href={EMBED}>here</a
+					>, copy the code and paste it below. Use
+					<a target="_blank" href="/docs/PLACEHOLDERS.md">placeholders</a> if you want to mention
+					users or servername in your message.
 				</Tooltip>
 			</label>
-			<Textarea id="welcomeMessage" class="mb-4" placeholder={WelcomeMessage || "Write a welcome message"} />
+			<Textarea
+				id="welcomeMessage"
+				class="mb-4"
+				placeholder={WelcomeMessage || "Write a welcome message"}
+				bind:WelcomeMessage
+			/>
+		</form>
+
+		<h4>Bye configuration</h4>
+		<Label>
+			Select channel
+			<Select class="mt-2" items={channelOptions} bind:value={ByeChannel} />
+		</Label>
+
+		<Label>
+			<span>Message autodelete delay</span>
+			<NumberInput bind:ByeTimeout />
+		</Label>
+
+		<form>
+			<label for="byeMessage" class="sr-only"
+				>Bye message
+				<Button>Embed</Button>
+				<Tooltip>
+					If you want fancy messages with embeds, create one <a
+						target="_blank"
+						href={EMBED}>here</a
+					>, copy the code and paste it below. Use
+					<a target="_blank" href="/docs/PLACEHOLDERS.md">placeholders</a> if you want to mention
+					users or servername in your message.
+				</Tooltip>
+			</label>
+			<Textarea
+				id="byeMessage"
+				class="mb-4"
+				placeholder={ByeMessage || "Write a welcome message"}
+				bind:ByeMessage
+			/>
 		</form>
 	</div>
 
 	<div>
-		<Button color="orange" on:click={saveChanges}>Save changes</Button>
+		<Button color="primary" on:click={saveChanges}>Save changes</Button>
 	</div>
 </main>

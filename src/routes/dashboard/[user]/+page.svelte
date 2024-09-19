@@ -2,7 +2,7 @@
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import { error } from "@sveltejs/kit";
-	import { Button } from "flowbite-svelte";
+	import { Avatar, Button } from "flowbite-svelte";
 
 	const session = $page.data.session;
 
@@ -17,9 +17,9 @@
 
 <main>
 	<div>
-		<img src={user.image} alt="Avatar" />
+		<Avatar src={user.image || ""} alt="Avatar" />
 	</div>
-	<h1 class="text-accent3">Hi {user?.name || "User"}</h1>
+	<h1 class="text-accent3">Hi {user.name}</h1>
 	<div class="text-accent3">
 		<p>You have 💴 {userData.data.user.Amount}</p>
 	</div>
@@ -27,7 +27,7 @@
 		<h3>Guilds</h3>
 		{#each userData.data.guildMemberships as guild}
 			<h4>
-				{userData.guilds.get(String(guild.GuildId))?.name || ""} | {guild.GuildId}
+				{userData.guilds.find((g) => g.id === String(guild.GuildId))?.name || "N/A"} | {guild.GuildId}
 			</h4>
 			<Button href="/dashboard/{user.id}/{guild.GuildId}">Edit settings</Button>
 		{/each}
