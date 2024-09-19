@@ -7,9 +7,9 @@
 
 <div class="flex justify-evenly gap-1 smol">
 	<div class="h-full w-full">
-			<p>Logged in as {userData.user.name}</p>
-			<button on:click={() => goto("/auth/signout")}>Logout</button>
+		<p>Logged in as {userData.user.name}</p>
+		<button on:click={() => goto("/auth/signout")}>Logout</button>
 	</div>
 </div>
 
-<slot/>
+<slot />

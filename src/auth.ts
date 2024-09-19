@@ -10,7 +10,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 			// or updated (i.e whenever a session is accessed in the client)
 			if (profile?.id) {
 				token.discordSnowflake = profile.id;
-
 			}
 			return token;
 		},

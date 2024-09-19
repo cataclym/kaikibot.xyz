@@ -7,9 +7,9 @@ export async function load() {
 
 	const IMAGES = json.images
 		? json.images.map((image) => ({
-		url: image.url,
-		alt: image.tags.map((tag) => `${tag.name} - ${tag.description}`).join(". ")
-	}))
+				url: image.url,
+				alt: image.tags.map((tag) => `${tag.name} - ${tag.description}`).join(". ")
+			}))
 		: Array(4).fill({ url: "", alt: "" });
 
 	return { IMAGES, INVITE, SOURCE, CHANGELOG };

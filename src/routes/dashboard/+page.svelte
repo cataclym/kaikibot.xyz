@@ -2,6 +2,7 @@
 	import { SignIn } from "@auth/sveltekit/components";
 	import { page } from "$app/stores";
 	import { goto } from "$app/navigation";
+	import { Button } from "flowbite-svelte";
 </script>
 
 <main>
@@ -10,9 +11,12 @@
 	{#if $page.data.session}
 		{goto(`/dashboard/${$page.data.session.user?.id}`)}
 	{:else}
-		<SignIn provider="discord" signInPage="signin" />
+			<SignIn provider="discord" signInPage="signin">
+				<div slot="submitButton">
+            <Button>
+              Signin with Discord
+            </Button>
+				</div>
+			</SignIn>
 	{/if}
 </main>
-
-<style>
-</style>

@@ -1,35 +1,86 @@
 <script lang="ts">
-	import { Button, InfoBadge, TextBox, ToggleSwitch } from "fluent-svelte";
+	import ColorPicker from "svelte-awesome-color-picker";
+	import { Button, Input, Label, NumberInput, Range, Select, Textarea, Toast, Toggle, Tooltip } from "flowbite-svelte";
 
 	export let data;
-	const { guildData } = data;
-	let { DadBot, Anniversary, Name, Prefix, OkColor, ErrorColor, ByeChannel, ByeMessage, ByeTimeout, WelcomeTimeout, WelcomeMessage, WelcomeChannel StickyRoles } = guildData;
+	const { guildData, guildChannels, EMBED } = data;
+	let {
+		DadBot,
+		Anniversary,
+		Name,
+		Prefix,
+		OkColor,
+		ErrorColor,
+		ByeChannel,
+		ByeMessage,
+		ByeTimeout,
+		WelcomeTimeout,
+		WelcomeMessage,
+		WelcomeChannel,
+		StickyRoles
+	} = guildData;
+
+	let hexOkColor = OkColor.toString(16);
+	let hexErrorColor = ErrorColor.toString(16);
+
+	const channelOptions: { name: string; value: bigint | null }[] = guildChannels.map(g => ({ name: `#${g.name}`, value: BigInt(g.id) }));
+	channelOptions.push({ name: "None (Disable)", value: null })
+
+	function saveChanges() {
+		throw new Error("Not implemented");
+	}
 </script>
 
 <main>
-	<h2>{Name || guildData.GuildId}</h2>
+	<h2>Edit configuration of: {Name || guildData.GuildId}</h2>
+	<Toast dismissable={false} color="orange">Changes wont apply before they are saved</Toast>
 
-	<h4>Prefix</h4> <InfoBadge severity="information"/> <p>Prefix</p>
-	
+	<div class="indent">
+		<Label for="prefix">Change server prefix</Label>
+		<Input id="prefix" placeholder={Prefix} bind:Prefix />
+	</div>
 
 	<h3>Toggles</h3>
 	<div class="indent">
-		<h4>Dadbot</h4> <InfoBadge severity="information"/> <p>Dadbot</p>
-		<ToggleSwitch bind:DadBot />
+		<Toggle checked={DadBot} bind:DadBot>Dad-mode</Toggle>
 
-		<h4>Anniversary roles</h4> <InfoBadge severity="information"/> <p>Anniversary</p>
-		<ToggleSwitch bind:Anniversary />
+		<Toggle checked={Anniversary} bind:Anniversary>Anniversary roles</Toggle>
 
-		<h4>Sticky-roles</h4> <InfoBadge severity="information"/> <p>Sticky-roles</p>
-		<ToggleSwitch bind:StickyRoles />
+		<Toggle checked={StickyRoles} bind:StickyRoles>Sticky roles</Toggle>
 	</div>
 
 	<h3>Command embed colors</h3>
-	<h4>Ok color</h4> <InfoBadge severity="information"/> <p>Explain</p>
-	<TextBox bind:OkColor />
+	<div class="indent">
+		<ColorPicker bind:hex={hexOkColor} />
 
-	<h4>Error color</h4> <InfoBadge severity="information"/> <p>Explain</p>
-	<TextBox bind:Anniversary />
+		<ColorPicker bind:hex={hexErrorColor} />
+	</div>
 
-	<Button variant="accent">Save changes</Button>
+	<h3>Welcome and Bye messages</h3>
+	<div class="indent">
+
+		<Label>
+			Select channel
+			<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} />
+		</Label>
+
+		<Label>
+			<span>Message autodelete delay</span>
+			<NumberInput bind:WelcomeTimeout />
+		</Label>
+
+		<form>
+			<label for="welcomeMessage" class="sr-only">Welcome message
+				<Button>Embed</Button>
+				<Tooltip>
+					If you want fancy messages with embeds, create one <a target="_blank" href={EMBED}>here</a>, copy the code and paste it below. Use <a target="_blank" href="/docs/PLACEHOLDERS.md">placeholders</a> if you want to mention users or servername in your message.
+				</Tooltip>
+			</label>
+			<Textarea id="welcomeMessage" class="mb-4" placeholder={WelcomeMessage || "Write a welcome message"} />
+		</form>
+	</div>
+
+	<div>
+		<Button color="orange" on:click={saveChanges}>Save changes</Button>
+	</div>
 </main>

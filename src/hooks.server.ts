@@ -2,10 +2,7 @@ import { redirect, type Handle, error } from "@sveltejs/kit";
 import { handle as authenticationHandle } from "./auth";
 import { sequence } from "@sveltejs/kit/hooks";
 
-const authorizationHandle: Handle = async ({
-	event,
-	resolve
-}) => {
+const authorizationHandle: Handle = async ({ event, resolve }) => {
 	// Protect any routes under /authenticated
 	if (event.url.pathname.startsWith("/dashboard") && !(event.url.pathname === "/dashboard")) {
 		const session = await event.locals.auth();
@@ -21,7 +18,7 @@ const authorizationHandle: Handle = async ({
 
 	// If the request is still here, just proceed as normally
 	return resolve(event);
-}
+};
 
 // First handle authentication, then authorization
 // Each function acts as a middleware, receiving the request handle
