@@ -12,14 +12,15 @@
 		Toggle,
 		Tooltip
 	} from "flowbite-svelte";
+	import type { Guilds, GuildUsers } from "@prisma/client";
+	import type { GuildData } from "./+page.server";
+	import { submitChanges } from "../../../../methods/submitChanges";
 
 	export let data;
 	const { guildData, EMBED } = data;
 	let {
 		DadBot,
 		Anniversary,
-		name,
-		icon,
 		Prefix,
 		OkColor,
 		ErrorColor,
@@ -29,11 +30,18 @@
 		WelcomeTimeout,
 		WelcomeMessage,
 		WelcomeChannel,
-		StickyRoles
+		StickyRoles,
+		ExcludeRole
+	} = guildData.Guilds;
+
+	let {
+		name,
+		icon,
 	} = guildData;
 
+	console.log(guildData)
 	let hexOkColor = OkColor.toString(16);
-	let hexErrorColor = ErrorColor.toString(16);
+	let hexErrorColor = ErrorColor!.toString(16);
 
 	const channelOptions: { name: string; value: bigint | null }[] = guildData.guildChannels.map(
 		(g) => ({ name: `#${g.name}`, value: BigInt(g.id) })
@@ -41,33 +49,57 @@
 	channelOptions.push({ name: "None (Disable)", value: null });
 
 	function saveChanges() {
-		throw new Error("Not implemented");
+		const recapturedGuildData: RecapturedGuildData = {
+			DadBot,
+			Anniversary,
+			name,
+			icon,
+			Prefix,
+			OkColor,
+			ErrorColor,
+			ByeChannel,
+			ByeMessage,
+			ByeTimeout,
+			WelcomeChannel,
+			WelcomeMessage,
+			WelcomeTimeout,
+			StickyRoles,
+			ExcludeRole
+		};
+
+		Object.keys(recapturedGuildData).forEach((k) => {
+			const key: keyof GuildData = k as keyof Omit<Guilds, "Id" | "CreatedAt"> & keyof GuildUsers & keyof { name: string, icon: string };
+			if (guildData[key] === recapturedGuildData[key]) delete recapturedGuildData[key]
+		})
+
+		submitChanges(recapturedGuildData, guildData.GuildId, data.USER_API_URL, data.USER_API_URL);
 	}
 </script>
 
 <main>
-	<Avatar src={icon}></Avatar>
-	<h2>Edit configuration of: {name || guildData.GuildId}</h2>
-	<Toast dismissable={false} color="primary">Changes wont apply before they are saved</Toast>
+	<div>
+		<Avatar size="xl" src={`https://cdn.discordapp.com/icons/${guildData.id}/${icon}.webp			` || ""} alt="Guild" />
+	</div>
+	<h2>Edit configuration of {name || guildData.GuildId}</h2>
+	<Toast dismissable={false} color="purple">Changes wont apply before you have saved</Toast>
 
 	<div class="indent">
-		<Label for="prefix">Change server prefix</Label>
-		<Input id="prefix" placeholder={Prefix} bind:Prefix />
+		<Label for="prefix"><h3>Change server prefix</h3></Label>
+		<Input size="sm" id="prefix" placeholder={Prefix} bind:Prefix />
 	</div>
 
 	<h3>Toggles</h3>
 	<div class="indent">
-		<Toggle checked={DadBot} bind:DadBot>Dad-mode</Toggle>
+		<Toggle checked={DadBot} bind:DadBot><p>Dad-mode</p></Toggle>
 
-		<Toggle checked={Anniversary} bind:Anniversary>Anniversary roles</Toggle>
+		<Toggle checked={Anniversary} bind:Anniversary><p>Anniversary roles</p></Toggle>
 
-		<Toggle checked={StickyRoles} bind:StickyRoles>Sticky roles</Toggle>
+		<Toggle checked={StickyRoles} bind:StickyRoles><p>Sticky roles</p></Toggle>
 	</div>
 
 	<h3>Command embed colors</h3>
 	<div class="indent">
-		<Label
-			>Select Ok-Color
+		<Label>Select Ok-Color
 			<ColorPicker bind:hex={hexOkColor} />
 		</Label>
 
@@ -138,6 +170,7 @@
 			<Textarea
 				id="byeMessage"
 				class="mb-4"
+				value={ByeMessage}
 				placeholder={ByeMessage || "Write a welcome message"}
 				bind:ByeMessage
 			/>

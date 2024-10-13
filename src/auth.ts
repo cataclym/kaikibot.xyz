@@ -2,7 +2,7 @@ import { SvelteKitAuth, type SvelteKitAuthConfig } from "@auth/sveltekit";
 import Discord from "@auth/sveltekit/providers/discord";
 import { error } from "@sveltejs/kit";
 
-export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
+export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig> {
 	providers: [Discord],
 	callbacks: {
 		async jwt({ token, profile }) {

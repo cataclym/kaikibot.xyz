@@ -30,6 +30,10 @@ main {
 	margin: 0 auto;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+	color : var(--accent1);
+}
+
 .text-accent1 {
 	color: var(--accent1);
 }
@@ -93,6 +97,7 @@ button[aria-current="true"] {
 	transition: 0.1s;
 	box-shadow: 0 4px var(--accent4);
 }
+
 footer {
 	color: var(--accent3);
 	background: var(--accent2);
@@ -136,4 +141,13 @@ footer {
 		grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
 		justify-items: flex-start !important;
 	}
+}
+
+.indent {
+	border: 1px solid var(--accent1);
+	border-radius: 0.25em	;
+	background-color: var(--accent2);
+	padding: 0.5em;
+	width: 50%;
+	margin: 0.5em auto;
 }

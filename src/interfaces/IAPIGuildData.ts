@@ -1,0 +1,21 @@
+type RecapturedGuildData = Partial<{
+	DadBot: boolean;
+	Anniversary: boolean;
+	name: string;
+	icon: string;
+	Prefix: string;
+	OkColor: bigint;
+	ErrorColor: bigint;
+	ByeChannel: bigint | null;
+	ByeMessage: string | null;
+	ByeTimeout: number | null;
+	WelcomeChannel: bigint | null;
+	WelcomeMessage: string | null;
+	WelcomeTimeout: number | null;
+	StickyRoles: boolean;
+	ExcludeRole: bigint	| null;
+	ExcludeRoleName: string | null;
+	UserRoleName: string | null;
+	UserRoleIcon: string | null;
+	UserRoleColor: bigint | null;
+}>;

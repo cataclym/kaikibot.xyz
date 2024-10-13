@@ -22,8 +22,6 @@
 	/>
 	<meta property="twitter:image" content="/kaikibot.png" />
 
-	<link rel="icon" type="image/png" href="/favicon.png" />
-	<link rel="apple-touch-icon" type="image/png" href="/favicon.png" />
 	<link rel="stylesheet" href="/global.css" />
 	<!--		<link rel='stylesheet' href='/build/bundle.css'>-->
 

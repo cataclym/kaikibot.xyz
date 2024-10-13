@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import { error } from "@sveltejs/kit";
 	import { Avatar, Button } from "flowbite-svelte";
+	import type { Guild } from "discord.js";
 
 	const session = $page.data.session;
 
@@ -12,25 +12,29 @@
 
 	export let data;
 
-	const { userData } = data;
+	const { responseData } = data;
+	console.log(data)
 </script>
 
 <main>
 	<div>
-		<Avatar src={user.image || ""} alt="Avatar" />
+		<Avatar size="lg" src={user.image || ""} alt="Avatar" />
 	</div>
 	<h1 class="text-accent3">Hi {user.name}</h1>
 	<div class="text-accent3">
-		<p>You have 💴 {userData.data.user.Amount}</p>
+		<p>You have 💴 {responseData.userData.Amount}</p>
 	</div>
 	<div>
 		<h3>Guilds</h3>
-		{#each userData.data.guildMemberships as guild}
+		{#each responseData.data as guild}
+			{@const cacheGuild = responseData.guilds.find((g) => g.id === String(guild.GuildId))}
+			<div class="indent">
+				<Avatar src={`https://cdn.discordapp.com/icons/${guild.GuildId}/${cacheGuild?.icon}.webp			` || ""} alt="Guild" />
 			<h4>
-				{userData.guilds.find((g) => g.id === String(guild.GuildId))?.name || "N/A"} | {guild.GuildId}
+				{cacheGuild?.name || "N/A"} | {guild.GuildId}
 			</h4>
 			<Button href="/dashboard/{user.id}/{guild.GuildId}">Edit settings</Button>
+			</div>
 		{/each}
 	</div>
-	<button on:click={() => goto("/auth/signout")}>Logout</button>
 </main>
