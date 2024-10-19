@@ -1,23 +1,35 @@
 import { EMBED } from "$env/static/private";
-import { error } from "@sveltejs/kit";
-import type { Guilds, GuildUsers } from "@prisma/client";
-import type { GuildCache } from "../../../../UserData";
+import { type Actions, error } from "@sveltejs/kit";
 import { USER_API_PORT, USER_API_URL } from "$env/static/private";
+import { submitChanges } from "../../../../methods/submitChanges";
+import createHeaders from "../../../../methods/createHeaders";
 
-export type GuildData = Omit<Guilds & GuildUsers & GuildCache, "Id" | "CreatedAt"> & { name: string, icon: string }
+export async function load({ params, parent, fetch }) {
+	const { responseData } = await parent();
 
-export async function load({ params, parent }) {
-	const {
-		responseData
-	} = await parent();
+	const guildChannelsResponse = await fetch(`${USER_API_URL}:${USER_API_PORT}/API/Guild/${params.guild}`, {
+			method: "GET",
+			headers: createHeaders()
+		});
+
+	if (!guildChannelsResponse.ok) {
+		throw error(500, "No response from the server.");
+	}
+
+	const guildChannels = <{ id: string, name: string }[]> await guildChannelsResponse.json();
 
 	const guildData = {
-		...responseData.data.find((g) => String(g.GuildId) === params.guild),
-		...responseData.guilds.find((g) => String(g.id) === params.guild)
+		...responseData.guildDb.find((g) => String(g.Id) === params.guild),
+		...responseData.guilds.find((g) => String(g.id) === params.guild),
+		channels: guildChannels,
 	};
 
-	if (!((guildData: any): guildData is GuildData => "GuildId" in guildData)(guildData)) throw error(500, "Guild data was not found!");
-
-	return { EMBED, guildData, USER_API_PORT, USER_API_URL };
+	return { EMBED, guildData };
 }
 
+export const actions = ({
+	default: async ({ request, params }) => {
+		const formData = await request.formData();
+		await submitChanges(JSON.parse(String(formData.get("data"))), BigInt(params.guild!), USER_API_URL, USER_API_PORT)
+	}
+}) satisfies Actions;

@@ -62,40 +62,40 @@
 <div class="flex justify-evenly gap-1 smol">
 	<a href={DISCORD} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl full-width layout"
 			>SUPPORT SERVER
 		</button>
 	</a>
 	<a class="link_flex" href={$page.url.pathname === "/commands" ? "/" : "/commands"}>
 		<button
 			aria-current={$page.url.pathname === "/commands"}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 		>
 			COMMANDS
 		</button>
 	</a>
 	<a href={EMBED} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 			>EMBED BUILDER
 		</button>
 	</a>
 	<a href={INVITE} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 			>INVITE KAIKI
 		</button>
 	</a>
 	<a href="/dashboard" class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
 		>
 			DASHBOARD
 		</button>
 	</a>
 	<a href={SOURCE} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab full-width layout"
 		>
 			SOURCE CODE
 		</button>
@@ -103,7 +103,7 @@
 	<a href={docs.includes($page.url.pathname) ? "/" : "/README.md"} class="link_flex">
 		<button
 			aria-current={docs.includes($page.url.pathname)}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
 		>
 			DOCUMENTATION
 		</button>

@@ -1,46 +1,69 @@
 import { type DiscordUsers, type GuildUsers, type Guilds } from "@prisma/client";
 import { error } from "@sveltejs/kit";
 import { USER_API_URL, USER_API_PORT } from "$env/static/private";
-import { type GuildTextBasedChannel, type PermissionsBitField, Role, type User } from "discord.js";
+import { OAuth2Guild, type User } from "discord.js";
+import createHeaders from "./methods/createHeaders";
 
 export default class UserData {
-	userId: string;
-	constructor(userId: string) {
+	private readonly userId: string;
+	private readonly accessToken: string;
+
+	constructor(userId: string, accessToken: string) {
 		this.userId = userId;
+		this.accessToken = accessToken;
 	}
 
+	// Send a GET request to the User endpoint to receive data from db
 	async getData(): Promise<BotResData> {
-		const res = await fetch(`${USER_API_URL}:${USER_API_PORT}/API/POSTUser/${this.userId}`, {
-			method: "POST",
-			body: JSON.stringify({
-					token: process.env.TOKEN
+		const headers = createHeaders();
+		const [guildsResponse, userResponse] = await Promise.all([
+			// Get user's guilds from discord API
+			fetch("https://discord.com/api/users/@me/guilds", {
+				method: "GET",
+				headers: {
+					authorization: `Bearer ${this.accessToken}`
+				}
 			}),
-			headers: {
-				"content-type": "application/json"
-			}
-		});
+			// Get user from discord API
+			fetch("https://discord.com/api/users/@me", {
+				method: "GET",
+				headers: {
+					authorization: `Bearer ${this.accessToken}`
+				}
+			})
+		]);
 
-		if (!res.ok) {
-			console.error(res, res.url)
-			throw error(res.status, res.statusText);
+		if (!(guildsResponse || userResponse).ok) {
+			console.error(guildsResponse, guildsResponse.url);
+			throw error(guildsResponse.status, guildsResponse.statusText);
 		}
 
-		return res.json();
+		// Get all the data from the responses - async
+		const [guilds, user]: [OAuth2Guild[], User] = await Promise.all([guildsResponse.json(), userResponse.json()]);
+
+		// POST to send guilds and receive database scoped data from custom bot API
+		const customResponse = await fetch(`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`, {
+			method: "POST",
+			headers,
+			body: JSON.stringify(guilds.map(g => g.id))
+		});
+
+		if (customResponse.status === 404) {
+			throw error(404, "Your user cannot be found, have you used KaikiBot before?");
+		}
+
+		if (!customResponse.ok) {
+			console.error(customResponse, customResponse.url);
+			throw error(customResponse.status, customResponse.statusText);
+		}
+
+		return { ...await customResponse.json(), guilds, user };
 	}
 }
 
 export type BotResData = {
 	user: User;
-	userData: DiscordUsers
-	data: (GuildUsers & Guilds)[];
-	guilds: GuildCache[];
+	userData: DiscordUsers;
+	guildDb: ({ GuildUsers: GuildUsers[] } & Guilds)[];
+	guilds: OAuth2Guild[];
 };
-
-export type GuildCache = {
-	guildChannels: GuildTextBasedChannel[];
-	icon: string | null;
-	id: string;
-	name: string
-	userPerms: Readonly<PermissionsBitField>;
-	userRole: Role | null
-}

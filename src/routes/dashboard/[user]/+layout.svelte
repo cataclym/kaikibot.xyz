@@ -8,10 +8,10 @@
 	$: location = $page.params.guild;
 </script>
 
-<div class="flex justify-evenly gap-1 smol">
-	<div class="h-full w-full pt-1 text-orange flex flex-row justify-around">
+<div class="smol">
+	<div class="h-full w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row flex justify-around items-baseline mt-1 mb-2">
 		{#if location != null}
-			<Button href="/dashboard/{responseData.user.id}/">
+			<Button href="/dashboard/{responseData.user.id}/" class="text-gray-700">
 				<ArrowKeyLeft /> Back
 			</Button>
 		{/if}
