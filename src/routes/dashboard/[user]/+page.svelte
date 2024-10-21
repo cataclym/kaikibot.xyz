@@ -2,7 +2,7 @@
 	import { page } from "$app/stores";
 	import { error } from "@sveltejs/kit";
 	import { Avatar, Button } from "flowbite-svelte";
-	import type { Guild } from "discord.js";
+	import ClickToCopy from "../../../components/ClickToCopy.svelte";
 
 	const session = $page.data.session;
 
@@ -38,7 +38,7 @@
 						{cacheGuild?.name || "N/A"}
 					</h4>
 					<Button href="/dashboard/{user.id}/{guild.Id}">Edit settings</Button>
-					<h6>{guild.Id}</h6>
+					<ClickToCopy>{guild.Id}</ClickToCopy>>
 				</div>
 			{/if}
 		{/each}

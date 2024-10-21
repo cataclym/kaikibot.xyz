@@ -10,8 +10,6 @@
 	--accent4: #e85e28;
 
 	--gitlab: #6b4fbb;
-	--paypal: #003087;
-	--patreon: #ff424d;
 
 	font-family: sans-serif;
 }
@@ -76,7 +74,7 @@ a {
 }
 
 a:visited {
-	color: inherit !important;
+	color: var(--accent4);
 }
 
 button.layout {
@@ -140,7 +138,6 @@ footer {
 }
 
 .indent {
-	border: 1px solid var(--accent1);
 	background-color: var(--accent2);
 	padding: 1rem;
 	min-width: fit-content;

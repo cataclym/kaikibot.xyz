@@ -113,6 +113,6 @@
 <slot />
 <div class="mt-20" />
 <footer class="items-center grid grid-cols-3">
-	<a class="self-center" href={KOFI}><h3>Buy me a coffee ☕</h3></a>
+	<a class="self-center" href={KOFI}><h3>Buy me a ko-fi ☕</h3></a>
 	<h3 class="flex-col">© Cata 2024</h3>
 </footer>
