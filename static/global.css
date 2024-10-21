@@ -73,10 +73,6 @@ a {
 	color: var(--accent4) !important;
 }
 
-a:visited {
-	color: var(--accent4);
-}
-
 button.layout {
 	background-color: var(--accent2) !important;
 	border: var(--accent2) 2px solid;
@@ -128,6 +124,10 @@ footer {
 	footer {
 		display: none !important;
 	}
+
+	.indent {
+		width: 10rem;
+	}
 }
 
 @media (max-width: 768px) {
@@ -137,12 +137,19 @@ footer {
 	}
 }
 
+@media (min-width: 1024px) {
+	.indent {
+		min-width: 10rem;
+		max-width: 20rem;
+	}
+}
+
 .indent {
 	background-color: var(--accent2);
 	padding: 1rem;
-	min-width: fit-content;
-	max-width: 20rem;
 }
+
+
 
 #guildSettings .indent {
 	flex: 1 0 33%

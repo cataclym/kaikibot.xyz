@@ -3,6 +3,7 @@
 	import { error } from "@sveltejs/kit";
 	import { Avatar, Button } from "flowbite-svelte";
 	import ClickToCopy from "../../../components/ClickToCopy.svelte";
+	import GuildCard from "../../../components/GuildCard.svelte";
 
 	const session = $page.data.session;
 
@@ -25,21 +26,12 @@
 		<div class="text-accent3">
 			<p>You have 💴 {responseData.userData.Amount}</p>
 		</div>
-		<h3>Guilds</h3>
+		<h3>Available guilds</h3>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 		{#each responseData.guildDb as guild}
 			{@const cacheGuild = responseData.guilds.find((g) => g.id === String(guild.Id))}
 			{#if (cacheGuild !== undefined)}
-				<div class="indent">
-					<Avatar size="lg"
-							src={`https://cdn.discordapp.com/icons/${guild.Id}/${cacheGuild?.icon}.webp			` || ""}
-							alt="Guild" />
-					<h4>
-						{cacheGuild?.name || "N/A"}
-					</h4>
-					<Button href="/dashboard/{user.id}/{guild.Id}">Edit settings</Button>
-					<ClickToCopy>{guild.Id}</ClickToCopy>>
-				</div>
+				<GuildCard guild={guild} cacheGuild={cacheGuild} user={user} />
 			{/if}
 		{/each}
 		</div>

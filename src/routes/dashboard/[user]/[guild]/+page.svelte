@@ -52,8 +52,26 @@
 	const savedToggles = { DadBot, Anniversary, StickyRoles };
 	$: toggleState = JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles });
 
-	let hexOkColor = OkColor?.toString(16) || "00ff00";
-	let hexErrorColor = ErrorColor?.toString(16) || "ff0000";
+	let hexOkColor = OkColor ? `#${Number(OkColor)?.toString(16).padStart(6, "0")}` : "#00ff00";
+	let hexErrorColor = ErrorColor ? `#${Number(ErrorColor)?.toString(16).padStart(6, "0")}` : "#ff0000";
+	const savedColors = {
+		hexOkColor,
+		hexErrorColor
+	}
+	$: colorState = JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor });
+
+	let welcomeTimeout = WelcomeTimeout ?? 0;
+	const savedWelcome = {
+		WelcomeChannel,
+		WelcomeTimeout: welcomeTimeout,
+		WelcomeMessage
+	}
+	$: welcomeState = JSON.stringify(savedWelcome) === JSON.stringify({
+		WelcomeChannel,
+		WelcomeTimeout: welcomeTimeout,
+		WelcomeMessage
+	});
+
 
 	function saveChanges() {
 		const recapturedGuildData: Partial<RecapturedGuildData> = {
@@ -110,7 +128,6 @@ https://kit.svelte.dev/docs/state-management
 				alt="Guild" />
 	</div>
 	<h2>Edit configuration of {name || guildData.Id}</h2>
-	<Alert color="primary" class="m-auto">Changes wont apply before you have saved</Alert>
 	<div id="guildSettings" class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1">
 		<div class="indent flex flex-col items-center justify-between">
 			<h3>Server prefix</h3>
@@ -124,20 +141,16 @@ https://kit.svelte.dev/docs/state-management
 			<Toggle bind:checked={DadBot}><p>Dad-mode</p></Toggle>
 			<Toggle bind:checked={Anniversary}><p>Anniversary roles</p></Toggle>
 			<Toggle bind:checked={StickyRoles}><p>Sticky roles</p></Toggle>
-			<Button color="alternative" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={toggleState}><FileOutline/>Save</Button>
+			<Button color="primary" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={toggleState}><FileOutline/>Save</Button>
 		</div>
 
-		<div class="indent flex flex-col justify-between items-center">
+		<div class="indent flex flex-col justify-between items-center text-gray-100">
 			<h3>Command embed colors</h3>
-			<Label>Select Ok-Color
+			<h4 class="text-gray-100">Ok-Color</h4>
 				<ColorPicker bind:hex={hexOkColor} />
-			</Label>
-
-			<Label
-			>Select Error-color
+			<h4 class="text-gray-100">Error-color</h4>
 				<ColorPicker bind:hex={hexErrorColor} />
-			</Label>
-			<Button color="dark" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={toggleState}><FileOutline/>Save</Button>
+			<Button color="primary" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={colorState}><FileOutline/>Save</Button>
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
 			<h3>Welcome configuration</h3>
@@ -145,7 +158,7 @@ https://kit.svelte.dev/docs/state-management
 				<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} />
 
 				<p class="text-gray-100">Message autodelete delay</p>
-				<NumberInput bind:WelcomeTimeout />
+				<NumberInput bind:value={welcomeTimeout} />
 
 			<p class="text-gray-100">Welcome message</p>
 
@@ -153,10 +166,10 @@ https://kit.svelte.dev/docs/state-management
 					id="welcomeMessage"
 					class="mb-4"
 					placeholder={WelcomeMessage || "Write a welcome message"}
-					bind:WelcomeMessage
+					bind:value={WelcomeMessage}
 				/>
 
-			<Button color="primary" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={prefixState}><FileOutline/>Save</Button>
+			<Button color="primary" class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent" disabled={welcomeState}><FileOutline/>Save</Button>
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
 			<h3>Bye configuration</h3>

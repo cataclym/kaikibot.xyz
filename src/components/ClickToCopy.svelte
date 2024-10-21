@@ -15,4 +15,3 @@
 	<slot/>
 </h6>
 <Tooltip>Click to copy</Tooltip>
-<FileCopyOutline/>
