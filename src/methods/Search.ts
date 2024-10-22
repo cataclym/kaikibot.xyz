@@ -1,6 +1,6 @@
 import type { Cmd, Cmds } from "../ICommand";
 
-export default function search(
+export default function Search(
 	commands: Cmds,
 	input: Event & { currentTarget: EventTarget & HTMLInputElement },
 	category: { [key: string]: boolean }

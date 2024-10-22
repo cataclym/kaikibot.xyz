@@ -6,7 +6,7 @@
 	import { KaikiNavigationState, navigationState } from "../stores/navigationState";
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
-	import capitalize from "../methods/capitalize";
+	import Capitalize from "../methods/Capitalize";
 
 	export let data;
 
@@ -26,7 +26,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
+	<title>KaikiBot - {Capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}

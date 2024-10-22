@@ -1,8 +1,8 @@
 import { EMBED } from "$env/static/private";
 import { type Actions, error } from "@sveltejs/kit";
 import { USER_API_PORT, USER_API_URL } from "$env/static/private";
-import { submitChanges } from "../../../../methods/submitChanges";
-import createHeaders from "../../../../methods/createHeaders";
+import { SubmitChanges } from "../../../../methods/SubmitChanges";
+import CreateHeaders from "../../../../methods/CreateHeaders";
 
 type GuildResponse = {
 	guildChannels: { id: string; name: string }[];
@@ -30,7 +30,7 @@ export async function load({ params, parent, fetch }) {
 
 	const guildResponse = await fetch(url, {
 		method: "GET",
-		headers: createHeaders()
+		headers: CreateHeaders()
 	});
 
 	if (!guildResponse.ok) {
@@ -46,7 +46,7 @@ export async function load({ params, parent, fetch }) {
 export const actions = {
 	default: async ({ request, params }) => {
 		const formData = await request.formData();
-		await submitChanges(
+		await SubmitChanges(
 			JSON.parse(String(formData.get("data"))),
 			BigInt(params.guild!),
 			USER_API_URL,

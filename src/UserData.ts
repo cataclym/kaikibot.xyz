@@ -2,7 +2,8 @@ import { type DiscordUsers, type GuildUsers, type Guilds } from "@prisma/client"
 import { error } from "@sveltejs/kit";
 import { USER_API_URL, USER_API_PORT } from "$env/static/private";
 import { OAuth2Guild, type User } from "discord.js";
-import createHeaders from "./methods/createHeaders";
+import CreateHeaders from "./methods/CreateHeaders";
+import type OAuthGuildData from "./interfaces/OAuthGuildData";
 
 export default class UserData {
 	private readonly userId: string;
@@ -15,7 +16,7 @@ export default class UserData {
 
 	// Send a GET request to the User endpoint to receive data from db
 	async getData(): Promise<BotResData> {
-		const headers = createHeaders();
+		const headers = CreateHeaders();
 		const [guildsResponse, userResponse] = await Promise.all([
 			// Get user's guilds from discord API
 			fetch("https://discord.com/api/users/@me/guilds", {
@@ -71,7 +72,7 @@ export type BotResData = BigIntToString<{
 	user: User;
 	userData: DiscordUsers;
 	guildDb: ({ GuildUsers: GuildUsers[] } & Guilds)[];
-	guilds: OAuth2Guild[];
+	guilds: OAuthGuildData[];
 }>;
 
 type BigIntToString<T> = T extends bigint

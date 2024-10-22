@@ -158,3 +158,10 @@ footer {
 #guildSettings .indent {
 	flex: 1 0 33%;
 }
+
+.userRole {
+	background-color: var(--accent2);
+	padding: 1rem;
+	min-width: 10rem;
+	max-width: 42.5rem;
+}

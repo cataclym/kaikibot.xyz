@@ -1,4 +1,4 @@
-export async function submitChanges(
+export async function SubmitChanges(
 	guildData: RecapturedGuildData,
 	GuildId: bigint,
 	url: string,

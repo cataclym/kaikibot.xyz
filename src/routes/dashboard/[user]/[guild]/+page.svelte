@@ -2,7 +2,7 @@
 	import ColorPicker from "svelte-awesome-color-picker";
 	import {
 		Avatar,
-		Button,
+		Button, Heading,
 		Input,
 		NumberInput,
 		Select,
@@ -11,10 +11,12 @@
 		Toggle
 	} from "flowbite-svelte";
 	import type { Guilds, GuildUsers } from "@prisma/client";
-	import { FileOutline } from "flowbite-svelte-icons";
+	import { FileCheckSolid, InfoCircleSolid, WindowRestoreSolid } from "flowbite-svelte-icons";
+	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
+	import IntColorToHex from "../../../../methods/IntColorToHex";
 
 	export let data;
-	const { guildData, EMBED } = data;
+	const { guildData, EMBED, userRole } = data;
 	let {
 		DadBot,
 		Anniversary,
@@ -47,7 +49,7 @@
 	$: toggleState =
 		JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles });
 
-	let hexOkColor = OkColor ? `#${Number(OkColor)?.toString(16).padStart(6, "0")}` : "#00ff00";
+	let hexOkColor = OkColor ? IntColorToHex(OkColor) : "#00ff00";
 	let hexErrorColor = ErrorColor
 		? `#${Number(ErrorColor)?.toString(16).padStart(6, "0")}`
 		: "#ff0000";
@@ -71,51 +73,30 @@
 			WelcomeMessage
 		});
 
-	function saveChanges() {
-		const recapturedGuildData: Partial<RecapturedGuildData> = {
-			DadBot,
-			Anniversary,
-			name,
-			icon: icon ? icon : undefined,
-			Prefix,
-			OkColor,
-			ErrorColor,
-			ByeChannel,
-			ByeMessage,
-			ByeTimeout,
-			WelcomeChannel,
-			WelcomeMessage,
-			WelcomeTimeout,
-			StickyRoles,
-			ExcludeRole
-		};
+	let savedUserRole = userRole
+		? {
+			name: userRole?.name,
+			color: IntColorToHex(userRole.color),
+			icon: userRole?.icon,
+		} : null;
+	$: userRoleState = userRole ? JSON.stringify(savedUserRole) === JSON.stringify({
+		name: userRole?.name,
+		color: IntColorToHex(userRole.color),
+		icon: userRole?.icon,
+	}) : null;
 
-		Object.keys(recapturedGuildData).forEach((k) => {
-			const key = k as keyof Omit<Guilds, "Id" | "CreatedAt"> &
-				keyof GuildUsers &
-				keyof {
-					name: string;
-					icon: string;
-				};
-			if (guildData[key] === recapturedGuildData[key]) delete recapturedGuildData[key];
-		});
-
-		(document.getElementById("guildInput") as HTMLInputElement).value =
-			JSON.stringify(recapturedGuildData);
-		(document.getElementById("guildForm") as HTMLFormElement).submit();
-	}
+	// Apparently this checks ADMIN flag in the permissions bitfield
+	const isAdmin = (BigInt(guildData.permissions || 0) & 0x8n) == 0x8n;
 </script>
 
 <!--
 TODO
 
-Make admin fields only show up if user is admin.
-
-Compare States for save button
-
-Save button for each segment
-
-Add Userrole configuration
+~~Make admin fields only show up if user is admin.~~
+~~Compare States for save button~~
+~~Add Userrole configuration~~
+~~Save button for each segment~~
+Reset button
 
 Create store for user/guilds
 https://kit.svelte.dev/docs/state-management
@@ -130,16 +111,32 @@ https://kit.svelte.dev/docs/state-management
 			alt="Guild"
 		/>
 	</div>
-	<!--	{#if guildUser && guildUser.UserRole}
-		<h2>Edit your user-role</h2>
-		<h3>Role name</h3>
-		<Input type="text" bind:value={guildUser.UserRole}></Input>
-		<h3>Role color</h3>
-		<Input type="text" bind:value={guildUser.UserRole}></Input>
-		<h3>Role icon</h3>
-		<Input type="text" bind:value={guildUser.UserRole}></Input>
-	{/if}-->
-	<h2>Edit configuration of {name || guildData.Id}</h2>
+	<h1>{name || guildData.Id}</h1>
+	{#if savedUserRole}
+		<div class="flex-row mt-2 flex-wrap flex justify-center w-full">
+			<div class="userRole flex flex-col items-center w-full">
+				<Heading tag="h3">User-role</Heading>
+				<div class="flex flex-row justify-around w-full">
+					<h3>Role name</h3>>
+					<h3>Role color</h3>
+					<h3>Role icon</h3>
+				</div>
+				<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
+					<Input type="text" bind:value={savedUserRole.name}></Input>
+					<ColorPicker bind:hex={savedUserRole.color} />
+					<Input type="text" bind:value={savedUserRole.icon}></Input>
+				</div>
+				<ClickToCopy>{userRole?.id}</ClickToCopy>
+				<Button
+					color="primary"
+					class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
+					disabled={!!userRoleState}><FileCheckSolid />Save</Button
+				>
+			</div>
+		</div>
+	{/if}
+	{#if isAdmin}
+	<h2>Edit server configuration</h2>
 	<div
 		id="guildSettings"
 		class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1"
@@ -156,32 +153,36 @@ https://kit.svelte.dev/docs/state-management
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={prefixState}><FileOutline />Save</Button
+				disabled={prefixState}><FileCheckSolid />Save</Button
 			>
 		</div>
 
 		<div class="indent flex flex-col justify-between items-center">
 			<h3>Toggles</h3>
-			<Toggle bind:checked={DadBot}><p>Dad-mode</p></Toggle>
-			<Toggle bind:checked={Anniversary}><p>Anniversary roles</p></Toggle>
-			<Toggle bind:checked={StickyRoles}><p>Sticky roles</p></Toggle>
+			<div>
+				<Toggle bind:checked={DadBot}><p>Dad-mode</p></Toggle>
+				<Toggle bind:checked={Anniversary}><p>Anniversary roles</p></Toggle>
+				<Toggle bind:checked={StickyRoles}><p>Sticky roles</p></Toggle>
+			</div>
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={toggleState}><FileOutline />Save</Button
+				disabled={toggleState}><FileCheckSolid />Save</Button
 			>
 		</div>
 
-		<div class="indent flex flex-col justify-between items-center text-gray-100">
+		<div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
 			<h3>Command embed colors</h3>
+			<div class="pb-2">
 			<h4 class="text-gray-100">Ok-Color</h4>
 			<ColorPicker bind:hex={hexOkColor} />
 			<h4 class="text-gray-100">Error-color</h4>
 			<ColorPicker bind:hex={hexErrorColor} />
+			</div>
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={colorState}><FileOutline />Save</Button
+				disabled={colorState}><FileCheckSolid />Save</Button
 			>
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
@@ -204,7 +205,7 @@ https://kit.svelte.dev/docs/state-management
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={welcomeState}><FileOutline />Save</Button
+				disabled={welcomeState}><FileCheckSolid />Save</Button
 			>
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
@@ -219,19 +220,21 @@ https://kit.svelte.dev/docs/state-management
 			<Textarea
 				id="byeMessage"
 				class="mb-4"
-				value={ByeMessage}
+				bind:value={ByeMessage}
 				placeholder={ByeMessage || "Write a welcome message"}
-				bind:ByeMessage
 			/>
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={prefixState}><FileOutline />Save</Button
+				disabled={prefixState}><FileCheckSolid />Save</Button
 			>
 		</div>
 	</div>
 	<div>
-		<Toast class="m-auto mt-2 mb-2" dismissable={false}>
+		<Toast
+			divClass="w-full max-w-xs p-4 text-gray-500 bg-white shadow dark:text-gray-100 dark:bg-gray-800 gap-3"
+			class="m-auto mt-2 mb-2" dismissable={false}>
+			<InfoCircleSolid/><br>
 			If you want fancy messages with embeds, create one <a
 				target="_blank"
 				class="underline text-primary-600"
@@ -239,7 +242,8 @@ https://kit.svelte.dev/docs/state-management
 			>, copy the code and paste it in the message field. Use
 			<a class="underline text-primary-600" target="_blank" href="/docs/PLACEHOLDERS.md"
 				>placeholders</a
-			> if you want to mention users or servername in your message.
+			> if you want to mention users or server-name in your message.
 		</Toast>
 	</div>
+	{/if}
 </main>

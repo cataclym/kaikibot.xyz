@@ -1,5 +1,5 @@
 <script lang="ts">
-	import search from "../../methods/search";
+	import Search from "../../methods/Search";
 	import type { Cmd, Cmds } from "../../ICommand";
 
 	let active: {
@@ -22,7 +22,7 @@
 		},
 		category: Record<string, boolean>
 	) {
-		cats = search(commands, c, category);
+		cats = Search(commands, c, category);
 	}
 
 	function resetCats() {

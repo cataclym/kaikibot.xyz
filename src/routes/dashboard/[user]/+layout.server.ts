@@ -11,6 +11,7 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 	const responseData = await new UserData(params.user, session.accessToken).getData();
 
 	return {
+		session,
 		responseData
 	};
 };
