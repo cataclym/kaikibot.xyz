@@ -2,7 +2,7 @@
 	<meta name="title" content="KaikiBot - Discord Bot - Home" />
 	<meta
 		name="description"
-		content="Invite Kaiki to your server now - Fun and unique commands! Open source and selfhosting, and much more! "
+		content="Official KaikiBot - Invite Kaiki to your server now - Fun and unique commands! Access open source, selfhosting, and much more! "
 	/>
 
 	<!-- Open Graph / Facebook -->
@@ -21,9 +21,6 @@
 		content="Invite Kaiki to your server now - Fun and unique commands! Open source and selfhosting, and much more! "
 	/>
 	<meta property="twitter:image" content="/kaikibot.png" />
-
-	<link rel="stylesheet" href="/global.css" />
-	<!--		<link rel='stylesheet' href='/build/bundle.css'>-->
 
 	<meta name="theme-color" content="#E85E28" />
 </svelte:head>

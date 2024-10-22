@@ -28,12 +28,12 @@
 		</div>
 		<h3>Available guilds</h3>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
-		{#each responseData.guildDb as guild}
-			{@const cacheGuild = responseData.guilds.find((g) => g.id === String(guild.Id))}
-			{#if (cacheGuild !== undefined)}
-				<GuildCard guild={guild} cacheGuild={cacheGuild} user={user} />
-			{/if}
-		{/each}
+			{#each responseData.guildDb as guild}
+				{@const cacheGuild = responseData.guilds.find((g) => g.id === String(guild.Id))}
+				{#if cacheGuild !== undefined}
+					<GuildCard {guild} {cacheGuild} {user} />
+				{/if}
+			{/each}
 		</div>
 	</div>
 </main>

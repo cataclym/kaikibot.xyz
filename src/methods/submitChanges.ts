@@ -1,4 +1,9 @@
-export async function submitChanges(guildData: RecapturedGuildData, GuildId: bigint, url: string, port:string): Promise<void> {
+export async function submitChanges(
+	guildData: RecapturedGuildData,
+	GuildId: bigint,
+	url: string,
+	port: string
+): Promise<void> {
 	const req = fetch(`${url}:${port}/API/Guild/${GuildId}`, {
 		method: "POST",
 		body: JSON.stringify({
@@ -8,5 +13,5 @@ export async function submitChanges(guildData: RecapturedGuildData, GuildId: big
 		headers: {
 			"content-type": "application/json"
 		}
-	})
+	});
 }

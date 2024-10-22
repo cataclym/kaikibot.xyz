@@ -2,7 +2,7 @@ import { SvelteKitAuth, type SvelteKitAuthConfig } from "@auth/sveltekit";
 import Discord from "@auth/sveltekit/providers/discord";
 import { error } from "@sveltejs/kit";
 
-export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig> {
+export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 	providers: [
 		Discord({
 			authorization: "https://discord.com/api/oauth2/authorize?scope=identify+guilds"
@@ -24,7 +24,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig> {
 			// Send properties to the client, like an access_token and user id from a provider.
 			if (!session.user) throw error(500, "Missing session data!");
 
-			console.log(token)
+			console.log(token);
 			if (token.discordSnowflake != null) {
 				// @ts-ignore
 				session.user.id = token.discordSnowflake;
@@ -33,7 +33,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig> {
 				// @ts-ignore
 				session.accessToken = token.accessToken;
 			}
-			console.log(session)
+			console.log(session);
 
 			return session;
 		}

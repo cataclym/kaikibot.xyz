@@ -39,14 +39,20 @@ export default class UserData {
 		}
 
 		// Get all the data from the responses - async
-		const [guilds, user]: [OAuth2Guild[], User] = await Promise.all([guildsResponse.json(), userResponse.json()]);
+		const [guilds, user]: [OAuth2Guild[], User] = await Promise.all([
+			guildsResponse.json(),
+			userResponse.json()
+		]);
 
 		// POST to send guilds and receive database scoped data from custom bot API
-		const customResponse = await fetch(`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`, {
-			method: "POST",
-			headers,
-			body: JSON.stringify(guilds.map(g => g.id))
-		});
+		const customResponse = await fetch(
+			`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`,
+			{
+				method: "POST",
+				headers,
+				body: JSON.stringify(guilds.map((g) => g.id))
+			}
+		);
 
 		if (customResponse.status === 404) {
 			throw error(404, "Your user cannot be found, have you used KaikiBot before?");
@@ -57,13 +63,21 @@ export default class UserData {
 			throw error(customResponse.status, customResponse.statusText);
 		}
 
-		return { ...await customResponse.json(), guilds, user };
+		return { ...(await customResponse.json()), guilds, user };
 	}
 }
 
-export type BotResData = {
+export type BotResData = BigIntToString<{
 	user: User;
 	userData: DiscordUsers;
 	guildDb: ({ GuildUsers: GuildUsers[] } & Guilds)[];
 	guilds: OAuth2Guild[];
-};
+}>;
+
+type BigIntToString<T> = T extends bigint
+	? string
+	: T extends Array<infer U>
+		? Array<BigIntToString<U>>
+		: T extends object
+			? { [K in keyof T]: BigIntToString<T[K]> }
+			: T;

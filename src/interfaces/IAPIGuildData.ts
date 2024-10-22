@@ -13,7 +13,7 @@ type RecapturedGuildData = Partial<{
 	WelcomeMessage: string | null;
 	WelcomeTimeout: number | null;
 	StickyRoles: boolean;
-	ExcludeRole: bigint	| null;
+	ExcludeRole: bigint | null;
 	ExcludeRoleName: string | null;
 	UserRoleName: string | null;
 	UserRoleIcon: string | null;

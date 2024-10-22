@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss';
-import flowbitePlugin from 'flowbite/plugin'
+import type { Config } from "tailwindcss";
+import flowbitePlugin from "flowbite/plugin";
 
 export default {
 	content: [
@@ -22,7 +22,7 @@ export default {
 					600: "#e85e28",
 					700: "#cc5323",
 					800: "#b04920",
-					900: "#96401d",
+					900: "#96401d"
 				},
 				gray: {
 					100: "#bbb9b8",
