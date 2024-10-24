@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
-	import { ArrowKeyLeft, Button } from "flowbite-svelte";
+	import { ArrowKeyLeft, Button, Mark, P } from "flowbite-svelte";
 
 	export let data;
 	const { responseData } = data;
@@ -19,8 +19,8 @@
 		{:else}
 			<div style="width: 87px;" />
 		{/if}
-		Logged in as {responseData.user.username}
-		<button on:click={() => goto("/auth/signout")}>Logout</button>
+		<P color="text-gray-100">Logged in as <Mark bgColor="bg-gray-700" color="text-primary-600">{responseData.user.username}</Mark></P>
+		<Button class="text-gray-800 bg-gray-100" href="/auth/signout">Logout</Button>
 	</div>
 </div>
 

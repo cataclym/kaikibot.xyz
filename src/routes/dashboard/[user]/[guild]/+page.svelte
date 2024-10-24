@@ -10,8 +10,7 @@
 		Toast,
 		Toggle
 	} from "flowbite-svelte";
-	import type { Guilds, GuildUsers } from "@prisma/client";
-	import { FileCheckSolid, InfoCircleSolid, WindowRestoreSolid } from "flowbite-svelte-icons";
+	import { FileCheckSolid, InfoCircleSolid } from "flowbite-svelte-icons";
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
 
@@ -73,6 +72,20 @@
 			WelcomeMessage
 		});
 
+	let byeTimeout = ByeTimeout ?? 0;
+	const savedBye = {
+		ByeChannel,
+		ByeTimeout: ByeTimeout,
+		ByeMessage
+	};
+	$: byeState =
+		JSON.stringify(savedBye) ===
+		JSON.stringify({
+			ByeChannel,
+			ByeTimeout: ByeTimeout,
+			ByeMessage
+		});
+
 	let savedUserRole = userRole
 		? {
 			name: userRole?.name,
@@ -107,7 +120,7 @@ https://kit.svelte.dev/docs/state-management
 	<div>
 		<Avatar
 			size="xl"
-			src={`https://cdn.discordapp.com/icons/${guildData.id}/${icon}.webp			` || ""}
+			src={`https://cdn.discordapp.com/icons/${guildData.id}/${icon}.${icon?.startsWith("a") ? "gif" : "webp"}` || ""}
 			alt="Guild"
 		/>
 	</div>
@@ -172,12 +185,12 @@ https://kit.svelte.dev/docs/state-management
 		</div>
 
 		<div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
-			<h3>Command embed colors</h3>
-			<div class="pb-2">
-			<h4 class="text-gray-100">Ok-Color</h4>
-			<ColorPicker bind:hex={hexOkColor} />
-			<h4 class="text-gray-100">Error-color</h4>
-			<ColorPicker bind:hex={hexErrorColor} />
+			<h3 class="mb-0">Command embed colors</h3>
+			<div class="pb-6">
+				<h4 class="text-gray-100">Ok-Color</h4>
+				<ColorPicker bind:hex={hexOkColor} />
+				<h4 class="text-gray-100">Error-color</h4>
+				<ColorPicker bind:hex={hexErrorColor} />
 			</div>
 			<Button
 				color="primary"
@@ -187,6 +200,7 @@ https://kit.svelte.dev/docs/state-management
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
 			<h3>Welcome configuration</h3>
+
 			<p class="text-gray-100">Select channel</p>
 			<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} />
 
@@ -194,7 +208,6 @@ https://kit.svelte.dev/docs/state-management
 			<NumberInput bind:value={welcomeTimeout} />
 
 			<p class="text-gray-100">Welcome message</p>
-
 			<Textarea
 				id="welcomeMessage"
 				class="mb-4"
@@ -215,7 +228,8 @@ https://kit.svelte.dev/docs/state-management
 			<Select class="mt-2" items={channelOptions} bind:value={ByeChannel} />
 
 			<p class="text-gray-100">Message autodelete delay</p>
-			<NumberInput bind:ByeTimeout />
+			<NumberInput bind:value={byeTimeout} />
+
 			<p class="text-gray-100">Bye message</p>
 			<Textarea
 				id="byeMessage"
@@ -223,10 +237,11 @@ https://kit.svelte.dev/docs/state-management
 				bind:value={ByeMessage}
 				placeholder={ByeMessage || "Write a welcome message"}
 			/>
+
 			<Button
 				color="primary"
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={prefixState}><FileCheckSolid />Save</Button
+				disabled={byeState}><FileCheckSolid />Save</Button
 			>
 		</div>
 	</div>

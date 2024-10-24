@@ -45,15 +45,10 @@
 		isn't <em>this</em> cool
 	</h2>
 {:else}
-	<div class="m-auto w-2/12 flex mb-2 justify-center items-center content-center">
-		<div class="h-full w-full">
-			<p class="font-bold text-accent1 text-xl text-accent1 text-center">
-				<a class="text-center" href="/">KAIKIBOT</a>
-			</p>
-		</div>
+	<div class="m-auto w-full flex mb-2 justify-center items-center content-center" style="">
 		<button
 			on:click={() => goto("/")}
-			class="whitespace-nowrap h-10 border-b-2 text-accent1 layout w-full text-2xl text-accent1 text-center"
+			class="whitespace-nowrap h-12 text-accent1 layout sm:w-full min-w-fit p-1 text-2xl text-center"
 		>
 			Home
 		</button>

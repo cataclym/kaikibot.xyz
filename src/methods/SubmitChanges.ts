@@ -1,17 +1,14 @@
+import CreateHeaders from "./CreateHeaders";
+
 export async function SubmitChanges(
-	guildData: RecapturedGuildData,
+	guildData: Object,
 	GuildId: bigint,
 	url: string,
 	port: string
 ): Promise<void> {
 	const req = fetch(`${url}:${port}/API/Guild/${GuildId}`, {
 		method: "POST",
-		body: JSON.stringify({
-			token: process.env.TOKEN,
-			data: guildData
-		}),
-		headers: {
-			"content-type": "application/json"
-		}
+		body: JSON.stringify(guildData),
+		headers: CreateHeaders(),
 	});
 }
