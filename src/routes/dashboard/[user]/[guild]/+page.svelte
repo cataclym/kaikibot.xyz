@@ -15,7 +15,7 @@
 	import IntColorToHex from "../../../../methods/IntColorToHex";
 
 	export let data;
-	const { guildData, EMBED, userRole } = data;
+	const { guild, EMBED, user } = data;
 	let {
 		DadBot,
 		Anniversary,
@@ -30,7 +30,7 @@
 		WelcomeChannel,
 		StickyRoles,
 		ExcludeRole
-	} = guildData;
+	} = guild;
 
 	let { name, icon } = guildData;
 

@@ -3,6 +3,7 @@ import Discord from "@auth/sveltekit/providers/discord";
 import { error } from "@sveltejs/kit";
 
 export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
+	debug: process.env.NODE_ENV === "development",
 	providers: [
 		Discord({
 			authorization: "https://discord.com/api/oauth2/authorize?scope=identify+guilds"
@@ -33,8 +34,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 				// @ts-ignore
 				session.accessToken = token.accessToken;
 			}
-			console.log(session);
-
 			return session;
 		}
 	}

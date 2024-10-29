@@ -1,9 +1,9 @@
-import { type DiscordUsers, type GuildUsers, type Guilds } from "@prisma/client";
 import { error } from "@sveltejs/kit";
 import { USER_API_URL, USER_API_PORT } from "$env/static/private";
-import { OAuth2Guild, type User } from "discord.js";
+import { type User } from "discord.js";
 import CreateHeaders from "./methods/CreateHeaders";
 import type OAuthGuildData from "./interfaces/OAuthGuildData";
+import type { POSTUserGuildsBody } from "kaikiwa-types";
 
 export default class UserData {
 	private readonly userId: string;
@@ -16,7 +16,6 @@ export default class UserData {
 
 	// Send a GET request to the User endpoint to receive data from db
 	async getData(): Promise<BotResData> {
-		const headers = CreateHeaders();
 		const [guildsResponse, userResponse] = await Promise.all([
 			// Get user's guilds from discord API
 			fetch("https://discord.com/api/users/@me/guilds", {
@@ -40,18 +39,29 @@ export default class UserData {
 		}
 
 		// Get all the data from the responses - async
-		const [guilds, user]: [OAuth2Guild[], User] = await Promise.all([
+		const [guilds, user]: [OAuthGuildData[], User] = await Promise.all([
 			guildsResponse.json(),
 			userResponse.json()
 		]);
 
+		const dbPOSTDataRes = await this.dbPOSTData(guilds);
+
+		return { ...dbPOSTDataRes, guilds, user };
+	}
+
+	// BigInt is not sent in JSON, it gets converted to string
+	private async dbPOSTData(guilds: OAuthGuildData[]): Promise<BigIntToString<POSTUserGuildsBody>> {
+		const headers = CreateHeaders();
 		// POST to send guilds and receive database scoped data from custom bot API
+		/* @type
+		*	body: bigint[]
+		*/
 		const customResponse = await fetch(
 			`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`,
 			{
 				method: "POST",
 				headers,
-				body: JSON.stringify(guilds.map((g) => g.id))
+				body: JSON.stringify(guilds.map((g) => BigInt(g.id)))
 			}
 		);
 
@@ -64,16 +74,14 @@ export default class UserData {
 			throw error(customResponse.status, customResponse.statusText);
 		}
 
-		return { ...(await customResponse.json()), guilds, user };
-	}
+			return customResponse.json();
+    }
 }
 
-export type BotResData = BigIntToString<{
-	user: User;
-	userData: DiscordUsers;
-	guildDb: ({ GuildUsers: GuildUsers[] } & Guilds)[];
+export type BotResData = {
 	guilds: OAuthGuildData[];
-}>;
+	user: User;
+} & BigIntToString<POSTUserGuildsBody>;
 
 type BigIntToString<T> = T extends bigint
 	? string

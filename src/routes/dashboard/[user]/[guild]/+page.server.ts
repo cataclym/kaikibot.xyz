@@ -3,30 +3,22 @@ import { type Actions, error } from "@sveltejs/kit";
 import { USER_API_PORT, USER_API_URL } from "$env/static/private";
 import { SubmitChanges } from "../../../../methods/SubmitChanges";
 import CreateHeaders from "../../../../methods/CreateHeaders";
+import type { Guild } from "discord.js";
 
 type GuildResponse = {
-	guildChannels: { id: string; name: string }[];
-	userRole: { id: string; name: string; color: number; icon: string | null } | null;
+	guild: Guild & {
+		channels: { id: string; name: string }[];
+	},
+	user: {
+		userRole: { id: string; name: string; color: number; icon: string | null } | null;
+	}
 };
 
-export async function load({ params, parent, fetch }) {
-	const { responseData } = await parent();
-
-	const guildData = {
-		...responseData.guildDb.find((g) => String(g.Id) === params.guild),
-		...responseData.guilds.find((g) => String(g.id) === params.guild),
-		channels: [] as any
-	};
-
+export async function load({ params, fetch }) {
 	const url = new URL(USER_API_URL);
 	url.port = USER_API_PORT;
 	url.pathname = `/API/Guild/${params.guild}`;
-
-	// Add userrole if it exists
-	const guildUser = guildData.GuildUsers?.shift();
-	if (guildUser && guildUser.UserRole) {
-		url.searchParams.append("userId", params.user);
-	}
+	url.searchParams.append("userId", params.user);
 
 	const guildResponse = await fetch(url, {
 		method: "GET",
@@ -37,10 +29,9 @@ export async function load({ params, parent, fetch }) {
 		throw error(500, "No response from the server.");
 	}
 
-	const { guildChannels, userRole } = <GuildResponse>await guildResponse.json();
-	guildData["channels"] = guildChannels;
+	const { guild, user } = <GuildResponse> await guildResponse.json();
 
-	return { EMBED, guildData, userRole };
+	return { EMBED, guild, user };
 }
 
 export const actions = {

@@ -7,7 +7,7 @@ export async function SubmitChanges(
 	port: string
 ): Promise<void> {
 	const req = fetch(`${url}:${port}/API/Guild/${GuildId}`, {
-		method: "POST",
+		method: "PUT",
 		body: JSON.stringify(guildData),
 		headers: CreateHeaders(),
 	});

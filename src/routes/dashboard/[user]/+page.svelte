@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { error } from "@sveltejs/kit";
-	import { Avatar, Button } from "flowbite-svelte";
-	import ClickToCopy from "../../../components/ClickToCopy.svelte";
+	import { Avatar } from "flowbite-svelte";
 	import GuildCard from "../../../components/GuildCard.svelte";
 
 	const session = $page.data.session;
@@ -14,7 +13,10 @@
 	export let data;
 
 	const { responseData } = data;
+	const mappedIds = responseData.guildIds.map(g => g.Id);
 	console.log(data);
+
+	const availableCachedGuilds = responseData.guilds.filter(g => mappedIds.includes(g.id));
 </script>
 
 <main>
@@ -28,11 +30,8 @@
 		</div>
 		<h3>Available guilds</h3>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
-			{#each responseData.guildDb as guild}
-				{@const cacheGuild = responseData.guilds.find((g) => g.id === String(guild.Id))}
-				{#if cacheGuild !== undefined}
-					<GuildCard {guild} {cacheGuild} {user} />
-				{/if}
+			{#each availableCachedGuilds as guild}
+					<GuildCard {guild} {user} />
 			{/each}
 		</div>
 	</div>
