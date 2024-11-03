@@ -1,4 +1,4 @@
-import type { WaifuImJSON } from "../IWaifuIm";
+import type { WaifuImJSON } from "../interfaces/IWaifuIm";
 import { CHANGELOG, INVITE, SOURCE } from "$env/static/private";
 
 export async function load() {

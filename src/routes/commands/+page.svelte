@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Search from "../../methods/Search";
-	import type { Cmd, Cmds } from "../../ICommand";
+	import type { Cmd, Cmds } from "../../interfaces/ICommand";
 
 	let active: {
 		[id: string]: boolean;
