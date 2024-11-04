@@ -13,7 +13,7 @@
 	export let data;
 
 	const { responseData } = data;
-	const mappedIds = responseData.guildIds.map(g => g.Id);
+	const mappedIds = responseData.guilds.map(g => g.id);
 	console.log(data);
 
 	const availableCachedGuilds = responseData.guilds.filter(g => mappedIds.includes(g.id));
@@ -26,7 +26,7 @@
 		</div>
 		<h1 class="text-accent3">Hi {user.name}</h1>
 		<div class="text-accent3">
-			<p>You have 💴 {responseData.userData.Amount}</p>
+			<p>You have 💴 {responseData.userData?.Amount || 0}</p>
 		</div>
 		<h3>Available guilds</h3>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
