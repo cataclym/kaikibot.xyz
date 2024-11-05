@@ -61,7 +61,7 @@ export default class UserData {
 			{
 				method: "POST",
 				headers,
-				body: JSON.stringify(guilds.map((g) => BigInt(g.id)))
+				body: JSON.stringify(guilds.map((g) => g.id))
 			}
 		);
 

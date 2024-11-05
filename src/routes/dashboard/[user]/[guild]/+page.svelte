@@ -2,22 +2,22 @@
 	import ColorPicker from "svelte-awesome-color-picker";
 	import {
 		Avatar,
-		Button, Heading,
+		Button, Heading, Img,
 		Input, Listgroup, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell
 	} from "flowbite-svelte";
 	import {
 		FileCheckSolid,
 		MessagesSolid,
 		MicrophoneSolid,
-		UserCircleSolid
+		UserCircleSolid, UsersGroupSolid
 	} from "flowbite-svelte-icons";
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
 
 	export let data;
-	const { guild, user, isAdmin, APIGuild } = data;
+	const { guild, user, APIGuild } = data;
 
-	let { name, icon } = APIGuild;
+	let { name } = APIGuild;
 	const { roles, emojis } = guild;
 
 	let savedUserRole = user.userRole
@@ -34,9 +34,11 @@
 	}) : null;
 
 	let icons = [
-		{ name: 'Members', icon: UserCircleSolid },
-		{ name: 'Text', icon: MessagesSolid },
-		{ name: 'Voice', icon: MicrophoneSolid },
+		// TODO Add these numbers to API response
+		{ name: guild.channels.length, icon: UsersGroupSolid },
+		{ name: guild.channels.length, icon: UserCircleSolid},
+		{ name: guild.channels.length, icon: MessagesSolid },
+		{ name: guild.channels.length, icon: MicrophoneSolid },
 	];
 </script>
 
@@ -53,28 +55,20 @@ Create store for user/guilds
 https://kit.svelte.dev/docs/state-management
 
 Use tabs
-Use Navbar
+~~Use Navbar
 Skeleton
 
 -->
-
-<div>
-	<Avatar
-		size="xl"
-		src={`https://cdn.discordapp.com/icons/${APIGuild.id}/${icon}.${icon?.startsWith("a") ? "gif" : "webp"}` || ""}
-		alt="Guild"
-	/>
-</div>
+<div class="w-2/3 m-auto">
 <h1>Server Information</h1>
-<h2>{name || APIGuild.id}</h2>
-<ClickToCopy>APIGuild.id</ClickToCopy>
+<ClickToCopy text={APIGuild.id} placement="top-start">Server ID: {APIGuild.id}</ClickToCopy>
 
-<Listgroup active items={icons} let:item class="w-48">
+<Listgroup color="dark" rounded={false} items={icons} let:item class="w-32">
 	<svelte:component this={item.icon} class="w-4 h-4 me-2.5"/>
 	{item.name}
 </Listgroup>
 
-<div>
+<div class="flex-row grid-rows-2">
 	<Heading tag="h2">Roles</Heading>
 	<Table noborder={true}>
 		<TableHead>
@@ -84,30 +78,41 @@ Skeleton
 		</TableHead>
 		<TableBody>
 			{#each roles as role}
+				{@const hexClr = IntColorToHex(role.color)}
 				<TableBodyRow>
-					<TableBodyCell>{role.name}</TableBodyCell>
-					<TableBodyCell>{role.color}</TableBodyCell>
-					<TableBodyCell>{role.id}</TableBodyCell>
+					<TableBodyCell><ClickToCopy placement="top-start" header={false}>{role.name}</ClickToCopy></TableBodyCell>
+					<TableBodyCell>
+						<ClickToCopy placement="top-start" text={hexClr} header={false}>
+							<Button outline={false} color="alternative"
+										   style="
+										   	background: {hexClr}10;
+										   	color: {hexClr};
+										   	mix-blend-mode: hard-light;
+											"
+										   pill={true}>{hexClr}
+							</Button>
+						</ClickToCopy>
+					</TableBodyCell>
+					<TableBodyCell><ClickToCopy placement="top-start" header={false}>{role.id}</ClickToCopy></TableBodyCell>
 				</TableBodyRow>
 			{/each}
 		</TableBody>
 	</Table>
-</div>
-
-<div>
 	<Heading tag="h2">Emojis</Heading>
 	<Table noborder={true}>
 		<TableHead>
 			<TableHeadCell>Name</TableHeadCell>
+			<TableHeadCell>Image</TableHeadCell>
 			<TableHeadCell>ID</TableHeadCell>
-			<TableHeadCell>Price</TableHeadCell>
+			<TableHeadCell>Code</TableHeadCell>
 		</TableHead>
 		<TableBody>
 			{#each emojis as emoji}
 				<TableBodyRow>
-					<TableBodyCell>{emoji.name}</TableBodyCell>
-					<TableBodyCell>{emoji.url}</TableBodyCell>
-					<TableBodyCell>{emoji.id}</TableBodyCell>
+					<TableBodyCell><ClickToCopy placement="top-start" header={false}>{emoji.name}</ClickToCopy></TableBodyCell>
+					<TableBodyCell><Img width="50rem" src={emoji.url}/></TableBodyCell>
+					<TableBodyCell><ClickToCopy placement="top-start" header={false}>{emoji.id}</ClickToCopy></TableBodyCell>
+					<TableBodyCell><ClickToCopy placement="top-start" header={false}>{`<${emoji.animated ? "a" : ""}:${emoji.name}:${emoji.id}>`}</ClickToCopy></TableBodyCell>
 				</TableBodyRow>
 			{/each}
 		</TableBody>
@@ -139,3 +144,4 @@ Skeleton
 		</div>
 	</div>
 {/if}
+</div>

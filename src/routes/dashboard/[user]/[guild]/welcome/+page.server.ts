@@ -1,5 +1,5 @@
 export async function load({ parent }) {
-	const { isAdmin, guildData } = await parent();
+	const { isAdmin, guild } = await parent();
 
-	return { isAdmin, guildData };
+	return { isAdmin, guild };
 }

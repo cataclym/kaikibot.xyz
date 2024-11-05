@@ -8,7 +8,7 @@
 	const { isAdmin } = data;
 	if (!isAdmin) error(401, "Not authorized");
 
-	const channelOptions: { name: string; value: bigint | null }[] = data.guildData.channels.map(
+	const channelOptions: { name: string; value: bigint | null }[] = data.guild.channels.map(
 		(g: { name: string; id: string }) => ({ name: `#${g.name}`, value: BigInt(g.id) })
 	);
 	channelOptions.push({ name: "None (Disable)", value: null });
@@ -20,7 +20,7 @@
 		WelcomeTimeout,
 		WelcomeMessage,
 		WelcomeChannel,
-	} = data.guildData;
+	} = data.guild;
 
 	let welcomeTimeout = WelcomeTimeout ?? 0;
 	const savedWelcome = {

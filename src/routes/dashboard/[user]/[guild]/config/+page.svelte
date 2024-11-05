@@ -19,7 +19,7 @@
 		ErrorColor,
 		StickyRoles,
 		ExcludeRole
-	} = data.guildData;
+	} = data.guild;
 
 	const savedPrefix = Prefix;
 	$: prefixState = savedPrefix === Prefix;
@@ -28,7 +28,7 @@
 	$: toggleState =
 		JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles });
 
-	let hexOkColor = OkColor ? IntColorToHex(OkColor) : "#00ff00";
+	let hexOkColor = OkColor ? IntColorToHex(Number(OkColor)) : "#00ff00";
 	let hexErrorColor = ErrorColor
 		? IntColorToHex(ErrorColor)
 		: "#ff0000";
@@ -51,7 +51,7 @@
 		icon: ExcludeRole?.icon,
 	}) : null;
 </script>
-	<h2>Edit server configuration</h2>
+	<h2 class="text-center">Edit server configuration</h2>
 	<div
 		id="guildSettings"
 		class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1"
@@ -88,7 +88,7 @@
 
 		{#if savedExcludeRole}
 			<div class="indent flex flex-col justify-between items-center">
-				<Heading tag="h3">Excluded-role</Heading>
+				<h3 class="mb-0">Excluded-role</h3>
 				<div class="flex flex-row justify-around w-full">
 					<h3>Role name</h3>>
 					<h3>Role color</h3>

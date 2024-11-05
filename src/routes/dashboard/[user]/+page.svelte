@@ -13,7 +13,7 @@
 	export let data;
 
 	const { responseData } = data;
-	const mappedIds = responseData.guilds.map(g => g.id);
+	const mappedIds = responseData.guildDb.map(guild => guild.Id);
 	console.log(data);
 
 	const availableCachedGuilds = responseData.guilds.filter(g => mappedIds.includes(g.id));
