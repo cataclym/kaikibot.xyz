@@ -3,3 +3,15 @@ export async function load({ parent }) {
 
 	return { isAdmin, guild };
 }
+
+export const actions = {
+	prefix: async (event) => {
+
+	},
+	toggles: async (event) => {
+
+	},
+	excludedrole: async (event) => {
+
+	}
+}

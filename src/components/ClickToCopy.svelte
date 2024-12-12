@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Tooltip } from "flowbite-svelte";
-	import { FileCopyOutline } from "flowbite-svelte-icons";
 
 	export let text: string | undefined = undefined;
 	export let placement: import("@floating-ui/dom").Placement = "top";
