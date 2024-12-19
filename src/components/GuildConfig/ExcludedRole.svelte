@@ -4,9 +4,8 @@
 	import ClickToCopy from "../ClickToCopy.svelte";
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 	import IntColorToHex from "../../methods/IntColorToHex.js";
-	import type { Role } from "discord.js";
 
-	export let ExcludeRole: undefined | Role;
+	export let ExcludeRole: undefined | null | { color: number; id: string; name: string; };
 
 	let savedExcludeRole = ExcludeRole
 		? {

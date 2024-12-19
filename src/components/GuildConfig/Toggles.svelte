@@ -1,14 +1,10 @@
-<script>
+<script lang="ts">
 	import { Button, Toggle } from "flowbite-svelte";
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 
-export let data;
-
-let {
-	DadBot,
-	Anniversary,
-	StickyRoles
-} = data
+export let Anniversary: boolean;
+export let DadBot: boolean;
+export let StickyRoles: boolean;
 
 const savedToggles = { DadBot, Anniversary, StickyRoles };
 $: toggleState =

@@ -1,0 +1,36 @@
+<script lang="ts">
+	import ColorPicker from "svelte-awesome-color-picker";
+	import { Button } from "flowbite-svelte";
+	import { FileCheckSolid } from "flowbite-svelte-icons";
+	import IntColorToHex from "../../methods/IntColorToHex";
+
+	export let OkColor, ErrorColor;
+
+	let hexOkColor = OkColor ? IntColorToHex(Number(OkColor)) : "#00ff00";
+	let hexErrorColor = ErrorColor ? IntColorToHex(Number(ErrorColor)) : "#ff0000";
+	const savedColors = {
+		hexOkColor,
+		hexErrorColor
+	};
+	$: colorState = JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor });
+
+</script>
+<div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
+	<h3 class="mb-0">Command embed colors</h3>
+	<form method="POST" action="/dashboard/[user]/[guild]/config?/embedcolors">
+		<div class="pb-6">
+			<h4 class="text-gray-100">Ok-Color</h4>
+			<ColorPicker bind:hex={hexOkColor} />
+			<h4 class="text-gray-100">Error-color</h4>
+			<ColorPicker bind:hex={hexErrorColor} />
+		</div>
+		<Button
+			color="primary"
+			class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
+			disabled={colorState}>
+			<FileCheckSolid />
+			Save
+		</Button
+		>
+	</form>
+</div>

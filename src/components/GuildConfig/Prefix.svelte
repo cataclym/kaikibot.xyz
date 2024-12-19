@@ -2,7 +2,7 @@
 	import { Button, Input } from "flowbite-svelte";
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 
-	export let prefix: string;
+	export let Prefix: string;
 
 	let isLoading = false;
 
