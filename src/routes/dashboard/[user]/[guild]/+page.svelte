@@ -18,7 +18,7 @@
 	const { guild, user, APIGuild } = data;
 
 	let { name } = APIGuild;
-	const { roles, emojis } = guild;
+	const { roles, emojis, statsCount } = guild;
 
 	let savedUserRole = user.userRole
 		? {
@@ -34,11 +34,10 @@
 	}) : null;
 
 	let icons = [
-		// TODO Add these numbers to API response
-		{ name: guild.channels.length, icon: UsersGroupSolid },
-		{ name: guild.channels.length, icon: UserCircleSolid},
-		{ name: guild.channels.length, icon: MessagesSolid },
-		{ name: guild.channels.length, icon: MicrophoneSolid },
+		{ name: `${statsCount.members} Members`, icon: UsersGroupSolid },
+		{ name: `${statsCount.bots} Bots`, icon: UserCircleSolid},
+		{ name: `${statsCount.text} Text channels`, icon: MessagesSolid },
+		{ name: `${statsCount.voice} Voice channels`, icon: MicrophoneSolid },
 	];
 </script>
 
@@ -50,6 +49,7 @@ TODO
 ~~Add Userrole configuration~~
 ~~Save button for each segment~~
 Reset button
+Update servername
 
 Create store for user/guilds
 https://kit.svelte.dev/docs/state-management
