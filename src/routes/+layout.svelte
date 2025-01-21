@@ -26,7 +26,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
+	<title>KaikiBot - {Capitalize($page.url.pathname.split("/")[0] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}

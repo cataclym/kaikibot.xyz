@@ -5,6 +5,7 @@
 	import IntColorToHex from "../../methods/IntColorToHex";
 
 	export let OkColor, ErrorColor;
+	export let Action: string;
 
 	let hexOkColor = OkColor ? IntColorToHex(Number(OkColor)) : "#00ff00";
 	let hexErrorColor = ErrorColor ? IntColorToHex(Number(ErrorColor)) : "#ff0000";
@@ -17,12 +18,12 @@
 </script>
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
 	<h3 class="mb-0">Command embed colors</h3>
-	<form method="POST" action="/dashboard/[user]/[guild]/config?/embedcolors">
+	<form method="POST" action={Action}?/embedcolors>
 		<div class="pb-6">
 			<h4 class="text-gray-100">Ok-Color</h4>
-			<ColorPicker bind:hex={hexOkColor} />
+			<ColorPicker name="hexOkColor" bind:hex={hexOkColor} />
 			<h4 class="text-gray-100">Error-color</h4>
-			<ColorPicker bind:hex={hexErrorColor} />
+			<ColorPicker name="hexErrorColor" bind:hex={hexErrorColor} />
 		</div>
 		<Button
 			color="primary"

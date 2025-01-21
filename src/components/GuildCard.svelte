@@ -6,12 +6,18 @@
 	export let user;
 </script>
 
-<div class="indent min">
+<div class="indent">
+	<!--
+		It was apparently necessary to use inline-block to center SVG avatars when icon is missing
+	-->
 	<Avatar
+		style="display: inline-block"
 		size="lg"
-		src={`https://cdn.discordapp.com/icons/${guild.id}/${guild?.icon}.webp` || ""}
+		src={guild?.icon && `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
 		alt="Guild"
-	/>
+	>
+
+	</Avatar>
 	<h4>
 		{guild?.name || "N/A"}
 	</h4>

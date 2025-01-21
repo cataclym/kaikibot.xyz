@@ -6,7 +6,7 @@
 		Input, Listgroup, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell
 	} from "flowbite-svelte";
 	import {
-		FileCheckSolid,
+		FileCheckSolid, IconSolid,
 		MessagesSolid,
 		MicrophoneSolid,
 		UserCircleSolid, UsersGroupSolid
@@ -60,10 +60,13 @@ Skeleton
 
 -->
 <div class="w-2/3 m-auto">
-<h1>Server Information</h1>
+<Heading tag="h1">Server Information</Heading>
 <ClickToCopy text={APIGuild.id} placement="top-start">Server ID: {APIGuild.id}</ClickToCopy>
 
-<Listgroup color="dark" rounded={false} items={icons} let:item class="w-32">
+<Listgroup color="dark" rounded={false} items={icons} let:item class="w-fit pl-0">
+<!--
+	<svelte:component this={item.icon}/> {item.name}
+-->
 	<svelte:component this={item.icon} class="w-4 h-4 me-2.5"/>
 	{item.name}
 </Listgroup>

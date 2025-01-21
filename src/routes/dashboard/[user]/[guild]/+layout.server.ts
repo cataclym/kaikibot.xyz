@@ -19,14 +19,14 @@ export async function load({ params, parent, fetch }) {
 	});
 
 	if (!guildResponse.ok) {
-		return error(500, "No response from the server.");
+		throw error(500, "No response from the server.");
 	}
 
 	const { guild, user } = <GETGuildBody> await guildResponse.json();
 	const APIGuild = responseData.guilds.find(g => g.id === params.guild);
 
 	if (!APIGuild) {
-		return error(404, "Guild not found");
+		throw error(404, "Guild not found");
 	}
 
 	// Apparently this checks ADMIN flag in the permissions bitfield

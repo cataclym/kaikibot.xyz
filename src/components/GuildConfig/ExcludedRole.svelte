@@ -6,6 +6,7 @@
 	import IntColorToHex from "../../methods/IntColorToHex.js";
 
 	export let ExcludeRole: undefined | null | { color: number; id: string; name: string; };
+	export let Action: string;
 
 	let savedExcludeRole = ExcludeRole
 		? {
@@ -28,10 +29,10 @@
 			<h3>Role name</h3>>
 			<h3>Role color</h3>
 		</div>
-		<form method="POST" action="/dashboard/[user]/[guild]/config?/excludedrole">
+		<form method="POST" action={Action}?/excludedrole>
 			<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
-				<Input type="text" bind:value={savedExcludeRole.name}></Input>
-				<ColorPicker bind:hex={savedExcludeRole.color} />
+				<Input name="excluderolename" type="text" bind:value={savedExcludeRole.name}></Input>
+				<ColorPicker name="excluderolecolor" bind:hex={savedExcludeRole.color} />
 			</div>
 			<ClickToCopy>{ExcludeRole?.id}</ClickToCopy>
 			<Button
