@@ -26,9 +26,11 @@ let toggleState =
 		<h3>Toggles</h3>
 		<div>
 			<Toggle bind:checked={DadBot}><p>Dad-mode</p></Toggle>
-			<input type="hidden" name="DadBot" value={DadBot} />
+			<input type="hidden" name="dadbot" value={DadBot} />
 			<Toggle name="Anniversary" bind:checked={Anniversary}><p>Anniversary roles</p></Toggle>
+			<input type="hidden" name="anniversary" value={DadBot} />
 			<Toggle name="StickyRoles" bind:checked={StickyRoles}><p>Sticky roles</p></Toggle>
+			<input type="hidden" name="stickyroles" value={DadBot} />
 		</div>
 		<Button
 			type="submit"

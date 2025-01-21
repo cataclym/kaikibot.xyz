@@ -37,6 +37,7 @@
 			<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
 				<Input name="excluderolename" type="text" bind:value={savedExcludeRole.name}></Input>
 				<ColorPicker name="excluderolecolor" bind:hex={savedExcludeRole.color} />
+				<Input type="hidden" name="excluderole" value={ExcludeRole?.id}></Input>
 			</div>
 			<ClickToCopy>{ExcludeRole?.id}</ClickToCopy>
 			<Button

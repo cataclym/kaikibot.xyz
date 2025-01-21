@@ -1,5 +1,6 @@
 import { USER_API_PORT, USER_API_URL } from "$env/static/private";
 import CreateHeaders from "../../../../../methods/CreateHeaders";
+import { error, fail } from "@sveltejs/kit";
 
 export async function load({ parent }) {
 	const { isAdmin, guild } = await parent();
@@ -17,44 +18,31 @@ export const actions = {
 			Prefix: prefix,
 		}, null, 2);
 
-		await updateGuild(data, params.guild);
-
-		return {
-			success: true,
-			data,
-		};
+		return  updateGuild(data, params.guild);
 	},
 	toggles: async ({ request, params }) => {
 		const formData = await request.formData();
 		const data = JSON.stringify({
-			DadBot: formData.get("DadBot"),
-			Anniversary: formData.get("Anniversary"),
-			StickyRoles: formData.get("StickyRoles"),
+			DadBot: formData.get("dadbot"),
+			Anniversary: formData.get("anniversary"),
+			StickyRoles: formData.get("stickyroles"),
 		}, null, 2);
 
-		await updateGuild(data, params.guild)
-
-		return {
-			success: true,
-			data,
-		};
+		return  updateGuild(data, params.guild)
 	},
 	excludedrole: async ({ request, params }) => {
 		const formData = await request.formData();
 		const excludeRoleName = formData.get("excluderolename");
 		const excludeRoleColor = formData.get("excluderolecolor");
+		const excludeRole = formData.get("excluderole");
 
 		const data = JSON.stringify({
-			ExcludeRoleName: excludeRoleName,
-			ExcludeRoleColor: excludeRoleColor,
+			excluderolename: excludeRoleName,
+			excluderolecolor: excludeRoleColor,
+			"": excludeRole,
 		}, null);
 
-		await updateGuild(data, params.guild)
-
-		return {
-			success: true,
-			data,
-		};
+		return updateGuild(data, params.guild)
 	},
 	embedcolors: async ({ request, params }) => {
 		const formData = await request.formData();
@@ -66,12 +54,7 @@ export const actions = {
 			ErrorColor: hexErrorColor,
 		}, null, 2);
 
-		await updateGuild(data, params.guild)
-
-		return {
-			success: true,
-			data,
-		};
+		return updateGuild(data, params.guild)
 	}
 }
 
@@ -87,5 +70,9 @@ async function updateGuild(body: string, guildId: string) {
 		headers: CreateHeaders(),
 	});
 
-	return { success: request.ok };
+	if (!request.ok) {
+		throw error(request.status, request.statusText);
+	}
+
+	return { success: true };
 }
