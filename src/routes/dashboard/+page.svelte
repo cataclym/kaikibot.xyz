@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { SignIn } from "@auth/sveltekit/components";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
 
 	onMount(() => {
-		console.log($page.data);
-		if (!$page.data.session) return;
-		goto(`/dashboard/${$page.data.session.user?.id}`);
+		console.log(page.data);
+		if (!page.data.session) return;
+		goto(`/dashboard/${page.data.session.user?.id}`);
 	});
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "../app.css";
 	import SEO from "../components/SEO.svelte";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate, goto } from "$app/navigation";
 	import { KaikiNavigationState, navigationState } from "../stores/navigationState";
 	import { fade } from "svelte/transition";
@@ -26,7 +26,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize($page.url.pathname.split("/")[0] || "Home")}</title>
+	<title>KaikiBot - {Capitalize(page.url.pathname.split("/")[0] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -35,7 +35,7 @@
 	</div>
 {/if}
 
-{#if $page.url.pathname === "/"}
+{#if page.url.pathname === "/"}
 	<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
 		<a class="text-center" href="/">KAIKIBOT</a>
 	</h1>
@@ -61,9 +61,9 @@
 			>SUPPORT SERVER
 		</button>
 	</a>
-	<a class="link_flex" href={$page.url.pathname === "/commands" ? "/" : "/commands"}>
+	<a class="link_flex" href={page.url.pathname === "/commands" ? "/" : "/commands"}>
 		<button
-			aria-current={$page.url.pathname === "/commands"}
+			aria-current={page.url.pathname === "/commands"}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 		>
 			COMMANDS
@@ -95,9 +95,9 @@
 			SOURCE CODE
 		</button>
 	</a>
-	<a href={docs.includes($page.url.pathname) ? "/" : "/README.md"} class="link_flex">
+	<a href={docs.includes(page.url.pathname) ? "/" : "/README.md"} class="link_flex">
 		<button
-			aria-current={docs.includes($page.url.pathname)}
+			aria-current={docs.includes(page.url.pathname)}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
 		>
 			DOCUMENTATION

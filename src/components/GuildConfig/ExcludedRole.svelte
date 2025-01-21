@@ -33,7 +33,7 @@
 			<h3>Role name</h3>>
 			<h3>Role color</h3>
 		</div>
-		<form method="POST" action={Action}?/excludedrole>
+		<form method="POST" action="{Action}?/excludedrole">
 			<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
 				<Input name="excluderolename" type="text" bind:value={savedExcludeRole.name}></Input>
 				<ColorPicker name="excluderolecolor" bind:hex={savedExcludeRole.color} />

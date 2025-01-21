@@ -3,7 +3,7 @@
 	import PageLoader from "../../components/PageLoader.svelte";
 	import { fade } from "svelte/transition";
 	import { KaikiNavigationState, navigationState } from "../../stores/navigationState";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 
 	interface Props {
@@ -42,13 +42,13 @@
 	<a
 		href="/README.md"
 		class="text-xl items-start"
-		aria-current={$page.url.pathname === "/README.md"}
+		aria-current={page.url.pathname === "/README.md"}
 	>
 		Docs
 	</a>
 	<br class="mb-6 mt-3 pb-2" />
 	{#each docs as doc}
-		<a href="/docs/{doc}" aria-current={$page.url.pathname === `/docs/${doc}`}
+		<a href="/docs/{doc}" aria-current={page.url.pathname === `/docs/${doc}`}
 			>{documentation[doc] || doc}</a
 		>
 	{/each}

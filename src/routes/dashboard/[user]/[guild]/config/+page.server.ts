@@ -47,7 +47,7 @@ export const actions = {
 		const data = JSON.stringify({
 			ExcludeRoleName: excludeRoleName,
 			ExcludeRoleColor: excludeRoleColor,
-		}, null, 2);
+		}, null);
 
 		await updateGuild(data, params.guild)
 

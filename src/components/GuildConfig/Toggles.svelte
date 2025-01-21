@@ -22,7 +22,7 @@ let toggleState =
 
 </script>
 <div class="indent flex flex-col justify-between items-center">
-	<form method="POST" action={Action}?/toggles>
+	<form method="POST" action="{Action}?/toggles">
 		<h3>Toggles</h3>
 		<div>
 			<Toggle bind:checked={DadBot}><p>Dad-mode</p></Toggle>

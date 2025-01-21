@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { ArrowKeyLeft, Button, Mark, P } from "flowbite-svelte";
 
 	let { data, children } = $props();
 	const { responseData } = data;
-	let location = $derived($page.params.guild);
+	let location = $derived(page.params.guild);
 </script>
 
 <div class="smol">

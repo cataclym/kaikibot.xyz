@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { error } from "@sveltejs/kit";
 	import { Avatar } from "flowbite-svelte";
 	import GuildCard from "../../../components/GuildCard.svelte";
 
-	const session = $page.data.session;
+	const session = page.data.session;
 
 	if (session?.user == null) throw error(500, "User does not exist");
 

@@ -23,7 +23,7 @@
 </script>
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
 	<h3 class="mb-0">Command embed colors</h3>
-	<form method="POST" action={Action}?/embedcolors>
+	<form method="POST" action="{Action}?/embedcolors">
 		<div class="pb-6">
 			<h4 class="text-gray-100">Ok-Color</h4>
 			<ColorPicker name="hexOkColor" bind:hex={hexOkColor} />
