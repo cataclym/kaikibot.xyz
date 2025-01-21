@@ -3,7 +3,7 @@
 	import { FileCheckSolid, InfoCircleSolid } from "flowbite-svelte-icons";
 	import { error } from "@sveltejs/kit";
 
-	export let data;
+	let { data } = $props();
 
 	const { isAdmin } = data;
 	if (!isAdmin) error(401, "Not authorized");
@@ -20,35 +20,35 @@
 		WelcomeTimeout,
 		WelcomeMessage,
 		WelcomeChannel,
-	} = data.guild;
+	} = $state(data.guild);
 
-	let welcomeTimeout = WelcomeTimeout ?? 0;
+	let welcomeTimeout = $state(WelcomeTimeout ?? 0);
 	const savedWelcome = {
 		WelcomeChannel,
 		WelcomeTimeout: welcomeTimeout,
 		WelcomeMessage
 	};
-	$: welcomeState =
-		JSON.stringify(savedWelcome) ===
+	let welcomeState =
+		$derived(JSON.stringify(savedWelcome) ===
 		JSON.stringify({
 			WelcomeChannel,
 			WelcomeTimeout: welcomeTimeout,
 			WelcomeMessage
-		});
+		}));
 
-	let byeTimeout = ByeTimeout ?? 0;
+	let byeTimeout = $state(ByeTimeout ?? 0);
 	const savedBye = {
 		ByeChannel,
 		ByeTimeout: ByeTimeout,
 		ByeMessage
 	};
-	$: byeState =
-		JSON.stringify(savedBye) ===
+	let byeState =
+		$derived(JSON.stringify(savedBye) ===
 		JSON.stringify({
 			ByeChannel,
 			ByeTimeout: ByeTimeout,
 			ByeMessage
-		});
+		}));
 </script>
 <div>
 	<div class="indent flex flex-col justify-between items-center">

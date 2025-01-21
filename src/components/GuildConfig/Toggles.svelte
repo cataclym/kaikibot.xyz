@@ -2,14 +2,23 @@
 import { Button, Toggle } from "flowbite-svelte";
 import { FileCheckSolid } from "flowbite-svelte-icons";
 
-export let Anniversary: boolean;
-export let DadBot: boolean;
-export let StickyRoles: boolean;
-export let Action: string;
+	interface Props {
+		Anniversary: boolean;
+		DadBot: boolean;
+		StickyRoles: boolean;
+		Action: string;
+	}
+
+	let {
+		Anniversary = $bindable(),
+		DadBot = $bindable(),
+		StickyRoles = $bindable(),
+		Action
+	}: Props = $props();
 
 const savedToggles = { DadBot, Anniversary, StickyRoles };
-$: toggleState =
-	JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles });
+let toggleState =
+	$derived(JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles }));
 
 </script>
 <div class="indent flex flex-col justify-between items-center">

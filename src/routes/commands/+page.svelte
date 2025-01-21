@@ -4,16 +4,20 @@
 
 	let active: {
 		[id: string]: boolean;
-	} = {};
+	} = $state({});
 
-	export let data: {
+	interface Props {
+		data: {
 		commands: Cmds;
 	};
+	}
+
+	let { data }: Props = $props();
 	const { commands } = data;
 
-	let originalColor: string;
+	let originalColor: string = $state();
 
-	let cats: [string, [string, Cmd[]]][];
+	let cats: [string, [string, Cmd[]]][] = $state();
 	resetCats();
 
 	function searchbarOnInput(
@@ -74,11 +78,11 @@
 				type="text"
 				id="searchbar2"
 				placeholder="Search commands"
-				on:input={(c) => searchbarOnInput(c, (() => active)())}
-				on:reset={resetCats}
-				on:abort={resetCats}
-				on:focus={() => colorSearchbar("#252422")}
-				on:focusout={() => colorSearchbar(originalColor)}
+				oninput={(c) => searchbarOnInput(c, (() => active)())}
+				onreset={resetCats}
+				onabort={resetCats}
+				onfocus={() => colorSearchbar("#252422")}
+				onfocusout={() => colorSearchbar(originalColor)}
 			/>
 			<div class="searchThingy"></div>
 			<div class="searchBottom">
@@ -106,7 +110,7 @@
 				{#if typeof category === "string"}
 					<button
 						class={active[category] ? "cmdCategoryActive" : "cmdCategory"}
-						on:click={() => manageCategories(category)}
+						onclick={() => manageCategories(category)}
 					>
 						{category}
 					</button>

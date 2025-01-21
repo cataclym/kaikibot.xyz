@@ -25,7 +25,7 @@
 </script>
 
 <div class="progress-bar">
-	<div class="progress-sliver" style={`--width: ${$progress * 100}%`} />
+	<div class="progress-sliver" style={`--width: ${$progress * 100}%`}></div>
 </div>
 
 <style>

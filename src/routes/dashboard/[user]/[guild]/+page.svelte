@@ -14,24 +14,24 @@
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
 
-	export let data;
+	let { data } = $props();
 	const { guild, user, APIGuild } = data;
 
 	let { name } = APIGuild;
 	const { roles, emojis, statsCount } = guild;
 
-	let savedUserRole = user.userRole
+	let savedUserRole = $state(user.userRole
 		? {
 			name: user.userRole?.name,
 			color: IntColorToHex(user.userRole.color),
 			icon: user.userRole?.icon,
-		} : null;
-	$: userRoleState = user.userRole
+		} : null);
+	let userRoleState = $derived(user.userRole
 		? JSON.stringify(savedUserRole) === JSON.stringify({
 		name: user.userRole?.name,
 		color: IntColorToHex(user.userRole.color),
 		icon: user.userRole?.icon,
-	}) : null;
+	}) : null);
 
 	let icons = [
 		{ name: `${statsCount.members} Members`, icon: UsersGroupSolid },
@@ -63,13 +63,15 @@ Skeleton
 <Heading tag="h1">Server Information</Heading>
 <ClickToCopy text={APIGuild.id} placement="top-start">Server ID: {APIGuild.id}</ClickToCopy>
 
-<Listgroup color="dark" rounded={false} items={icons} let:item class="w-fit pl-0">
-<!--
-	<svelte:component this={item.icon}/> {item.name}
--->
-	<svelte:component this={item.icon} class="w-4 h-4 me-2.5"/>
-	{item.name}
-</Listgroup>
+<Listgroup color="dark" rounded={false} items={icons}  class="w-fit pl-0">
+{#snippet children({ item })}
+				<!--
+		<svelte:component this={item.icon}/> {item.name}
+	-->
+		<item.icon class="w-4 h-4 me-2.5"/>
+		{item.name}
+			{/snippet}
+		</Listgroup>
 
 <div class="flex-row grid-rows-2">
 	<Heading tag="h2">Roles</Heading>

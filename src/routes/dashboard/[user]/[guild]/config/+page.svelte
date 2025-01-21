@@ -6,7 +6,7 @@
 	import EmbedColors from "../../../../../components/GuildConfig/EmbedColors.svelte";
 	import { page } from '$app/state';
 
-	export let data;
+	let { data } = $props();
 
 	const { isAdmin } = data;
 

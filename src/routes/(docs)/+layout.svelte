@@ -6,9 +6,14 @@
 	import { page } from "$app/stores";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 
-	export let data: {
+	interface Props {
+		data: {
 		docs: string[];
 	};
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 
 	const docs = data.docs;
 
@@ -49,7 +54,7 @@
 	{/each}
 </nav>
 
-<slot />
+{@render children?.()}
 
 <style>
 	@tailwind base;

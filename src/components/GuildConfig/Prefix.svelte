@@ -2,13 +2,17 @@
 	import { Button, Input } from "flowbite-svelte";
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 
-	export let Prefix: string;
-	export let Action: string;
+	interface Props {
+		Prefix: string;
+		Action: string;
+	}
+
+	let { Prefix = $bindable(), Action }: Props = $props();
 
 	let isLoading = false;
 
 	const savedPrefix = Prefix;
-	$: prefixState = savedPrefix === Prefix;
+	let prefixState = $derived(savedPrefix === Prefix);
 
 </script>
 

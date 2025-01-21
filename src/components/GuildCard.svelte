@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 	import { Avatar, Button } from "flowbite-svelte";
 	import ClickToCopy from "./ClickToCopy.svelte";
 
-	export let guild;
-	export let user;
+	let { guild, user, children } = $props();
 </script>
 
 <div class="indent">
@@ -21,7 +20,7 @@
 	<h4>
 		{guild?.name || "N/A"}
 	</h4>
-	<slot />
+	{@render children?.()}
 	<Button href="/dashboard/{user.id}/{guild.id}">Edit settings</Button>
 	<ClickToCopy>{guild.id}</ClickToCopy>
 </div>

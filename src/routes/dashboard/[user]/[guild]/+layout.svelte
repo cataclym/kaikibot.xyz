@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
-	$: activeUrl = $page.url.pathname;
+	let activeUrl = $derived($page.url.pathname);
 
 	const user = $page.params.user;
 
-	export let data;
+	let { data, children } = $props();
 	const { APIGuild, isAdmin } = data;
 	const { icon } = APIGuild;
 	const baseURL = `/dashboard/${user}/${APIGuild.id}`;
@@ -26,4 +26,4 @@
 	</NavUl>
 </Navbar>
 
-<slot />
+{@render children?.()}

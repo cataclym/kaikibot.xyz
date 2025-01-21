@@ -5,21 +5,25 @@
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 	import IntColorToHex from "../../methods/IntColorToHex.js";
 
-	export let ExcludeRole: undefined | null | { color: number; id: string; name: string; };
-	export let Action: string;
+	interface Props {
+		ExcludeRole: undefined | null | { color: number; id: string; name: string; };
+		Action: string;
+	}
 
-	let savedExcludeRole = ExcludeRole
+	let { ExcludeRole, Action }: Props = $props();
+
+	let savedExcludeRole = $state(ExcludeRole
 		? {
 			name: ExcludeRole?.name,
 			color: IntColorToHex(ExcludeRole.color),
 			icon: ExcludeRole?.icon
-		} : null;
-	$: excludeRoleState = ExcludeRole
+		} : null);
+	let excludeRoleState = $derived(ExcludeRole
 		? JSON.stringify(savedExcludeRole) === JSON.stringify({
 		name: ExcludeRole?.name,
 		color: IntColorToHex(ExcludeRole.color),
 		icon: ExcludeRole?.icon
-	}) : null;
+	}) : null);
 
 </script>
 {#if savedExcludeRole}

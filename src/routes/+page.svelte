@@ -2,7 +2,7 @@
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
 
-	export let data;
+	let { data } = $props();
 	const { INVITE, SOURCE, CHANGELOG } = data;
 	const images: { url: string; alt: string }[] = data.IMAGES;
 </script>

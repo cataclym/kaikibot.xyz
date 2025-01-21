@@ -8,7 +8,7 @@
 	import PageLoader from "../components/PageLoader.svelte";
 	import Capitalize from "../methods/Capitalize";
 
-	export let data;
+	let { data, children } = $props();
 
 	const { DISCORD, EMBED, INVITE, KOFI, SOURCE } = data;
 
@@ -47,7 +47,7 @@
 {:else}
 	<div class="m-auto w-full flex mb-2 justify-center items-center content-center" style="">
 		<button
-			on:click={() => goto("/")}
+			onclick={() => goto("/")}
 			class="whitespace-nowrap h-12 text-accent1 layout sm:w-full min-w-fit p-1 text-2xl text-center"
 		>
 			Home
@@ -105,8 +105,8 @@
 	</a>
 </div>
 
-<slot />
-<div class="mt-20" />
+{@render children?.()}
+<div class="mt-20"></div>
 <footer class="items-center grid grid-cols-3">
 	<a class="self-center" href={KOFI}><h3>Buy me a ko-fi ☕</h3></a>
 	<h3 class="flex-col">© Cata 2024</h3>

@@ -10,7 +10,7 @@
 
 	const { user } = session;
 
-	export let data;
+	let { data } = $props();
 
 	const { responseData } = data;
 	const mappedIds = responseData.guildDb.map(guild => guild.Id);

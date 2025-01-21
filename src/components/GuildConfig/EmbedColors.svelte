@@ -4,16 +4,21 @@
 	import { FileCheckSolid } from "flowbite-svelte-icons";
 	import IntColorToHex from "../../methods/IntColorToHex";
 
-	export let OkColor, ErrorColor;
-	export let Action: string;
+	interface Props {
+		OkColor: any;
+		ErrorColor: any;
+		Action: string;
+	}
 
-	let hexOkColor = OkColor ? IntColorToHex(Number(OkColor)) : "#00ff00";
-	let hexErrorColor = ErrorColor ? IntColorToHex(Number(ErrorColor)) : "#ff0000";
+	let { OkColor, ErrorColor, Action }: Props = $props();
+
+	let hexOkColor = $state(OkColor ? IntColorToHex(Number(OkColor)) : "#00ff00");
+	let hexErrorColor = $state(ErrorColor ? IntColorToHex(Number(ErrorColor)) : "#ff0000");
 	const savedColors = {
 		hexOkColor,
 		hexErrorColor
 	};
-	$: colorState = JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor });
+	let colorState = $derived(JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor }));
 
 </script>
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
