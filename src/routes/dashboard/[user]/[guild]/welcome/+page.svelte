@@ -2,6 +2,7 @@
 	import { Button, NumberInput, Select, Textarea, Toast } from "flowbite-svelte";
 	import { FileCheckSolid, InfoCircleSolid } from "flowbite-svelte-icons";
 	import { error } from "@sveltejs/kit";
+	import { page } from "$app/state";
 
 	let { data } = $props();
 
@@ -13,6 +14,7 @@
 	);
 	channelOptions.push({ name: "None (Disable)", value: null });
 
+	const endpoint = page.url.pathname;
 	let {
 		ByeChannel,
 		ByeMessage,
@@ -54,15 +56,17 @@
 	<div class="indent flex flex-col justify-between items-center">
 			<h3>Welcome configuration</h3>
 
+		<form method="POST" action="{endpoint}?/welcome">
 			<p class="text-gray-100">Select channel</p>
-			<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} />
+			<Select class="mt-2" items={channelOptions} bind:value={WelcomeChannel} name="welcomechannel" />
 
 			<p class="text-gray-100">Message autodelete delay</p>
-			<NumberInput bind:value={welcomeTimeout} />
+			<NumberInput bind:value={welcomeTimeout} name="welcometimeout" />
 
 			<p class="text-gray-100">Welcome message</p>
 			<Textarea
 				id="welcomeMessage"
+				name="welcomemessage"
 				class="mb-4"
 				placeholder={WelcomeMessage || "Write a welcome message"}
 				bind:value={WelcomeMessage}
@@ -73,29 +77,33 @@
 				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
 				disabled={welcomeState}><FileCheckSolid />Save</Button
 			>
+		</form>
 		</div>
 		<div class="indent flex flex-col justify-between items-center">
 			<h3>Bye configuration</h3>
 
-			<p class="text-gray-100">Select channel</p>
-			<Select class="mt-2" items={channelOptions} bind:value={ByeChannel} />
+			<form method="POST" action="{endpoint}?/bye">
+				<p class="text-gray-100">Select channel</p>
+				<Select class="mt-2" items={channelOptions} bind:value={ByeChannel} name="byechannel" />
 
-			<p class="text-gray-100">Message autodelete delay</p>
-			<NumberInput bind:value={byeTimeout} />
+				<p class="text-gray-100">Message autodelete delay</p>
+				<NumberInput bind:value={byeTimeout} name="byetimeout" />
 
-			<p class="text-gray-100">Bye message</p>
-			<Textarea
-				id="byeMessage"
-				class="mb-4"
-				bind:value={ByeMessage}
-				placeholder={ByeMessage || "Write a welcome message"}
-			/>
+				<p class="text-gray-100">Bye message</p>
+				<Textarea
+					id="byeMessage"
+					name="byemessage"
+					class="mb-4"
+					bind:value={ByeMessage}
+					placeholder={ByeMessage || "Write a welcome message"}
+				/>
 
-			<Button
-				color="primary"
-				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={byeState}><FileCheckSolid />Save</Button
-			>
+				<Button
+					color="primary"
+					class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
+					disabled={byeState}><FileCheckSolid />Save</Button
+				>
+			</form>
 		</div>
 	<div>
 		<Toast

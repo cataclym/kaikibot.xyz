@@ -26,9 +26,9 @@
 	<form method="POST" action="{Action}?/embedcolors">
 		<div class="pb-6">
 			<h4 class="text-gray-100">Ok-Color</h4>
-			<ColorPicker name="hexOkColor" bind:hex={hexOkColor} />
+			<ColorPicker name="hexokcolor" bind:hex={hexOkColor} />
 			<h4 class="text-gray-100">Error-color</h4>
-			<ColorPicker name="hexErrorColor" bind:hex={hexErrorColor} />
+			<ColorPicker name="hexerrorcolor" bind:hex={hexErrorColor} />
 		</div>
 		<Button
 			color="primary"
