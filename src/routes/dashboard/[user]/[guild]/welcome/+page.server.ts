@@ -1,4 +1,4 @@
-import { UpdateGuild } from "../../../../../methods/updateGuild";
+import { UpdateGuild } from "../../../../../methods/UpdateGuild";
 
 export async function load({ parent }) {
 	const { isAdmin, guild } = await parent();

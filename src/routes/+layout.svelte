@@ -3,7 +3,7 @@
 	import SEO from "../components/SEO.svelte";
 	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate, goto } from "$app/navigation";
-	import { KaikiNavigationState, navigationState } from "../stores/navigationState";
+	import { KaikiNavigationState, navigationState } from "$lib/navigationState";
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
 	import Capitalize from "../methods/Capitalize";

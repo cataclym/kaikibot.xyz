@@ -2,13 +2,21 @@
 	import "../../app.css";
 	import PageLoader from "../../components/PageLoader.svelte";
 	import { fade } from "svelte/transition";
-	import { KaikiNavigationState, navigationState } from "../../stores/navigationState";
+	import { KaikiNavigationState, navigationState } from "$lib/navigationState";
 	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 
+	type Documentation = Readonly<{ "ENV.md": string; "PLACEHOLDERS.md": string; "GUIDE.md": string }>
+
+	const documentation: Documentation = Object.freeze({
+		"ENV.md": "Environment",
+		"GUIDE.md": "Guide",
+		"PLACEHOLDERS.md": "Placeholders"
+	});
+
 	interface Props {
 		data: {
-		docs: string[];
+		docs: (keyof Documentation)[];
 	};
 		children?: import('svelte').Snippet;
 	}
@@ -17,11 +25,7 @@
 
 	const docs = data.docs;
 
-	const documentation = Object.freeze({
-		"ENV.md": "Environment",
-		"GUIDE.md": "Guide",
-		"PLACEHOLDERS.md": "Placeholders"
-	});
+
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
