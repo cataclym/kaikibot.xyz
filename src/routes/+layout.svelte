@@ -7,6 +7,7 @@
 	import { fade } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
 	import Capitalize from "../methods/Capitalize";
+	import { Mark } from "flowbite-svelte";
 
 	let { data, children } = $props();
 
@@ -72,7 +73,7 @@
 	<a href={EMBED} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
-			>EMBED BUILDER
+		><Mark>NEW</Mark><br>EMBED BUILDER
 		</button>
 	</a>
 	<a href={INVITE} class="link_flex">

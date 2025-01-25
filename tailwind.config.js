@@ -1,5 +1,4 @@
-import type { Config } from "tailwindcss";
-import flowbitePlugin from "flowbite/plugin";
+const flowbitePlugin = require("flowbite/plugin");
 
 export default {
 	content: [
@@ -42,4 +41,4 @@ export default {
 	corePlugins: {
 		preflight: false
 	}
-} as Config;
+};

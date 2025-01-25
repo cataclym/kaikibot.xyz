@@ -1,16 +1,30 @@
 import { type Writable, writable } from "svelte/store";
+import { error } from "@sveltejs/kit";
+
+export type URLObject = {
+	url: string;
+}
+
+export type AuthorObject = {
+	name: string,
+	icon_url?: string,
+	url?: string,
+}
+
+export type FooterObject = {
+	text: string,
+	icon_url?: string,
+}
 
 type APIEmbed = {
 	title?: string;
 	description?: string;
 	url?: string;
 	color?: number;
-	footer?: Object;
-	image?: Object;
-	thumbnail?: Object;
-	video?: Object;
-	provider?: Object;
-	author?: Object;
+	footer?: FooterObject;
+	image?: URLObject;
+	thumbnail?: URLObject;
+	author?: AuthorObject;
 	fields?: APIEmbedField[];
 }
 
@@ -20,8 +34,7 @@ type APIEmbedField = {
 	inline?: boolean;
 }
 
-export const embedMessage: Writable<{ content: string | null; embeds: APIEmbed[] }> = writable({
-	content: "",
+export const embedMessage: Writable<{ content?: string; embeds: APIEmbed[] }> = writable({
 	embeds: []
 });
 
@@ -29,24 +42,8 @@ export const embedMessage: Writable<{ content: string | null; embeds: APIEmbed[]
 export const addEmbed = () => {
 	embedMessage.update((message) => {
 		message.embeds.push({
-				author: {
-					name: '',
-					url: '',
-					icon_url: "",
-				},
-				color: 15228456, // #e85e28
-				description: "",
-				fields: [],
-				footer: {
-					text: '',
-					icon_url: ''
-				},
-				image: { url: "" },
-				thumbnail: { url: "" },
-				title: "",
-				url: ""
-			}
-		);
+			color: 15228456, // #e85e28
+		});
 		return message;
 	});
 };
@@ -64,6 +61,13 @@ export const removeField = (embedIndex: number, fieldIndex: number) => {
 		return e;
 	});
 };
+
+export const updateContent = (value: string) => {
+	embedMessage.update((message) => {
+		message.content = value;
+		return message;
+	})
+}
 
 	export const updateField = (embedIndex: number, fieldIndex: number, key: keyof APIEmbedField, value: any) => {
 		embedMessage.update((message) => {
@@ -88,10 +92,23 @@ export const removeEmbed = (index: number) => {
 };
 
 // Update a field of a specific embed
-export const updateEmbedProperty = (embedIndex: number, property: keyof APIEmbed, value: any) => {
+export const updateEmbedProperty = <T extends AdditionalIndex>(embedIndex: number, property: keyof APIEmbed, value: any, propIndex?: keyof T) => {
 	embedMessage.update((message) => {
-		message.embeds[embedIndex][property] = value;
+		const embed = message.embeds[embedIndex];
+
+		// Check if propIndex is provided and the property is part of the AdditionalIndex
+		if (propIndex) {
+			// Ensure the property is an indexable object (e.g., URLObject, AuthorObject, or FooterObject)
+			const additionalIndexObj = embed[property] as T;
+			if (additionalIndexObj && typeof additionalIndexObj === 'object') {
+				additionalIndexObj[propIndex] = value;
+			}
+		} else {
+			embed[property] = value;
+		}
+
 		return message;
 	});
 };
 
+type AdditionalIndex = URLObject | AuthorObject | FooterObject
