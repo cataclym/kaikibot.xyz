@@ -104,6 +104,16 @@
 							/>
 						</div>
 
+						<!-- Embed URL -->
+						<div class="mb-2 col-span-2">
+							<Input
+								id={`url-${embedIndex}`}
+								bind:value={embed.url}
+								placeholder="Embed URL"
+								on:input={() => updateEmbedProperty(embedIndex, "url", embed.title)}	
+							/>
+						</div>
+
 						<!-- Embed Description -->
 						<div class="mb-2 col-span-2">
 							<Textarea
@@ -113,6 +123,9 @@
 								on:input={() => updateEmbedProperty(embedIndex, "description", embed.description)}
 							></Textarea>
 						</div>
+
+						<!-- Embed Author -->
+						
 
 						<!-- Embed Fields -->
 						<div class="mb-2 col-span-3 grid grid-cols-3 gap-1">
