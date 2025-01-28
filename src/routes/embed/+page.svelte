@@ -10,9 +10,9 @@
 		Img,
 		Input,
 		P,
-		Textarea, Tooltip
+		Textarea, Toggle, Tooltip
 	} from "flowbite-svelte";
-	import { CloseCircleSolid, CirclePlusOutline } from "flowbite-svelte-icons";
+	import { CloseCircleSolid, CirclePlusOutline, TrashBinSolid } from "flowbite-svelte-icons";
 
 	$: content = "";
 
@@ -22,11 +22,49 @@
 		});
 	}
 
+	type MessageJSON = {
+		[key: string]: any;
+	};
+
+	function cleanEmptyStrings(obj: MessageJSON | null): MessageJSON {
+		// Check if the value is an object (and not null or array)
+		if (obj && typeof obj === "object") {
+			// If the value is an array, recursively clean each element
+			if (Array.isArray(obj)) {
+				obj = obj.map(item => cleanEmptyStrings(item));
+			} else {
+				// Loop through object properties and clean recursively
+				for (const key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						const value = obj[key];
+
+						// Skip fields
+						if (key === "fields") continue;
+
+						// If the value is an empty string, remove it
+						if (!value) {
+							delete obj[key];
+						} else {
+							// Recursively clean non-empty string properties
+							obj[key] = cleanEmptyStrings(value);
+						}
+					}
+				}
+			}
+		}
+		return obj || { embeds: [] };
+	}
+
 </script>
 
 <main>
 	<div class="container m-auto p-[20px]">
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
+		{#if $embedMessage.content || $embedMessage.embeds.length }
+			<Button color="red" on:click={() => $embedMessage = { embeds: []}}>
+				<TrashBinSolid class="w-5 h-5 me-2"/>Reset
+			</Button>		
+		{/if}
 	</div>
 	<div class="split-container">
 		<div class="left-side">
@@ -37,7 +75,7 @@
 					<P class="self-center">User</P>
 				</div>
 				<Textarea
-					class="ml-14 w-11/12"
+					class="ml-14 w-[calc(100%-3.5rem)]"
 					id="content"
 					bind:value={content}
 					placeholder="Main message body"
@@ -46,18 +84,18 @@
 			</div>
 
 			<!-- Embeds Section -->
-			<div class="flex flex-row justify-between flex-wrap gap-x-1">
+			<div class="grid grid-cols-10">
 				{#each $embedMessage.embeds as embed, embedIndex}
-					<div class="shrink">
+					<div class="shrink col-start-1">
 						<Button size="xs" color="red" on:click={() => removeEmbed(embedIndex)}>
-							<CloseCircleSolid/>
+							<CloseCircleSolid />
 						</Button>
 						<Tooltip color="gray">Remove embed</Tooltip>
 					</div>
-					<div class="w-10/12 bg-gray-800 rounded-[0.5rem] grow mb-5 p-1"
+					<div class="w-full bg-gray-800 rounded-[0.5rem] col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
 						 style="border-left: 4px solid #{embed.color?.toString(16)}">
 						<!-- Embed Title -->
-						<div class="mb-2">
+						<div class="mb-2 col-span-2">
 							<Input
 								id={`title-${embedIndex}`}
 								bind:value={embed.title}
@@ -67,7 +105,7 @@
 						</div>
 
 						<!-- Embed Description -->
-						<div class="mb-2">
+						<div class="mb-2 col-span-2">
 							<Textarea
 								id={`description-${embedIndex}`}
 								bind:value={embed.description}
@@ -76,23 +114,46 @@
 							></Textarea>
 						</div>
 
-						<!-- Embed Footer -->
-						<div class="mb-2">
-							<Input
-								id={`footer-${embedIndex}`}
-								bind:value={embed.footer}
-								placeholder="Footer Text"
-								on:input={() => updateEmbedProperty(embedIndex, "footer", embed.footer)}
-							/>
+						<!-- Embed Fields -->
+						<div class="mb-2 col-span-3 grid grid-cols-3 gap-1">
+							{#if embed.fields}
+								{#each embed.fields as field, fieldIndex}
+									<div>
+										<div class="mb-2">
+											<Input
+												bind:value={field.name}
+												placeholder="Field Name"
+												on:input={() => updateField(embedIndex, fieldIndex, "name", field.name)}
+											/>
+										</div>
+										
+										<Textarea
+											bind:value={field.value}
+											placeholder="Field Value"
+											on:input={() => updateField(embedIndex, fieldIndex, "value", field.value)}
+										></Textarea>
+										
+										<div class="mb-2">
+											<P size="sm">Inline</P> 
+											<Toggle bind:checked={field.inline} />
+										</div>	
+										<Button color="red" class="mb-4" size="xs" on:click={() => removeField(embedIndex, fieldIndex)}>
+											<CloseCircleSolid class="w-5 h-5 me-2" /> Remove Field
+										</Button>
+									</div>
+								{/each}
+							{/if}
+							<Button class="col-start-1 w-38" on:click={() => addField(embedIndex)}><CirclePlusOutline class="w-5 h-5 me-2" /> Add Field</Button>
 						</div>
 
 						<!-- Embed Image -->
-						<div class="mb-2">
-						{#if !embed.image}
+						<div class="mb-2 col-span-2 col-start-1">
+							{#if !embed.image}
 								<Button
-									size="sm"
 									on:click={() => embed.image = { url: "" }}
-								><CirclePlusOutline class="w-5 h-5 me-2" /> Image
+								>
+									<CirclePlusOutline class="w-5 h-5 me-2" />
+									Add Image
 								</Button>
 							{:else}
 								<Input
@@ -102,54 +163,46 @@
 									on:input={() => updateEmbedProperty<URLObject>(embedIndex, "image", embed.image?.url, "url")}
 								/>
 								{#if embed.image.url}
-									<Img src={embed.image.url} />
+									<Img size="max-w-md" class="rounded-lg m-auto" src={embed.image.url} />
 								{/if}
 								<Button
 									on:click={() => embed = { ...embed, image: undefined }}
 									size="sm"
-								>Remove image
+									color="red"
+									class="mt-2"
+								><CloseCircleSolid class="w-5 h-5 me-2" /> Remove image
 								</Button>
 							{/if}
 						</div>
 
-						<!-- Embed Fields -->
-						<div class="mb-2">
-							{#if embed.fields}
-								{#each embed.fields as field, fieldIndex}
-									<div>
-										<Input
-											bind:value={field.name}
-											placeholder="Field Name"
-											on:input={() => updateField(embedIndex, fieldIndex, "name", field.name)}
-										/>
-										<Textarea
-											bind:value={field.value}
-											placeholder="Field Value"
-											on:input={() => updateField(embedIndex, fieldIndex, "value", field.value)}
-										></Textarea>
-										<Button size="xs" on:click={() => removeField(embedIndex, fieldIndex)}>Remove
-											Field
-										</Button>
-									</div>
-								{/each}
-							{/if}
-							<Button size="xs" on:click={() => addField(embedIndex)}>Add Field</Button>
+						<!-- Embed Footer -->
+						<div class="mb-2 col-span-2">
+							<Input
+								id={`footer-${embedIndex}`}
+								bind:value={embed.footer}
+								placeholder="Footer Text"
+								on:input={() => updateEmbedProperty(embedIndex, "footer", embed.footer)}
+							/>
 						</div>
 					</div>
 				{/each}
 			</div>
 			<Button
 				class="enabled:cursor-pointer ml-14 mt-5"
-				on:click={addEmbed}><CirclePlusOutline class="w-5 h-5 me-2" /> Add Embed
+				on:click={addEmbed}>
+				<CirclePlusOutline class="w-5 h-5 me-2" />
+				Add Embed
 			</Button>
 		</div>
 
 		<!-- Preview Section -->
 		<div class="right-side">
-			<Button class="mb-[1rem]" on:click={() => copyToClipboard(JSON.stringify($embedMessage))}>
+			<Button class="mb-[1rem]"
+					on:click={() => copyToClipboard(JSON.stringify(cleanEmptyStrings($embedMessage)))}>
 				Copy JSON
 			</Button>
-			<pre class="text-left text-accent1 bg-gray-700">{JSON.stringify($embedMessage, null, 2)}</pre>
+			<pre
+				class="text-left text-accent1 bg-gray-700">{JSON.stringify(cleanEmptyStrings($embedMessage), null, 2)}</pre>
 		</div>
 	</div>
 </main>
@@ -177,5 +230,4 @@
         border-left: 0.05rem solid var(--accent4);
         background-color: var(--accent2);
     }
-
 </style>

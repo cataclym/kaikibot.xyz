@@ -199,9 +199,7 @@
 </div>
 
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+	@import "tailwindcss";
 
 	:root {
 		--input-color: var(--accent1);

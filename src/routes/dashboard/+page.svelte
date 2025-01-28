@@ -3,6 +3,7 @@
 	import { page } from "$app/state";
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
+	import { Heading } from "flowbite-svelte";
 
 	onMount(() => {
 		console.log(page.data);
@@ -12,7 +13,14 @@
 </script>
 
 <main>
-	<h1 class="text-accent1">KaikiBot dashboard</h1>
-	<h3 class="text-accent3">Manage your servers</h3>
-	<SignIn className="" provider="discord" signInPage="signin" />
+	<Heading tag="h2">KaikiBot Dashboard</Heading>
+	<Heading tag="h3">Manage your servers</Heading>
+	<SignIn provider="discord" signInPage="signin" />
 </main>
+
+<style>
+	.signInButton > button:nth-child(2) {
+		background-color: var(--accent4);
+		border: 1rem solid var(--accent4);
+	}
+</style>

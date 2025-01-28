@@ -74,7 +74,7 @@ a {
 	color: inherit;
 }
 
-.grid a:hover {
+.grid a:hover, a[href="/"]:hover, #navigation a:hover {
 	color: var(--accent4) !important;
 }
 

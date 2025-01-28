@@ -31,7 +31,7 @@ type APIEmbed = {
 type APIEmbedField = {
 	name: string;
 	value: string;
-	inline?: boolean;
+	inline: boolean;
 }
 
 export const embedMessage: Writable<{ content?: string; embeds: APIEmbed[] }> = writable({
@@ -50,7 +50,12 @@ export const addEmbed = () => {
 
 export const addField = (index: number) => {
 	embedMessage.update((e) => {
-		e.embeds[index].fields?.push({ name: '', value: '', inline: true });
+		const embed = e.embeds[index];
+
+		embed.fields = embed.fields ?? [];
+
+		embed.fields.push({ name: "", value: "", inline: true });
+
 		return e;
 	});
 };

@@ -61,9 +61,7 @@
 {@render children?.()}
 
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+	@import "tailwindcss";
 
 	#navigation {
 		color: var(--accent3);
