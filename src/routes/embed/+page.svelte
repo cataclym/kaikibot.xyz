@@ -13,6 +13,7 @@
 		Textarea, Toggle, Tooltip
 	} from "flowbite-svelte";
 	import { CloseCircleSolid, CirclePlusOutline, TrashBinSolid } from "flowbite-svelte-icons";
+	import ColorPicker from "svelte-awesome-color-picker";
 
 	$: content = "";
 
@@ -61,8 +62,11 @@
 	<div class="container m-auto p-[20px]">
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
 		{#if $embedMessage.content || $embedMessage.embeds.length }
-			<Button color="red" on:click={() => $embedMessage = { embeds: []}}>
-				<TrashBinSolid class="w-5 h-5 me-2"/>Reset
+			<Button color="red" on:click={() => {
+				$embedMessage = { embeds: [] };
+				content = "";
+			}}>
+				<TrashBinSolid class="w-5 h-5 me-2"/>Reset all
 			</Button>		
 		{/if}
 	</div>
@@ -93,8 +97,9 @@
 						<Tooltip color="gray">Remove embed</Tooltip>
 					</div>
 					<div class="w-full bg-gray-800 rounded-[0.5rem] col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
-						 style="border-left: 4px solid #{embed.color?.toString(16)}">
-						<!-- Embed Title -->
+						 style="border-left: 4px solid #{embed.color?.toString(16).padStart(6, '0') || '000000'}">
+						
+						 <!-- Embed Title -->
 						<div class="mb-2 col-span-2">
 							<Input
 								id={`title-${embedIndex}`}
@@ -160,32 +165,47 @@
 						</div>
 
 						<!-- Embed Image -->
-						<div class="mb-2 col-span-2 col-start-1">
-							{#if !embed.image}
-								<Button
-									on:click={() => embed.image = { url: "" }}
-								>
-									<CirclePlusOutline class="w-5 h-5 me-2" />
-									Add Image
-								</Button>
-							{:else}
-								<Input
-									id={`image-${embedIndex}`}
-									bind:value={embed.image.url}
-									placeholder="Image URL"
-									on:input={() => updateEmbedProperty<URLObject>(embedIndex, "image", embed.image?.url, "url")}
+						<div class="mb-2 col-span-2 col-start-1 flex justify-between items-center">
+							<!-- Embed color -->
+							<div class="dark max-w-fit">
+								<ColorPicker 
+									isAlpha={false}
+									label={""}
+									hex={embed.color?.toString(16).padStart(6, '0')}
+									on:input={(event) => {
+										if (!event.detail.hex?.startsWith("#")) return;
+										embed.color = parseInt(event.detail.hex.slice(1), 16);
+									}}
 								/>
-								{#if embed.image.url}
-									<Img size="max-w-md" class="rounded-lg m-auto" src={embed.image.url} />
+								<Tooltip>Embed color</Tooltip>
+							</div>
+							<div class="max-w-fit m-auto">
+								{#if !embed.image}
+									<Button
+										on:click={() => embed.image = { url: "" }}
+									>
+										<CirclePlusOutline class="w-5 h-5 me-2" />
+										Add Image
+									</Button>
+								{:else}
+									<Input
+										id={`image-${embedIndex}`}
+										bind:value={embed.image.url}
+										placeholder="Image URL"
+										on:input={() => updateEmbedProperty<URLObject>(embedIndex, "image", embed.image?.url, "url")}
+									/>
+									{#if embed.image.url}
+										<Img size="max-w-md" class="rounded-lg m-auto" src={embed.image.url} />
+									{/if}
+									<Button
+										on:click={() => embed = { ...embed, image: undefined }}
+										size="sm"
+										color="red"
+										class="mt-2"
+									><CloseCircleSolid class="w-5 h-5 me-2" /> Remove image
+									</Button>
 								{/if}
-								<Button
-									on:click={() => embed = { ...embed, image: undefined }}
-									size="sm"
-									color="red"
-									class="mt-2"
-								><CloseCircleSolid class="w-5 h-5 me-2" /> Remove image
-								</Button>
-							{/if}
+							</div>
 						</div>
 
 						<!-- Embed Footer -->
@@ -200,12 +220,14 @@
 					</div>
 				{/each}
 			</div>
-			<Button
-				class="enabled:cursor-pointer ml-14 mt-5"
-				on:click={addEmbed}>
-				<CirclePlusOutline class="w-5 h-5 me-2" />
-				Add Embed
-			</Button>
+			{#if $embedMessage.embeds.length < 10}
+				<Button
+					class="enabled:cursor-pointer ml-14 mt-5"
+					on:click={addEmbed}>
+					<CirclePlusOutline class="w-5 h-5 me-2" />
+					Add Embed
+				</Button>
+			{/if}
 		</div>
 
 		<!-- Preview Section -->
@@ -230,6 +252,7 @@
         flex: 1;
         padding: 1rem;
         overflow-y: auto;
+		overflow-x: hidden;
     }
 
     .left-side {
@@ -243,4 +266,13 @@
         border-left: 0.05rem solid var(--accent4);
         background-color: var(--accent2);
     }
+
+	.dark {
+
+		--cp-bg-color: var(--accent2);
+		--cp-border-color: var(--accent4);
+		--cp-text-color: var(--accent3);
+		--cp-input-color: var(--background);
+		--cp-button-hover-color: color-mix(in srgb, var(--accent2) 90%, #000000 30%);
+	}
 </style>
