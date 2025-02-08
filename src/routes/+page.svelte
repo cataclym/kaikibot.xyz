@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
+	import { Heading } from "flowbite-svelte";
 
 	let { data } = $props();
 	const { INVITE, SOURCE, CHANGELOG } = data;
@@ -91,19 +92,19 @@
 		class="grid items-start m-auto mb-20 mt-10 grid-cols-3 justify-items-center w-10/12 text-accent1 smol-bottom"
 	>
 		<div class="grid text-accent1">
-			<h1 class="text-accent3 text-left">Kaiki</h1>
+			<Heading tag="h2" class="text-accent3 text-left">Kaiki</Heading>
 			<p class="flex-col text-left"><a href={INVITE}>Invite</a></p>
 			<p class="flex-col text-left cursor-pointer"><a href="/commands">Commands</a></p>
 		</div>
 
 		<div class="grid text-accent1">
-			<h1 class="text-accent3 text-left">Selfhosting</h1>
+			<Heading tag="h2" class="text-accent3 text-left">Selfhosting</Heading>
 			<p class="flex-col text-left"><a href={SOURCE}>Source code</a></p>
 			<p class="flex-col text-left"><a href="/README.md">Docs and guides</a></p>
 		</div>
 
 		<div class="grid text-accent1">
-			<h1 class="text-accent3 text-left">Utilities</h1>
+			<Heading tag="h2" class="text-accent3 text-left">Utilities</Heading>
 			<p class="flex-col text-left"><a href={CHANGELOG}>Changelog</a></p>
 			<p class="flex-col text-left"><a href="/about">About</a></p>
 		</div>

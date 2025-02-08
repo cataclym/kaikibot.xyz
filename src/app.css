@@ -78,7 +78,8 @@ a {
 	color: var(--accent4) !important;
 }
 
-button.layout {
+button.layout,
+.signInButton > button:nth-child(2) {
 	background-color: var(--accent2) !important;
 	border: var(--accent2) 2px solid;
 	color: var(--accent1) !important;
@@ -87,7 +88,8 @@ button.layout {
 }
 
 button:hover.layout,
-button[aria-current="true"] {
+button[aria-current="true"],
+.signInButton > button:nth-child(2):hover {
 	cursor: pointer;
 	background-color: var(--background) !important;
 	color: var(--accent1) !important;
@@ -163,4 +165,8 @@ footer {
 	padding: 1rem;
 	min-width: 10rem;
 	max-width: 42.5rem;
+}
+
+.signInButton > button:nth-child(2) {
+	padding: 0.5rem;
 }
