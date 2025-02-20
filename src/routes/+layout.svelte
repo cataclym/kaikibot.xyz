@@ -13,9 +13,6 @@
 
 	const { DISCORD, EMBED, INVITE, KOFI, SOURCE } = data;
 
-	const docs = data.docs.map((page) => `/docs/${page}`);
-	docs.push("/README.md");
-
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
 	});
@@ -23,6 +20,10 @@
 	afterNavigate(() => {
 		navigationState.set(KaikiNavigationState.loaded);
 	});
+
+	function isDocs() {
+		return page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/")
+	}
 </script>
 
 <SEO />
@@ -101,9 +102,9 @@
 			SOURCE CODE
 		</button>
 	</a>
-	<a href={docs.includes(page.url.pathname) ? "/" : "/README.md"} class="link_flex">
+	<a href={isDocs() ? "/" : "/README.md"} class="link_flex">
 		<button
-			aria-current={docs.includes(page.url.pathname)}
+			aria-current={isDocs()}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
 		>
 			DOCUMENTATION
@@ -115,5 +116,5 @@
 <div class="mt-20"></div>
 <footer class="items-center grid grid-cols-3">
 	<a class="self-center" href={KOFI}><h3>Buy me a ko-fi ☕</h3></a>
-	<h3 class="flex-col">© Cata 2024</h3>
+	<h3 class="flex-col">© Cata 2025</h3>
 </footer>

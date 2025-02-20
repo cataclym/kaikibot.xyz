@@ -25,8 +25,6 @@
 
 	const docs = data.docs;
 
-
-
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
 	});
