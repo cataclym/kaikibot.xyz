@@ -34,10 +34,26 @@ export default {
 					800: "#2d2b28",
 					900: "#24221f"
 				}
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						color: 'var(--tw-prose-invert-body)',
+						a: {
+							color: "#e85e28",
+						  },
+						pre: {
+							"background-color": "var(--tw-prose-invert-pre-bg)"
+						},
+						code: {
+							color: "var(--tw-prose-invert-code)"
+						}
+					}
+				}
 			}
 		}
 	},
-	plugins: [flowbitePlugin],
+	plugins: [flowbitePlugin, require('@tailwindcss/typography')],
 	corePlugins: {
 		preflight: false
 	}

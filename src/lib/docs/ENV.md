@@ -1,7 +1,4 @@
-<script>
-	import SvelteMarkdown from "@humanspeak/svelte-markdown";
-
-	const source = `### Paths
+### Paths
 
 -   [Readme](../README.md)
 -   Docs
@@ -17,11 +14,11 @@ The .env file is important for the bot to run at all. Read below how to populate
 Create a bot application
 
 -   Go to your discord bot applications (https://discord.com/developers/applications/)
--   Click \`New Application\` in top right corner
+-   Click `New Application` in top right corner
 -   Fill in a name, and assign it to personal team.
--   Click \`Bot\` under \`SETTINGS\` on the menu, on the left.
--   Click \`Add Bot\`
--   Click \`Copy\` under \`TOKEN\`
+-   Click `Bot` under `SETTINGS` on the menu, on the left.
+-   Click `Add Bot`
+-   Click `Copy` under `TOKEN`
 -   Paste the token in the .env file. Make sure it looks like the example below.
 
 Example
@@ -36,13 +33,13 @@ Example
 
     PREFIX=+
 
-Prefix is \`+\`
+Prefix is `+`
 
 ## MySQL
 
-Replace \`yourUsername\` and \`yourPassword\` with your MySQL user and password credentials
+Replace `yourUsername` and `yourPassword` with your MySQL user and password credentials
 
--   Note: In some cases you need to change \`localhost\` with \`127.0.0.1\`
+-   Note: In some cases you need to change `localhost` with `127.0.0.1`
 
 Example
 
@@ -90,9 +87,3 @@ Please leave this as is, unless you know what you're doing
     DADBOT_MAX_LENGTH=256
     DADBOT_NICKNAME_LENGTH=32
     DADBOT_DEFAULT_ROLENAME=Dadbot-excluded
-`;
-</script>
-
-<div class="text-accent1 m-auto w-11/12">
-	<SvelteMarkdown {source} />
-</div>

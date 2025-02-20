@@ -1,7 +1,4 @@
-<script>
-	import SvelteMarkdown from "@humanspeak/svelte-markdown";
-
-	const source = `### Paths
+### Paths
 
 -   [Readme](../README.md)
 -   Docs
@@ -17,26 +14,26 @@
 ## Instructions
 
 1. Clone repo
-\`\`\`
+```
 git clone https://github.com/cataclym/KaikiBot.git && cd KaikiBot
-\`\`\`
+```
 2. Create .env file
-\`\`\`
+```
 cp .env.example .env
-\`\`\`
+```
 3. [Setup .env file](ENV.md)
 4. Install dependencies:
-\`\`\`
+```
 npm i
-\`\`\`
+```
 5. Run the compiler
-\`\`\`
+```
 npm run build
-\`\`\`
-6. Run the program
-\`\`\`
+```
+6. Run the program 
+```
 npm run start
-\`\`\`
+```
 7. ?
 8. Profit
 
@@ -52,12 +49,6 @@ Having issues? Come join us on Discord
 
 First make sure you have created a bot application. Learn how to [here](ENV.md).
 
-You can use the following link to invite your bot: Replace \`YOUR_BOT_ID_HERE\` with your bot id/client id.
+You can use the following link to invite your bot: Replace `YOUR_BOT_ID_HERE` with your bot id/client id.
 
 https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID_HERE&scope=bot
-`;
-</script>
-
-<div class="text-accent1 m-auto w-11/12">
-	<SvelteMarkdown {source} />
-</div>

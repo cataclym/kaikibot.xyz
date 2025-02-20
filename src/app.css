@@ -71,7 +71,6 @@ mark {
 
 a {
 	text-decoration: none;
-	color: inherit;
 }
 
 .grid a:hover, a[href="/"]:hover, #navigation a:hover {
