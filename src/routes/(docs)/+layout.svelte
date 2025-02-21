@@ -40,15 +40,15 @@
 	</div>
 {/if}
 
-<nav id="navigation" class="mt-2 pb-5">
+<nav id="navigation" class="mt-2 mb-2 pb-5 w-11/12 m-auto grid grid-cols-12 gap-2">
 	<a
 		href="/README.md"
-		class="text-xl items-start"
+		class="text-xl items-start col-span-1"
 		aria-current={page.url.pathname === "/README.md"}
 	>
 		Docs
 	</a>
-	<br class="mb-6 mt-3 pb-2" />
+	<div class="col-end-13" />
 	{#each docs as doc}
 		<a href="/docs/{doc}" aria-current={page.url.pathname === `/docs/${doc}`}
 			>{documentation[doc] || doc}</a
