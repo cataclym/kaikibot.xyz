@@ -4,6 +4,7 @@ import { error } from "@sveltejs/kit";
 
 export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 	debug: process.env.NODE_ENV === "development",
+	trustHost: process.env.AUTH_TRUST_HOST,
 	providers: [
 		Discord({
 			authorization: "https://discord.com/api/oauth2/authorize?scope=identify+guilds"
