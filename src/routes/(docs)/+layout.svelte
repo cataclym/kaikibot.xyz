@@ -2,21 +2,28 @@
 	import "../../app.css";
 	import PageLoader from "../../components/PageLoader.svelte";
 	import { fade } from "svelte/transition";
-	import { KaikiNavigationState, navigationState } from "../../stores/navigationState";
-	import { page } from "$app/stores";
+	import { KaikiNavigationState, navigationState } from "$lib/navigationState";
+	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 
-	export let data: {
-		docs: string[];
-	};
+	type Documentation = Readonly<{ "ENV.md": string; "PLACEHOLDERS.md": string; "GUIDE.md": string }>
 
-	const docs = data.docs;
-
-	const documentation = Object.freeze({
+	const documentation: Documentation = Object.freeze({
 		"ENV.md": "Environment",
 		"GUIDE.md": "Guide",
 		"PLACEHOLDERS.md": "Placeholders"
 	});
+
+	interface Props {
+		data: {
+		docs: (keyof Documentation)[];
+	};
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
+
+	const docs = data.docs;
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -37,24 +44,22 @@
 	<a
 		href="/README.md"
 		class="text-xl items-start"
-		aria-current={$page.url.pathname === "/README.md"}
+		aria-current={page.url.pathname === "/README.md"}
 	>
 		Docs
 	</a>
 	<br class="mb-6 mt-3 pb-2" />
 	{#each docs as doc}
-		<a href="/docs/{doc}" aria-current={$page.url.pathname === `/docs/${doc}`}
+		<a href="/docs/{doc}" aria-current={page.url.pathname === `/docs/${doc}`}
 			>{documentation[doc] || doc}</a
 		>
 	{/each}
 </nav>
 
-<slot />
+{@render children?.()}
 
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+	@import "tailwindcss";
 
 	#navigation {
 		color: var(--accent3);

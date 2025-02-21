@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let img: { url: string; alt: string };
+	interface Props {
+		img: { url: string; alt: string };
+	}
+
+	let { img }: Props = $props();
 </script>
 
 <img class="svg-class" src={img.url} alt={img.alt} />

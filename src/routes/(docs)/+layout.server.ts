@@ -3,7 +3,7 @@ import fs from "fs";
 export async function load() {
 	const docs = await new Promise((resolve) => {
 		fs.readdir(
-			"./src/routes/(docs)/docs",
+			"./src/lib/docs/",
 			{ encoding: "utf-8", withFileTypes: true },
 			(err, data) => {
 				return err ? resolve([]) : resolve(data.map((d) => d.name));

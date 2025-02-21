@@ -1,16 +1,6 @@
-import { LINKS } from "../CONSTANTS";
-import fs from "fs";
+import { DISCORD, EMBED, KOFI, INVITE, SOURCE, SOURCE_WEBSITE } from "$env/static/private";
 
-export async function load() {
-	const docs = await new Promise((resolve) => {
-		fs.readdir(
-			"./src/routes/(docs)/docs",
-			{ encoding: "utf-8", withFileTypes: true },
-			(err, data) => {
-				return err ? resolve([]) : resolve(data.map((d) => d.name));
-			}
-		);
-	});
-
-	return { LINKS, docs };
+export async function load(event) {
+	const session = await event.locals.auth();
+	return { session, DISCORD, EMBED, INVITE, KOFI, SOURCE, SOURCE_WEBSITE };
 }

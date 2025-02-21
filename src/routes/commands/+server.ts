@@ -1,6 +1,6 @@
 import { error, json } from "@sveltejs/kit";
 import fs from "fs";
-import { TOKEN } from "$lib/server/secrets";
+import { TOKEN } from "$env/static/private";
 
 export async function POST(event) {
 	const { list = [], token = "defaultTokenValue" } = await event.request.json();

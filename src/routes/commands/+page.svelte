@@ -1,20 +1,23 @@
 <script lang="ts">
-	import "fluent-svelte/theme.css";
-	import search from "../../methods/search";
-	import type { Cmd, Cmds } from "../../ICmds";
+	import Search from "../../methods/Search";
+	import type { Cmd, Cmds } from "../../interfaces/ICommand";
 
 	let active: {
 		[id: string]: boolean;
-	} = {};
+	} = $state({});
 
-	export let data: {
+	interface Props {
+		data: {
 		commands: Cmds;
 	};
+	}
+
+	let { data }: Props = $props();
 	const { commands } = data;
 
-	let originalColor: string;
+	let originalColor: string = $state();
 
-	let cats: [string, [string, Cmd[]]][];
+	let cats: [string, [string, Cmd[]]][] = $state();
 	resetCats();
 
 	function searchbarOnInput(
@@ -23,7 +26,7 @@
 		},
 		category: Record<string, boolean>
 	) {
-		cats = search(commands, c, category);
+		cats = Search(commands, c, category);
 	}
 
 	function resetCats() {
@@ -75,11 +78,11 @@
 				type="text"
 				id="searchbar2"
 				placeholder="Search commands"
-				on:input={(c) => searchbarOnInput(c, (() => active)())}
-				on:reset={resetCats}
-				on:abort={resetCats}
-				on:focus={() => colorSearchbar("#252422")}
-				on:focusout={() => colorSearchbar(originalColor)}
+				oninput={(c) => searchbarOnInput(c, (() => active)())}
+				onreset={resetCats}
+				onabort={resetCats}
+				onfocus={() => colorSearchbar("#252422")}
+				onfocusout={() => colorSearchbar(originalColor)}
 			/>
 			<div class="searchThingy"></div>
 			<div class="searchBottom">
@@ -107,7 +110,7 @@
 				{#if typeof category === "string"}
 					<button
 						class={active[category] ? "cmdCategoryActive" : "cmdCategory"}
-						on:click={() => manageCategories(category)}
+						onclick={() => manageCategories(category)}
 					>
 						{category}
 					</button>
@@ -196,9 +199,7 @@
 </div>
 
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+	@import "tailwindcss";
 
 	:root {
 		--input-color: var(--accent1);
@@ -270,14 +271,6 @@
 		align-self: stretch;
 		display: inline;
 		color: var(--accent3);
-	}
-
-	.cmdButton {
-		color: var(--accent1);
-		margin: 0.2rem 0.5rem;
-		padding: 0.2rem 0.5rem;
-		border: var(--background) 2px solid;
-		background-color: var(--background);
 	}
 
 	.cmd,

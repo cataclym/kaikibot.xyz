@@ -1,21 +1,18 @@
 <script lang="ts">
 	import "../app.css";
 	import SEO from "../components/SEO.svelte";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate, goto } from "$app/navigation";
-	import { KaikiNavigationState, navigationState } from "../stores/navigationState";
-	import { fade } from "svelte/transition";
+	import { KaikiNavigationState, navigationState } from "$lib/navigationState";
+	import { fade, scale, slide } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
-	import capitalize from "../methods/capitalize";
+	import Capitalize from "../methods/Capitalize";
+	import { Heading, Mark } from "flowbite-svelte";
+	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
 
-	export let data: {
-		docs: string[];
-		LINKS: { [key: string]: string };
-	};
+	let { data, children } = $props();
 
-	const LINKS = data.LINKS;
-	const docs = data.docs.map((page) => `/docs/${page}`);
-	docs.push("/README.md");
+	const { DISCORD, EMBED, INVITE, KOFI, SOURCE } = data;
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -24,11 +21,23 @@
 	afterNavigate(() => {
 		navigationState.set(KaikiNavigationState.loaded);
 	});
+
+	function isDocs() {
+		return page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/")
+	}
+
+	function isDash() {
+		return !!page.url.pathname.match("/dashboard")?.length
+	}
+
+	function isGenericPath(path: string) {
+		return page.url.pathname === path;
+	}
 </script>
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
+	<title>KaikiBot - {Capitalize(page.url.pathname.split("/")[1] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -37,7 +46,8 @@
 	</div>
 {/if}
 
-{#if $page.url.pathname === "/"}
+{#if page.url.pathname === "/"}
+<div class="big_title" transition:slide={{duration: 300}}>
 	<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
 		<a class="text-center" href="/">KAIKIBOT</a>
 	</h1>
@@ -46,76 +56,75 @@
 		<mark>dad</mark>
 		isn't <em>this</em> cool
 	</h2>
+</div>
 {:else}
-	<div class="m-auto w-2/12 flex mb-2 justify-center items-center content-center">
+	<div class="small_title m-auto w-2/12 flex mb-2 mt-2 justify-center items-center content-center" transition:slide={{duration: 600}} >
 		<div class="h-full w-full">
-			<p class="font-bold text-accent1 text-xl text-accent1 text-center">
+			<Heading tag="h4" class="font-bold text-accent1 text-center">
 				<a class="text-center" href="/">KAIKIBOT</a>
-			</p>
+			</Heading>
 		</div>
-		<button
-			on:click={() => goto("/")}
-			class="whitespace-nowrap h-10 border-b-2 text-accent1 layout w-full text-2xl text-accent1 text-center"
-		>
-			Home
-		</button>
 	</div>
 {/if}
 <div class="flex justify-evenly gap-1 smol">
-	<a href={LINKS.discord} class="link_flex">
+	<a href={DISCORD} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl full-width layout"
 			>SUPPORT SERVER
+			<ArrowUpRightFromSquareOutline size="sm" class="align-top!"/>
 		</button>
 	</a>
-	<a class="link_flex" href={$page.url.pathname === "/commands" ? "/" : "/commands"}>
+	<a class="link_flex" href={isGenericPath("/commands") ? "/" : "/commands"}>
 		<button
-			aria-current={$page.url.pathname === "/commands"}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
+			aria-current={isGenericPath("/commands")}
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 		>
 			COMMANDS
 		</button>
 	</a>
-	<a href={LINKS.embed} class="link_flex">
+	<a href={isGenericPath("/embed") ? "/" : "/embed"} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
-			>EMBED BUILDER
+			aria-current={isGenericPath("/embed")}
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
+		><Mark>NEW</Mark><br>EMBED BUILDER
 		</button>
 	</a>
-	<a href={LINKS.invite} class="link_flex">
+	<a href={INVITE} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 			>INVITE KAIKI
+				<ArrowUpRightFromSquareOutline size="sm" class="align-top!"/>
 		</button>
 	</a>
-	<a href="/dashboard" class="link_flex">
+	<a href={isDash() ? "/" : "/dashboard"} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon custom-width-1_7 layout"
+			aria-current={isDash()}
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
 		>
 			DASHBOARD
 		</button>
 	</a>
-	<a href={LINKS.source} class="link_flex">
+	<a href={SOURCE} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab custom-width-1_7 layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab full-width layout"
 		>
 			SOURCE CODE
+			<ArrowUpRightFromSquareOutline size="sm" class="align-top!"/>
 		</button>
 	</a>
-	<a href={docs.includes($page.url.pathname) ? "/" : "/README.md"} class="link_flex">
+	<a href={isDocs() ? "/" : "/README.md"} class="link_flex">
 		<button
-			aria-current={docs.includes($page.url.pathname)}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal custom-width-1_7 layout"
+			aria-current={isDocs()}
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
 		>
 			DOCUMENTATION
 		</button>
 	</a>
 </div>
 
-<slot />
-<div class="mt-20" />
+{@render children?.()}
+<div class="mt-20"></div>
 <footer class="items-center grid grid-cols-3">
-	<a class="self-center" href={LINKS.kofi}><h3>Buy me a coffee ☕</h3></a>
-	<h3 class="flex-col">© Cata 2024</h3>
-	<a href={LINKS.patreon}><h3>Patreon️</h3></a>
+	<a class="self-center" href={KOFI}><h3>Buy me a ko-fi ☕</h3></a>
+	<h3 class="flex-col">© Cata 2025</h3>
 </footer>
