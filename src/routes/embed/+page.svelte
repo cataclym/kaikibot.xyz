@@ -4,6 +4,8 @@
 		addField, removeEmbed, updateEmbedProperty, updateContent, type URLObject
 	} from "$lib/embedStore";
 	import {
+	A,
+	Alert,
 		Avatar,
 		Button,
 		Heading,
@@ -14,6 +16,9 @@
 	} from "flowbite-svelte";
 	import { CloseCircleSolid, CirclePlusOutline, TrashBinSolid } from "flowbite-svelte-icons";
 	import ColorPicker from "svelte-awesome-color-picker";
+
+	export let data;
+	const { SOURCE_WEBSITE } = data;
 
 	$: content = "";
 
@@ -61,6 +66,11 @@
 <main>
 	<div class="container m-auto p-[20px]">
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
+		<Alert color="red">
+			<span class="font-medium">Work in progress!</span>
+			This Embed builder is not finished. Some features are not present.
+			Please report any bugs at the website <A class="underline" href={`${SOURCE_WEBSITE}/issues/new`}>repository</A>!
+		</Alert>
 		{#if $embedMessage.content || $embedMessage.embeds.length }
 			<Button color="red" on:click={() => {
 				$embedMessage = { embeds: [] };
