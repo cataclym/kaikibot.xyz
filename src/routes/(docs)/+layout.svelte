@@ -51,7 +51,7 @@
 	</a>
 	<div class="col-end-4"></div>
 	{#each docs as doc}
-		<a href="/docs/{doc}" class="justify-self-center border-b-(--accent2) border-b-2" aria-current={page.url.pathname === `/docs/${doc}`}
+		<a href="/docs/{doc}" class="border-b-(--accent2) border-b-2" aria-current={page.url.pathname === `/docs/${doc}`}
 			>{documentation[doc] || doc}</a
 		>
 	{/each}

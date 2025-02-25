@@ -19,7 +19,7 @@
 
 <div class="text-accent1 m-auto w-11/12">
 	<article class="prose">
-				{#if $fileContent}
+		{#if $fileContent}
 			{@html $fileContent}
 		{:else}
 			<span>Error loading document</span>
