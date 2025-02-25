@@ -253,6 +253,8 @@
 </main>
 
 <style>
+	@import "tailwindcss";
+
     .split-container {
         display: flex;
         height: 100vh;

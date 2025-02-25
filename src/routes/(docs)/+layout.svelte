@@ -40,17 +40,18 @@
 	</div>
 {/if}
 
-<nav id="navigation" class="mt-2 mb-2 pb-5 w-11/12 m-auto grid grid-cols-12 gap-2">
+<nav id="navigation" class="mt-2 mb-2 pb-2 w-11/12 m-auto">
+	<div class="grid grid-cols-3 gap-1 mr-auto w-fit">
 	<a
 		href="/README.md"
-		class="text-xl items-start col-span-1"
+		class="text-xl col-span-1 place-self-start border-b-(--accent2) border-b-2"
 		aria-current={page.url.pathname === "/README.md"}
 	>
-		Docs
+		Main
 	</a>
-	<div class="col-end-13" />
+	<div class="col-end-4"></div>
 	{#each docs as doc}
-		<a href="/docs/{doc}" aria-current={page.url.pathname === `/docs/${doc}`}
+		<a href="/docs/{doc}" class="justify-self-center border-b-(--accent2) border-b-2" aria-current={page.url.pathname === `/docs/${doc}`}
 			>{documentation[doc] || doc}</a
 		>
 	{/each}
