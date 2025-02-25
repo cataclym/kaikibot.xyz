@@ -1,39 +1,49 @@
 ### Paths
 
--   [Readme](../README.md)
--   Docs
-    -   [.env setup](ENV.md)
-    -   [Placeholders](PLACEHOLDERS.md)
+- [Readme](../README.md)
+- Docs
+    - [.env setup](ENV.md)
+    - [Placeholders](PLACEHOLDERS.md)
 
 ## Requirements
 
--   Linux (Can work on other OS, but not supported)
--   Node.js v18 (or newer) https://nodejs.org/en/
--   MySQL/MariaDB
+- Linux (Can work on other OS, but not supported)
+- Node.js v18 (or newer) https://nodejs.org/en/
+- MySQL/MariaDB
 
 ## Instructions
 
 1. Clone repo
+
 ```
 git clone https://github.com/cataclym/KaikiBot.git && cd KaikiBot
 ```
+
 2. Create .env file
+
 ```
 cp .env.example .env
 ```
+
 3. [Setup .env file](ENV.md)
 4. Install dependencies:
+
 ```
 npm i
 ```
+
 5. Run the compiler
+
 ```
 npm run build
 ```
-6. Run the program 
+
+6. Run the program
+
 ```
 npm run start
 ```
+
 7. ?
 8. Profit
 

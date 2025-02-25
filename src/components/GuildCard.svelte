@@ -14,9 +14,7 @@
 		size="lg"
 		src={guild?.icon && `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
 		alt="Guild"
-	>
-
-	</Avatar>
+	></Avatar>
 	<h4>
 		{guild?.name || "N/A"}
 	</h4>

@@ -18,9 +18,11 @@
 		hexOkColor,
 		hexErrorColor
 	};
-	let colorState = $derived(JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor }));
-
+	let colorState = $derived(
+		JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor })
+	);
 </script>
+
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
 	<h3 class="mb-0">Command embed colors</h3>
 	<form method="POST" action="{Action}?/embedcolors">
@@ -33,10 +35,10 @@
 		<Button
 			color="primary"
 			class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-			disabled={colorState}>
+			disabled={colorState}
+		>
 			<FileCheckSolid />
 			Save
-		</Button
-		>
+		</Button>
 	</form>
 </div>

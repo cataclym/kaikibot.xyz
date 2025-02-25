@@ -13,10 +13,10 @@
 	let { data } = $props();
 
 	const { responseData } = data;
-	const mappedIds = responseData.guildDb.map(guild => guild.Id);
+	const mappedIds = responseData.guildDb.map((guild) => guild.Id);
 	console.log(data);
 
-	const availableCachedGuilds = responseData.guilds.filter(g => mappedIds.includes(g.id));
+	const availableCachedGuilds = responseData.guilds.filter((g) => mappedIds.includes(g.id));
 </script>
 
 <main>
@@ -31,7 +31,7 @@
 		<h3>Available guilds</h3>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 			{#each availableCachedGuilds as guild}
-					<GuildCard {guild} {user} />
+				<GuildCard {guild} {user} />
 			{/each}
 		</div>
 	</div>

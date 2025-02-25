@@ -4,17 +4,17 @@
 	$: fileContent = writable<string | null>(null);
 
 	export let data;
-	
+
 	onMount(() => {
 		fileContent.set(data.doc || "");
-		console.log($fileContent)
+		console.log($fileContent);
 	});
 
 	// Deprecated? I am not in runes mode.
 	afterUpdate(() => {
 		fileContent.set(data.doc || "");
-		console.log($fileContent)
-	})
+		console.log($fileContent);
+	});
 </script>
 
 <div class="text-accent1 m-auto w-11/12">

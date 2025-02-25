@@ -9,6 +9,6 @@ export async function SubmitChanges(
 	const req = fetch(`${url}:${port}/API/Guild/${GuildId}`, {
 		method: "PUT",
 		body: JSON.stringify(guildData),
-		headers: CreateHeaders(),
+		headers: CreateHeaders()
 	});
 }

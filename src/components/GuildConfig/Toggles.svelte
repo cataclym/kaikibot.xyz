@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, Toggle } from "flowbite-svelte";
-import { FileCheckSolid } from "flowbite-svelte-icons";
+	import { Button, Toggle } from "flowbite-svelte";
+	import { FileCheckSolid } from "flowbite-svelte-icons";
 
 	interface Props {
 		Anniversary: boolean;
@@ -16,11 +16,12 @@ import { FileCheckSolid } from "flowbite-svelte-icons";
 		Action
 	}: Props = $props();
 
-const savedToggles = { DadBot, Anniversary, StickyRoles };
-let toggleState =
-	$derived(JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles }));
-
+	const savedToggles = { DadBot, Anniversary, StickyRoles };
+	let toggleState = $derived(
+		JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles })
+	);
 </script>
+
 <div class="indent flex flex-col justify-between items-center">
 	<form method="POST" action="{Action}?/toggles">
 		<h3>Toggles</h3>

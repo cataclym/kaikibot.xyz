@@ -4,7 +4,7 @@
 	import Toggles from "../../../../../components/GuildConfig/Toggles.svelte";
 	import ExcludedRole from "../../../../../components/GuildConfig/ExcludedRole.svelte";
 	import EmbedColors from "../../../../../components/GuildConfig/EmbedColors.svelte";
-	import { page } from '$app/state';
+	import { page } from "$app/state";
 
 	let { data } = $props();
 
@@ -12,30 +12,23 @@
 
 	if (!isAdmin) error(401, "Not authorized");
 
-	let {
-		Anniversary,
-		DadBot,
-		StickyRoles,
-		Prefix,
-		OkColor,
-		ErrorColor,
-		ExcludeRole
-	} = data.guild;
+	let { Anniversary, DadBot, StickyRoles, Prefix, OkColor, ErrorColor, ExcludeRole } = data.guild;
 
-	const url = page.url.pathname
+	const url = page.url.pathname;
 </script>
-	<h2 class="text-center">Edit server configuration</h2>
-	<div
-		id="guildSettings"
-		class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1"
-	>
-		<PrefixComponent Prefix={Prefix} Action={url} />
 
-		<Toggles Anniversary={Anniversary} DadBot={DadBot} StickyRoles={StickyRoles} Action={url} />
+<h2 class="text-center">Edit server configuration</h2>
+<div
+	id="guildSettings"
+	class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1"
+>
+	<PrefixComponent {Prefix} Action={url} />
 
-		{#if ExcludeRole}
-			<ExcludedRole ExcludeRole={ExcludeRole} Action={url} />
-		{/if}
+	<Toggles {Anniversary} {DadBot} {StickyRoles} Action={url} />
 
-		<EmbedColors OkColor={OkColor} ErrorColor={ErrorColor} Action={url} />
-	</div>
+	{#if ExcludeRole}
+		<ExcludedRole {ExcludeRole} Action={url} />
+	{/if}
+
+	<EmbedColors {OkColor} {ErrorColor} Action={url} />
+</div>

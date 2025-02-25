@@ -5,15 +5,10 @@
 		text?: string | undefined;
 		placement?: import("@floating-ui/dom").Placement;
 		header?: boolean;
-		children?: import('svelte').Snippet;
+		children?: import("svelte").Snippet;
 	}
 
-	let {
-		text = undefined,
-		placement = "top",
-		header = true,
-		children
-	}: Props = $props();
+	let { text = undefined, placement = "top", header = true, children }: Props = $props();
 
 	const random = (Date.now() * Math.random()).toString(36).substring(0, 8);
 	function copy() {
@@ -23,7 +18,7 @@
 		const tooltip = document.getElementById(`tooltip-${random}`);
 		if (tooltip) {
 			tooltip.innerText = "Copied!";
-			setTimeout(() => tooltip.innerText = "Click to copy", 1000);
+			setTimeout(() => (tooltip.innerText = "Click to copy"), 1000);
 		}
 
 		navigator.clipboard.writeText(text ? text : element.innerText.trim());
@@ -34,9 +29,9 @@
 	<h6 id={random} style="cursor: copy;" class="hover:underline" onclick={copy}>
 		{@render children?.()}
 	</h6>
-	{:else}
+{:else}
 	<div id={random} style="cursor: copy;" class="hover:underline" onclick={copy}>
 		{@render children?.()}
 	</div>
 {/if}
-<Tooltip arrow={false} placement={placement} id="tooltip-{random}">Click to copy</Tooltip>
+<Tooltip arrow={false} {placement} id="tooltip-{random}">Click to copy</Tooltip>

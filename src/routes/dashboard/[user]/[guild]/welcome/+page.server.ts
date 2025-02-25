@@ -15,11 +15,14 @@ export const actions = {
 		const welcomeTimeout = formData.get("welcometimeout");
 		const welcomeMessage = formData.get("welcomemessage");
 
-		const data = JSON.stringify({
-			WelcomeChannel: welcomeChannel,
-			WelcomeTimeout: welcomeTimeout,
-			WelcomeMessage: welcomeMessage,
-		}, null);
+		const data = JSON.stringify(
+			{
+				WelcomeChannel: welcomeChannel,
+				WelcomeTimeout: welcomeTimeout,
+				WelcomeMessage: welcomeMessage
+			},
+			null
+		);
 
 		return UpdateGuild(data, params.guild);
 	},
@@ -30,12 +33,15 @@ export const actions = {
 		const byeTimeout = formData.get("byetimeout");
 		const byeMessage = formData.get("byemessage");
 
-		const data = JSON.stringify({
-			ByeChannel: byeChannel,
-			ByeTimeout: byeTimeout,
-			ByeMessage: byeMessage,
-		}, null);
+		const data = JSON.stringify(
+			{
+				ByeChannel: byeChannel,
+				ByeTimeout: byeTimeout,
+				ByeMessage: byeMessage
+			},
+			null
+		);
 
 		return UpdateGuild(data, params.guild);
-	},
-}
+	}
+};

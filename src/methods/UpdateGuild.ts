@@ -3,7 +3,6 @@ import CreateHeaders from "./CreateHeaders";
 import { error } from "@sveltejs/kit";
 
 export async function UpdateGuild(body: string, guildId: string) {
-
 	const url = new URL(USER_API_URL);
 	url.port = USER_API_PORT;
 	url.pathname = `/API/Guild/${guildId}`;

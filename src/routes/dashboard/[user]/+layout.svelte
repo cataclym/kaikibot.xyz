@@ -18,7 +18,11 @@
 		{:else}
 			<div style="width: 87px;"></div>
 		{/if}
-		<P color="text-gray-100">Logged in as <Mark bgColor="bg-gray-700" color="text-primary-600">{responseData.user.username}</Mark></P>
+		<P color="text-gray-100"
+			>Logged in as <Mark bgColor="bg-gray-700" color="text-primary-600"
+				>{responseData.user.username}</Mark
+			></P
+		>
 		<Button class="text-gray-800 bg-gray-100" href="/auth/signout">Logout</Button>
 	</div>
 </div>

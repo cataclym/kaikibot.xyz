@@ -6,7 +6,11 @@
 	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 
-	type Documentation = Readonly<{ "ENV.md": string; "PLACEHOLDERS.md": string; "GUIDE.md": string }>
+	type Documentation = Readonly<{
+		"ENV.md": string;
+		"PLACEHOLDERS.md": string;
+		"GUIDE.md": string;
+	}>;
 
 	const documentation: Documentation = Object.freeze({
 		"ENV.md": "Environment",
@@ -16,9 +20,9 @@
 
 	interface Props {
 		data: {
-		docs: (keyof Documentation)[];
-	};
-		children?: import('svelte').Snippet;
+			docs: (keyof Documentation)[];
+		};
+		children?: import("svelte").Snippet;
 	}
 
 	let { data, children }: Props = $props();
@@ -42,25 +46,28 @@
 
 <nav id="navigation" class="mt-2 mb-2 pb-2 w-11/12 m-auto">
 	<div class="grid grid-cols-3 gap-1 mr-auto w-fit">
-	<a
-		href="/README.md"
-		class="text-xl col-span-1 place-self-start border-b-(--accent2) border-b-2"
-		aria-current={page.url.pathname === "/README.md"}
-	>
-		Main
-	</a>
-	<div class="col-end-4"></div>
-	{#each docs as doc}
-		<a href="/docs/{doc}" class="border-b-(--accent2) border-b-2" aria-current={page.url.pathname === `/docs/${doc}`}
-			>{documentation[doc] || doc}</a
+		<a
+			href="/README.md"
+			class="text-xl col-span-1 place-self-start border-b-(--accent2) border-b-2"
+			aria-current={page.url.pathname === "/README.md"}
 		>
-	{/each}
+			Main
+		</a>
+		<div class="col-end-4"></div>
+		{#each docs as doc}
+			<a
+				href="/docs/{doc}"
+				class="border-b-(--accent2) border-b-2"
+				aria-current={page.url.pathname === `/docs/${doc}`}>{documentation[doc] || doc}</a
+			>
+		{/each}
+	</div>
 </nav>
 
 {@render children?.()}
 
 <style>
-	@import "tailwindcss";
+	@reference "../../app.css";
 
 	#navigation {
 		color: var(--accent3);

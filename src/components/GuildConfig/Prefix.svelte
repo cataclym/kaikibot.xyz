@@ -13,7 +13,6 @@
 
 	const savedPrefix = Prefix;
 	let prefixState = $derived(savedPrefix === Prefix);
-
 </script>
 
 <div class="indent flex flex-col items-center justify-between">
@@ -25,7 +24,8 @@
 				type="text"
 				name="prefix"
 				placeholder={savedPrefix}
-				bind:value={Prefix} required
+				bind:value={Prefix}
+				required
 				style="width: 4rem; border-radius: 0.5rem;"
 			/>
 		</div>

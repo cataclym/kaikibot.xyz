@@ -50,12 +50,14 @@ export default class UserData {
 	}
 
 	// BigInt is not sent in JSON, it gets converted to string
-	private async dbPOSTData(guilds: OAuthGuildData[]): Promise<BigIntToString<POSTUserGuildsBody>> {
+	private async dbPOSTData(
+		guilds: OAuthGuildData[]
+	): Promise<BigIntToString<POSTUserGuildsBody>> {
 		const headers = CreateHeaders();
 		// POST to send guilds and receive database scoped data from custom bot API
 		/* @type
-		*	body: bigint[]
-		*/
+		 *	body: bigint[]
+		 */
 		const customResponse = await fetch(
 			`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`,
 			{
@@ -74,8 +76,8 @@ export default class UserData {
 			throw error(customResponse.status, customResponse.statusText);
 		}
 
-			return customResponse.json();
-    }
+		return customResponse.json();
+	}
 }
 
 export type BotResData = {
