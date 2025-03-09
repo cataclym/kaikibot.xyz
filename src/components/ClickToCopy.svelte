@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tooltip } from "flowbite-svelte";
+	import { Heading, P, Tooltip } from "flowbite-svelte";
 
 	interface Props {
 		text?: string | undefined;
@@ -26,11 +26,11 @@
 </script>
 
 {#if header}
-	<h6 id={random} style="cursor: copy;" class="hover:underline" onclick={copy}>
+	<P color="" id={random} style="cursor:copy;" class="text-sm hover:underline text-gray-200" onclick={copy}>
 		{@render children?.()}
-	</h6>
+	</P>
 {:else}
-	<div id={random} style="cursor: copy;" class="hover:underline" onclick={copy}>
+	<div id={random} style="cursor: copy;" class="hover:underline text-gray-200" onclick={copy}>
 		{@render children?.()}
 	</div>
 {/if}

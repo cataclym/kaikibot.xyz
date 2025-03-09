@@ -11,7 +11,7 @@
 	const baseURL = `/dashboard/${user}/${APIGuild.id}`;
 </script>
 
-<Navbar color="dark">
+<Navbar class="bg-gray-600!">
 	<NavBrand href={baseURL}>
 		<img
 			src={`https://cdn.discordapp.com/icons/${APIGuild.id}/${icon}.${icon?.startsWith("a") ? "gif" : "webp"}` ||
@@ -24,8 +24,8 @@
 		>
 	</NavBrand>
 	<NavHamburger />
-	<NavUl {activeUrl}>
-		<NavLi href={baseURL}>{data.APIGuild.name}</NavLi>
+	<NavUl>
+		<NavLi href={baseURL} active={true}>{data.APIGuild.name}</NavLi>
 		{#if isAdmin}
 			<NavLi href="{baseURL}/config">Configuration</NavLi>
 			<NavLi href="{baseURL}/welcome">Welcome & bye</NavLi>

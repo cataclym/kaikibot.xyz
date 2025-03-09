@@ -3,7 +3,7 @@
 	import { page } from "$app/state";
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
-	import { Heading, P, Secondary } from "flowbite-svelte";
+	import { Heading } from "flowbite-svelte";
 
 	onMount(() => {
 		if (!page.data.session) return;
@@ -14,9 +14,9 @@
 <main>
 	<div class="text-center m-4">
 		<Heading tag="h2" class="text-primary-600!">Under construction</Heading>
-		<!-- <Heading tag="h2">KaikiBot Dashboard</Heading>
+		<Heading tag="h2">KaikiBot Dashboard</Heading>
 			<Heading tag="h5" color="text-primary-500!">Manage your servers</Heading>
 			<br>
-		<SignIn provider="discord" signInPage="signin" /> -->
+		<SignIn provider="discord" signInPage="signin" />
 	</div>
 </main>

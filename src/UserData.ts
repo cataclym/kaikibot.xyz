@@ -65,7 +65,12 @@ export default class UserData {
 				headers,
 				body: JSON.stringify(guilds.map((g) => g.id))
 			}
-		);
+		).catch((err) => {
+			if (err instanceof TypeError) {
+				throw error(500, "The server is down at the moment, come back at a later time.");
+			}
+			throw error(err);
+		});
 
 		if (customResponse.status === 404) {
 			throw error(404, "Your user cannot be found, have you used KaikiBot before?");

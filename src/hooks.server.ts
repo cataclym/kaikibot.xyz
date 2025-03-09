@@ -3,13 +3,16 @@ import { handle as authenticationHandle } from "./auth";
 import { sequence } from "@sveltejs/kit/hooks";
 
 const authorizationHandle: Handle = async ({ event, resolve }) => {
-	// Protect any routes under /authenticated
-	if (event.url.pathname.startsWith("/dashboard") && !(event.url.pathname === "/dashboard")) {
+	// Protect any routes under /dashboard/*
+	// /.+/ allows for an optional trailing slash and any characters
+	if (/^\/dashboard(\/.*)?$/.test(event.url.pathname)) {		
+
 		const session = await event.locals.auth();
-		if (!session || !session.user) {
-			// Redirect to the signin page
-			return redirect(303, "/auth/signin");
-		}
+		
+		if (!session?.user?.id) {
+			return redirect(303, `/auth/signin`)
+		  }
+		
 		// If a user is trying to access someone else's dashboard, throw 401 Unauthorized
 		if (session.user?.id !== event.url.pathname.split("/")[2]) {
 			return error(401, "Unauthorized?");

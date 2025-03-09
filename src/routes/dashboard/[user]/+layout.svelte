@@ -9,10 +9,10 @@
 
 <div class="smol">
 	<div
-		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-around items-center mt-1 mb-2"
+		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-around items-center mt-1 mb-1"
 	>
 		{#if location != null}
-			<Button href="/dashboard/{responseData.user.id}/" class="text-gray-700">
+			<Button size="sm" href="/dashboard/{responseData.user.id}/" class="text-gray-700">
 				<ArrowKeyLeft /> Back
 			</Button>
 		{:else}
@@ -23,7 +23,7 @@
 				>{responseData.user.username}</Mark
 			></P
 		>
-		<Button class="text-gray-800 bg-gray-100" href="/auth/signout">Logout</Button>
+		<Button size="sm" class="text-gray-800 bg-gray-100" href="/auth/signout">Logout</Button>
 	</div>
 </div>
 
