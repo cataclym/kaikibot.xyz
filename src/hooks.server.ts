@@ -10,8 +10,8 @@ const authorizationHandle: Handle = async ({ event, resolve }) => {
 		const session = await event.locals.auth();
 		
 		if (!session?.user?.id) {
-			return redirect(303, `/auth/signin`)
-		  }
+			return redirect(303, "/auth/signin")
+		}
 		
 		// If a user is trying to access someone else's dashboard, throw 401 Unauthorized
 		if (session.user?.id !== event.url.pathname.split("/")[2]) {

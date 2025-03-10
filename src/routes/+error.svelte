@@ -5,6 +5,8 @@
 
 <Heading tag="h1" class="text-center text-primary-600! mt-5 mb-5">
 	{page.status}
+</Heading>
+<Heading tag="h3" class="text-center text-primary-600! mt-5 mb-5">
 	{page.error?.message || "Unknown error occurred!"}
 </Heading>
 
