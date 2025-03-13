@@ -8,7 +8,10 @@
 		removeEmbed,
 		updateEmbedProperty,
 		updateContent,
-		type URLObject
+		type URLObject,
+
+		type AuthorObject
+
 	} from "$lib/embedStore";
 	import {
 		A,
@@ -135,6 +138,40 @@
 							/>
 						</div>
 
+						<!-- Embed Author -->
+						<div class="mb-2 col-span-1 col-start-3">
+							{#if !embed.author}
+								<Button on:click={() => (embed.author = { name: "" })}>
+									<CirclePlusOutline class="w-5 h-5 me-2" />
+									Add author
+								</Button>
+							{:else}
+								<!--
+								TODO
+									Add author image, maybe use embed.image method 
+								-->
+								<Textarea
+									id={`author-${embedIndex}`}
+									bind:value={embed.author.name}
+									placeholder="Author name"
+									on:input={() =>
+										updateEmbedProperty<AuthorObject>(
+											embedIndex,
+											"author",
+											embed.author!.name,
+											"name"
+										)}
+								></Textarea>
+								<Button
+									on:click={() => (embed = { ...embed, author: undefined })}
+									size="sm"
+									color="red"
+									class="mt-2"
+									><CloseCircleSolid class="w-5 h-5 me-2" /> Remove author
+								</Button>
+							{/if}
+						</div>
+
 						<!-- Embed URL -->
 						<div class="mb-2 col-span-2">
 							<Input
@@ -159,8 +196,6 @@
 									)}
 							></Textarea>
 						</div>
-
-						<!-- Embed Author -->
 
 						<!-- Embed Fields -->
 						<div class="mb-2 col-span-3 grid grid-cols-3 gap-1">
