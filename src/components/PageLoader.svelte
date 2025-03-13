@@ -2,7 +2,7 @@
 	import { onDestroy, onMount } from "svelte";
 	import { tweened } from "svelte/motion";
 	import { cubicOut } from "svelte/easing";
-	import { navigationState } from "$lib/navigationState";
+	import { navigationState } from "$lib/stores/navigationState";
 
 	const progress = tweened(0, {
 		duration: 3500,

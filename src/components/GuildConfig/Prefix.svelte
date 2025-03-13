@@ -15,10 +15,13 @@
 	let prefixState = $derived(savedPrefix === Prefix);
 </script>
 
-<div class="indent flex flex-col items-center justify-between">
-	<h3>Server prefix</h3>
-	<form method="POST" action="{Action}?/prefix">
-		<div>
+<div class="indent flex flex-col justify-between items-center">
+	<form class="flex flex-col justify-between h-full p-4" method="POST" action="{Action}?/prefix">
+		<!-- Heading -->
+		<h3 class="text-center text-xl font-semibold mb-4">Server Prefix</h3>
+	
+		<!-- Input Field -->
+		<div class="flex-grow w-full max-w-xs">
 			<Input
 				id="prefix"
 				type="text"
@@ -26,14 +29,18 @@
 				placeholder={savedPrefix}
 				bind:value={Prefix}
 				required
-				style="width: 4rem; border-radius: 0.5rem;"
+				class="w-full p-2 border rounded-md shadow-sm"
 			/>
 		</div>
-		<Button
-			type="submit"
-			color="primary"
-			class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-			disabled={isLoading || prefixState}><FileCheckSolid />Save</Button
-		>
+	
+		<!-- Submit Button -->
+		<div class="flex justify-center mt-4">
+			<Button
+				type="submit"
+				color="primary"
+				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+				disabled={isLoading || prefixState}><FileCheckSolid />Save</Button>
+		</div>
 	</form>
+		
 </div>

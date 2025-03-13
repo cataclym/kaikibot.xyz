@@ -2,7 +2,7 @@
 	import "../../app.css";
 	import PageLoader from "../../components/PageLoader.svelte";
 	import { fade } from "svelte/transition";
-	import { KaikiNavigationState, navigationState } from "$lib/navigationState";
+	import { KaikiNavigationState, navigationState } from "$lib/stores/navigationState";
 	import { page } from "$app/state";
 	import { afterNavigate, beforeNavigate } from "$app/navigation";
 

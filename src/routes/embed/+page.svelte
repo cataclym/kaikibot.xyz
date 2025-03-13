@@ -8,11 +8,8 @@
 		removeEmbed,
 		updateEmbedProperty,
 		updateContent,
-		type URLObject,
-
-		type AuthorObject
-
-	} from "$lib/embedStore";
+		type URLObject
+	} from "$lib/stores/embedStore.js";
 	import {
 		A,
 		Alert,

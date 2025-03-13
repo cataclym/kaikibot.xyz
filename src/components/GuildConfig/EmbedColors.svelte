@@ -24,21 +24,32 @@
 </script>
 
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
-	<h3 class="mb-0">Command embed colors</h3>
-	<form method="POST" action="{Action}?/embedcolors">
-		<div class="pb-6">
-			<h4 class="text-gray-100">Ok-Color</h4>
-			<ColorPicker name="hexokcolor" bind:hex={hexOkColor} />
-			<h4 class="text-gray-100">Error-color</h4>
-			<ColorPicker name="hexerrorcolor" bind:hex={hexErrorColor} />
+	<form class="flex flex-col justify-between h-full p-4" method="POST" action="{Action}?/embedcolors">
+		<!-- Heading -->
+		<h3 class="text-center text-xl font-semibold mb-4">Bot Embed Colors</h3>
+	
+		<!-- Color Pickers Section -->
+		<div class="flex-grow pb-6">
+			<div class="mb-6">
+				<h4 class="text-gray-100 font-semibold">Ok-Color</h4>
+				<ColorPicker name="hexokcolor" bind:hex={hexOkColor} />
+			</div>
+			<div class="mb-6">
+				<h4 class="text-gray-100 font-semibold">Error-color</h4>
+				<ColorPicker name="hexerrorcolor" bind:hex={hexErrorColor} />
+			</div>
 		</div>
-		<Button
-			color="primary"
-			class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-			disabled={colorState}
-		>
-			<FileCheckSolid />
-			Save
-		</Button>
-	</form>
+	
+		<!-- Submit Button -->
+		<div class="flex justify-center mt-4">
+			<Button
+				color="primary"
+				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+				disabled={colorState}
+			>
+				<FileCheckSolid />
+				Save
+			</Button>
+		</div>
+	</form>	
 </div>

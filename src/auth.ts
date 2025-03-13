@@ -14,12 +14,11 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 		async jwt({ token, profile, account }) {
 			// This callback is called whenever a JWT is created (i.e. at sign in)
 			// or updated (i.e whenever a session is accessed in the client)
-			if (profile?.id) {
+			if (profile?.id && account?.access_token) {
 				token.discordSnowflake = profile.id;
+				token.accessToken = account.access_token;
 			}
-			if (account && account.access_token) {
-				token.accessToken = account?.access_token;
-			}
+
 			return token;
 		},
 		async session({ session, token }) {
@@ -27,14 +26,13 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 			if (!session.user) throw error(500, "Missing session data!");
 
 			console.log(token);
-			if (token.discordSnowflake != null) {
+			if (token.discordSnowflake != null && token.accessToken) {
 				// @ts-ignore
 				session.user.id = token.discordSnowflake;
-			}
-			if (token.accessToken) {
 				// @ts-ignore
 				session.accessToken = token.accessToken;
 			}
+
 			return session;
 		}
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, NumberInput, Select, Textarea, Toast } from "flowbite-svelte";
+	import { Button, Heading, NumberInput, Select, Textarea, Toast } from "flowbite-svelte";
 	import { FileCheckSolid, InfoCircleSolid } from "flowbite-svelte-icons";
 	import { error } from "@sveltejs/kit";
 	import { page } from "$app/state";
@@ -49,10 +49,9 @@
 	);
 </script>
 
-<div>
-	<div class="indent flex flex-col justify-between items-center">
-		<h3>Welcome configuration</h3>
-
+<div class="flex flex-row items-center gap-2 justify-center flex-wrap mt-2">
+	<div class="indent flex flex-row flex-wrap gap-2 w-full">
+		<Heading color="" class="text-center" tag="h6">Welcome configuration</Heading>
 		<form method="POST" action="{endpoint}?/welcome">
 			<p class="text-gray-100">Select channel</p>
 			<Select
@@ -73,16 +72,15 @@
 				placeholder={WelcomeMessage || "Write a welcome message"}
 				bind:value={WelcomeMessage}
 			/>
-
 			<Button
 				color="primary"
-				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
+				class="enabled:cursor-pointer"
 				disabled={welcomeState}><FileCheckSolid />Save</Button
 			>
 		</form>
 	</div>
-	<div class="indent flex flex-col justify-between items-center">
-		<h3>Bye configuration</h3>
+	<div class="indent flex flex-row items-center flex-wrap gap-2 justify-center w-full">
+		<Heading color="" class="text-center" tag="h6">Bye configuration</Heading>
 
 		<form method="POST" action="{endpoint}?/bye">
 			<p class="text-gray-100">Select channel</p>
@@ -97,20 +95,20 @@
 				name="byemessage"
 				class="mb-4"
 				bind:value={ByeMessage}
-				placeholder={ByeMessage || "Write a welcome message"}
+				placeholder={ByeMessage || "Write a bye message"}
 			/>
 
 			<Button
 				color="primary"
-				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
+				class="self-end enabled:cursor-pointer"
 				disabled={byeState}><FileCheckSolid />Save</Button
 			>
 		</form>
 	</div>
-	<div>
+	<div class="flex-11/12">
 		<Toast
-			divClass="w-full max-w-xs p-4 text-gray-500 bg-white shadow-sm dark:text-gray-100 dark:bg-gray-800 gap-3"
-			class="m-auto mt-2 mb-2"
+			divClass="w-full max-w-xs p-4 text-gray-500 shadow-sm dark:text-gray-100 bg-gray-700"
+			class="m-auto"
 			dismissable={false}
 		>
 			<InfoCircleSolid /><br />
@@ -119,7 +117,7 @@
 			the code and paste it in the message field. Use
 			<a class="underline text-primary-600" target="_blank" href="/docs/PLACEHOLDERS.md"
 				>placeholders</a
-			> if you want to mention users or server-name in your message.
+			> if you want to dynamically mention users or server-name in your message.
 		</Toast>
 	</div>
 </div>

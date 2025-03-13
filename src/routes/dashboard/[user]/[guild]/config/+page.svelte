@@ -17,11 +17,11 @@
 	const url = page.url.pathname;
 </script>
 
-<h2 class="text-center">Edit server configuration</h2>
 <div
 	id="guildSettings"
-	class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full row-start-1"
+	class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full"
 >
+
 	<PrefixComponent {Prefix} Action={url} />
 
 	<Toggles {Anniversary} {DadBot} {StickyRoles} Action={url} />

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, P, Tooltip } from "flowbite-svelte";
+	import { P, Tooltip } from "flowbite-svelte";
 
 	interface Props {
 		text?: string | undefined;

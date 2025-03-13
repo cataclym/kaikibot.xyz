@@ -35,28 +35,36 @@
 
 {#if savedExcludeRole}
 	<div class="indent flex flex-col justify-between items-center">
-		<h3 class="mb-0">Excluded-role</h3>
+		<h3 class="text-center text-xl font-semibold mb-4">Excluded-role</h3>
 		<div class="flex flex-row justify-around w-full">
 			<h3>Role name</h3>
-			>
 			<h3>Role color</h3>
 		</div>
-		<form method="POST" action="{Action}?/excludedrole">
-			<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
-				<Input name="excluderolename" type="text" bind:value={savedExcludeRole.name}
-				></Input>
-				<ColorPicker name="excluderolecolor" bind:hex={savedExcludeRole.color} />
+		<form class="flex flex-col justify-between h-full p-4" method="POST" action="{Action}?/excludedrole">
+			<!-- Exclude Role Form Content -->
+			<div class="flex flex-col flex-grow gap-4">
+				<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
+					<Input name="excluderolename" type="text" bind:value={savedExcludeRole.name} />
+					<ColorPicker name="excluderolecolor" bind:hex={savedExcludeRole.color} />
+				</div>
 			</div>
-			<ClickToCopy>{ExcludeRole?.id}</ClickToCopy>
-			<Button
-				type="submit"
-				color="primary"
-				class="self-end ml-auto mr-auto enabled:cursor-pointer border-transparent"
-				disabled={!!excludeRoleState}
-			>
-				<FileCheckSolid />
-				Save
-			</Button>
+			<div class="flex justify-center mt-4">
+				<ClickToCopy>{ExcludeRole?.id}</ClickToCopy>
+			</div>
+
+			<!-- Submit Button Section -->
+			<div class="flex justify-center mt-4">
+				<Button
+					type="submit"
+					color="primary"
+					class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+					disabled={!!excludeRoleState}
+				>
+					<FileCheckSolid />
+					Save
+				</Button>
+			</div>
 		</form>
+		
 	</div>
 {/if}

@@ -38,6 +38,9 @@ export default class UserData {
 			throw error(guildsResponse.status, guildsResponse.statusText);
 		}
 
+		// TODO Remove
+		console.log("GET request https://discord.com/api/")
+
 		// Get all the data from the responses - async
 		const [guilds, user]: [OAuthGuildData[], User] = await Promise.all([
 			guildsResponse.json(),

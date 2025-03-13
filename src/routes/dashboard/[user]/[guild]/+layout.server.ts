@@ -22,7 +22,7 @@ export async function load({ params, parent, fetch }) {
 		throw error(500, "No response from the server.");
 	}
 
-	const { guild, user } = <GETGuildBody>await guildResponse.json();
+	const { guild, user } = <GETGuildBody> await guildResponse.json();
 	const APIGuild = responseData.guilds.find((g) => g.id === params.guild);
 
 	if (!APIGuild) {

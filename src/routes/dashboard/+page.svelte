@@ -17,6 +17,6 @@
 		<Heading tag="h2">KaikiBot Dashboard</Heading>
 			<Heading tag="h5" color="text-primary-500!">Manage your servers</Heading>
 			<br>
-		<SignIn provider="discord" signInPage="signin" />
+		<SignIn provider="discord" signInPage="/auth/signin" />
 	</div>
 </main>
