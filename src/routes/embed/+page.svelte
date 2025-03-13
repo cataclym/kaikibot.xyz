@@ -8,7 +8,8 @@
 		removeEmbed,
 		updateEmbedProperty,
 		updateContent,
-		type URLObject
+		type URLObject,
+		type AuthorObject
 	} from "$lib/stores/embedStore.js";
 	import {
 		A,
@@ -19,6 +20,7 @@
 		Img,
 		Input,
 		P,
+		Popover,
 		Textarea,
 		Toggle,
 		Tooltip
@@ -124,30 +126,35 @@
 							?.toString(16)
 							.padStart(6, '0') || '000000'}"
 					>
-						<!-- Embed Title -->
-						<div class="mb-2 col-span-2">
-							<Input
-								id={`title-${embedIndex}`}
-								bind:value={embed.title}
-								placeholder="Embed Title"
-								on:input={() =>
-									updateEmbedProperty(embedIndex, "title", embed.title)}
-							/>
-						</div>
-
 						<!-- Embed Author -->
-						<div class="mb-2 col-span-1 col-start-3">
+						<div class="col-span-2 col-start-1 grid grid-cols-6 gap-2">
 							{#if !embed.author}
-								<Button on:click={() => (embed.author = { name: "" })}>
+								<Button
+									class="col-span-2 col-start-3"
+									on:click={() => (embed.author = { name: "" })}>
 									<CirclePlusOutline class="w-5 h-5 me-2" />
 									Add author
 								</Button>
 							{:else}
 								<!--
-								TODO
-									Add author image, maybe use embed.image method 
-								-->
+							TODO
+								Add author image, maybe use embed.image method 
+							-->
+								<Avatar
+									src={embed.author.icon_url}
+									size="md"
+									class="col-span-1 justify-self-center self-center"
+								></Avatar>
+								<Popover>
+									<input 
+										class="border-amber-600 rounded"
+										type="text"
+										placeholder="Icon URL"
+										bind:value={embed.author.icon_url}
+									/>
+								</Popover>
 								<Textarea
+									class="col-span-3"
 									id={`author-${embedIndex}`}
 									bind:value={embed.author.name}
 									placeholder="Author name"
@@ -159,14 +166,38 @@
 											"name"
 										)}
 								></Textarea>
+								<Textarea
+									class="col-span-2"
+									id={`author-${embedIndex}`}
+									bind:value={embed.author.url}
+									placeholder="Author url"
+									on:input={() =>
+										updateEmbedProperty<AuthorObject>(
+											embedIndex,
+											"author",
+											embed.author!.url,
+											"url"
+										)}
+								></Textarea>
 								<Button
 									on:click={() => (embed = { ...embed, author: undefined })}
-									size="sm"
+									size="xs"
 									color="red"
-									class="mt-2"
+									class="col-span-2 col-start-3"
 									><CloseCircleSolid class="w-5 h-5 me-2" /> Remove author
 								</Button>
 							{/if}
+						</div>
+
+						<!-- Embed Title -->
+						<div class="mb-2 col-span-2 col-start-1">
+							<Input
+								id={`title-${embedIndex}`}
+								bind:value={embed.title}
+								placeholder="Embed Title"
+								on:input={() =>
+									updateEmbedProperty(embedIndex, "title", embed.title)}
+							/>
 						</div>
 
 						<!-- Embed URL -->
