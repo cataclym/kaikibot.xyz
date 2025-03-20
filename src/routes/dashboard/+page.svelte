@@ -15,8 +15,8 @@
 	<div class="text-center m-4">
 		<Heading tag="h2" class="text-primary-600!">Under construction</Heading>
 		<Heading tag="h2">KaikiBot Dashboard</Heading>
-			<Heading tag="h5" color="text-primary-500!">Manage your servers</Heading>
-			<br>
+		<Heading tag="h5" color="text-primary-500!">Manage your servers</Heading>
+		<br />
 		<SignIn provider="discord" signInPage="/auth/signin" />
 	</div>
 </main>

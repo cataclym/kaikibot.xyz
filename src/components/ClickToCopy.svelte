@@ -26,7 +26,13 @@
 </script>
 
 {#if header}
-	<P color="" id={random} style="cursor:copy;" class="text-sm hover:underline text-gray-200" onclick={copy}>
+	<P
+		color=""
+		id={random}
+		style="cursor:copy;"
+		class="text-sm hover:underline text-gray-200"
+		onclick={copy}
+	>
 		{@render children?.()}
 	</P>
 {:else}

@@ -17,11 +17,7 @@
 	const url = page.url.pathname;
 </script>
 
-<div
-	id="guildSettings"
-	class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full"
->
-
+<div id="guildSettings" class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full">
 	<PrefixComponent {Prefix} Action={url} />
 
 	<Toggles {Anniversary} {DadBot} {StickyRoles} Action={url} />

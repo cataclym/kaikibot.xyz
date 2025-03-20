@@ -24,7 +24,7 @@
 		>
 	</NavBrand>
 	<NavHamburger hidden={false} />
-	<NavUl hidden={false} activeUrl={activeUrl}>
+	<NavUl hidden={false} {activeUrl}>
 		<NavLi style="visibility:visible !important" href={baseURL}>Information</NavLi>
 		{#if isAdmin}
 			<NavLi href="{baseURL}/config">Configuration</NavLi>

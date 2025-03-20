@@ -296,7 +296,8 @@
 		text-align: right;
 	}
 
-	.permText, .guildText {
+	.permText,
+	.guildText {
 		color: var(--color-primary-700);
 		font-weight: 600;
 		left: 0;

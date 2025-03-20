@@ -72,10 +72,8 @@
 				placeholder={WelcomeMessage || "Write a welcome message"}
 				bind:value={WelcomeMessage}
 			/>
-			<Button
-				color="primary"
-				class="enabled:cursor-pointer"
-				disabled={welcomeState}><FileCheckSolid />Save</Button
+			<Button color="primary" class="enabled:cursor-pointer" disabled={welcomeState}
+				><FileCheckSolid />Save</Button
 			>
 		</form>
 	</div>
@@ -98,10 +96,8 @@
 				placeholder={ByeMessage || "Write a bye message"}
 			/>
 
-			<Button
-				color="primary"
-				class="self-end enabled:cursor-pointer"
-				disabled={byeState}><FileCheckSolid />Save</Button
+			<Button color="primary" class="self-end enabled:cursor-pointer" disabled={byeState}
+				><FileCheckSolid />Save</Button
 			>
 		</form>
 	</div>

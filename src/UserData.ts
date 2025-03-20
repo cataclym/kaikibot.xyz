@@ -39,7 +39,7 @@ export default class UserData {
 		}
 
 		// TODO Remove
-		console.log("GET request https://discord.com/api/")
+		console.log("GET request https://discord.com/api/");
 
 		// Get all the data from the responses - async
 		const [guilds, user]: [OAuthGuildData[], User] = await Promise.all([

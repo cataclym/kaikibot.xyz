@@ -40,7 +40,11 @@
 			<h3>Role name</h3>
 			<h3>Role color</h3>
 		</div>
-		<form class="flex flex-col justify-between h-full p-4" method="POST" action="{Action}?/excludedrole">
+		<form
+			class="flex flex-col justify-between h-full p-4"
+			method="POST"
+			action="{Action}?/excludedrole"
+		>
 			<!-- Exclude Role Form Content -->
 			<div class="flex flex-col flex-grow gap-4">
 				<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
@@ -65,6 +69,5 @@
 				</Button>
 			</div>
 		</form>
-		
 	</div>
 {/if}

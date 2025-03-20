@@ -24,10 +24,14 @@
 </script>
 
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
-	<form class="flex flex-col justify-between h-full p-4" method="POST" action="{Action}?/embedcolors">
+	<form
+		class="flex flex-col justify-between h-full p-4"
+		method="POST"
+		action="{Action}?/embedcolors"
+	>
 		<!-- Heading -->
 		<h3 class="text-center text-xl font-semibold mb-4">Bot Embed Colors</h3>
-	
+
 		<!-- Color Pickers Section -->
 		<div class="flex-grow pb-6">
 			<div class="mb-6">
@@ -39,7 +43,7 @@
 				<ColorPicker name="hexerrorcolor" bind:hex={hexErrorColor} />
 			</div>
 		</div>
-	
+
 		<!-- Submit Button -->
 		<div class="flex justify-center mt-4">
 			<Button
@@ -51,5 +55,5 @@
 				Save
 			</Button>
 		</div>
-	</form>	
+	</form>
 </div>
