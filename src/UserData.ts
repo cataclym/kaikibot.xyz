@@ -70,6 +70,7 @@ export default class UserData {
 			}
 		).catch((err) => {
 			if (err instanceof TypeError) {
+				console.log(err) // TODO Remember to remove
 				throw error(500, "The server is down at the moment, come back at a later time.");
 			}
 			throw error(err);

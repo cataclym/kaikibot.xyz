@@ -9,10 +9,19 @@
 	import Capitalize from "../methods/Capitalize";
 	import { Heading, Mark } from "flowbite-svelte";
 	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
+	import Header from "../components/Header.svelte";
+	import type { User } from "@auth/sveltekit";
 
 	let { data, children } = $props();
 
 	const { DISCORD, INVITE, KOFI, SOURCE } = data;
+
+	const session = page.data.session;
+	let user: User | undefined = $state();
+
+	if (session?.user) {
+		user = session.user;
+	}
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -44,6 +53,10 @@
 	<div out:fade={{ delay: 400 }}>
 		<PageLoader />
 	</div>
+{/if}
+
+{#if user}
+	<Header {user} />	
 {/if}
 
 {#if page.url.pathname === "/"}

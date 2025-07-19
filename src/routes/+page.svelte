@@ -10,8 +10,6 @@
 
 <main>
 	<div class="inline-block w-11/12 mt-24">
-		<!-- 2x2 Medium SignOutfeature list -->
-
 		<div class="max-w-full md:flex justify-evenly mb-24">
 			<div class="text-center md:w-96">
 				<h3 class="text-accent3 font-bold text-2xl">
@@ -107,6 +105,7 @@
 			<Heading tag="h2" class="text-accent3 text-left">Utilities</Heading>
 			<p class="flex-col text-left"><a href={CHANGELOG}>Changelog</a></p>
 			<p class="flex-col text-left"><a href="/about">About</a></p>
+			<p class="flex-col text-left"><a href="/contact">Contact</a></p>
 		</div>
 	</div>
 </main>

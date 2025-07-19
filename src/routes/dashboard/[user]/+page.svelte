@@ -24,11 +24,11 @@
 		<div>
 			<Avatar size="lg" src={user.image || ""} alt="Avatar" />
 		</div>
-		<h1 class="text-accent3">Hi {user.name}</h1>
+		<h1 class="text-accent3">Hi {user.name || "User"}</h1>
 		<div class="text-accent3">
-			<p>You have 💴 {responseData.userData?.Amount || 0}</p>
+			<p>Your balance: 💴 {responseData.userData?.Amount || 0}</p>
 		</div>
-		<h3>Available guilds</h3>
+		<h2 class="text-accent3 text-lg">Available guilds</h2>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 			{#each availableCachedGuilds as guild}
 				<GuildCard {guild} {user} />

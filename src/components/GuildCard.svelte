@@ -2,7 +2,7 @@
 	import { Avatar, Button } from "flowbite-svelte";
 	import ClickToCopy from "./ClickToCopy.svelte";
 
-	let { guild, user, children } = $props();
+	let { guild, user, children = undefined } = $props();
 </script>
 
 <div class="indent">
