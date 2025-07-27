@@ -18,9 +18,9 @@
 </script>
 
 <header class="shadow-md w-full z-50 bg-gray-700">
-	<Navbar class="bg-gray-700 text-gray-100 mx-auto">
+	<Navbar class="bg-gray-700 text-gray-200 rounded-none mx-auto">
 		<NavBrand href="/">
-			<span class="self-center text-xl font-semibold whitespace-nowrap text-primary-500"
+			<span class="self-center text-xl font-semibold whitespace-nowrap text-primary-600"
 				>Logged in</span
 			>
 		</NavBrand>
@@ -32,7 +32,7 @@
 			<DropdownHeader>
 				<span class="block text-sm">{user.name}</span>
 			</DropdownHeader>
-			<DropdownItem href="/dashboard/profile">Profile</DropdownItem>
+			<DropdownItem href="/dashboard/{user.id}/profile">Profile</DropdownItem>
 			<DropdownItem href="/auth/signout">Sign out</DropdownItem>
 		</Dropdown>
 		<NavUl hidden={false} {activeUrl} >

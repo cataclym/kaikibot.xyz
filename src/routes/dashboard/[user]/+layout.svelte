@@ -4,14 +4,14 @@
 
 	let { data, children } = $props();
 	const { responseData } = data;
-	let location = $derived(page.params.guild);
+	let userId = $derived(page.params.user);
 </script>
 
 <div class="smol">
 	<div
 		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-around items-center mt-1 mb-1"
 	>
-		{#if location != null}
+		{#if !page.url.pathname.endsWith(userId)}
 			<Button size="sm" href="/dashboard/{responseData.user.id}/" class="text-gray-700">
 				<ArrowKeyLeft /> Back
 			</Button>

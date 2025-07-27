@@ -26,12 +26,12 @@
 </script>
 
 {#if header}
-	<P color="" id={random} style="cursor:copy;" class="text-sm hover:underline text-gray-200" onclick={copy}>
+	<P color="" id={random} class="text-center cursor-copy text-sm hover:underline text-gray-200" onclick={copy}>
 		{@render children?.()}
 	</P>
 {:else}
-	<div id={random} style="cursor: copy;" class="hover:underline text-gray-200" onclick={copy}>
+	<div id={random} class="text-center cursor hover:underline text-gray-200" onclick={copy}>
 		{@render children?.()}
 	</div>
 {/if}
-<Tooltip arrow={false} {placement} id="tooltip-{random}">Click to copy</Tooltip>
+<Tooltip class="text-center" arrow={false} {placement} id="tooltip-{random}">Click to copy</Tooltip>

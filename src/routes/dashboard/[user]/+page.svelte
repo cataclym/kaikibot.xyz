@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import { error } from "@sveltejs/kit";
-	import { Avatar } from "flowbite-svelte";
+	import { Avatar, Button } from "flowbite-svelte";
 	import GuildCard from "../../../components/GuildCard.svelte";
 
 	const session = page.data.session;
@@ -25,9 +25,7 @@
 			<Avatar size="lg" src={user.image || ""} alt="Avatar" />
 		</div>
 		<h1 class="text-accent3">Hi {user.name || "User"}</h1>
-		<div class="text-accent3">
-			<p>Your balance: 💴 {responseData.userData?.Amount || 0}</p>
-		</div>
+		<Button href="./{user.id}/profile">Profile</Button>
 		<h2 class="text-accent3 text-lg">Available guilds</h2>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 			{#each availableCachedGuilds as guild}

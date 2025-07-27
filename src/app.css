@@ -146,7 +146,7 @@
 	}
 
 	button.layout,
-	.signInButton > button:nth-child(2) {
+	.signInButton > button:last-child {
 		background-color: var(--accent2) !important;
 		border: var(--accent2) 2px solid;
 		color: var(--accent1) !important;
@@ -156,7 +156,7 @@
 
 	button:hover.layout,
 	button[aria-current="true"],
-	.signInButton > button:nth-child(2):hover {
+	.signInButton > button:last-child:hover {
 		cursor: pointer;
 		background-color: var(--background) !important;
 		color: var(--accent1) !important;
@@ -164,6 +164,12 @@
 		transform: scale(101%);
 		transition: 0.1s;
 		box-shadow: 0 4px var(--accent4);
+	}
+
+	button.invite_link {
+		background-color: var(--accent4) !important;
+		border: var(--accent4) 2px solid;
+		color: var(--background) !important;
 	}
 
 	footer {
@@ -221,10 +227,9 @@
 	.indent {
 		background-color: var(--accent2);
 		padding: 1rem;
-	}
-
-	#guildSettings .indent {
-		flex: 1 0 33%;
+		flex: 1 0 12.5%;
+		flex-direction: column;
+		overflow: hidden;
 	}
 
 	.userRole {
@@ -234,7 +239,7 @@
 		max-width: 42.5rem;
 	}
 
-	.signInButton > button:nth-child(2) {
+	.signInButton > button:last-child {
 		padding: 0.5rem;
 	}
 
