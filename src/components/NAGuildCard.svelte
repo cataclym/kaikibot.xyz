@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { Button } from "flowbite-svelte";
 	import ClickToCopy from "./ClickToCopy.svelte";
 	import GuildCardAv from "./GuildCardAv.svelte";
 
-	let { guild, user, children = undefined } = $props();
+	let { guild, children = undefined } = $props();
 </script>
 
 <div class="indent">
 	<GuildCardAv {guild} />
 	{@render children?.()}
-	<Button href="/dashboard/{user.id}/{guild.id}">Edit settings</Button>
 	<ClickToCopy>{guild.id}</ClickToCopy>
 </div>

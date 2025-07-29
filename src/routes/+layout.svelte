@@ -7,12 +7,21 @@
 	import { fade, slide } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
 	import Capitalize from "../methods/Capitalize";
-	import { Heading, Mark } from "flowbite-svelte";
+	import { Avatar, Heading, Mark } from "flowbite-svelte";
 	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
+	import LoggedInHeader from "../components/LoggedInHeader.svelte";
+	import type { User } from "@auth/sveltekit";
 
 	let { data, children } = $props();
 
 	const { DISCORD, INVITE, KOFI, SOURCE } = data;
+
+	const session = page.data.session;
+	let user: User | undefined = $state();
+
+	if (session?.user) {
+		user = session.user;
+	}
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -23,15 +32,26 @@
 	});
 
 	function isDocs() {
-		return page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/");
+		return (page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/"))
+		 	? "/"
+			: "/README.md";
 	}
 
 	function isDash() {
-		return !!page.url.pathname.match("/dashboard")?.length;
+		return !!page.url.pathname.match("/dashboard")?.length
+			? "/"
+			: "/dashboard";
+
 	}
 
 	function isGenericPath(path: string) {
-		return page.url.pathname === path;
+		return page.url.pathname === path
+			? "/"
+			: path;
+	}
+
+	function ariaCurrent(path: string) {
+		return isGenericPath(path) === "/";
 	}
 </script>
 
@@ -46,8 +66,17 @@
 	</div>
 {/if}
 
+{#if user}
+	<LoggedInHeader {user} />	
+{/if}
+
 {#if page.url.pathname === "/"}
-	<div class="big_title" transition:slide={{ duration: 300 }}>
+<div class="relative" transition:slide={{ duration: 300 }}>
+	<div class="absolute left-1/5 top-1">
+		<Avatar src="/favicon.png" size="xl" alt="Kaiki"/>
+	</div>
+
+	<div class="big_title">
 		<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
 			<a class="text-center" href="/">KAIKIBOT</a>
 		</h1>
@@ -57,6 +86,7 @@
 			isn't <em>this</em> cool
 		</h2>
 	</div>
+</div>
 {:else}
 	<div
 		class="small_title m-auto w-2/12 flex mb-2 mt-2 justify-center items-center content-center"
@@ -77,31 +107,31 @@
 			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
 		</button>
 	</a>
-	<a class="link_flex" href={isGenericPath("/commands") ? "/" : "/commands"}>
+	<a class="link_flex" href={isGenericPath("/commands")}>
 		<button
-			aria-current={isGenericPath("/commands")}
+			aria-current={ariaCurrent("/commands")}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 		>
 			COMMANDS
 		</button>
 	</a>
-	<a href={isGenericPath("/embed") ? "/" : "/embed"} class="link_flex">
+	<a href={isGenericPath("/embed")} class="link_flex">
 		<button
-			aria-current={isGenericPath("/embed")}
+			aria-current={ariaCurrent("/embed")}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
 			><Mark class="bg-primary-600!">NEW</Mark><br />EMBED BUILDER
 		</button>
 	</a>
 	<a href={INVITE} class="link_flex">
 		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
+			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout invite_link"
 			>INVITE KAIKI
 			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
 		</button>
 	</a>
-	<a href={isDash() ? "/" : "/dashboard"} class="link_flex">
+	<a href={isDash()} class="link_flex">
 		<button
-			aria-current={isDash()}
+			aria-current={ariaCurrent(isDash())}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
 		>
 			DASHBOARD
@@ -115,9 +145,9 @@
 			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
 		</button>
 	</a>
-	<a href={isDocs() ? "/" : "/README.md"} class="link_flex">
+	<a href={isDocs()} class="link_flex">
 		<button
-			aria-current={isDocs()}
+			aria-current={ariaCurrent(isDocs())}
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
 		>
 			DOCUMENTATION

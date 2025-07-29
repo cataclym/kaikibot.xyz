@@ -7,14 +7,15 @@ const authorizationHandle: Handle = async ({ event, resolve }) => {
 	// /.+/ allows for an optional trailing slash and any characters
 	if (/^\/dashboard(\/.*)?$/.test(event.url.pathname)) {
 		const session = await event.locals.auth();
-
-		if (!session?.user?.id) {
-			return redirect(303, "/auth/signin");
+		
+		// User isnt logged in and is not requesting the login page
+		if (!session?.user?.id && event.url.pathname !== "/dashboard") {
+			return redirect(303, "/auth/signin")
 		}
 
 		// If a user is trying to access someone else's dashboard, throw 401 Unauthorized
-		if (session.user?.id !== event.url.pathname.split("/")[2]) {
-			return error(401, "Unauthorized?");
+		if (event.params.user && session?.user?.id !== event.params.user) {
+			return error(401, "Unauthorized");
 		}
 	}
 
