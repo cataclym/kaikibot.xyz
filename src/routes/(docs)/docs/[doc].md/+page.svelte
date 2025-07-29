@@ -1,26 +1,19 @@
 <script lang="ts">
-	import { afterUpdate, onMount } from "svelte";
-	import { writable } from "svelte/store";
-	$: fileContent = writable<string | null>(null);
-
+	import { afterUpdate } from "svelte";
 	export let data;
 
-	onMount(() => {
-		fileContent.set(data.doc || "");
-		console.log($fileContent);
-	});
+	let { doc } = data;
 
-	// Deprecated? I am not in runes mode.
 	afterUpdate(() => {
-		fileContent.set(data.doc || "");
-		console.log($fileContent);
-	});
+		doc = data.doc;
+	})
+
 </script>
 
 <div class="text-accent1 m-auto w-11/12">
 	<article class="prose">
-		{#if $fileContent}
-			{@html $fileContent}
+		{#if doc}
+			{@html doc}
 		{:else}
 			<span>Error loading document</span>
 		{/if}
