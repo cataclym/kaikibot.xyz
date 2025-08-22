@@ -6,9 +6,9 @@
 	let { guild, user, children = undefined } = $props();
 </script>
 
-<div class="indent">
+<div class="indent shadow-lg">
 	<GuildCardAv {guild} />
 	{@render children?.()}
-	<Button href="/dashboard/{user.id}/{guild.id}">Edit settings</Button>
+	<Button class="text-gray-800" href="/dashboard/{user.id}/{guild.id}">Edit settings</Button>
 	<ClickToCopy>{guild.id}</ClickToCopy>
 </div>

@@ -23,6 +23,7 @@
 	} from "flowbite-svelte-icons";
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
+	import type { Component } from "svelte";
 
 	let { data } = $props();
 	const { guild, user, APIGuild } = data;
@@ -188,69 +189,5 @@ Skeleton
 </main>
 
 <style>
-	/* Main container styling */
-	.content-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 20px;
-		gap: 20px;
-	}
-
-	/* Section styling for spacing */
-	.section {
-		width: 100%;
-		max-width: 800px; /* Control the max width to keep it neat */
-		margin-bottom: 20px;
-	}
-
-	/* For User-role section */
-	.user-role-section {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-		align-items: center;
-		width: 100%;
-		max-width: 800px;
-	}
-
-	/* Styling for role information layout */
-	.role-info {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-		margin-bottom: 10px;
-	}
-
-	/* Inputs & button styling */
-	.role-inputs {
-		display: flex;
-		gap: 15px;
-		width: 100%;
-		justify-content: space-between;
-	}
-
-	.save-button {
-		margin-top: 20px;
-		align-self: flex-end;
-	}
-
-	/* Adjust table styling if necessary */
-	table {
-		width: 100%;
-		margin-bottom: 20px;
-		border-collapse: collapse;
-	}
-
-	table th,
-	table td {
-		padding: 8px;
-		text-align: left;
-	}
-
-	button,
-	.input,
-	.color-picker {
-		margin-top: 10px;
-	}
+	@import "./../dashboard.css";
 </style>

@@ -1,10 +1,12 @@
 import { TOKEN } from "$env/static/private";
 
-export default function CreateHeaders() {
+export default function CreateHeaders(includeContent = true) {
 	if (!TOKEN) throw new Error("Token is required");
 
 	const headers = new Headers();
-	headers.append("Content-Type", "application/json");
+
+	if (includeContent) headers.append("Content-Type", "application/json");
+	
 	headers.append("Authorization", TOKEN);
 	// Security headers
 	headers.append("X-Content-Type-Options", "nosniff");
