@@ -38,9 +38,6 @@ export default class UserData {
 			throw error(guildsResponse.status, guildsResponse.statusText);
 		}
 
-		// TODO Remove
-		console.log("GET request https://discord.com/api/")
-
 		// Get all the data from the responses - async
 		const [guilds, user]: [OAuthGuildData[], User] = await Promise.all([
 			guildsResponse.json(),
@@ -57,27 +54,25 @@ export default class UserData {
 		guilds: OAuthGuildData[]
 	): Promise<BigIntToString<POSTUserGuildsBody>> {
 		const headers = CreateHeaders();
-		// POST to send guilds and receive database scoped data from custom bot API
-		/* @type
-		 *	body: bigint[]
-		 */
-		const customResponse = await fetch(
-			`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}`,
-			{
-				method: "POST",
+		// GET to receive database scoped data from custom bot API
+		// UserId in params
+		// GuildIds in query params
+		const url = new URL(`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}/guilds`);
+		url.searchParams.append("ids", guilds.map((g) => g.id).join(","))
+
+		const customResponse = await fetch(url, {
+				method: "GET",
 				headers,
-				body: JSON.stringify(guilds.map((g) => g.id))
-			}
-		).catch((err) => {
+			}).catch((err) => {
+
 			if (err instanceof TypeError) {
-				console.log(err) // TODO Remember to remove
 				throw error(500, "The server is down at the moment, come back at a later time.");
 			}
 			throw error(err);
 		});
 
 		if (customResponse.status === 404) {
-			throw error(404, "Your user cannot be found, have you used KaikiBot before?");
+			throw error(404, "Your user cannot be found.");
 		}
 
 		if (!customResponse.ok) {
@@ -97,7 +92,7 @@ export type BotResData = {
 type BigIntToString<T> = T extends bigint
 	? string
 	: T extends Array<infer U>
-		? Array<BigIntToString<U>>
-		: T extends object
-			? { [K in keyof T]: BigIntToString<T[K]> }
-			: T;
+	? Array<BigIntToString<U>>
+	: T extends object
+	? { [K in keyof T]: BigIntToString<T[K]> }
+	: T;

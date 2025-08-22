@@ -5,10 +5,10 @@ import { error } from "@sveltejs/kit";
 export async function UpdateGuild(body: string, guildId: string) {
 	const url = new URL(USER_API_URL);
 	url.port = USER_API_PORT;
-	url.pathname = `/API/Guild/${guildId}`;
+	url.pathname = `/API/Guild/${guildId}/settings`;
 
 	const request = await fetch(url, {
-		method: "POST",
+		method: "PATCH",
 		body: body,
 		headers: CreateHeaders()
 	});

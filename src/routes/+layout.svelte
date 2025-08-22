@@ -57,7 +57,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize(page.url.pathname.split("/")[1] || "Home")}</title>
+	<title>KaikiBot - {Capitalize(page.params[-1] || page.url.pathname.split("/")[1] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -66,7 +66,7 @@
 	</div>
 {/if}
 
-{#if user}
+{#if user && !page.params.user}
 	<LoggedInHeader {user} />	
 {/if}
 
