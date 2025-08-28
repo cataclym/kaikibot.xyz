@@ -44,13 +44,13 @@ export default class UserData {
 			userResponse.json()
 		]);
 
-		const dbPOSTDataRes = await this.dbPOSTData(guilds);
+		const dbPOSTDataRes = await this.GETUserGuilds(guilds);
 
 		return { ...dbPOSTDataRes, guilds, user };
 	}
 
 	// BigInt is not sent in JSON, it gets converted to string
-	private async dbPOSTData(
+	private async GETUserGuilds(
 		guilds: OAuthGuildData[]
 	): Promise<BigIntToString<POSTUserGuildsBody>> {
 		const headers = CreateHeaders();

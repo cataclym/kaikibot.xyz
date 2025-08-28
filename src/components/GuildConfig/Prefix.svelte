@@ -9,8 +9,6 @@
 
 	let { Prefix = $bindable(), Action }: Props = $props();
 
-	let isLoading = false;
-
 	const savedPrefix = Prefix;
 	let prefixState = $derived(savedPrefix === Prefix);
 </script>
@@ -39,7 +37,7 @@
 				type="submit"
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-				disabled={isLoading || prefixState}><FileCheckSolid />Save</Button
+				disabled={prefixState}><FileCheckSolid />Save</Button
 			>
 		</div>
 	</form>

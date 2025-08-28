@@ -15,7 +15,8 @@
 		TableBodyRow,
 		TableHead,
 		TableHeadCell,
-		Textarea
+		Textarea,
+		Tooltip
 	} from "flowbite-svelte";
 	import GuildCard from "../../../../components/GuildCard.svelte";
 	import type OAuthGuildData from "../../../../interfaces/OAuthGuildData";
@@ -24,7 +25,7 @@
 
 	// Access sessions
 	const session = page.data.session;
-	
+
 	if (session?.user == null) throw error(500, "User does not exist");
 
 	// Access session user and bot data
@@ -48,28 +49,39 @@
 	}
 
 	let openRow: number | null = $state(null);
-	let doubleClickModal = $state(false);
-	let showAddModal = false;
+	let showAddModal = $state(false);
+	let showDeleteModal = $state(false);
 
 	const toggleRow = (i: number) => {
 		openRow = openRow === i ? null : i;
 	};
 
-	let selected = new Set<string>();
+	let selected = $state(new Set<string>());
+	let selectedIdsString = $state("");
+	let allChecked = $state(false);
 
 	function toggleSelect(id: string) {
 		if (selected.has(id)) selected.delete(id);
 		else selected.add(id);
+		selected = new Set(selected);
+		selectedIdsString = [...selected].join(",");
 	}
 
-	function deleteSelected() {
-		// send selected to form action
-
-		// Remove table row elements from document
-		selected.forEach(id => {
-			document.getElementById(`TBR${id}`)?.remove();
-		})
+	function toggleAll(): void {
+		if (todos?.length === selected.size) {
+			selected.clear();
+			allChecked = false;
+		} else {
+			todos?.forEach((todo) => {
+				selected.add(String(todo.Id));
+			});
+			allChecked = !!selected.size;
+		}
+		selected = new Set(selected);
+		selectedIdsString = [...selected].join(",");
 	}
+
+	let todoAddText = $state("");
 </script>
 
 <main class="content-container">
@@ -101,46 +113,75 @@
 	<Heading tag="h3">Todo list</Heading>
 
 	<div class="mb-4">
-		<Button color="green" on:click={() => (showAddModal = true)}>+ Add Todo</Button>
+		{#if allChecked || selected.size}
+			<Button id="delete-btn" color="red" on:click={() => (showDeleteModal = true)}
+				>Delete selected</Button
+			>
+		{/if}
+		<Button color="green" on:click={() => (showAddModal = true)}>Add Todo</Button>
 	</div>
 
 	<!-- Add Todo Modal -->
 	<Modal bind:open={showAddModal} title="Add Todo">
-		<form method="post" action="?/addTodo" class="space-y-4">
+		<form id="add-todo-form" method="post" action="?/addTodo" class="space-y-4">
 			<Label class="space-y-2">
-				<span>Todo</span>
-				<Textarea name="text" rows={4} required />
+				<span>Text</span>
+				<Textarea
+					name="todoText"
+					rows={4}
+					maxlength={204}
+					bind:value={todoAddText}
+					required
+				/>
 			</Label>
 		</form>
 		<svelte:fragment slot="footer">
-			<Button type="submit">Add</Button>
+			<Button type="submit" form="add-todo-form">Add</Button>
 			<Button on:click={() => (showAddModal = false)} color="alternative">Cancel</Button>
 		</svelte:fragment>
 	</Modal>
 
+	<!-- Delete Todo Modal -->
+	<Modal bind:open={showDeleteModal} title="Delete todos">
+		<form id="delete-todo-form" method="post" action="?/deleteTodos" class="space-y-4">
+			<Label class="space-y-2">
+				<span>Are you sure you want to delete the selected todos?</span>
+				<Textarea class="hidden" name="todoIds" bind:value={selectedIdsString} />
+			</Label>
+		</form>
+		<svelte:fragment slot="footer">
+			<Button color="red" form="delete-todo-form" type="submit">Yes</Button>
+			<Button on:click={() => (showDeleteModal = false)} color="alternative">Cancel</Button>
+		</svelte:fragment>
+	</Modal>
+
 	<section class="section">
-		<Table noborder={false} hoverable={true}>
-			<TableHead>
-				<TableHeadCell>#</TableHeadCell>
-				<TableHeadCell>Text</TableHeadCell>
-				<TableHeadCell>Delete</TableHeadCell>
-			</TableHead>
-			<TableBody>
-				{#if todos?.length}
+		{#if todos?.length}
+			<Table noborder={false} hoverable={true}>
+				<TableHead>
+					<TableHeadCell>
+						<Checkbox bind:checked={allChecked} id="toggle-all" on:click={toggleAll}
+							>UUID</Checkbox
+						>
+					</TableHeadCell>
+					<TableHeadCell>Text</TableHeadCell>
+				</TableHead>
+				<TableBody>
 					{#each todos as todo, i}
-					{@const todoId = String(todo.Id)}
-						<TableBodyRow id={"TBR" + todoId} onclick={() => toggleRow(i)}>
-							<TableBodyCell>{todoId || 0}</TableBodyCell>
-							<TableBodyCell
+						{@const todoId = String(todo.Id)}
+						<TableBodyRow id={"TBR" + todoId}>
+							<TableBodyCell>
+								<Checkbox
+									checked={selected.has(todoId)}
+									on:click={() => toggleSelect(todoId)}>{todoId || 0}</Checkbox
+								>
+							</TableBodyCell>
+							<TableBodyCell class="cursor-pointer" onclickcapture={() => toggleRow(i)}
 								>{todo.String.substring(0, 72)}{todo.String.length > 72
 									? "..."
 									: ""}</TableBodyCell
 							>
-							<TableBodyCell>
-								<Button id={todoId} class="hover:cursor-pointer" color="red" on:click={(event) => toggleSelect(event.target?.id)}>
-									<Checkbox checked={selected.has(todoId)} />
-								</Button>
-							</TableBodyCell>
+							<Tooltip color="navbar">Click to expand</Tooltip>
 						</TableBodyRow>
 						{#if openRow === i}
 							<TableBodyRow>
@@ -159,10 +200,10 @@
 							</TableBodyRow>
 						{/if}
 					{/each}
-				{:else}
-					<P>You have no todo items</P>
-				{/if}
-			</TableBody>
-		</Table>
+				</TableBody>
+			</Table>
+		{:else}
+			<P>You have no todo items</P>
+		{/if}
 	</section>
 </main>

@@ -6,7 +6,7 @@
 	import IntColorToHex from "../../methods/IntColorToHex.js";
 
 	interface Props {
-		ExcludeRole: undefined | null | { color: number; id: string; name: string };
+		ExcludeRole: undefined | null | { color: number; id: string; name: string, icon: string };
 		Action: string;
 	}
 
