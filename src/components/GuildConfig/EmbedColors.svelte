@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ColorPicker from "svelte-awesome-color-picker";
 	import { Button } from "flowbite-svelte";
-	import { FileCheckSolid } from "flowbite-svelte-icons";
+	import { FileCheckSolid, TrashBinSolid } from "flowbite-svelte-icons";
 	import IntColorToHex from "../../methods/IntColorToHex";
 
 	interface Props {
@@ -21,6 +21,11 @@
 	let colorState = $derived(
 		JSON.stringify(savedColors) === JSON.stringify({ hexOkColor, hexErrorColor })
 	);
+
+	function resetAll() {
+		hexErrorColor = savedColors.hexErrorColor;
+		hexOkColor = savedColors.hexOkColor;
+	}
 </script>
 
 <div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
@@ -45,15 +50,22 @@
 		</div>
 
 		<!-- Submit Button -->
-		<div class="flex justify-center mt-4">
+		<div class="flex justify-center space-x-1 mt-4">
 			<Button
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
 				disabled={colorState}
 			>
-				<FileCheckSolid />
+				<FileCheckSolid class="shrink-0 h-6 w-6" />
 				Save
 			</Button>
+			<Button
+				type="button"
+				on:click={resetAll}
+				color="dark"
+				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+				disabled={colorState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
+			>
 		</div>
 	</form>
 </div>

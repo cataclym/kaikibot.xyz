@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, Input } from "flowbite-svelte";
-	import { FileCheckSolid } from "flowbite-svelte-icons";
+	import { FileCheckSolid, TrashBinSolid } from "flowbite-svelte-icons";
 
 	interface Props {
 		Prefix: string;
@@ -11,6 +11,10 @@
 
 	const savedPrefix = Prefix;
 	let prefixState = $derived(savedPrefix === Prefix);
+
+	function resetAll() {
+		Prefix = savedPrefix;
+	}
 </script>
 
 <div class="indent flex flex-col justify-between items-center">
@@ -24,6 +28,7 @@
 				id="prefix"
 				type="text"
 				name="prefix"
+				maxlength={10}
 				placeholder={savedPrefix}
 				bind:value={Prefix}
 				required
@@ -32,12 +37,19 @@
 		</div>
 
 		<!-- Submit Button -->
-		<div class="flex justify-center mt-4">
+		<div class="flex justify-center space-x-1 mt-4">
 			<Button
 				type="submit"
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-				disabled={prefixState}><FileCheckSolid />Save</Button
+				disabled={prefixState}><FileCheckSolid class="shrink-0 h-6 w-6" />Save</Button
+			>
+			<Button
+				type="button"
+				on:click={resetAll}
+				color="dark"
+				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+				disabled={prefixState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
 			>
 		</div>
 	</form>

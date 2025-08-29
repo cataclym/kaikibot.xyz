@@ -1,4 +1,6 @@
+import { fail } from "@sveltejs/kit";
 import { UpdateGuild } from "../../../../../methods/UpdateGuild";
+import SanitizeInput from "../../../../../methods/SanitizeInput";
 
 export async function load({ parent }) {
 	const { isAdmin, guild } = await parent();
@@ -10,11 +12,13 @@ export async function load({ parent }) {
 export const actions = {
 	prefix: async ({ request, params }) => {
 		const formData = await request.formData();
-		const prefix = formData.get("prefix");
+		const prefix = <string> formData.get("prefix");
+
+		if (prefix.length > 10) throw fail(400);
 
 		const data = JSON.stringify(
 			{
-				Prefix: prefix
+				Prefix: SanitizeInput(prefix)
 			},
 			null
 		);

@@ -1,3 +1,4 @@
+import type { RouteParams } from "../$types";
 import { UpdateGuild } from "../../../../../methods/UpdateGuild";
 
 export async function load({ parent }) {
@@ -8,40 +9,31 @@ export async function load({ parent }) {
 
 // Form actions receives frontend data, sends it to bot
 export const actions = {
-	welcome: async ({ request, params }) => {
-		const formData = await request.formData();
-
-		const welcomeChannel = formData.get("welcomechannel");
-		const welcomeTimeout = formData.get("welcometimeout");
-		const welcomeMessage = formData.get("welcomemessage");
-
-		const data = JSON.stringify(
-			{
-				WelcomeChannel: welcomeChannel,
-				WelcomeTimeout: welcomeTimeout,
-				WelcomeMessage: welcomeMessage
-			},
-			null
-		);
-
-		return UpdateGuild(data, params.guild);
-	},
-	bye: async ({ request, params }) => {
-		const formData = await request.formData();
-
-		const byeChannel = formData.get("byechannel");
-		const byeTimeout = formData.get("byetimeout");
-		const byeMessage = formData.get("byemessage");
-
-		const data = JSON.stringify(
-			{
-				ByeChannel: byeChannel,
-				ByeTimeout: byeTimeout,
-				ByeMessage: byeMessage
-			},
-			null
-		);
-
-		return UpdateGuild(data, params.guild);
-	}
+	welcome: async ({ request, params }) => sendFormData(request, params),
+	bye: async ({ request, params }) => sendFormData(request, params)
 };
+
+async function sendFormData(request: Request, params: RouteParams) {
+	const formData = await request.formData();
+	
+	const endpoint = <string> formData.get("endpoint");
+	const channel = formData.get("channel");
+	const timeout = formData.get("timeout");
+	const message = formData.get("message");
+
+	const data = JSON.stringify(endpoint.endsWith("/bye")
+		? {
+			ByeChannel: channel,
+			ByeTimeout: timeout,
+			ByeMessage: message
+		}
+		: {
+			WelcomeChannel: channel,
+			WelcomeTimeout: timeout,
+			WelcomeMessage: message
+		},
+		null
+	);
+
+	return UpdateGuild(data, params.guild);
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, P, Toggle } from "flowbite-svelte";
-	import { FileCheckSolid } from "flowbite-svelte-icons";
+	import { FileCheckSolid, TrashBinSolid,  } from "flowbite-svelte-icons";
 
 	interface Props {
 		Anniversary: boolean;
@@ -20,6 +20,12 @@
 	let toggleState = $derived(
 		JSON.stringify(savedToggles) === JSON.stringify({ DadBot, Anniversary, StickyRoles })
 	);
+
+	function resetAll() {
+		DadBot = savedToggles.DadBot;
+		Anniversary = savedToggles.Anniversary;
+		StickyRoles = savedToggles.StickyRoles;
+	}
 </script>
 
 <div class="indent flex flex-col justify-between items-center">
@@ -48,12 +54,20 @@
 		</div>
 
 		<!-- Submit Button Section -->
-		<div class="flex justify-center mt-4">
+		<div class="flex justify-center space-x-1 mt-4">
 			<Button
 				type="submit"
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-				disabled={toggleState}><FileCheckSolid />Save</Button
+				disabled={toggleState}><FileCheckSolid class="shrink-0 h-6 w-6" />
+				Save</Button
+			>
+			<Button
+				type="button"
+				on:click={resetAll}
+				color="dark"
+				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+				disabled={toggleState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
 			>
 		</div>
 	</form>
