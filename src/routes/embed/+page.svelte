@@ -89,7 +89,7 @@
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
 		<Alert color="red" class="bg-gray-700!">
 			<span class="font-medium">Work in progress!</span>
-			This Embed builder is not finished. Some features are not present. Please report any bugs
+			This embed builder has not been fully tested. Some features are not present. Please report any bugs
 			at the website <A class="underline" href={`${SOURCE_WEBSITE}/issues/new`}>repository</A
 			>!
 		</Alert>
@@ -99,7 +99,7 @@
 			<!-- Main message content -->
 			<div class="text-left mb-5">
 				<div class="flex gap-2">
-					<Avatar></Avatar>
+					<Avatar/>
 					<P class="self-center">User</P>
 				</div>
 				<Textarea
@@ -238,8 +238,7 @@
 							<Avatar
 								size="lg"
 								rounded={false}
-							>
-							</Avatar>
+							/>
 							<!-- Hack to make the popover not disappear -->
 							{#if !embed.thumbnail?.url}
 								<Popover title="Thumbnail URL">

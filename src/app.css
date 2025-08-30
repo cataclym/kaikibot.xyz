@@ -37,6 +37,12 @@
 	--color-red-700: #B91C1C;
 	--color-red-800: #991B1B;
 	--color-red-900: #7F1D1D;
+
+	--focus-color: var(--color-primary-600);
+	--cp-bg-color: var(--color-gray-600);
+	--cp-border-color: var(--color-gray-100);
+	--cp-input-color: var(--color-gray-400);
+	--cp-button-hover-color: var(--color-gray-800);
 }
 
 @source "../node_modules/flowbite-svelte/dist";
@@ -82,6 +88,7 @@
 		padding: 1px !important;
 		overflow-y: auto; /* vertical scrollbar */
 		overflow-x: hidden; /* horizontal scrollbar */
+		--focus-color: var(--color-primary-600);
 	}
 
 	main {

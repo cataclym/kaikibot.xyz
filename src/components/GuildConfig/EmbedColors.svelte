@@ -28,7 +28,7 @@
 	}
 </script>
 
-<div class="indent flex flex-col justify-between items-center text-gray-100 text-left">
+<div class="indent flex flex-col justify-between items-center text-gray-100 text-left overflow-visible!">
 	<form
 		class="flex flex-col justify-between h-full p-4"
 		method="POST"
@@ -41,11 +41,11 @@
 		<div class="flex-grow pb-6">
 			<div class="mb-6">
 				<h4 class="text-gray-100 font-semibold">Ok-Color</h4>
-				<ColorPicker name="hexokcolor" bind:hex={hexOkColor} />
+				<ColorPicker isAlpha={false} name="hexokcolor" bind:hex={hexOkColor} />
 			</div>
 			<div class="mb-6">
 				<h4 class="text-gray-100 font-semibold">Error-color</h4>
-				<ColorPicker name="hexerrorcolor" bind:hex={hexErrorColor} />
+				<ColorPicker isAlpha={false} name="hexerrorcolor" bind:hex={hexErrorColor} />
 			</div>
 		</div>
 

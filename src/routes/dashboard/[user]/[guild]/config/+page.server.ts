@@ -40,8 +40,10 @@ export const actions = {
 	},
 	excludedrole: async ({ request, params }) => {
 		const formData = await request.formData();
-		const excludeRoleName = formData.get("excluderolename");
+		
+		let excludeRoleName = <string> formData.get("excluderolename")
 		const excludeRoleColor = formData.get("excluderolecolor");
+		excludeRoleName = SanitizeInput(excludeRoleName);
 
 		const data = JSON.stringify(
 			{

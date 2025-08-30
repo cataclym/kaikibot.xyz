@@ -23,7 +23,7 @@ export async function load({ params, parent, fetch }) {
 	}
 
 	const { guild, user } = <GETGuildBody>await guildResponse.json();
-	const APIGuild = responseData.guilds.find((g) => g.id === params.guild);
+	const APIGuild = responseData?.guilds.find((g) => g.id === params.guild);
 
 	if (!APIGuild) {
 		throw error(404, "Guild not found");

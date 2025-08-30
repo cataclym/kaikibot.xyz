@@ -6,7 +6,7 @@
 	import IntColorToHex from "../../methods/IntColorToHex.js";
 
 	interface Props {
-		ExcludeRole: undefined | null | { color: number; id: string; name: string, icon: string };
+		ExcludeRole: undefined | null | { color: number; id: string; name: string, icon: string | null };
 		Action: string;
 	}
 
@@ -45,7 +45,7 @@
 </script>
 
 {#if excludeRoleObject}
-	<div class="indent flex flex-col justify-between items-center">
+	<div class="indent flex flex-col justify-between items-center overflow-visible!">
 		<h3 class="text-center text-xl font-semibold mb-4">DadBot Excluded Role</h3>
 		<div class="flex flex-row justify-around w-full">
 			<h3>Role name</h3>
@@ -60,7 +60,7 @@
 			<div class="flex flex-col flex-grow gap-4">
 				<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
 					<Input name="excluderolename" type="text" bind:value={excludeRoleObject.name} />
-					<ColorPicker name="excluderolecolor" bind:hex={excludeRoleObject.color} />
+					<ColorPicker isAlpha={false} name="excluderolecolor" bind:hex={excludeRoleObject.color} />
 				</div>
 			</div>
 			<div class="flex justify-center mt-4">

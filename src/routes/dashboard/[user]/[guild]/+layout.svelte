@@ -6,7 +6,7 @@
 	const user = page.params.user;
 
 	let { data, children } = $props();
-	const { APIGuild, isAdmin } = data;
+	const { APIGuild, isAdmin, user: userData } = data;
 	const { icon } = APIGuild;
 	const baseURL = `/dashboard/${user}/${APIGuild.id}`;
 </script>
@@ -29,6 +29,9 @@
 		{#if isAdmin}
 			<NavLi href="{baseURL}/config">Configuration</NavLi>
 			<NavLi href="{baseURL}/welcome">Welcome & bye</NavLi>
+		{/if}
+		{#if userData.userRole}
+			<NavLi href="{baseURL}/userrole">User role</NavLi>
 		{/if}
 	</NavUl>
 </Navbar>

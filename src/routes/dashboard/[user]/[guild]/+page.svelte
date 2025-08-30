@@ -26,28 +26,8 @@
 	import type { Component } from "svelte";
 
 	let { data } = $props();
-	const { guild, user, APIGuild } = data;
+	const { guild, APIGuild } = data;
 	const { roles, emojis, statsCount } = guild;
-
-	let savedUserRole = $state(
-		user.userRole
-			? {
-					name: user.userRole?.name,
-					color: IntColorToHex(user.userRole.color),
-					icon: user.userRole?.icon
-				}
-			: null
-	);
-	let userRoleState = $derived(
-		user.userRole
-			? JSON.stringify(savedUserRole) ===
-					JSON.stringify({
-						name: user.userRole?.name,
-						color: IntColorToHex(user.userRole.color),
-						icon: user.userRole?.icon
-					})
-			: null
-	);
 
 	let icons = [
 		{ name: `${statsCount.members} Members`, icon: UsersGroupSolid },
@@ -78,8 +58,10 @@ Skeleton
 <main class="content-container">
 	<section class="section">
 		<Heading tag="h2">Server Information</Heading>
-		<P color="">Server ID</P>
-		<ClickToCopy text={APIGuild.id} placement="top-start">{APIGuild.id}</ClickToCopy>
+		<div>
+			<p color="">Server ID</p>
+			<ClickToCopy text={APIGuild.id}>{APIGuild.id}</ClickToCopy>
+		</div>
 	</section>
 
 	<section class="section">
@@ -93,7 +75,7 @@ Skeleton
 
 	<Heading tag="h3">Roles</Heading>
 	<section class="section">
-		<Table noborder={true}>
+		<Table noborder={false} hoverable>
 			<TableHead>
 				<TableHeadCell>Name</TableHeadCell>
 				<TableHeadCell>Color</TableHeadCell>
@@ -131,7 +113,7 @@ Skeleton
 
 	<Heading tag="h2">Emojis</Heading>
 	<section class="section">
-		<Table noborder={true}>
+		<Table noborder={false} hoverable={true}>
 			<TableHead>
 				<TableHeadCell>Name</TableHeadCell>
 				<TableHeadCell>Image</TableHeadCell>
@@ -162,30 +144,6 @@ Skeleton
 			</TableBody>
 		</Table>
 	</section>
-
-	{#if savedUserRole}
-		<section class="user-role-section">
-			<div class="userRole">
-				<Heading tag="h3">User-role</Heading>
-				<div class="role-info">
-					<h3>Role name</h3>
-					<h3>Role color</h3>
-					<h3>Role icon</h3>
-				</div>
-				<div class="role-inputs">
-					<Input type="text" bind:value={savedUserRole.name}></Input>
-					<ColorPicker bind:hex={savedUserRole.color} />
-					<Input type="text" bind:value={savedUserRole.icon}></Input>
-				</div>
-				{#if user.userRole}
-					<ClickToCopy>{user.userRole.id}</ClickToCopy>
-				{/if}
-				<Button color="primary" class="save-button" disabled={!!userRoleState}
-					><FileCheckSolid />Save</Button
-				>
-			</div>
-		</section>
-	{/if}
 </main>
 
 <style>
