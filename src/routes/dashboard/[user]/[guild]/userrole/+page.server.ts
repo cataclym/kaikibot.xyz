@@ -18,6 +18,8 @@ export const actions = {
 		const UserRoleColor = formData.get("rolecolor");
 		UserRoleName = SanitizeInput(UserRoleName);
 
+		if (UserRoleName.length > 100) throw fail(400);
+
 		const data = JSON.stringify(
 			{
 				UserRole,

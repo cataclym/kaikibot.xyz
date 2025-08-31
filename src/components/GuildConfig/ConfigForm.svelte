@@ -62,6 +62,7 @@
         />
 		<p class="text-gray-100 mt-2">Message</p>
 		<Textarea
+			maxlength={6000}
 			class="mb-4"
 			name="message"
 			bind:value={message}

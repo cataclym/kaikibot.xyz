@@ -44,6 +44,8 @@ export const actions = {
 		let excludeRoleName = <string> formData.get("excluderolename")
 		const excludeRoleColor = formData.get("excluderolecolor");
 		excludeRoleName = SanitizeInput(excludeRoleName);
+		
+		if (excludeRoleName.length > 100) throw fail(400);
 
 		const data = JSON.stringify(
 			{
