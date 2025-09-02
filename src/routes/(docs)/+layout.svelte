@@ -25,9 +25,9 @@
 		children?: import("svelte").Snippet;
 	}
 
-	let { data, children }: Props = $props();
+	let { data, children } = $props();
 
-	const docs = data.docs;
+	const docs = data.documentMetadata;
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -45,7 +45,7 @@
 {/if}
 
 <nav id="navigation" class="mt-2 mb-2 pb-2 w-11/12 m-auto">
-	<div class="grid grid-cols-3 gap-1 mr-auto w-fit">
+	<div class="grid grid-cols-6 gap-y-1 mr-auto w-fit">
 		<a
 			href="/README.md"
 			class="text-xl col-span-1 place-self-start border-b-(--accent2) border-b-2"
@@ -53,12 +53,13 @@
 		>
 			Main
 		</a>
-		<div class="col-end-4"></div>
-		{#each docs as doc}
+		<div class="col-end-7"></div>
+		{#each docs as { name, path }}
+		{@const staticPath = `/${path}`}
 			<a
-				href="/docs/{doc}"
+				href={staticPath}
 				class="border-b-(--accent2) border-b-2"
-				aria-current={page.url.pathname === `/docs/${doc}`}>{documentation[doc] || doc}</a
+				aria-current={page.url.pathname === staticPath}>{documentation[name as keyof Documentation] || name}</a
 			>
 		{/each}
 	</div>

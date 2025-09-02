@@ -5,6 +5,8 @@ import CreateHeaders from "./methods/CreateHeaders";
 import type OAuthGuildData from "./interfaces/OAuthGuildData";
 import type { POSTUserGuildsBody } from "kaikiwa-types";
 
+const discordAPICache = new Map<string, { data: [OAuthGuildData[], User]; expiry: number }>();
+
 export default class UserData {
 	private readonly userId: string;
 	private readonly accessToken: string;
@@ -14,35 +16,43 @@ export default class UserData {
 		this.accessToken = accessToken;
 	}
 
-	// Send a GET request to the User endpoint to receive data from db
+	// Send two GET requests to Discord User endpoint
+	// Then request db data from bot server using received guild IDs
 	async getData(): Promise<BotResData> {
-		const [guildsResponse, userResponse] = await Promise.all([
-			// Get user's guilds from discord API
-			fetch("https://discord.com/api/users/@me/guilds", {
-				method: "GET",
-				headers: {
-					authorization: `Bearer ${this.accessToken}`
-				}
-			}),
-			// Get user from discord API
-			fetch("https://discord.com/api/users/@me", {
-				method: "GET",
-				headers: {
-					authorization: `Bearer ${this.accessToken}`
-				}
-			})
-		]);
+		const now = Date.now();
+		const cached = discordAPICache.get(this.userId);
 
-		if (!(guildsResponse || userResponse).ok) {
-			console.error(guildsResponse, guildsResponse.url);
-			throw error(guildsResponse.status, guildsResponse.statusText);
+		let guilds: OAuthGuildData[], user: User;
+
+		if (!cached || (cached && cached.expiry <= now)) {
+
+			const [guildsResponse, userResponse] = await Promise.all([
+				fetch("https://discord.com/api/users/@me/guilds", {
+					headers: { authorization: `Bearer ${this.accessToken}` },
+				}),
+				fetch("https://discord.com/api/users/@me", {
+					headers: { authorization: `Bearer ${this.accessToken}` },
+				}),
+			]);
+
+			if (!(guildsResponse || userResponse).ok) {
+				console.error(guildsResponse, guildsResponse.url);
+				throw error(guildsResponse.status, guildsResponse.statusText);
+			}
+
+			// Get all the data from the responses - async
+			[guilds, user] = await Promise.all([
+				guildsResponse.json(),
+				userResponse.json()
+			]);
+
+			// cache result for 5 minutes
+			discordAPICache.set(this.userId, { data: [guilds, user], expiry: now + 5 * 60 * 1000 });
 		}
 
-		// Get all the data from the responses - async
-		const [guilds, user]: [OAuthGuildData[], User] = await Promise.all([
-			guildsResponse.json(),
-			userResponse.json()
-		]);
+		else {
+			[guilds, user] = cached.data;
+		}
 
 		const dbPOSTDataRes = await this.GETUserGuilds(guilds);
 
@@ -61,9 +71,9 @@ export default class UserData {
 		url.searchParams.append("ids", guilds.map((g) => g.id).join(","))
 
 		const customResponse = await fetch(url, {
-				method: "GET",
-				headers,
-			}).catch((err) => {
+			method: "GET",
+			headers,
+		}).catch((err) => {
 
 			if (err instanceof TypeError) {
 				throw error(500, "The server is down at the moment, come back at a later time.");
