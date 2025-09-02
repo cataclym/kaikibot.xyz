@@ -1,11 +1,12 @@
 import type { WaifuImJSON } from "../interfaces/IWaifuIm";
-import { CHANGELOG, INVITE, SOURCE } from "$env/static/private";
+import { CHANGELOG, INVITE } from "$env/static/private";
+import { PUBLIC_SOURCE } from "$env/static/public";
 
 export async function load({ cookies }) {
 	let cachedImages = cookies.get("Images_WaifuIm");
 
 	if (cachedImages) {
-		return { IMAGES: JSON.parse(cachedImages), INVITE, SOURCE, CHANGELOG };
+		return { IMAGES: JSON.parse(cachedImages), INVITE, PUBLIC_SOURCE, CHANGELOG };
 	}
 
 	const res = await fetch(`https://api.waifu.im/search?included_tags=maid&is_nsfw=false&limit=4`);
@@ -24,5 +25,5 @@ export async function load({ cookies }) {
 		maxAge: 60 * 60 * 24
 	});
 
-	return { IMAGES, INVITE, SOURCE, CHANGELOG };
+	return { IMAGES, INVITE, PUBLIC_SOURCE, CHANGELOG };
 }

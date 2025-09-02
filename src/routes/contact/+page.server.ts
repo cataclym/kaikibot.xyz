@@ -1,9 +1,10 @@
-import { EMAIL, SOURCE, SOURCE_WEBSITE } from "$env/static/private";
+import { EMAIL, SOURCE_WEBSITE } from "$env/static/private";
+import { PUBLIC_SOURCE } from "$env/static/public";
 
 export function load() {
 	return {
 		EMAIL,
-		SOURCE,
+		PUBLIC_SOURCE,
 		SOURCE_WEBSITE
 	};
 }

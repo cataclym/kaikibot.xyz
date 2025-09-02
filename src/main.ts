@@ -11,7 +11,7 @@ const app = mount(App, {
 			SOURCE_WEBSITE: "",
 			IMAGES: undefined,
 			INVITE: "",
-			SOURCE: "",
+			PUBLIC_SOURCE: "",
 			CHANGELOG: ""
 		}
 	}
