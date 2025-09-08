@@ -29,9 +29,9 @@ export const actions = {
 		const formData = await request.formData();
 		const data = JSON.stringify(
 			{
-				DadBot: formData.get("dadbot"),
-				Anniversary: formData.get("anniversary"),
-				StickyRoles: formData.get("stickyroles")
+				DadBot: !!formData.get("dadbot"),
+				Anniversary: !!formData.get("anniversary"),
+				StickyRoles: !!formData.get("stickyroles")
 			},
 			null
 		);
@@ -41,11 +41,10 @@ export const actions = {
 	excludedrole: async ({ request, params }) => {
 		const formData = await request.formData();
 		
-		let excludeRoleName = <string> formData.get("excluderolename")
+		let excludeRoleName = SanitizeInput(formData.get("excluderolename") as string);
 		const excludeRoleColor = formData.get("excluderolecolor");
-		excludeRoleName = SanitizeInput(excludeRoleName);
-		
-		if (excludeRoleName.length > 100) throw fail(400);
+
+		if (!excludeRoleName || excludeRoleName.length > 100) throw fail(400);
 
 		const data = JSON.stringify(
 			{
@@ -59,8 +58,8 @@ export const actions = {
 	},
 	embedcolors: async ({ request, params }) => {
 		const formData = await request.formData();
-		const hexOkColor = formData.get("hexokcolor");
-		const hexErrorColor = formData.get("hexerrorcolor");
+		const hexOkColor = SanitizeInput(String(formData.get("hexokcolor")));
+		const hexErrorColor = SanitizeInput(String(formData.get("hexerrorcolor")));
 
 		const data = JSON.stringify(
 			{

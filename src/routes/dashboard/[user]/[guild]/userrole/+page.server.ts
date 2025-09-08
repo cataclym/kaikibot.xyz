@@ -14,11 +14,10 @@ export const actions = {
 		const formData = await request.formData();
 		
 		const UserRole = formData.get("roleid");
-		let UserRoleName = <string> formData.get("rolename");
+		let UserRoleName = SanitizeInput(formData.get("rolename") as string);
 		const UserRoleColor = formData.get("rolecolor");
-		UserRoleName = SanitizeInput(UserRoleName);
 
-		if (UserRoleName.length > 100) throw fail(400);
+		if (!UserRoleName || UserRoleName.length > 100) throw fail(400);
 
 		const data = JSON.stringify(
 			{
