@@ -10,7 +10,7 @@
 	<meta property="og:url" content="https://kaikibot.xyz/" />
 	<meta property="og:title" content="KaikiBot - Discord Bot - Home" />
 	<meta property="og:description" />
-	<meta property="og:image" content="/kaikibot.png" />
+	<meta property="og:image" content="https://kaikibot.xyz/kaikibot.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
@@ -20,7 +20,7 @@
 		property="twitter:description"
 		content="Invite Kaiki to your server now - Fun and unique commands! Open source and selfhosting, and much more! "
 	/>
-	<meta property="twitter:image" content="/kaikibot.png" />
+	<meta property="twitter:image" content="https://kaikibot.xyz/kaikibot.png" />
 
 	<meta name="theme-color" content="#E85E28" />
 </svelte:head>

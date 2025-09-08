@@ -14,7 +14,7 @@
 
 	let { data, children } = $props();
 
-	const { DISCORD, INVITE, KOFI, SOURCE } = data;
+	const { DISCORD, INVITE, KOFI, PUBLIC_SOURCE } = data;
 
 	const session = page.data.session;
 	let user: User | undefined = $state();
@@ -57,7 +57,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize(page.params[-1] || page.url.pathname.split("/")[1] || "Home")}</title>
+	<title>KaikiBot - {Capitalize(page.params.user || page.url.pathname.split("/")[1] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -137,7 +137,7 @@
 			DASHBOARD
 		</button>
 	</a>
-	<a href={SOURCE} class="link_flex">
+	<a href={PUBLIC_SOURCE} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab full-width layout"
 		>

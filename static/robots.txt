@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /dashboard/*
+Disallow: /shields
+Disallow: /embed
+Disallow: /contact

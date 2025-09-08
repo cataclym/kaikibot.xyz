@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-    const { EMAIL, SOURCE, SOURCE_WEBSITE } = data;
+    const { EMAIL, PUBLIC_SOURCE, SOURCE_WEBSITE } = data;
     // GitHub issue string
     const issueStr = "/issues/new/choose/"
 </script>
