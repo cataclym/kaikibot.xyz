@@ -16,7 +16,7 @@
 </p>
 
 <p class="text-accent3 text-center">
-    <a class="underline decoration-orange-700 decoration-2" href={`${SOURCE}${issueStr}`}>KaikiBot</a>
+    <a class="underline decoration-orange-700 decoration-2" href={`${PUBLIC_SOURCE}${issueStr}`}>KaikiBot</a>
 </p>
 
 <p class="text-accent3 text-center">
