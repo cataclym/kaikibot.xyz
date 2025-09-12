@@ -1,6 +1,11 @@
 import { SvelteKitAuth, type SvelteKitAuthConfig } from "@auth/sveltekit";
+import { type JWT } from "@auth/core/jwt";
 import Discord from "@auth/sveltekit/providers/discord";
 import { error } from "@sveltejs/kit";
+
+function refreshTokenExists(token: JWT): token is JWT & { refresh_token: string } {
+	return "refresh_token" in token;
+}
 
 export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 	debug: process.env.NODE_ENV === "development",
@@ -20,9 +25,9 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 				return {
 					...token,
 					discordSnowflake: profile.id,
-					accessToken: account.access_token,
-					refreshToken: account.refresh_token,
-					expiry: account.expires_at
+					access_token: account.access_token,
+					refresh_token: account.refresh_token,
+					expires_at: account.expires_at
 				}
 			}
 
@@ -31,15 +36,20 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 			}
 
 			else {
-				if (!token.refresh_token) throw error(500, "Missing refresh_token")
+				if (!refreshTokenExists(token)) throw error(500, "Missing refresh_token")
 
 				try {
-					const res = await fetch("", {
+					const res = await fetch("https://discord.com/api/v10", {
 						method: "POST",
 						body: new URLSearchParams({
-
+							grant_type: 'refresh_token',
+							refresh_token: token.refresh_token,
 						}),
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						}
 					});
+
 					if (!res.ok) throw res;
 
 					const newToken = await res.json() as {
@@ -50,7 +60,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 
 					return {
 						...token,
-						accessToken: newToken.access_token,
+						access_token: newToken.access_token,
 						expires_at: Math.floor(Date.now() / 1000 + newToken.expires_in),
 						refresh_token: newToken.refresh_token
 							? newToken.refresh_token
@@ -63,19 +73,17 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 					return token;
 				}
 			}
-
-			return token;
 		},
 		async session({ session, token }) {
 			// Send properties to the client, like an access_token and user id from a provider.
 			if (!session.user) throw error(500, "Missing session data!");
 
 			return {
-				...{ 
+				...{
 					...session,
 					error: token.error
 				},
-				accessToken: token.accessToken,
+				accessToken: token.access_token,
 				user: {
 					...session.user,
 					id: token.discordSnowflake

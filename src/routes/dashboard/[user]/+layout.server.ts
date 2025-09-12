@@ -1,7 +1,7 @@
 import type { Session } from "@auth/sveltekit";
 import type { LayoutServerLoad } from "../../$types";
 import UserData from "../../../UserData";
-import { error } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 import { allowList } from "$lib";
 import { signIn } from "../../../auth";
 
@@ -14,7 +14,7 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 	const session = await locals.auth();
 
 	if (!session?.user?.id || !accessTokenExists(session)) {
-		await locals.signIn();
+		throw redirect(303, "/auth/signin");
 	}
 
 	else if (!allowList.has(BigInt(session.user.id || 0))) {
