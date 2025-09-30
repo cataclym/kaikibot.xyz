@@ -121,13 +121,14 @@
 				Description
 			</h2>
 		</div>
-		<div class="cmdUsage">
+		<div class="cmdUsage flex! justify-between items-baseline">
 			<h2
 				class="description"
 				style="font-size: 1.5rem !important; line-height: 2rem !important;"
 			>
 				Usage
 			</h2>
+			<h6 class="text-primary-700 w-fit font-medium">User Permissions</h6>
 		</div>
 	</div>
 
@@ -159,14 +160,21 @@
 							</div>
 							<div class="cmdUsage">
 								<p class="description">
-									+{cmd.id}
-									{Array.isArray(cmd.usage)
-										? cmd.usage.join(`\n+${cmd.id} `)
-										: cmd.usage || ""}
+									{#if Array.isArray(cmd.usage)}
+										{#each cmd.usage as usage}
+											<br />+{cmd.id} {usage}
+										{/each}
+									{:else if cmd.usage}
+										+{cmd.id} {cmd.usage}
+									{:else}
+										+{cmd.id}
+									{/if}
 								</p>
 								{#if cmd.userPermissions.length && cmd.userPermissions[0]}
 									<p class="subText categoryText permText">
-										{cmd.userPermissions.join("\n")}
+										{#each cmd.userPermissions as perm}
+											{perm}<br />
+										{/each}
 									</p>
 								{/if}
 								{#if cmd.channel}
@@ -231,17 +239,14 @@
 	}
 
 	.cmd {
-		padding-top: 1rem;
 		width: 33.3333%;
 		background-color: var(--accent2);
 		vertical-align: middle;
 		display: inline;
 		color: var(--accent3);
-		padding-left: 2rem;
 	}
 
 	.cmdDesc {
-		padding-top: 1rem;
 		width: 33.3333%;
 		background-color: var(--background);
 		vertical-align: middle;
@@ -250,7 +255,6 @@
 	}
 
 	.cmdUsage {
-		padding-top: 1rem;
 		width: 33.3333%;
 		background-color: var(--accent2);
 		align-self: stretch;
@@ -261,6 +265,7 @@
 	.cmd,
 	.cmdDesc,
 	.cmdUsage {
+		padding: 1rem;
 		border: 1px solid transparent;
 		transition: border-color 0.01s step-end 0.05s; /* Transition to fade after 0.3s */
 	}
@@ -273,10 +278,9 @@
 	}
 
 	.description {
-		max-width: 90%;
+		max-width: fit-content;
 		white-space: normal;
 		overflow: hidden;
-		margin: auto auto 1rem;
 		font-size: 0.95rem !important;
 	}
 
@@ -292,7 +296,6 @@
 	}
 
 	.categoryText {
-		padding: 0 1.5rem;
 		text-align: right;
 	}
 

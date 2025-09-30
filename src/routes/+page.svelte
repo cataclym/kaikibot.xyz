@@ -4,7 +4,7 @@
 	import { Heading } from "flowbite-svelte";
 
 	let { data } = $props();
-	const { INVITE, SOURCE, CHANGELOG } = data;
+	const { INVITE, PUBLIC_SOURCE, CHANGELOG } = data;
 	const images: { url: string; alt: string }[] = data.IMAGES;
 </script>
 
@@ -97,7 +97,7 @@
 
 		<div class="grid text-accent1">
 			<Heading tag="h2" class="text-accent3 text-left">Selfhosting</Heading>
-			<p class="flex-col text-left"><a href={SOURCE}>Source code</a></p>
+			<p class="flex-col text-left"><a href={PUBLIC_SOURCE}>Source code</a></p>
 			<p class="flex-col text-left"><a href="/README.md">Docs and guides</a></p>
 		</div>
 
