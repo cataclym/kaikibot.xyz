@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from "flowbite-svelte";
+	import NavLiExtended from "../../../../components/GuildConfig/NavLiExtended.svelte";
 	let activeUrl = $derived(page.url.pathname);
 
 	const user = page.params.user;
@@ -14,8 +15,7 @@
 <Navbar class="bg-gray-600!">
 	<NavBrand href={baseURL}>
 		<img
-			src={`https://cdn.discordapp.com/icons/${APIGuild.id}/${icon}.${icon?.startsWith("a") ? "gif" : "webp"}` ||
-				""}
+			src={`https://cdn.discordapp.com/icons/${APIGuild.id}/${icon}.${icon?.startsWith("a") ? "gif" : "webp"}`}
 			class="me-3 h-6 sm:h-9"
 			alt="Guild Logo"
 		/>
@@ -25,14 +25,27 @@
 	</NavBrand>
 	<NavHamburger hidden={false} />
 	<NavUl hidden={false} {activeUrl}>
-		<NavLi style="visibility:visible !important" href={baseURL}>Information</NavLi>
-		{#if isAdmin}
-			<NavLi href="{baseURL}/config">Configuration</NavLi>
-			<NavLi href="{baseURL}/welcome">Welcome & bye</NavLi>
-		{/if}
-		{#if userData.userRole}
-			<NavLi href="{baseURL}/userrole">User role</NavLi>
-		{/if}
+		<NavLiExtended href={baseURL}>Information</NavLiExtended>
+		<!-- Bool check for if user is admin -->
+		<NavLiExtended
+			href={`${baseURL}/config`}
+			message="You do not have permisssion to access this configuration."
+			disabled={!isAdmin}
+			>Configuration
+		</NavLiExtended>
+		<NavLiExtended
+			href={`${baseURL}/welcome`}
+			message="You do not have permisssion to access this configuration."
+			disabled={!isAdmin}
+			>Welcome & bye
+		</NavLiExtended>
+		<!-- Bool check for available userRole -->
+		<NavLiExtended
+			href={`${baseURL}/userrole`}
+			message="You do not have a user role to configure."
+			disabled={!userData.userRole}
+			>User role
+		</NavLiExtended>
 	</NavUl>
 </Navbar>
 

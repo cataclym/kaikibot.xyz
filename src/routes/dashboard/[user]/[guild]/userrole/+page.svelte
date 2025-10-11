@@ -13,7 +13,7 @@
 	if (!isAdmin) error(401, "Not authorized");
 
 	let { userRole } = data.user;
-	if (!userRole) throw error(404, "UserRole not found");
+	if (!userRole) error(404, "UserRole not found");
 
 	let userRoleObject = $state({
 		name: userRole.name,
