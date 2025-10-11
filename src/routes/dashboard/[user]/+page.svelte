@@ -20,7 +20,7 @@
 	const availableCachedGuilds: OAuthGuildData[] = [];
 	const unavailableCachedGuilds: OAuthGuildData[] = [];
 
-	for (const guild of responseData!.guilds) {
+	for (const guild of responseData?.guilds || []) {
 		if (mappedIdSet.has(guild.id)) {
 			availableCachedGuilds.push(guild);
 		} else {

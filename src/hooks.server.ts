@@ -9,7 +9,7 @@ const authorizationHandle: Handle = async ({ event, resolve }) => {
 		const userId = session?.user?.id;
 		
 		if (!userId) {
-			throw redirect(302, '/');
+			throw redirect(303, '/auth');
 		}
 
 		// If a user is trying to access someone else's dashboard, throw 401 Unauthorized

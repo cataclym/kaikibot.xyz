@@ -57,7 +57,7 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize(page.params.user || page.url.pathname.split("/")[1] || "Home")}</title>
+	<title>KaikiBot - {Capitalize(session?.user?.name || page.url.pathname.split("/")[1] || "Home")}</title>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -73,7 +73,7 @@
 {#if page.url.pathname === "/"}
 <div class="relative" transition:slide={{ duration: 300 }}>
 	<div class="absolute left-1/5 top-1">
-		<Avatar src="/favicon.png" size="xl" alt="Kaiki"/>
+		<Avatar class="invisible xl:visible" src="/favicon.png" size="xl" alt="Kaiki"/>
 	</div>
 
 	<div class="big_title">

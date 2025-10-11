@@ -104,12 +104,14 @@
 		{/if}
 	</div>
 	<br />
+	{#if availableCachedGuilds.length}	
 	<h2 class="text-accent3 text-lg">Available guilds</h2>
 	<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 		{#each availableCachedGuilds as guild}
 			<GuildCard {guild} {user} />
 		{/each}
 	</div>
+	{/if}
 	<Heading tag="h3">Todo list</Heading>
 
 	<div class="mb-4">
