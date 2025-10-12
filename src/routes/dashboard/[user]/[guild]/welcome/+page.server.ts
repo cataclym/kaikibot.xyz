@@ -10,11 +10,11 @@ export async function load({ parent }) {
 
 // Form actions receives frontend data, sends it to bot
 export const actions = {
-	welcome: async ({ request, params }) => sendFormData(request, params),
-	bye: async ({ request, params }) => sendFormData(request, params)
+	welcome: async ({ request, params, route }) => sendFormData(request, params, route),
+	bye: async ({ request, params, route }) => sendFormData(request, params, route)
 };
 
-async function sendFormData(request: Request, params: RouteParams) {
+async function sendFormData(request: Request, params: RouteParams, route: { id: string}) {
 	const formData = await request.formData();
 	
 	const endpoint = <string> formData.get("endpoint");
@@ -39,5 +39,5 @@ async function sendFormData(request: Request, params: RouteParams) {
 		null
 	);
 
-	return UpdateGuild(data, params.guild);
+	return UpdateGuild(data, params, route);
 }
