@@ -10,7 +10,7 @@ export async function load({ parent }) {
 
 // Form actions receives frontend data, sends it to bot
 export const actions = {
-	prefix: async ({ request, params }) => {
+	prefix: async ({ request, params, route }) => {
 		const formData = await request.formData();
 		const prefix = <string> formData.get("prefix" || "");
 
@@ -23,9 +23,9 @@ export const actions = {
 			null
 		);
 
-		return UpdateGuild(data, params.guild);
+		return UpdateGuild(data, params, route);
 	},
-	toggles: async ({ request, params }) => {
+	toggles: async ({ request, params, route }) => {
 		const formData = await request.formData();
 		const data = JSON.stringify(
 			{
@@ -36,9 +36,9 @@ export const actions = {
 			null
 		);
 
-		return UpdateGuild(data, params.guild);
+		return UpdateGuild(data, params, route);
 	},
-	excludedrole: async ({ request, params }) => {
+	excludedrole: async ({ request, params, route }) => {
 		const formData = await request.formData();
 		
 		let excludeRoleName = SanitizeInput(formData.get("excluderolename") as string);
@@ -54,9 +54,9 @@ export const actions = {
 			null
 		);
 
-		return UpdateGuild(data, params.guild);
+		return UpdateGuild(data, params, route);
 	},
-	embedcolors: async ({ request, params }) => {
+	embedcolors: async ({ request, params, route }) => {
 		const formData = await request.formData();
 		const hexOkColor = SanitizeInput(String(formData.get("hexokcolor")));
 		const hexErrorColor = SanitizeInput(String(formData.get("hexerrorcolor")));
@@ -69,6 +69,6 @@ export const actions = {
 			null
 		);
 
-		return UpdateGuild(data, params.guild);
+		return UpdateGuild(data, params, route);
 	}
 };

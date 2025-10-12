@@ -1,12 +1,9 @@
 <script lang="ts">
-	import ColorPicker from "svelte-awesome-color-picker";
 	import {
 		Button,
 		Heading,
 		Img,
-		Input,
 		Listgroup,
-		P,
 		Table,
 		TableBody,
 		TableBodyCell,
@@ -15,7 +12,6 @@
 		TableHeadCell
 	} from "flowbite-svelte";
 	import {
-		FileCheckSolid,
 		MessagesSolid,
 		MicrophoneSolid,
 		UserCircleSolid,
@@ -23,8 +19,7 @@
 	} from "flowbite-svelte-icons";
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
-	import type { Component } from "svelte";
-
+	
 	let { data } = $props();
 	const { guild, APIGuild } = data;
 	const { roles, emojis, statsCount } = guild;
@@ -39,21 +34,10 @@
 
 <!--
 TODO
-
-~~Make admin fields only show up if user is admin.~~
-~~Compare States for save button~~
-~~Add Userrole configuration~~
-~~Save button for each segment~~
-Reset button
 Update servername
-
-Create store for user/guilds
-https://kit.svelte.dev/docs/state-management
-
-Use tabs
-~~Use Navbar
-Skeleton
-
+Svelte UI 
+	Use tabs
+	Skeleton
 -->
 <main class="content-container">
 	<section class="section">

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from "flowbite-svelte";
+	import { Navbar, NavBrand, NavUl, NavHamburger } from "flowbite-svelte";
 	import NavLiExtended from "../../../../components/GuildConfig/NavLiExtended.svelte";
 	let activeUrl = $derived(page.url.pathname);
 

@@ -10,7 +10,7 @@ export async function load({ parent }) {
 
 // Form actions receives frontend data, sends it to bot
 export const actions = {
-	userrole: async ({ request, params }) => {
+	userrole: async ({ request, params, route }) => {
 		const formData = await request.formData();
 		
 		const UserRole = formData.get("roleid");
@@ -28,6 +28,6 @@ export const actions = {
 			null
 		);
 
-		return UpdateGuild(data, params.guild);
+		return UpdateGuild(data, params, route);
 	}
 };

@@ -18,7 +18,8 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 	}
 
 	else if (!allowList.has(BigInt(session.user.id || 0))) {
-		throw error(401, { "message": "Unauthenticated. Only testers are able to access the dashboard at this moment." })
+		console.log(`User logged into dashboard: ${session.user.name} [${session.user.id}]`);
+		// throw error(401, { "message": "Unauthenticated. Only testers are able to access the dashboard at this moment." })
 	}
 
 	else {

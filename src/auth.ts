@@ -17,8 +17,8 @@ export const { handle, signIn, signOut } = SvelteKitAuth(<SvelteKitAuthConfig>{
 	],
 	callbacks: {
 		async jwt({ token, profile, account }) {
-			console.log(token);
-			console.log(account);
+			// console.log(token);
+			// console.log(account);
 			// This callback is called whenever a JWT is created (i.e. at sign in)
 			// or updated (i.e whenever a session is accessed in the client)
 			if (profile && account) {
