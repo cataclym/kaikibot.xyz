@@ -1,9 +1,8 @@
 import type { Session } from "@auth/sveltekit";
 import type { LayoutServerLoad } from "../../$types";
 import UserData from "../../../UserData";
-import { error, redirect } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import { allowList } from "$lib";
-import { signIn } from "../../../auth";
 
 function accessTokenExists(session: Session): session is Session & { accessToken: string } {
 	return "accessToken" in session;

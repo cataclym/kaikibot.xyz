@@ -117,6 +117,9 @@ export const updateEmbedProperty = <T extends AdditionalIndex>(
 			const additionalIndexObj = embed[property] as T;
 			if (additionalIndexObj && typeof additionalIndexObj === "object") {
 				additionalIndexObj[propIndex] = value;
+			} else if (!additionalIndexObj) {
+				// Create the object if it doesn't exist
+				embed[property] = { [propIndex]: value } as any;
 			}
 		} else {
 			embed[property] = value;

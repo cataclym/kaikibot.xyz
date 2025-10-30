@@ -68,8 +68,8 @@
 					if (obj.hasOwnProperty(key)) {
 						const value = obj[key];
 
-						// Skip fields
-						if (key === "fields") continue;
+						// Skip fields and icon_url to preserve them even when empty
+						if (key === "fields" || key === "icon_url") continue;
 
 						// If the value is an empty string, remove it
 						if (!value) {
@@ -180,6 +180,13 @@
 											class="border-amber-600 rounded"
 											placeholder="Icon URL"
 											bind:value={embed.author.icon_url}
+											on:input={() =>
+												updateEmbedProperty<AuthorObject>(
+													embedIndex,
+													"author",
+													embed.author?.icon_url,
+													"icon_url"
+												)}
 										/>
 									</Popover>
 								{:else}
@@ -189,6 +196,13 @@
 											class="border-amber-600 rounded"
 											placeholder="Icon URL"
 											bind:value={embed.author.icon_url}
+											on:input={() =>
+												updateEmbedProperty<AuthorObject>(
+													embedIndex,
+													"author",
+													embed.author?.icon_url,
+													"icon_url"
+												)}
 										/>
 									</Popover>
 								{/if}
@@ -240,24 +254,45 @@
 
 						<!-- Embed Thumbnail -->
 						<div class="col-span-1 col-start-3 place-self-center h-0 w-15">
-							<Avatar size="lg" rounded={false} />
-							<!-- Hack to make the popover not disappear -->
-							{#if embed.thumbnail?.url !== undefined}
+							{#if !embed.thumbnail}
+								<Avatar size="lg" rounded={false} />
 								<Popover title="Thumbnail URL">
 									<Input
 										type="url"
 										class="border-amber-600 rounded"
-										placeholder="Icon URL"
-										bind:value={embed.thumbnail!.url}
+										placeholder="Thumbnail URL"
+										on:input={(e) => {
+											embed.thumbnail = { url: e.currentTarget.value };
+											updateEmbedProperty<URLObject>(
+												embedIndex,
+												"thumbnail",
+												e.currentTarget.value,
+												"url"
+											);
+										}}
 									/>
 								</Popover>
 							{:else}
+								<Avatar
+									size="lg"
+									rounded={false}
+									src={embed.thumbnail.url && isValidImageUrl(embed.thumbnail.url)
+										? embed.thumbnail.url
+										: ""}
+								/>
 								<Popover title="Thumbnail URL">
 									<Input
 										type="url"
 										class="border-amber-600 rounded"
-										placeholder="Icon URL"
-										bind:value={embed.thumbnail!.url}
+										placeholder="Thumbnail URL"
+										bind:value={embed.thumbnail.url}
+										on:input={() =>
+											updateEmbedProperty<URLObject>(
+												embedIndex,
+												"thumbnail",
+												embed.thumbnail?.url,
+												"url"
+											)}
 									/>
 								</Popover>
 							{/if}
@@ -439,17 +474,19 @@
 									}}
 								/>
 								<Helper
-									>{2048 - embed.footer.text.length} Characters remaining</Helper
+									>{2048 - (embed.footer.text?.length || 0)} Characters remaining</Helper
 								>
 								{#if typeof embed.footer?.icon_url !== "string"}
 									<Button
 										size="xs"
 										class="col-span-2 col-start-3"
 										on:click={() =>
-											(embed.footer = {
-												text: embed.footer?.text || "",
-												icon_url: ""
-											})}
+											updateEmbedProperty<FooterObject>(
+												embedIndex,
+												"footer",
+												"",
+												"icon_url"
+											)}
 									>
 										<CirclePlusOutline class="w-5 h-5 me-2" />
 										Add footer icon URL
@@ -465,21 +502,35 @@
 									></Avatar>
 									<!-- Hack to make the popover not disappear -->
 									{#if !embed.footer.icon_url}
-										<Popover title="Icon URL">
+										<Popover title="Footer Icon URL">
 											<Input
 												type="url"
 												class="border-amber-600 rounded"
-												placeholder="Icon URL"
+												placeholder="Footer Icon URL"
 												bind:value={embed.footer.icon_url}
+												on:input={() =>
+													updateEmbedProperty<FooterObject>(
+														embedIndex,
+														"footer",
+														embed.footer?.icon_url,
+														"icon_url"
+													)}
 											/>
 										</Popover>
 									{:else}
-										<Popover title="Icon URL">
+										<Popover title="Footer Icon URL">
 											<Input
 												type="url"
 												class="border-amber-600 rounded"
-												placeholder="Icon URL"
+												placeholder="Footer Icon URL"
 												bind:value={embed.footer.icon_url}
+												on:input={() =>
+													updateEmbedProperty<FooterObject>(
+														embedIndex,
+														"footer",
+														embed.footer?.icon_url,
+														"icon_url"
+													)}
 											/>
 										</Popover>
 									{/if}
@@ -528,54 +579,5 @@
 </main>
 
 <style>
-	.split-container {
-		display: flex;
-		height: 100vh;
-	}
-
-	.left-side,
-	.right-side {
-		flex: 1;
-		padding: 1rem;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-
-	.left-side {
-		background-color: var(--background);
-		border: 1px solid var(--accent4);
-		border-right: 0.05rem solid var(--accent4);
-	}
-
-	.right-side {
-		padding-top: 0.5rem;
-		border: 1px solid var(--accent4);
-		border-left: 0.05rem solid var(--accent4);
-		background-color: var(--accent2);
-	}
-
-	/* Stack on mobile devices */
-	@media (max-width: 1024px) {
-		.split-container {
-			flex-direction: column; /* Stack vertically on mobile */
-		}
-
-		.left-side,
-		.right-side {
-			border-right: none; /* Remove the right border for mobile */
-			border-left: none; /* Remove the left border for mobile */
-		}
-
-		.right-side {
-			margin-top: 1rem; /* Add space between the stacked sides */
-		}
-	}
-
-	.dark {
-		--cp-bg-color: var(--accent2);
-		--cp-border-color: var(--accent4);
-		--cp-text-color: var(--accent3);
-		--cp-input-color: var(--background);
-		--cp-button-hover-color: color-mix(in srgb, var(--accent2) 90%, #000000 30%);
-	}
+	@import "./embed.css";
 </style>
