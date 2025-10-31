@@ -1,0 +1,50 @@
+	.split-container {
+		display: flex;
+		height: 100vh;
+	}
+
+	.left-side,
+	.right-side {
+		flex: 1;
+		padding: 1rem;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.left-side {
+		background-color: var(--background);
+		border: 1px solid var(--accent4);
+		border-right: 0.05rem solid var(--accent4);
+	}
+
+	.right-side {
+		padding-top: 0.5rem;
+		border: 1px solid var(--accent4);
+		border-left: 0.05rem solid var(--accent4);
+		background-color: var(--accent2);
+	}
+
+	/* Stack on mobile devices */
+	@media (max-width: 1024px) {
+		.split-container {
+			flex-direction: column; /* Stack vertically on mobile */
+		}
+
+		.left-side,
+		.right-side {
+			border-right: none; /* Remove the right border for mobile */
+			border-left: none; /* Remove the left border for mobile */
+		}
+
+		.right-side {
+			margin-top: 1rem; /* Add space between the stacked sides */
+		}
+	}
+
+	.dark {
+		--cp-bg-color: var(--accent2);
+		--cp-border-color: var(--accent4);
+		--cp-text-color: var(--accent3);
+		--cp-input-color: var(--background);
+		--cp-button-hover-color: color-mix(in srgb, var(--accent2) 90%, #000000 30%);
+	}
