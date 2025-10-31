@@ -17,7 +17,6 @@
 		Alert,
 		Avatar,
 		Button,
-		Footer,
 		Heading,
 		Helper,
 		Img,
@@ -35,6 +34,7 @@
 		FileCopySolid
 	} from "flowbite-svelte-icons";
 	import ColorPicker from "svelte-awesome-color-picker";
+	import AvatarPopover from "../../components/Embed/AvatarPopover.svelte";
 
 	export let data;
 	const { SOURCE_WEBSITE } = data;
@@ -91,8 +91,7 @@
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
 		<Alert color="red" class="bg-gray-700!">
 			<span class="font-medium">Work in progress!</span>
-			This embed builder has not been fully tested. Some features are not present. Please report
-			any bugs at the website <A class="underline" href={`${SOURCE_WEBSITE}/issues/new`}
+			Please report any bugs at the website <A class="underline" href={`${SOURCE_WEBSITE}/issues/new`}
 				>repository</A
 			>!
 		</Alert>
@@ -110,7 +109,7 @@
 					id="content"
 					bind:value={nonEmbedText}
 					placeholder="Main message body"
-					on:input={() => updateContent(nonEmbedText)}
+					oninput={() => updateContent(nonEmbedText)}
 				></Textarea>
 			</div>
 
@@ -122,7 +121,7 @@
 							class="cursor-pointer"
 							size="xs"
 							color="red"
-							on:click={() => removeEmbed(embedIndex)}
+							onclick={() => removeEmbed(embedIndex)}
 						>
 							<CloseCircleSolid />
 						</Button>
@@ -158,7 +157,7 @@
 								<Button
 									size="xs"
 									class="col-span-2 col-start-3"
-									on:click={() => (embed.author = { name: "" })}
+									onclick={() => (embed.author = { name: "" })}
 								>
 									<CirclePlusOutline class="w-5 h-5 me-2" />
 									Add author
@@ -172,39 +171,23 @@
 									size="md"
 									class="col-span-1 justify-self-center self-center"
 								></Avatar>
-								<!-- Hack to make the popover not disappear -->
+								<!-- Make the popover not disappear between src change -->
 								{#if !embed.author.icon_url}
-									<Popover title="Icon URL">
-										<Input
-											type="url"
-											class="border-amber-600 rounded"
-											placeholder="Icon URL"
-											bind:value={embed.author.icon_url}
-											on:input={() =>
-												updateEmbedProperty<AuthorObject>(
-													embedIndex,
-													"author",
-													embed.author?.icon_url,
-													"icon_url"
-												)}
-										/>
-									</Popover>
+									<AvatarPopover
+										{embedIndex}
+										objIndex="author"
+										subObjIndex="icon_url"
+										title="Author icon URL"
+										bind:value={embed.author.icon_url}
+									/>
 								{:else}
-									<Popover title="Icon URL">
-										<Input
-											type="url"
-											class="border-amber-600 rounded"
-											placeholder="Icon URL"
-											bind:value={embed.author.icon_url}
-											on:input={() =>
-												updateEmbedProperty<AuthorObject>(
-													embedIndex,
-													"author",
-													embed.author?.icon_url,
-													"icon_url"
-												)}
-										/>
-									</Popover>
+									<AvatarPopover
+										{embedIndex}
+										objIndex="author"
+										subObjIndex="icon_url"
+										title="Author icon URL"
+										bind:value={embed.author.icon_url}
+									/>
 								{/if}
 								<div class="col-span-3">
 									<Input
@@ -212,7 +195,7 @@
 										id={`author-${embedIndex}`}
 										bind:value={embed.author.name}
 										placeholder="Author name"
-										on:input={() =>
+										oninput={() =>
 											updateEmbedProperty<AuthorObject>(
 												embedIndex,
 												"author",
@@ -231,7 +214,7 @@
 										id={`author-${embedIndex}`}
 										bind:value={embed.author.url}
 										placeholder="Author URL"
-										on:input={() =>
+										oninput={() =>
 											updateEmbedProperty<AuthorObject>(
 												embedIndex,
 												"author",
@@ -243,39 +226,40 @@
 								</div>
 
 								<Button
-									on:click={() => (embed = { ...embed, author: undefined })}
+									onclick={() => (embed = { ...embed, author: undefined })}
 									size="xs"
 									color="red"
-									class="col-span-4 col-start-2"
+									class="col-span-2 col-start-3"
 									><CloseCircleSolid class="w-5 h-5 me-2" /> Remove author
 								</Button>
 							{/if}
 						</div>
 
 						<!-- Embed Thumbnail -->
-						<div class="col-span-1 col-start-3 place-self-center h-0 w-15">
+						<div class="col-span-1 col-start-3 place-self-center h-0 w-fit">
 							{#if !embed.thumbnail}
-								<Avatar size="lg" rounded={false} />
+								<Avatar size="lg" />
 								<Popover title="Thumbnail URL">
 									<Input
 										type="url"
 										class="border-amber-600 rounded"
-										placeholder="Thumbnail URL"
-										on:input={(e) => {
-											embed.thumbnail = { url: e.currentTarget.value };
+										placeholder="Thumbnail URL"r
+										oninput={(e: Event) => {
+											const target = e.currentTarget as HTMLInputElement;
+											embed.thumbnail = { url: target.value };
 											updateEmbedProperty<URLObject>(
 												embedIndex,
 												"thumbnail",
-												e.currentTarget.value,
+												target.value,
 												"url"
 											);
 										}}
 									/>
 								</Popover>
 							{:else}
-								<Avatar
-									size="lg"
-									rounded={false}
+								<img
+									alt="Thumbnail"
+									class="size-min"
 									src={embed.thumbnail.url && isValidImageUrl(embed.thumbnail.url)
 										? embed.thumbnail.url
 										: ""}
@@ -286,7 +270,7 @@
 										class="border-amber-600 rounded"
 										placeholder="Thumbnail URL"
 										bind:value={embed.thumbnail.url}
-										on:input={() =>
+										oninput={() =>
 											updateEmbedProperty<URLObject>(
 												embedIndex,
 												"thumbnail",
@@ -305,31 +289,32 @@
 								id={`title-${embedIndex}`}
 								bind:value={embed.title}
 								placeholder="Embed Title"
-								on:input={() =>
+								oninput={() =>
 									updateEmbedProperty(embedIndex, "title", embed.title)}
 							/>
 							<Helper>{256 - (embed.title?.length || 0)} Characters remaining</Helper>
 						</div>
 
 						<!-- Embed URL -->
-						<div class="mb-2 col-span-2">
+						<div class="mb-2 col-span-2 col-start-1">
 							<Input
 								type="url"
 								id={`url-${embedIndex}`}
 								bind:value={embed.url}
 								placeholder="Embed URL"
-								on:input={() => updateEmbedProperty(embedIndex, "url", embed.title)}
+								oninput={() => updateEmbedProperty(embedIndex, "url", embed.title)}
 							/>
 						</div>
 
 						<!-- Embed Description -->
-						<div class="mb-2 col-span-2">
+						<div class="mb-2 col-span-2 col-start-1">
 							<Textarea
+								class="w-full"
 								maxlength={4096}
 								id={`description-${embedIndex}`}
 								bind:value={embed.description}
 								placeholder="Embed Description"
-								on:input={() =>
+								oninput={() =>
 									updateEmbedProperty(
 										embedIndex,
 										"description",
@@ -351,7 +336,7 @@
 												maxlength={256}
 												bind:value={field.name}
 												placeholder="Field Name"
-												on:input={() =>
+												oninput={() =>
 													updateField(
 														embedIndex,
 														fieldIndex,
@@ -369,7 +354,7 @@
 											maxlength={1024}
 											bind:value={field.value}
 											placeholder="Field Value"
-											on:input={() =>
+											oninput={() =>
 												updateField(
 													embedIndex,
 													fieldIndex,
@@ -390,7 +375,7 @@
 											color="red"
 											class="mb-4"
 											size="xs"
-											on:click={() => removeField(embedIndex, fieldIndex)}
+											onclick={() => removeField(embedIndex, fieldIndex)}
 										>
 											<CloseCircleSolid class="w-5 h-5 me-2" /> Remove Field
 										</Button>
@@ -400,7 +385,7 @@
 							{#if !embed.fields || embed.fields?.length < 25}
 								<Button
 									class="col-start-1 w-38"
-									on:click={() => addField(embedIndex)}
+									onclick={() => addField(embedIndex)}
 									><CirclePlusOutline class="w-5 h-5 me-2" /> Add Field</Button
 								>
 							{/if}
@@ -410,7 +395,7 @@
 						<div class="mb-2 col-span-2 col-start-1 flex justify-between items-center">
 							<div class="max-w-fit m-auto">
 								{#if !embed.image}
-									<Button on:click={() => (embed.image = { url: "" })}>
+									<Button onclick={() => (embed.image = { url: "" })}>
 										<CirclePlusOutline class="w-5 h-5 me-2" />
 										Add Image
 									</Button>
@@ -420,7 +405,7 @@
 										type="url"
 										bind:value={embed.image.url}
 										placeholder="Image URL"
-										on:input={() =>
+										oninput={() =>
 											updateEmbedProperty<URLObject>(
 												embedIndex,
 												"image",
@@ -430,13 +415,13 @@
 									/>
 									{#if embed.image.url && isValidImageUrl(embed.image.url)}
 										<Img
-											size="max-w-md"
+											size="md"
 											class="rounded-lg m-auto"
 											src={embed.image.url}
 										/>
 									{/if}
 									<Button
-										on:click={() => (embed = { ...embed, image: undefined })}
+										onclick={() => (embed = { ...embed, image: undefined })}
 										size="sm"
 										color="red"
 										class="mt-2"
@@ -452,7 +437,7 @@
 								<Button
 									size="xs"
 									class="col-span-2 col-start-3"
-									on:click={() =>
+									onclick={() =>
 										(embed.footer = { text: "", icon_url: undefined })}
 								>
 									<CirclePlusOutline class="w-5 h-5 me-2" />
@@ -464,7 +449,7 @@
 									id={`footer-${embedIndex}`}
 									bind:value={embed.footer.text}
 									placeholder="Footer Text"
-									on:input={() => {
+									oninput={() => {
 										return updateEmbedProperty<FooterObject>(
 											embedIndex,
 											"footer",
@@ -476,72 +461,67 @@
 								<Helper
 									>{2048 - (embed.footer.text?.length || 0)} Characters remaining</Helper
 								>
-								{#if typeof embed.footer?.icon_url !== "string"}
-									<Button
-										size="xs"
-										class="col-span-2 col-start-3"
-										on:click={() =>
-											updateEmbedProperty<FooterObject>(
-												embedIndex,
-												"footer",
-												"",
-												"icon_url"
-											)}
-									>
-										<CirclePlusOutline class="w-5 h-5 me-2" />
-										Add footer icon URL
-									</Button>
-								{:else}
-									<Avatar
-										src={embed.footer.icon_url &&
-										isValidImageUrl(embed.footer.icon_url)
-											? embed.footer.icon_url
-											: ""}
-										size="md"
-										class="col-span-1 justify-self-center self-center"
-									></Avatar>
-									<!-- Hack to make the popover not disappear -->
-									{#if !embed.footer.icon_url}
-										<Popover title="Footer Icon URL">
-											<Input
-												type="url"
-												class="border-amber-600 rounded"
-												placeholder="Footer Icon URL"
-												bind:value={embed.footer.icon_url}
-												on:input={() =>
-													updateEmbedProperty<FooterObject>(
-														embedIndex,
-														"footer",
-														embed.footer?.icon_url,
-														"icon_url"
-													)}
-											/>
-										</Popover>
+
+								<!-- Footer Icon -->
+								<div class="flex items-center gap-2 mt-2">
+									{#if typeof embed.footer?.icon_url !== "string"}
+										<Button
+											size="xs"
+											onclick={() =>
+												updateEmbedProperty<FooterObject>(
+													embedIndex,
+													"footer",
+													"",
+													"icon_url"
+												)}
+										>
+											<CirclePlusOutline class="w-5 h-5 me-2" />
+											Add footer icon URL
+										</Button>
 									{:else}
-										<Popover title="Footer Icon URL">
-											<Input
-												type="url"
-												class="border-amber-600 rounded"
-												placeholder="Footer Icon URL"
+										<Avatar
+											src={embed.footer.icon_url &&
+											isValidImageUrl(embed.footer.icon_url)
+												? embed.footer.icon_url
+												: ""}
+											size="md"
+											class="flex-shrink-0"
+										></Avatar>
+										<!-- Make the popover not disappear between src change -->
+										{#if !embed.footer.icon_url}
+											<AvatarPopover
+												{embedIndex}
+												objIndex="footer"
+												subObjIndex="icon_url"
+												title="Footer Icon URL"
 												bind:value={embed.footer.icon_url}
-												on:input={() =>
-													updateEmbedProperty<FooterObject>(
-														embedIndex,
-														"footer",
-														embed.footer?.icon_url,
-														"icon_url"
-													)}
 											/>
-										</Popover>
+										{:else}
+											<AvatarPopover
+												{embedIndex}
+												objIndex="footer"
+												subObjIndex="icon_url"
+												title="Footer Icon URL"
+												bind:value={embed.footer.icon_url}
+											/>
+										{/if}
 									{/if}
-								{/if}
+
+								</div>
+								<Button
+								onclick={() => (embed = { ...embed, footer: undefined })}
+								size="xs"
+								color="red"
+								class="col-span-1 col-start-3"
+								><CloseCircleSolid class="w-5 h-5 me-2" /> Remove footer
+							</Button>
 							{/if}
 						</div>
 					</div>
 				{/each}
 			</div>
 			{#if $embedMessage.embeds.length < 10}
-				<Button class="mt-2 shadow" on:click={addEmbed}>
+				<Button class="mt-2 shadow" onclick={addEmbed}>
 					<CirclePlusOutline class="w-5 h-5 me-2" />
 					Add Embed
 				</Button>
@@ -554,7 +534,7 @@
 				<Button
 					class="mb-2 cursor-pointer"
 					color="red"
-					on:click={() => {
+					onclick={() => {
 						$embedMessage = { embeds: [] };
 						nonEmbedText = "";
 					}}
@@ -564,7 +544,7 @@
 			{/if}
 			<Button
 				class="mb-2 cursor-copy"
-				on:click={() => copyToClipboard(JSON.stringify(cleanEmptyStrings($embedMessage)))}
+				onclick={() => copyToClipboard(JSON.stringify(cleanEmptyStrings($embedMessage)))}
 			>
 				<FileCopySolid class="w-5 h-5 me-1" />Copy JSON
 			</Button>
