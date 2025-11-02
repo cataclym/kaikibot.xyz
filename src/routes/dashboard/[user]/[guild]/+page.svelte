@@ -25,10 +25,10 @@
 	const { roles, emojis, statsCount } = guild;
 
 	let icons = [
-		{ name: `${statsCount.members} Members`, icon: UsersGroupSolid },
-		{ name: `${statsCount.bots} Bots`, icon: UserCircleSolid },
-		{ name: `${statsCount.text} Text channels`, icon: MessagesSolid },
-		{ name: `${statsCount.voice} Voice channels`, icon: MicrophoneSolid }
+		{ name: `${statsCount.members} Members`, Icon: UsersGroupSolid },
+		{ name: `${statsCount.bots} Bots`, Icon: UserCircleSolid },
+		{ name: `${statsCount.text} Text channels`, Icon: MessagesSolid },
+		{ name: `${statsCount.voice} Voice channels`, Icon: MicrophoneSolid }
 	];
 </script>
 
@@ -49,21 +49,16 @@ Svelte UI
 	</section>
 
 	<section class="section">
-		<Listgroup active={true} color="dark" items={icons} class="w-fit pl-0">
-			{#snippet children({ item })}
-				<item.icon class="w-4 h-4 me-2.5" />
-				{item.name}
-			{/snippet}
-		</Listgroup>
+		<Listgroup active={true} itemClass="bg-gray-600 text-gray-100" items={icons} class="w-fit" />
 	</section>
 
 	<Heading tag="h3">Roles</Heading>
 	<section class="section">
-		<Table noborder={false} hoverable>
+		<Table border={false} hoverable>
 			<TableHead>
-				<TableHeadCell>Name</TableHeadCell>
-				<TableHeadCell>Color</TableHeadCell>
-				<TableHeadCell>ID</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">Name</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">Color</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">ID</TableHeadCell>
 			</TableHead>
 			<TableBody>
 				{#each roles as role}
@@ -97,12 +92,12 @@ Svelte UI
 
 	<Heading tag="h2">Emojis</Heading>
 	<section class="section">
-		<Table noborder={false} hoverable={true}>
+		<Table border={false} hoverable={true}>
 			<TableHead>
-				<TableHeadCell>Name</TableHeadCell>
-				<TableHeadCell>Image</TableHeadCell>
-				<TableHeadCell>ID</TableHeadCell>
-				<TableHeadCell>Code</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">Name</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">Image</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">ID</TableHeadCell>
+				<TableHeadCell  class="bg-gray-600 text-gray-100">Code</TableHeadCell>
 			</TableHead>
 			<TableBody>
 				{#each emojis as emoji}

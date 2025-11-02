@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { ArrowKeyLeft, Button, Mark, P } from "flowbite-svelte";
+	import { Button, Mark, P } from "flowbite-svelte";
+	import { ArrowLeftOutline } from "flowbite-svelte-icons";
 
 	let { data, children } = $props();
 	const { responseData } = data;
@@ -13,13 +14,13 @@
 	>
 		{#if !page.url.pathname.endsWith(userId || "")}
 			<Button size="sm" href="../" class="text-gray-700">
-				<ArrowKeyLeft /> Back
+				<ArrowLeftOutline /> Back
 			</Button>
 		{:else}
 			<div style="width: 87px;"></div>
 		{/if}
 		<P color="text-gray-100"
-			>Logged in as <Mark bgColor="bg-gray-700" color="text-primary-600"
+			>Logged in as <Mark class="bg-gray-700! text-primary-600!"
 				>{responseData?.user.username}</Mark
 			>
 		</P>

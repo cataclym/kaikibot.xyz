@@ -17,9 +17,10 @@
 	let { data }: Props = $props();
 	const { commands } = data;
 
-	let originalColor: string = $state();
+	let originalColor: string = $state("");
 
-	let cats: [string, [string, Cmd[]]][] = $state();
+	let cats: [string, [string, Cmd[]]][] | undefined = $state();
+
 	resetCats();
 
 	function searchbarOnInput(
@@ -64,7 +65,7 @@
 			resetCats();
 		} else {
 			active[categoryElement] = !active[categoryElement];
-			cats = cats.filter((a) => a[1][0] === categoryElement);
+			cats = cats?.filter((a) => a[1][0] === categoryElement);
 			if (Object.keys(active).length !== 1) {
 				resetCats();
 			}
@@ -80,11 +81,11 @@
 				type="text"
 				id="searchbar2"
 				placeholder="Search commands"
-				on:input={(c) => searchbarOnInput(c, (() => active)())}
-				on:reset={resetCats}
-				on:change={resetCats}
+				oninput={(c) => searchbarOnInput(c, (() => active)())}
+				onreset={resetCats}
+				onchange={resetCats}
 			>
-				<SearchOutline slot="left" class="w-4 h-4" />
+				<SearchOutline class="w-4 h-4" />
 			</Input>
 		</div>
 	</div>

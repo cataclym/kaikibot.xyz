@@ -42,7 +42,7 @@
 	/>
 	<div class="w-full flex justify-center mt-4">
 		<Toast
-			divClass="w-full max-w-xs p-4 text-gray-500 shadow-sm dark:text-gray-100 bg-gray-700"
+			class="w-full max-w-xs p-4 shadow-sm text-gray-100! bg-gray-700!"
 			dismissable={false}
 		>
 			<InfoCircleSolid /><br />

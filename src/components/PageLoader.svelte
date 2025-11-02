@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte";
-	import { tweened } from "svelte/motion";
+	import { Tween } from "svelte/motion";
 	import { cubicOut } from "svelte/easing";
 	import { navigationState } from "$lib/stores/navigationState";
 
-	const progress = tweened(0, {
+	const progress = new Tween(0, {
 		duration: 3500,
 		easing: cubicOut
 	});
@@ -25,7 +25,7 @@
 </script>
 
 <div class="progress-bar">
-	<div class="progress-sliver" style={`--width: ${$progress * 100}%`}></div>
+	<div class="progress-sliver" style={`--width: ${progress.current * 100}%`}></div>
 </div>
 
 <style>

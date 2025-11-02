@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { afterUpdate } from "svelte";
-	export let data;
 
-	let { doc } = data;
+	let { data } = $props();
+	let { doc } = $state(data);
 
-	afterUpdate(() => {
+	$effect(() => {
 		doc = data.doc;
 	})
 

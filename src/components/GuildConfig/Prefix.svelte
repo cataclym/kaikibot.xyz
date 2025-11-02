@@ -46,7 +46,7 @@
 			>
 			<Button
 				type="button"
-				on:click={resetAll}
+				onclick={resetAll}
 				color="dark"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
 				disabled={prefixState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button

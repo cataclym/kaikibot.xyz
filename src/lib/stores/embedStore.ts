@@ -1,5 +1,4 @@
 import { type Writable, writable } from "svelte/store";
-import { error } from "@sveltejs/kit";
 
 export type URLObject = {
 	url: string;

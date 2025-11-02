@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, NumberInput, Select, Textarea } from "flowbite-svelte";
+	import { Button, Input, Select, Textarea } from "flowbite-svelte";
 	import { FileCheckSolid, TrashBinSolid } from "flowbite-svelte-icons";
 
     interface ChannelOption {
@@ -51,12 +51,13 @@
 		<Select class="mt-2" items={channelOptions} bind:value={channel} name="channel" />
 
 		<p class="text-gray-100 mt-2">Message autodelete delay (Seconds)</p>
-		<NumberInput
+		<Input
+			type="number"
             bind:value={timeout}
             min={0}
             max={600}
             name="timeout"
-            on:input={(e) => {
+            oninput={(e) => {
                 e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
             }}
         />
@@ -80,7 +81,7 @@
 			</Button>
 			<Button
 				type="button"
-				on:click={resetAll}
+				onclick={resetAll}
 				color="dark"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
 				disabled={!changed}

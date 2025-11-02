@@ -17,9 +17,10 @@
 
 <NavLi
 	{href}
-	class={`${className} ${disabled ? "text-gray-400 cursor-not-allowed" : ""}`}
+	class={`${className} ${disabled ? "text-gray-400! cursor-not-allowed" : "text-gray-100"}`}
+	activeClass="text-white!"
 	{style}
-	on:click={handleClick}
+	onclick={handleClick}
 	title={disabled ? message : ""}
 >
 	<span title={disabled ? message : ""}>

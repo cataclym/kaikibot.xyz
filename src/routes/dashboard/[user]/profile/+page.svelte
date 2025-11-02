@@ -116,11 +116,11 @@
 
 	<div class="mb-4">
 		{#if allChecked || selected.size}
-			<Button id="delete-btn" color="red" on:click={() => (showDeleteModal = true)}
+			<Button id="delete-btn" color="red" onclick={() => (showDeleteModal = true)}
 				>Delete selected</Button
 			>
 		{/if}
-		<Button color="green" on:click={() => (showAddModal = true)}>Add Todo</Button>
+		<Button color="green" onclick={() => (showAddModal = true)}>Add Todo</Button>
 	</div>
 
 	<!-- Add Todo Modal -->
@@ -139,7 +139,7 @@
 		</form>
 		<svelte:fragment slot="footer">
 			<Button type="submit" form="add-todo-form">Add</Button>
-			<Button on:click={() => (showAddModal = false)} color="alternative">Cancel</Button>
+			<Button onclick={() => (showAddModal = false)} color="alternative">Cancel</Button>
 		</svelte:fragment>
 	</Modal>
 
@@ -153,16 +153,16 @@
 		</form>
 		<svelte:fragment slot="footer">
 			<Button color="red" form="delete-todo-form" type="submit">Yes</Button>
-			<Button on:click={() => (showDeleteModal = false)} color="alternative">Cancel</Button>
+			<Button onclick={() => (showDeleteModal = false)} color="alternative">Cancel</Button>
 		</svelte:fragment>
 	</Modal>
 
 	<section class="section">
 		{#if todos?.length}
-			<Table noborder={false} hoverable={true}>
+			<Table border={true} hoverable={true}>
 				<TableHead>
 					<TableHeadCell>
-						<Checkbox bind:checked={allChecked} id="toggle-all" on:click={toggleAll}
+						<Checkbox bind:checked={allChecked} id="toggle-all" onclick={toggleAll}
 							>UUID</Checkbox
 						>
 					</TableHeadCell>
@@ -175,7 +175,7 @@
 							<TableBodyCell>
 								<Checkbox
 									checked={selected.has(todoId)}
-									on:click={() => toggleSelect(todoId)}>{todoId || 0}</Checkbox
+									onclick={() => toggleSelect(todoId)}>{todoId || 0}</Checkbox
 								>
 							</TableBodyCell>
 							<TableBodyCell class="cursor-pointer" onclickcapture={() => toggleRow(i)}
@@ -183,7 +183,7 @@
 									? "..."
 									: ""}</TableBodyCell
 							>
-							<Tooltip color="navbar">Click to expand</Tooltip>
+							<Tooltip>{openRow !== i ? "Click to expand" : "Click to close"}</Tooltip>
 						</TableBodyRow>
 						{#if openRow === i}
 							<TableBodyRow>
