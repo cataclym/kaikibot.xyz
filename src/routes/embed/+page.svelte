@@ -243,7 +243,7 @@
 									<Input
 										type="url"
 										class="border-amber-600 rounded"
-										placeholder="Thumbnail URL"r
+										placeholder="Thumbnail URL"
 										oninput={(e: Event) => {
 											const target = e.currentTarget as HTMLInputElement;
 											embed.thumbnail = { url: target.value };

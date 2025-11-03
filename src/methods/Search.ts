@@ -2,24 +2,20 @@ import type { Cmd, Cmds } from "../interfaces/ICommand";
 
 export default function Search(
 	commands: Cmds,
-	input: Event & { currentTarget: EventTarget & HTMLInputElement },
-	category: { [key: string]: boolean }
+	input: string,
+	cat: string
 ): [string, [string, Cmd[]]][] {
 	const cats = Object.entries(commands);
 
 	/**
 	 * Get input value in both firefox and chrome
 	 */
-	const inputText = input.currentTarget.value?.toLowerCase()?.trim();
+	const inputText = input.toLowerCase()?.trim();
 
 	let mapped = cats.map((cm) => cm[1]);
 
-	const cat = Object.keys(category)?.shift();
-
-	// Filter based on enabled category??
-	if (cat) {
-		mapped = mapped.filter((a) => a[0] === cat);
-	}
+	// Filter based on enabled category
+	mapped = mapped.filter((a) => a[0] === cat);
 
 	const filtered = mapped
 		.map((cb) => cb[1])

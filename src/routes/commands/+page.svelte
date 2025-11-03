@@ -2,12 +2,7 @@
 	import Search from "../../methods/Search";
 	import type { Cmd, Cmds } from "../../interfaces/ICommand";
 	import { Input } from "flowbite-svelte";
-	import { SearchOutline, SearchSolid } from "flowbite-svelte-icons";
-
-	let active: {
-		[id: string]: boolean;
-	} = $state({});
-
+	import { SearchOutline } from "flowbite-svelte-icons";
 	interface Props {
 		data: {
 			commands: Cmds;
@@ -17,77 +12,51 @@
 	let { data }: Props = $props();
 	const { commands } = data;
 
-	let originalColor: string = $state("");
+	let searchText: string = $state("");
+	let selectedCategory: string = $state("");
 
-	let cats: [string, [string, Cmd[]]][] | undefined = $state();
-
-	resetCats();
-
-	function searchbarOnInput(
-		c: Event & {
-			currentTarget: EventTarget & HTMLInputElement;
-		},
-		category: Record<string, boolean>
-	) {
-		cats = Search(commands, c, category);
-	}
-
-	function resetCats() {
-		cats = Object.entries(commands);
-		active = {};
-	}
-
-	function colorSearchbar(color: string) {
-		const searchBar = document.getElementById("searchbar1");
-		originalColor = searchBar!.style.backgroundColor;
-		searchBar!.style.backgroundColor = color;
-
-		if (searchBar?.style.boxShadow) {
-			searchBar.style.boxShadow = "";
+	let categories: [string, [string, Cmd[]]][] | undefined = $derived.by(() => {
+		if (searchText && selectedCategory) {
+			return Search(commands, searchText, selectedCategory);
+		} else if (searchText) {
+			// Search across all categories
+			const allCommands = Object.entries(commands);
+			const searchLower = searchText.toLowerCase().trim();
+			return allCommands
+				.map(([key, [catName, cmds]]) => {
+					const filtered = cmds.filter((cmd) => cmd.id.toLowerCase().includes(searchLower));
+					return filtered.length > 0 ? [key, [catName, filtered]] as [string, [string, Cmd[]]] : null;
+				})
+				.filter((item) => item !== null) as [string, [string, Cmd[]]][];
+		} else if (selectedCategory) {
+			return Object.entries(commands).filter((a) => a[1][0].toLowerCase() === selectedCategory);
 		} else {
-			searchBar!.style.boxShadow = "0 2px var(--accent4)";
+			return Object.entries(commands);
 		}
+	});
 
-		["searchbar2", "searchbar3"].forEach((name) => {
-			document.getElementById(name)!.style.backgroundColor = color;
-		});
-	}
-
-	function manageCategories(categoryElement: string | Cmd[]) {
+	function selectCategory(categoryElement: string) {
 		if (typeof categoryElement !== "string") return;
-
-		if (active[categoryElement]) {
-			if (Object.keys(active).length !== 1) {
-				resetCats();
-			}
-
-			active[categoryElement] = !active[categoryElement];
-			resetCats();
-		} else {
-			active[categoryElement] = !active[categoryElement];
-			cats = cats?.filter((a) => a[1][0] === categoryElement);
-			if (Object.keys(active).length !== 1) {
-				resetCats();
-			}
-		}
+		selectedCategory = selectedCategory === categoryElement
+			? ""
+			: categoryElement;
 	}
 </script>
 
-<div class="w-10/12 text-gray-300 m-auto mt-10 mb-52 flow-root justify-around">
-	<div class="mb-10">
-		<div class="searchbar" id="searchbar1">
-			<Input
-				clearable
-				type="text"
-				id="searchbar2"
-				placeholder="Search commands"
-				oninput={(c) => searchbarOnInput(c, (() => active)())}
-				onreset={resetCats}
-				onchange={resetCats}
-			>
+<div class="w-10/12 text-gray-300 m-auto mt-10 mb-52">
+	<div class="mb-10 m-auto">
+		<Input
+			clearable
+			color="primary"
+			class="bg-gray-800 text-gray-100! ps-9"
+			type="text"
+			placeholder="Search commands"
+			bind:value={searchText}
+		>
+			{#snippet left()}
 				<SearchOutline class="w-4 h-4" />
-			</Input>
-		</div>
+			{/snippet}
+		</Input>
 	</div>
 
 	<div class="flex flex-wrap justify-center">
@@ -95,8 +64,10 @@
 			{#each categories[1] as category}
 				{#if typeof category === "string"}
 					<button
-						class={active[category] ? "cmdCategoryActive" : "cmdCategory"}
-						onclick={() => manageCategories(category)}
+						class={selectedCategory === category.toLocaleLowerCase()
+							? "cmdCategoryActive"
+							: "cmdCategory"}
+						onclick={() => selectCategory(category.toLocaleLowerCase())}
 					>
 						{category}
 					</button>
@@ -133,63 +104,63 @@
 		</div>
 	</div>
 
-	{#each cats as categories}
-		{#each categories[1] as category}
-			{#if category.length}
-				{#if typeof category !== "string"}
-					{#each category as cmd}
-						<div class="m-auto flex mb-1 cmdContainer">
-							<div class="cmd">
-								+{cmd.id}
-								<br />
-								{#if cmd.aliases?.length && cmd.aliases[0]}
-									<p class="subText">
-										+{cmd.aliases.join("\n+")}
-									</p>
-								{/if}
-								<p class="subText categoryText">
-									{categories[1][0]}
-								</p>
-							</div>
-							<div class="cmdDesc">
-								<p class="description">
-									{cmd.description}
-								</p>
-								{#if cmd.ownerOnly}
-									<p class="subText categoryText">Bot Owner Only</p>
-								{/if}
-							</div>
-							<div class="cmdUsage">
-								<p class="description">
-									{#if Array.isArray(cmd.usage)}
-										{#each cmd.usage as usage}
-											<br />+{cmd.id} {usage}
-										{/each}
-									{:else if cmd.usage}
-										+{cmd.id} {cmd.usage}
-									{:else}
-										+{cmd.id}
+		{#each categories as commands}
+			{#each commands[1] as category}
+				{#if category.length}
+					{#if typeof category !== "string"}
+						{#each category as cmd}
+							<div class="m-auto flex mb-1 cmdContainer">
+								<div class="cmd">
+									+{cmd.id}
+									<br />
+									{#if cmd.aliases?.length && cmd.aliases[0]}
+										<p class="subText">
+											+{cmd.aliases.join("\n+")}
+										</p>
 									{/if}
-								</p>
-								{#if cmd.userPermissions.length && cmd.userPermissions[0]}
-									<p class="subText categoryText permText">
-										{#each cmd.userPermissions as perm}
-											{perm}<br />
-										{/each}
+									<p class="subText categoryText">
+										{commands[1][0]}
 									</p>
-								{/if}
-								{#if cmd.channel}
-									<p class="subText categoryText guildText">
-										{cmd.channel}
+								</div>
+								<div class="cmdDesc">
+									<p class="description">
+										{cmd.description}
 									</p>
-								{/if}
+									{#if cmd.ownerOnly}
+										<p class="subText categoryText">Bot Owner Only</p>
+									{/if}
+								</div>
+								<div class="cmdUsage">
+									<p class="description">
+										{#if Array.isArray(cmd.usage)}
+											{#each cmd.usage as usage}
+												<br />+{cmd.id} {usage}
+											{/each}
+										{:else if cmd.usage}
+											+{cmd.id} {cmd.usage}
+										{:else}
+											+{cmd.id}
+										{/if}
+									</p>
+									{#if cmd.userPermissions.length && cmd.userPermissions[0]}
+										<p class="subText categoryText permText">
+											{#each cmd.userPermissions as perm}
+												{perm}<br />
+											{/each}
+										</p>
+									{/if}
+									{#if cmd.channel}
+										<p class="subText categoryText guildText">
+											{cmd.channel}
+										</p>
+									{/if}
+								</div>
 							</div>
-						</div>
-					{/each}
+						{/each}
+					{/if}
 				{/if}
-			{/if}
+			{/each}
 		{/each}
-	{/each}
 </div>
 
 <style>
@@ -306,21 +277,6 @@
 		font-weight: 600;
 		left: 0;
 		right: auto !important;
-	}
-
-	.searchbar {
-		align-items: center;
-		cursor: text;
-		display: flex;
-		inline-size: 100%;
-		position: relative;
-		border-bottom: 2px solid transparent;
-		border-radius: 0.5rem;
-	}
-
-	.searchbar:hover {
-		border-bottom: 2px solid var(--accent4);
-		border-radius: 0.5rem;
 	}
 
 	@media (max-width: 768px) {

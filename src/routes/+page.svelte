@@ -73,7 +73,7 @@
 		<div class="text-left text-accent1 md:w-8/12 sm:w-10/12 m-auto mt-52">
 			<h3 class="text-accent3 font-bold text-2xl">Open source</h3>
 			<h4 class="text-accent1">
-				The codebase is fully open source software and available on GitLab. Fork it, clone
+				The codebase is fully open source software and available on GitHub. Fork it, clone
 				it and contribute!
 			</h4>
 		</div>
