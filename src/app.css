@@ -267,3 +267,12 @@
 			opacity 0.5s ease;
 	}
 }
+
+/* Color Picker Theming */
+.dark {
+	--cp-bg-color: var(--accent2);
+	--cp-border-color: var(--accent4);
+	--cp-text-color: var(--accent3);
+	--cp-input-color: var(--background);
+	--cp-button-hover-color: color-mix(in srgb, var(--accent2) 90%, #000000 30%);
+}
