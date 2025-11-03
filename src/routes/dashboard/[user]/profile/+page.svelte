@@ -6,6 +6,7 @@
 		Button,
 		Checkbox,
 		Heading,
+		Helper,
 		Label,
 		Modal,
 		P,
@@ -68,7 +69,7 @@
 	}
 
 	function toggleAll(): void {
-		if (todos?.length === selected.size) {
+		if (allChecked) {
 			selected.clear();
 			allChecked = false;
 		} else {
@@ -104,13 +105,13 @@
 		{/if}
 	</div>
 	<br />
-	{#if availableCachedGuilds.length}	
-	<h2 class="text-accent3 text-lg">Available guilds</h2>
-	<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
-		{#each availableCachedGuilds as guild}
-			<GuildCard {guild} {user} />
-		{/each}
-	</div>
+	{#if availableCachedGuilds.length}
+		<h2 class="text-accent3 text-lg">Available guilds</h2>
+		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
+			{#each availableCachedGuilds as guild}
+				<GuildCard {guild} {user} />
+			{/each}
+		</div>
 	{/if}
 	<Heading tag="h3">Todo list</Heading>
 
@@ -124,42 +125,44 @@
 	</div>
 
 	<!-- Add Todo Modal -->
-	<Modal bind:open={showAddModal} title="Add Todo">
+	<Modal bind:open={showAddModal} title="Add Todo" class="border-2! border-primary-800!">
 		<form id="add-todo-form" method="post" action="?/addTodo" class="space-y-4">
 			<Label class="space-y-2">
 				<span>Text</span>
 				<Textarea
+					class="w-full"
 					name="todoText"
 					rows={4}
 					maxlength={204}
 					bind:value={todoAddText}
 					required
 				/>
+				<Helper>{204 - todoAddText.length} Characters remaining</Helper>
 			</Label>
 		</form>
-		<svelte:fragment slot="footer">
+		{#snippet footer()}
 			<Button type="submit" form="add-todo-form">Add</Button>
 			<Button onclick={() => (showAddModal = false)} color="alternative">Cancel</Button>
-		</svelte:fragment>
+		{/snippet}
 	</Modal>
 
 	<!-- Delete Todo Modal -->
-	<Modal bind:open={showDeleteModal} title="Delete todos">
+	<Modal bind:open={showDeleteModal} title="Delete todos" class="border-2! border-primary-800!">
 		<form id="delete-todo-form" method="post" action="?/deleteTodos" class="space-y-4">
 			<Label class="space-y-2">
 				<span>Are you sure you want to delete the selected todos?</span>
 				<Textarea class="hidden" name="todoIds" bind:value={selectedIdsString} />
 			</Label>
 		</form>
-		<svelte:fragment slot="footer">
+		{#snippet footer()}
 			<Button color="red" form="delete-todo-form" type="submit">Yes</Button>
 			<Button onclick={() => (showDeleteModal = false)} color="alternative">Cancel</Button>
-		</svelte:fragment>
+		{/snippet}
 	</Modal>
 
 	<section class="section">
 		{#if todos?.length}
-			<Table border={true} hoverable={true}>
+			<Table border={true} hoverable={true} color="gray">
 				<TableHead>
 					<TableHeadCell>
 						<Checkbox bind:checked={allChecked} id="toggle-all" onclick={toggleAll}
@@ -178,12 +181,15 @@
 									onclick={() => toggleSelect(todoId)}>{todoId || 0}</Checkbox
 								>
 							</TableBodyCell>
-							<TableBodyCell class="cursor-pointer" onclickcapture={() => toggleRow(i)}
+							<TableBodyCell
+								class="cursor-pointer"
+								onclickcapture={() => toggleRow(i)}
 								>{todo.String.substring(0, 72)}{todo.String.length > 72
 									? "..."
 									: ""}</TableBodyCell
 							>
-							<Tooltip>{openRow !== i ? "Click to expand" : "Click to close"}</Tooltip>
+							<Tooltip>{openRow !== i ? "Click to expand" : "Click to close"}</Tooltip
+							>
 						</TableBodyRow>
 						{#if openRow === i}
 							<TableBodyRow>

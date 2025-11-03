@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { Button, Mark, P } from "flowbite-svelte";
-	import { ArrowLeftOutline } from "flowbite-svelte-icons";
+	import { A, Button, Mark, P } from "flowbite-svelte";
+	import { ArrowLeftOutline, ArrowRightToBracketOutline } from "flowbite-svelte-icons";
 
 	let { data, children } = $props();
 	const { responseData } = data;
@@ -10,12 +10,13 @@
 
 <div class="smol">
 	<div
-		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-around items-center mt-1 mb-1"
+		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-center gap-40 items-center mt-1 mb-1"
 	>
 		{#if !page.url.pathname.endsWith(userId || "")}
-			<Button size="sm" href="../" class="text-gray-700">
+		<A href="../" color={null}><ArrowLeftOutline /> Back</A>
+			<!-- <Button size="sm" href="../" class="text-gray-700">
 				<ArrowLeftOutline /> Back
-			</Button>
+			</Button> -->
 		{:else}
 			<div style="width: 87px;"></div>
 		{/if}
@@ -24,7 +25,7 @@
 				>{responseData?.user.username}</Mark
 			>
 		</P>
-		<Button size="sm" class="text-gray-800" href="/auth/signout">Sign out</Button>
+		<A href="/auth/signout" color={null}>Sign out <ArrowRightToBracketOutline class="ml-1" /></A>
 	</div>
 </div>
 
