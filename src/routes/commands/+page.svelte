@@ -3,6 +3,7 @@
 	import type { Cmd, Cmds } from "../../interfaces/ICommand";
 	import { Input } from "flowbite-svelte";
 	import { SearchOutline } from "flowbite-svelte-icons";
+	
 	interface Props {
 		data: {
 			commands: Cmds;

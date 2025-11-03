@@ -35,8 +35,8 @@
 			<DropdownHeader>
 				<span class="block text-sm">{user.name}</span>
 			</DropdownHeader>
-			<DropdownItem href="/dashboard/{user.id}/profile">Profile</DropdownItem>
-			<DropdownItem href="/auth/signout">Sign out</DropdownItem>
+			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/dashboard/{user.id}/profile">Profile</DropdownItem>
+			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/auth/signout">Sign out</DropdownItem>
 		</Dropdown>
 		<NavUl
 			hidden={false}

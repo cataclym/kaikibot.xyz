@@ -31,31 +31,42 @@
 		CloseCircleSolid,
 		CirclePlusOutline,
 		TrashBinSolid,
-		FileCopySolid
+		FileCopySolid,
+		InfoCircleSolid
 	} from "flowbite-svelte-icons";
 	import ColorPicker from "svelte-awesome-color-picker";
 	import AvatarPopover from "../../components/Embed/AvatarPopover.svelte";
-
-	export let data;
-	const { SOURCE_WEBSITE } = data;
-
-	$: nonEmbedText = "";
-
-	function copyToClipboard(text: string) {
-		navigator.clipboard.writeText(text).then(() => {
-			alert("Embed copied to clipboard!");
-		});
-	}
-
-	function isValidImageUrl(url: string) {
-		const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|webp)$/i;
-		return imageExtensions.test(url);
-	}
 
 	type MessageJSON = {
 		[key: string]: any;
 	};
 
+	// Load serverside page data
+	let { data } = $props();
+	const { SOURCE_WEBSITE } = data;
+
+	// Main Message Body Text
+	let nonEmbedText = $state("");
+
+	// Reactive dismiss status
+	let alertStatus = $state(false);
+
+	// Fetch cookie for dismissed alert
+	$effect(() => {
+		cookieStore
+			.get("Dismissed_Alert")
+			.then((cookie) => (alertStatus = cookie?.value === "true"));
+	});
+
+	// Simply sets cookie when alert is dismissed
+	function setDismissedCookied() {
+		cookieStore.set("Dismissed_Alert", "true");
+		alertStatus = true;
+	}
+
+	// Takes any Object or null
+	// Removes all keys for values that are empty strings
+	// Returns the cleaned Object
 	function cleanEmptyStrings(obj: MessageJSON | null): MessageJSON {
 		// Check if the value is an object (and not null or array)
 		if (obj && typeof obj === "object") {
@@ -84,15 +95,31 @@
 		}
 		return obj || { embeds: [] };
 	}
+
+	// Writes the input text to clipboard
+	function copyToClipboard(text: string) {
+		navigator.clipboard.writeText(text).then(() => {
+			alert("Embed copied to clipboard!");
+		});
+	}
+
+	// Takes a String
+	// Runs regex tests
+	// Returns boolean
+	function isValidImageUrl(url: string) {
+		const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|webp)$/i;
+		return imageExtensions.test(url);
+	}
 </script>
 
 <main>
 	<div class="container m-auto p-[20px]">
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
-		<Alert color="red" class="bg-gray-700!">
-			<span class="font-medium">Work in progress!</span>
-			Please report any bugs at the website <A class="underline" href={`${SOURCE_WEBSITE}/issues/new`}
-				>repository</A
+		<Alert dismissable color="gray" onclick={setDismissedCookied} hidden={alertStatus}>
+			{#snippet icon()}<InfoCircleSolid class="h-5 w-5" />{/snippet}
+			Please report any bugs at the website <A
+				class="underline"
+				href={`${SOURCE_WEBSITE}/issues/new`}>repository</A
 			>!
 		</Alert>
 	</div>
@@ -146,7 +173,7 @@
 						</div>
 					</div>
 					<div
-						class="w-full bg-gray-800 rounded-[0.5rem] col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
+						class="w-full bg-gray-700 rounded-[0.5rem] col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
 						style="border-left: 4px solid #{embed.color
 							?.toString(16)
 							.padStart(6, '0') || '000000'}"
@@ -194,6 +221,7 @@
 										maxlength={256}
 										id={`author-${embedIndex}`}
 										bind:value={embed.author.name}
+										class="bg-gray-800!"
 										placeholder="Author name"
 										oninput={() =>
 											updateEmbedProperty<AuthorObject>(
@@ -210,7 +238,7 @@
 								<div class="col-span-2">
 									<Input
 										type="url"
-										class="col-span-2"
+										class="col-span-2 bg-gray-800!"
 										id={`author-${embedIndex}`}
 										bind:value={embed.author.url}
 										placeholder="Author URL"
@@ -226,7 +254,7 @@
 								</div>
 
 								<Button
-									onclick={() => (embed = { ...embed, author: undefined })}
+									onclick={() => (embed["author"] = undefined)}
 									size="xs"
 									color="red"
 									class="col-span-2 col-start-3"
@@ -242,7 +270,7 @@
 								<Popover title="Thumbnail URL">
 									<Input
 										type="url"
-										class="border-amber-600 rounded"
+										class=""
 										placeholder="Thumbnail URL"
 										oninput={(e: Event) => {
 											const target = e.currentTarget as HTMLInputElement;
@@ -267,7 +295,7 @@
 								<Popover title="Thumbnail URL">
 									<Input
 										type="url"
-										class="border-amber-600 rounded"
+										class=""
 										placeholder="Thumbnail URL"
 										bind:value={embed.thumbnail.url}
 										oninput={() =>
@@ -286,6 +314,7 @@
 						<div class="mb-2 col-span-2 col-start-1">
 							<Input
 								maxlength={256}
+								class="bg-gray-800!"
 								id={`title-${embedIndex}`}
 								bind:value={embed.title}
 								placeholder="Embed Title"
@@ -299,6 +328,7 @@
 						<div class="mb-2 col-span-2 col-start-1">
 							<Input
 								type="url"
+								class="bg-gray-800!"
 								id={`url-${embedIndex}`}
 								bind:value={embed.url}
 								placeholder="Embed URL"
@@ -309,7 +339,7 @@
 						<!-- Embed Description -->
 						<div class="mb-2 col-span-2 col-start-1">
 							<Textarea
-								class="w-full"
+								class="w-full bg-gray-800!"
 								maxlength={4096}
 								id={`description-${embedIndex}`}
 								bind:value={embed.description}
@@ -334,6 +364,7 @@
 										<div class="mb-2">
 											<Input
 												maxlength={256}
+												class="bg-gray-800!"
 												bind:value={field.name}
 												placeholder="Field Name"
 												oninput={() =>
@@ -352,6 +383,7 @@
 
 										<Textarea
 											maxlength={1024}
+											class="bg-gray-800!"
 											bind:value={field.value}
 											placeholder="Field Value"
 											oninput={() =>
@@ -403,6 +435,7 @@
 									<Input
 										id={`image-${embedIndex}`}
 										type="url"
+										class="bg-gray-800!"
 										bind:value={embed.image.url}
 										placeholder="Image URL"
 										oninput={() =>
@@ -421,7 +454,7 @@
 										/>
 									{/if}
 									<Button
-										onclick={() => (embed = { ...embed, image: undefined })}
+										onclick={() => (embed["image"] = undefined)}
 										size="sm"
 										color="red"
 										class="mt-2"
@@ -447,6 +480,7 @@
 								<Input
 									maxlength={2048}
 									id={`footer-${embedIndex}`}
+									class="bg-gray-800!"
 									bind:value={embed.footer.text}
 									placeholder="Footer Text"
 									oninput={() => {
@@ -506,15 +540,14 @@
 											/>
 										{/if}
 									{/if}
-
 								</div>
 								<Button
-								onclick={() => (embed = { ...embed, footer: undefined })}
-								size="xs"
-								color="red"
-								class="col-span-1 col-start-3"
-								><CloseCircleSolid class="w-5 h-5 me-2" /> Remove footer
-							</Button>
+									onclick={() => (embed["footer"] = undefined)}
+									size="xs"
+									color="red"
+									class="col-span-1 col-start-3"
+									><CloseCircleSolid class="w-5 h-5 me-2" /> Remove footer
+								</Button>
 							{/if}
 						</div>
 					</div>
