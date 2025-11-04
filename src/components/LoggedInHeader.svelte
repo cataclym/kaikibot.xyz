@@ -41,7 +41,8 @@
 		<NavUl
 			hidden={false}
 			{activeUrl}
-			ulClass="bg-gray-700! rounded-none divide-gray-700 flex flex-col p-4 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:text-sm md:font-medium"
+			nonActiveClass="text-gray-300!"
+			ulClass="bg-gray-700! rounded-none divide-gray-700 flex flex-col mt-4 md:p-2 md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:text-sm md:font-medium"
 		>
 			<NavLi href="/">Home</NavLi>
 			<NavLi href="/about">About</NavLi>
