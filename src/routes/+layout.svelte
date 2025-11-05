@@ -10,6 +10,7 @@
 	import { Avatar, Heading, Mark } from "flowbite-svelte";
 	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
 	import LoggedInHeader from "../components/LoggedInHeader.svelte";
+	import Model3D from "../components/Model3D.svelte";
 	import type { User } from "@auth/sveltekit";
 
 	let { data, children } = $props();
@@ -72,8 +73,8 @@
 
 {#if page.url.pathname === "/"}
 <div class="relative" transition:slide={{ duration: 300 }}>
-	<div class="absolute left-1/5 top-1">
-		<Avatar class="invisible xl:visible" src="/favicon.png" size="xl" alt="Kaiki"/>
+	<div class="absolute left-0 top-1 w-1/3 h-full invisible xl:visible flex items-center justify-center">
+		<Model3D userImageUrl={user?.image ?? ""} />
 	</div>
 
 	<div class="big_title">
