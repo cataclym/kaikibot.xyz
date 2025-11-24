@@ -47,7 +47,7 @@ Build custom embeds with colorpicker, custom content, multiple embeds in stunnin
 
     Lint with prettier
 
-## 👷 Build and deploy 
+## 👷 Build and deploy from source
 
 1. Fill `.env` based on `.env.example`
 
@@ -64,6 +64,24 @@ Build custom embeds with colorpicker, custom content, multiple embeds in stunnin
     or
 
         bun build
+
+## 🐋 Docker deployment
+1. Fill `.env` based on `.env.example`
+
+        cp .env.example .env
+        nano .env
+2. Build and start docker image:
+
+        docker compose up --build
+
+### Updating/Rebuilding docker image (From source)
+
+        git pull
+        docker compose up --build
+
+### Updating/Rebuilding docker image (From dockerhub)
+TBA
+
 
 ## 📝 Contributions
 
