@@ -23,7 +23,7 @@
 		<h3 class="text-center text-xl font-semibold mb-4">Server Prefix</h3>
 
 		<!-- Input Field -->
-		<div class="flex-grow w-full max-w-xs">
+		<div class="grow w-full max-w-xs">
 			<Input
 				id="prefix"
 				type="text"

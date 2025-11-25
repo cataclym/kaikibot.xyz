@@ -1,13 +1,13 @@
 import { redirect } from "@sveltejs/kit";
 
-export async function load({ parent }) {
-    const user = (await parent()).session?.user; // assuming you're setting the user in hooks.server.js
+export async function load({ locals }) {
+    const session = await locals.auth();
 
-    if (!user) {
-        // Not logged in - Show login page
+    // Show login page when not logged in
+    if (!session?.user) {
         return {};
     }
 
     // Redirect to /dashboard/[user]
-    throw redirect(302, `/dashboard/${user.id}`);
+    throw redirect(302, `/dashboard/${session.user.id}`);
 }
