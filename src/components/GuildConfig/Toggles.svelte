@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, P, Toggle } from "flowbite-svelte";
-	import { FileCheckSolid, TrashBinSolid,  } from "flowbite-svelte-icons";
+	import { FileCheckSolid, TrashBinSolid } from "flowbite-svelte-icons";
 
 	interface Props {
 		Anniversary: boolean;
@@ -34,19 +34,19 @@
 		<h3 class="text-center text-xl font-semibold mb-4">Toggles</h3>
 
 		<!-- Toggles Section -->
-		<div class="flex-grow flex flex-col gap-4 items-start pb-6">
+		<div class="grow flex flex-col gap-4 items-start pb-6">
 			<div class="flex items-center gap-2">
-				<Toggle bind:checked={DadBot}><P color="">Dad-mode</P></Toggle>
+				<Toggle spanClass="border-primary-600 border" bind:checked={DadBot}><P color="">Dad-mode</P></Toggle>
 				<input type="hidden" name="dadbot" value={DadBot} />
 			</div>
 			<div class="flex items-center gap-2">
-				<Toggle name="Anniversary" bind:checked={Anniversary}
+				<Toggle spanClass="border-primary-600 border" name="Anniversary" bind:checked={Anniversary}
 					><P color="">Anniversary roles</P></Toggle
 				>
 				<input type="hidden" name="anniversary" value={Anniversary} />
 			</div>
 			<div class="flex items-center gap-2">
-				<Toggle name="StickyRoles" bind:checked={StickyRoles}
+				<Toggle spanClass="border-primary-600 border" name="StickyRoles" bind:checked={StickyRoles}
 					><P color="">Sticky roles</P></Toggle
 				>
 				<input type="hidden" name="stickyroles" value={StickyRoles} />
@@ -59,7 +59,8 @@
 				type="submit"
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-				disabled={toggleState}><FileCheckSolid class="shrink-0 h-6 w-6" />
+				disabled={toggleState}
+				><FileCheckSolid class="shrink-0 h-6 w-6" />
 				Save</Button
 			>
 			<Button

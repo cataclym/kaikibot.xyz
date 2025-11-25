@@ -64,7 +64,7 @@
 		<p class="text-gray-100 mt-2">Message</p>
 		<Textarea
 			maxlength={6000}
-			class="mb-4"
+			class="mb-4 bg-gray-700! w-full"
 			name="message"
 			bind:value={message}
 			placeholder={initial.message || "Write a message"}

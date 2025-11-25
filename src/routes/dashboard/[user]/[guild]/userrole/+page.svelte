@@ -52,7 +52,7 @@
 		>
 			<!-- Exclude Role Form Content -->
 			<div class="flex flex-col flex-grow gap-4">
-				<div class="flex flex-row justify-between gap-16 w-full text-gray-100">
+				<div class="flex flex-row justify-between gap-2 w-full text-gray-100">
 					<Input maxlength={100} name="rolename" type="text" bind:value={userRoleObject.name} />
 					<ColorPicker isAlpha={false} name="rolecolor" bind:hex={userRoleObject.color} />
 					<Textarea
