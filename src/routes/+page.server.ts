@@ -1,6 +1,9 @@
 import type { WaifuImJSON } from "../interfaces/IWaifuIm";
-import { CHANGELOG, INVITE } from "$env/static/private";
-import { PUBLIC_SOURCE } from "$env/static/public";
+import { env } from "$env/dynamic/private";
+import { env as pubEnv } from "$env/dynamic/public";
+
+const { CHANGELOG, INVITE } = env;
+const { PUBLIC_SOURCE } = pubEnv;
 
 export async function load({ cookies }) {
 	let cachedImages = cookies.get("Images_WaifuIm");

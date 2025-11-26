@@ -1,8 +1,9 @@
-import { EMBED } from "$env/static/private";
 import { error } from "@sveltejs/kit";
-import { USER_API_PORT, USER_API_URL } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import CreateHeaders from "../../../../methods/CreateHeaders";
 import type { GETGuildBody } from "kaikiwa-types";
+
+const { EMBED, USER_API_PORT, USER_API_URL } = env
 
 export async function load({ params, parent, fetch }) {
 	const { responseData } = await parent();

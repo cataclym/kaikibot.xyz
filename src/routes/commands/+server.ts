@@ -1,6 +1,7 @@
 import { error, json } from "@sveltejs/kit";
-import fs from "fs";
-import { TOKEN } from "$env/static/private";
+import fs from "fs/promises";
+import { env } from "$env/dynamic/private";
+const { TOKEN } = env;
 
 export async function POST(event) {
 	const { list = [], token = "defaultTokenValue" } = await event.request.json();
@@ -10,9 +11,7 @@ export async function POST(event) {
 	}
 
 	try {
-		fs.writeFile("./static/commands/commands.json", list, (err) =>
-			err ? console.log(err) : undefined
-		);
+		await fs.writeFile("data/commands.json", JSON.stringify(list));
 	} catch (err) {
 		console.log(err);
 		throw error(500, "Failed to write file");
@@ -21,4 +20,9 @@ export async function POST(event) {
 	return json("Success", {
 		status: 201
 	});
+}
+
+export async function GET() {
+	const text = await fs.readFile("data/commands.json", "utf-8");
+	return new Response(text, { status: 200 });
 }

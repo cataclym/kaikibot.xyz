@@ -1,14 +1,6 @@
-import fs from "fs";
 
-export async function load() {
-	// Reads commands.json if it exists, otherwise return empty object
-	const commands = await new Promise((resolve) => {
-		fs.readFile("./static/commands/commands.json", "utf8", (err, data) => {
-			return err ? resolve({}) : resolve(JSON.parse(data).sort());
-		});
-	});
-
-	return {
-		commands
-	};
+export async function load({ fetch }) {
+	const res = await fetch("/commands");
+	const commands = await res.json();
+	return { commands };
 }

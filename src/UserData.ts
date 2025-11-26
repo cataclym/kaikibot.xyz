@@ -1,11 +1,12 @@
 import { error } from "@sveltejs/kit";
-import { USER_API_URL, USER_API_PORT } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { type User } from "discord.js";
 import CreateHeaders from "./methods/CreateHeaders";
 import type OAuthGuildData from "./interfaces/OAuthGuildData";
 import type { POSTUserGuildsBody } from "kaikiwa-types";
 
 const discordAPICache = new Map<string, { data: [OAuthGuildData[], User]; expiry: number }>();
+const { USER_API_URL, USER_API_PORT } = env;
 
 export default class UserData {
 	private readonly userId: string;

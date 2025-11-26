@@ -1,11 +1,13 @@
 import { fail } from '@sveltejs/kit';
 import CreateHeaders from '../../../../methods/CreateHeaders';
-import { USER_API_PORT, USER_API_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { Todo } from 'kaikiwa-types';
 import { DeleteTodos } from '../../../../methods/DeleteTodos';
 import { AddTodo } from '../../../../methods/AddTodo';
 import EscapeHtml from '../../../../methods/EscapeHtml';
 import SanitizeInput from '../../../../methods/SanitizeInput';
+
+const { USER_API_PORT, USER_API_URL } = env;
 
 export async function load({ parent, fetch }) {
 	const { responseData } = await parent();

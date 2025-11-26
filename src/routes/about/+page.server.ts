@@ -1,7 +1,7 @@
-import { SOURCE_WEBSITE } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 
 export function load() {
 	return {
-		SOURCE_WEBSITE
+		SOURCE_WEBSITE: env.SOURCE_WEBSITE
 	};
 }

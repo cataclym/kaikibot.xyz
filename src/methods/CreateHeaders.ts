@@ -1,13 +1,13 @@
-import { TOKEN } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 
 export default function CreateHeaders(includeContent = true) {
-	if (!TOKEN) throw new Error("Token is required");
+	if (!env.TOKEN) throw new Error("Token is required");
 
 	const headers = new Headers();
 
 	if (includeContent) headers.append("Content-Type", "application/json");
 	
-	headers.append("Authorization", TOKEN);
+	headers.append("Authorization", env.TOKEN);
 	// Security headers
 	headers.append("X-Content-Type-Options", "nosniff");
 	headers.append("X-Frame-Options", "DENY");

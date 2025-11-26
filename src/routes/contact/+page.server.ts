@@ -1,5 +1,8 @@
-import { EMAIL, SOURCE_WEBSITE } from "$env/static/private";
-import { PUBLIC_SOURCE } from "$env/static/public";
+import { env } from "$env/dynamic/private";
+import { env as pubEnv } from "$env/dynamic/public";
+
+const { EMAIL, SOURCE_WEBSITE } = env;
+const { PUBLIC_SOURCE } = pubEnv; 
 
 export function load() {
 	return {

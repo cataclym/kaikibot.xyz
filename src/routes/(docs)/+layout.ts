@@ -1,4 +1,4 @@
-import { PUBLIC_SOURCE } from "$env/static/public";
+import { env } from "$env/dynamic/public";
 import { error } from "@sveltejs/kit";
 
 type Metadata = {
@@ -9,8 +9,8 @@ type Metadata = {
 
 export async function load({ fetch }) {
 
-	if (!PUBLIC_SOURCE) throw error(404, { message: "Repository is not defined"});
-	const url = new URL(PUBLIC_SOURCE);
+	if (!env.PUBLIC_SOURCE) throw error(404, { message: "Repository is not defined"});
+	const url = new URL(env.PUBLIC_SOURCE);
 
 	const [, owner, repo] = url.pathname.split("/");
 
