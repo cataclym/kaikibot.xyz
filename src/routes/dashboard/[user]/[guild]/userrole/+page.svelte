@@ -29,9 +29,7 @@
 		icon: userRole.icon
 	};
 
-	let userRoleState = $derived(
-		JSON.stringify(savedUserRole) === JSON.stringify(userRoleObject)
-	);
+	let userRoleState = $derived(JSON.stringify(savedUserRole) === JSON.stringify(userRoleObject));
 
 	function resetAll(): void {
 		userRoleObject = savedUserRole;
@@ -53,13 +51,14 @@
 			<!-- Exclude Role Form Content -->
 			<div class="flex flex-col flex-grow gap-4">
 				<div class="flex flex-row justify-between gap-2 w-full text-gray-100">
-					<Input maxlength={100} name="rolename" type="text" bind:value={userRoleObject.name} />
-					<ColorPicker isAlpha={false} name="rolecolor" bind:hex={userRoleObject.color} />
-					<Textarea
-						class="hidden"
-						name="roleid"
-						value={userRole.id}	
+					<Input
+						maxlength={100}
+						name="rolename"
+						type="text"
+						bind:value={userRoleObject.name}
 					/>
+					<ColorPicker isAlpha={false} name="rolecolor" bind:hex={userRoleObject.color} />
+					<Textarea class="hidden" name="roleid" value={userRole.id} />
 				</div>
 			</div>
 			<div class="flex justify-center mt-4">

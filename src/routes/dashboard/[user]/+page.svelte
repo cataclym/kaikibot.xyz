@@ -35,7 +35,7 @@
 			<Avatar class="content-center" size="lg" src={user.image || ""} alt="Avatar" />
 		</div>
 		<h1 class="text-accent3">Hi {user.name || "User"}</h1>
-		<Button class="text-gray-800" href="./{user.id}/profile">Profile</Button>
+		<Button class="text-white" href="./{user.id}/profile">Profile</Button>
 		<h2 class="text-accent3 text-lg">Available guilds</h2>
 		<div class="w-full flex flex-row gap-2 mb-12 flex-wrap justify-center content-center">
 			{#each availableCachedGuilds as guild}

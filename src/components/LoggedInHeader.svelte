@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import type { User } from "@auth/sveltekit";
+	import type { DiscordUser } from "$lib/types/discord";
 	import {
 		Avatar,
 		Dropdown,
@@ -14,7 +14,7 @@
 	} from "flowbite-svelte";
 	import { slide } from "svelte/transition";
 
-	let { user }: { user: User } = $props();
+	let { user }: { user: DiscordUser } = $props();
 	let activeUrl = $derived(
 		page.url.pathname.startsWith("/dashboard") ? "/dashboard" : page.url.pathname
 	);
@@ -28,15 +28,26 @@
 			</span>
 		</NavBrand>
 		<div class="flex items-center md:order-2">
-			<Avatar id="avatar-menu" src={user.image || "/default_avatar.webp"} />
+			<Avatar
+				id="avatar-menu"
+				src={user.image
+					? `${user.image}?size=128`
+					: "/default_avatar.webp"}
+			/>
 			<NavHamburger />
 		</div>
 		<Dropdown placement="bottom" triggeredBy="#avatar-menu" trigger="hover">
 			<DropdownHeader>
 				<span class="block text-sm">{user.name}</span>
 			</DropdownHeader>
-			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/dashboard/{user.id}/profile">Profile</DropdownItem>
-			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/auth/signout">Sign out</DropdownItem>
+			<DropdownItem
+				class="text-gray-200 text-sm"
+				liClass="list-none"
+				href="/dashboard/{user.id}/profile">Profile</DropdownItem
+			>
+			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/logout"
+				>Sign out</DropdownItem
+			>
 		</Dropdown>
 		<NavUl
 			hidden={false}

@@ -1,4 +1,5 @@
 ## 🌐 kaikibot.xyz — Source Code
+
 #### A fast, modern web app for managing your Discord server with SvelteKit & Vite.
 
 <img width=600 src="static/kaikibot.png">
@@ -7,13 +8,12 @@
 ![Website](https://img.shields.io/website?url=http%3A//kaikibot.xyz)
 ![Live Version](https://img.shields.io/endpoint?url=https%3A%2F%2Fkaikibot.xyz%2Fshields%3Fparam%3Dversion)
 
-
-
-
 ### 👷 Embed Builder
+
 Build custom embeds with colorpicker, custom content, multiple embeds in stunning visual user interface.
 
 ### 💻 Dashboard Features
+
 - ✅ Server information
 - ✅ Discord user login
 - ✅ Update settings
@@ -27,20 +27,20 @@ Build custom embeds with colorpicker, custom content, multiple embeds in stunnin
 
 <img width=600 src="https://i.imgur.com/k6DIvf8.png" alt="Dashboard screenshot">
 
-*Dashboard KaikiBot configuration dashboard*
+_Dashboard KaikiBot configuration dashboard_
 
 ### 📑 Command Explorer
-* 🔷 **All Commands** – Browse the complete command list at a glance  
-* 🗂 **Categories** – Quickly filter commands by category or type  
-* 🔍 **Search** – Find commands instantly with a powerful search  
-* 📝 **Usage & Description** – Clear explanations and examples for each command  
-* ⚡ **Dynamic Updates** – Commands can be updated from the bot client in real-time
 
+- 🔷 **All Commands** – Browse the complete command list at a glance
+- 🗂 **Categories** – Quickly filter commands by category or type
+- 🔍 **Search** – Find commands instantly with a powerful search
+- 📝 **Usage & Description** – Clear explanations and examples for each command
+- ⚡ **Dynamic Updates** – Commands can be updated from the bot client in real-time
 
 ## 📦 Scripts
 
-- `npm run dev` 
-    
+- `npm run dev`
+
     Run development server, hot reload
 
 - `npm run format`
@@ -49,28 +49,31 @@ Build custom embeds with colorpicker, custom content, multiple embeds in stunnin
 
 ## 👷 Build and deploy from source
 
-1. Fill `.env` based on `.env.example`
+1.  Fill `.env` based on `.env.example`
 
         cp .env.example .env
         nano .env
 
-2. `npm run build`
+2.  `npm run build`
 
     Compiles code into `build` folder
 
-3. Deploy from `build`:
+3.  Deploy from `build`:
 
         node build
+
     or
 
         bun build
 
 ## 🐋 Docker deployment
-1. Fill `.env` based on `.env.example`
+
+1.  Fill `.env` based on `.env.example`
 
         cp .env.example .env
         nano .env
-2. Build and start docker image:
+
+2.  Build and start docker image:
 
         docker compose up --build
 
@@ -80,8 +83,8 @@ Build custom embeds with colorpicker, custom content, multiple embeds in stunnin
         docker compose up --build
 
 ### Updating/Rebuilding docker image (From dockerhub)
-TBA
 
+TBA
 
 ## 📝 Contributions
 

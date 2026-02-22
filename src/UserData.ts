@@ -1,4 +1,4 @@
-import { error } from "@sveltejs/kit";
+import { error, type HttpError } from "@sveltejs/kit";
 import { env } from "$env/dynamic/private";
 import { type User } from "discord.js";
 import CreateHeaders from "./methods/CreateHeaders";
@@ -26,14 +26,13 @@ export default class UserData {
 		let guilds: OAuthGuildData[], user: User;
 
 		if (!cached || (cached && cached.expiry <= now)) {
-
 			const [guildsResponse, userResponse] = await Promise.all([
 				fetch("https://discord.com/api/users/@me/guilds", {
-					headers: { authorization: `Bearer ${this.accessToken}` },
+					headers: { authorization: `Bearer ${this.accessToken}` }
 				}),
 				fetch("https://discord.com/api/users/@me", {
-					headers: { authorization: `Bearer ${this.accessToken}` },
-				}),
+					headers: { authorization: `Bearer ${this.accessToken}` }
+				})
 			]);
 
 			if (!(guildsResponse || userResponse).ok) {
@@ -42,16 +41,11 @@ export default class UserData {
 			}
 
 			// Get all the data from the responses - async
-			[guilds, user] = await Promise.all([
-				guildsResponse.json(),
-				userResponse.json()
-			]);
+			[guilds, user] = await Promise.all([guildsResponse.json(), userResponse.json()]);
 
 			// cache result for 5 minutes
 			discordAPICache.set(this.userId, { data: [guilds, user], expiry: now + 5 * 60 * 1000 });
-		}
-
-		else {
+		} else {
 			[guilds, user] = cached.data;
 		}
 
@@ -69,18 +63,21 @@ export default class UserData {
 		// UserId in params
 		// GuildIds in query params
 		const url = new URL(`${USER_API_URL}:${USER_API_PORT}/API/User/${this.userId}/guilds`);
-		url.searchParams.append("ids", guilds.map((g) => g.id).join(","))
+		url.searchParams.append("ids", guilds.map((g) => g.id).join(","));
 
-		const customResponse = await fetch(url, {
-			method: "GET",
-			headers,
-		}).catch((err) => {
-
-			if (err instanceof TypeError) {
+		let customResponse: Response;
+		try {
+			customResponse = await fetch(url, {
+				method: "GET",
+				headers
+			});
+		} catch (err) {
+			console.error(err);
+			if (err.code === "ConnectionRefused") {
 				throw error(500, "The server is down at the moment, come back at a later time.");
 			}
 			throw error(err);
-		});
+		}
 
 		if (customResponse.status === 404) {
 			throw error(404, "Your user cannot be found.");
@@ -103,7 +100,7 @@ export type BotResData = {
 type BigIntToString<T> = T extends bigint
 	? string
 	: T extends Array<infer U>
-	? Array<BigIntToString<U>>
-	: T extends object
-	? { [K in keyof T]: BigIntToString<T[K]> }
-	: T;
+		? Array<BigIntToString<U>>
+		: T extends object
+			? { [K in keyof T]: BigIntToString<T[K]> }
+			: T;

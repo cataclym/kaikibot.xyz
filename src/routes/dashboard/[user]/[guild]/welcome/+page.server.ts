@@ -14,28 +14,29 @@ export const actions = {
 	bye: async ({ request, params, route }) => sendFormData(request, params, route)
 };
 
-async function sendFormData(request: Request, params: RouteParams, route: { id: string}) {
+async function sendFormData(request: Request, params: RouteParams, route: { id: string }) {
 	const formData = await request.formData();
-	
-	const endpoint = <string> formData.get("endpoint");
+
+	const endpoint = <string>formData.get("endpoint");
 	const channel = formData.get("channel");
 	const timeout = formData.get("timeout");
-	const message = <string> formData.get("message");
+	const message = <string>formData.get("message");
 
 	// Total combined message character limit
 	if (message.length > 6000) throw fail(400);
 
-	const data = JSON.stringify(endpoint.endsWith("/bye")
-		? {
-			ByeChannel: channel,
-			ByeTimeout: timeout,
-			ByeMessage: message
-		}
-		: {
-			WelcomeChannel: channel,
-			WelcomeTimeout: timeout,
-			WelcomeMessage: message
-		},
+	const data = JSON.stringify(
+		endpoint.endsWith("/bye")
+			? {
+					ByeChannel: channel,
+					ByeTimeout: timeout,
+					ByeMessage: message
+				}
+			: {
+					WelcomeChannel: channel,
+					WelcomeTimeout: timeout,
+					WelcomeMessage: message
+				},
 		null
 	);
 

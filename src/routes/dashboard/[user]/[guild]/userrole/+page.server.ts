@@ -12,7 +12,7 @@ export async function load({ parent }) {
 export const actions = {
 	userrole: async ({ request, params, route }) => {
 		const formData = await request.formData();
-		
+
 		const UserRole = formData.get("roleid");
 		let UserRoleName = SanitizeInput(formData.get("rolename") as string);
 		const UserRoleColor = formData.get("rolecolor");

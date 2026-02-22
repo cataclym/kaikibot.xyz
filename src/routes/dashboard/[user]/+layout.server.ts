@@ -2,11 +2,6 @@ import type { Session } from "@auth/sveltekit";
 import type { LayoutServerLoad } from "../../$types";
 import UserData from "../../../UserData";
 import { redirect } from "@sveltejs/kit";
-import { allowList } from "$lib";
-
-function accessTokenExists(session: Session): session is Session & { accessToken: string } {
-	return "accessToken" in session;
-}
 
 export const load: LayoutServerLoad = async ({ params, locals }) => {
 
@@ -15,12 +10,7 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 	if (!session?.user?.id || !accessTokenExists(session)) {
 		throw redirect(303, "/auth/signin");
 	}
-
-	else if (!allowList.has(BigInt(session.user.id || 0))) {
-		console.log(`User logged into dashboard: ${session.user.name} [${session.user.id}]`);
-		// throw error(401, { "message": "Unauthenticated. Only testers are able to access the dashboard at this moment." })
-	}
-
+	
 	else {
 		const responseData = await new UserData(params.user!, session.accessToken).getData();
 
@@ -30,3 +20,6 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 		};
 	}
 };
+function accessTokenExists(session: Session): session is Session & { accessToken: string } {
+	return "accessToken" in session && typeof session.accessToken === "string";
+}

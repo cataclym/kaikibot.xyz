@@ -12,7 +12,7 @@ export async function load({ parent }) {
 export const actions = {
 	prefix: async ({ request, params, route }) => {
 		const formData = await request.formData();
-		const prefix = <string> formData.get("prefix" || "");
+		const prefix = <string>formData.get("prefix" || "");
 
 		if (prefix.length === 0 || prefix.length > 10) throw fail(400);
 
@@ -40,7 +40,7 @@ export const actions = {
 	},
 	excludedrole: async ({ request, params, route }) => {
 		const formData = await request.formData();
-		
+
 		let excludeRoleName = SanitizeInput(formData.get("excluderolename") as string);
 		const excludeRoleColor = formData.get("excluderolecolor");
 

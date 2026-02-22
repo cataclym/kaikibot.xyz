@@ -4,9 +4,12 @@
 	}
 
 	let { img }: Props = $props();
+	
 </script>
 
-<img class="svg-class" src={img.url} alt={img.alt} />
+{#if img.url}
+	<img class="svg-class" src={img.url} alt={img.alt} />
+{/if}
 
 <style>
 	.svg-class {
@@ -14,6 +17,7 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
+
 	.svg-class:hover {
 		transform: scale(110%);
 		transition: 0.5s;

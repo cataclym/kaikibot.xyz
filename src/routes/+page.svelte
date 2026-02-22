@@ -2,10 +2,58 @@
 	import Placeholders from "../components/Placeholders.svelte";
 	import OrangeBar from "../components/OrangeBar.svelte";
 	import { Heading } from "flowbite-svelte";
+	import { onMount } from "svelte";
+	import { browser } from "$app/environment";
+	import type { WaifuImJSON } from "../interfaces/IWaifuIm";
 
 	let { data } = $props();
 	const { INVITE, PUBLIC_SOURCE, CHANGELOG } = data;
-	const images: { url: string; alt: string }[] = data.IMAGES;
+
+	type Img = { url: string; alt: string };
+	let images: Img[] = $state(Array(4).fill({ url: "", alt: "" }));
+
+	onMount(async () => {
+		const cookieName = "Images_WaifuIm";
+		const cookies = document.cookie.split(';');
+		let cachedImages: Img[] | null = null;
+		
+		for (const cookie of cookies) {
+			const [name, value] = cookie.trim().split('=');
+			if (name === cookieName) {
+				try {
+					cachedImages = JSON.parse(decodeURIComponent(value));
+				} catch (e) {
+					console.error("Error parsing image cookie:", e);
+				}
+				break;
+			}
+		}
+
+		if (cachedImages && Array.isArray(cachedImages) && cachedImages.length > 0) {
+			images = cachedImages;
+		} 
+		else {
+			try {
+				const res = await fetch("https://api.waifu.im/images?IncludedTags=maid&IsNsfw=false&PageSize=4");
+				const json: WaifuImJSON = await res.json();
+
+				if (json.items) {
+					const mappedImages = json.items.map((image) => ({
+						url: image.url,
+						alt: image.tags.map((tag) => `${tag.name} - ${tag.description}`).join(". ")
+					}));
+					
+					images = mappedImages;
+
+					const date = new Date();
+					date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+ 					document.cookie = `${cookieName}=${encodeURIComponent(JSON.stringify(mappedImages))}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+				}
+			} catch (error) {
+				console.error("Failed to fetch images:", error);
+			}
+		}
+	});
 </script>
 
 <main>

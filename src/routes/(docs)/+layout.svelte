@@ -55,11 +55,12 @@
 		</a>
 		<div class="col-end-7"></div>
 		{#each docs as { name, path }}
-		{@const staticPath = `/${path}`}
+			{@const staticPath = `/${path}`}
 			<a
 				href={staticPath}
 				class="border-b-(--accent2) border-b-2"
-				aria-current={page.url.pathname === staticPath}>{documentation[name as keyof Documentation] || name}</a
+				aria-current={page.url.pathname === staticPath}
+				>{documentation[name as keyof Documentation] || name}</a
 			>
 		{/each}
 	</div>

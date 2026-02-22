@@ -2,7 +2,7 @@
 	import "../app.css";
 	import SEO from "../components/SEO.svelte";
 	import { page } from "$app/state";
-	import { afterNavigate, beforeNavigate, goto } from "$app/navigation";
+	import { afterNavigate, beforeNavigate } from "$app/navigation";
 	import { KaikiNavigationState, navigationState } from "$lib/stores/navigationState";
 	import { fade, slide } from "svelte/transition";
 	import PageLoader from "../components/PageLoader.svelte";
@@ -32,22 +32,17 @@
 	});
 
 	function isDocs() {
-		return (page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/"))
-		 	? "/"
+		return page.url.pathname === "/README.md" || page.url.pathname.includes("/docs/")
+			? "/"
 			: "/README.md";
 	}
 
 	function isDash() {
-		return !!page.url.pathname.match("/dashboard")?.length
-			? "/"
-			: "/dashboard";
-
+		return !!page.url.pathname.match("/dashboard")?.length ? "/" : "/dashboard";
 	}
 
 	function isGenericPath(path: string) {
-		return page.url.pathname === path
-			? "/"
-			: path;
+		return page.url.pathname === path ? "/" : path;
 	}
 
 	function ariaCurrent(path: string) {
@@ -57,7 +52,9 @@
 
 <SEO />
 <svelte:head>
-	<title>KaikiBot - {Capitalize(session?.user?.name || page.url.pathname.split("/")[1] || "Home")}</title>
+	<title
+		>KaikiBot - {Capitalize(user?.name || page.url.pathname.split("/")[1] || "Home")}</title
+	>
 </svelte:head>
 
 {#if $navigationState === KaikiNavigationState.loading}
@@ -67,26 +64,26 @@
 {/if}
 
 {#if user && !page.params.user}
-	<LoggedInHeader {user} />	
+	<LoggedInHeader {user} />
 {/if}
 
 {#if page.url.pathname === "/"}
-<div class="relative" transition:slide={{ duration: 300 }}>
-	<div class="absolute left-1/5 top-1">
-		<Avatar class="invisible xl:visible" src="/favicon.png" size="xl" alt="Kaiki"/>
-	</div>
+	<div class="relative" transition:slide={{ duration: 300 }}>
+		<div class="absolute left-1/5 top-1">
+			<Avatar class="invisible xl:visible" src="/favicon.png" size="xl" alt="Kaiki" />
+		</div>
 
-	<div class="big_title">
-		<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
-			<a class="text-center" href="/">KAIKIBOT</a>
-		</h1>
-		<h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
-			Your
-			<mark>dad</mark>
-			isn't <em>this</em> cool
-		</h2>
+		<div class="big_title">
+			<h1 class="mt-10 mb-5 font-bold text-accent1 text-6xl lg:text-8xl text-center">
+				<a class="text-center" href="/">KAIKIBOT</a>
+			</h1>
+			<h2 class="text-2xl mt-5 mb-10 text-accent1 text-center">
+				Your
+				<mark>dad</mark>
+				isn't <em>this</em> cool
+			</h2>
+		</div>
 	</div>
-</div>
 {:else}
 	<div
 		class="small_title m-auto w-2/12 flex mb-2 mt-2 justify-center items-center content-center"
@@ -129,14 +126,25 @@
 			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
 		</button>
 	</a>
-	<a href={isDash()} class="link_flex">
-		<button
-			aria-current={ariaCurrent(isDash())}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
-		>
-			DASHBOARD
-		</button>
-	</a>
+	{#if user}
+		<a href={isDash()} class="link_flex">
+			<button
+				aria-current={ariaCurrent(isDash())}
+				class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
+			>
+				DASHBOARD
+			</button>
+		</a>
+	{:else}
+		<a href={isDash()} class="link_flex">
+			<button
+				aria-current={ariaCurrent(isDash())}
+				class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
+			>
+				LOGIN
+			</button>
+		</a>
+	{/if}
 	<a href={PUBLIC_SOURCE} class="link_flex">
 		<button
 			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab full-width layout"

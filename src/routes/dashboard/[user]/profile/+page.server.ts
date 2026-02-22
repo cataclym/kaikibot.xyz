@@ -1,11 +1,11 @@
-import { fail } from '@sveltejs/kit';
-import CreateHeaders from '../../../../methods/CreateHeaders';
-import { env } from '$env/dynamic/private';
-import type { Todo } from 'kaikiwa-types';
-import { DeleteTodos } from '../../../../methods/DeleteTodos';
-import { AddTodo } from '../../../../methods/AddTodo';
-import EscapeHtml from '../../../../methods/EscapeHtml';
-import SanitizeInput from '../../../../methods/SanitizeInput';
+import { fail } from "@sveltejs/kit";
+import CreateHeaders from "../../../../methods/CreateHeaders";
+import { env } from "$env/dynamic/private";
+import type { Todo } from "kaikiwa-types";
+import { DeleteTodos } from "../../../../methods/DeleteTodos";
+import { AddTodo } from "../../../../methods/AddTodo";
+import EscapeHtml from "../../../../methods/EscapeHtml";
+import SanitizeInput from "../../../../methods/SanitizeInput";
 
 const { USER_API_PORT, USER_API_URL } = env;
 
@@ -16,15 +16,17 @@ export async function load({ parent, fetch }) {
 
 	const headers = CreateHeaders();
 
-	const url = new URL(`${USER_API_URL}:${USER_API_PORT}/API/User/${responseData?.userData?.UserId}/todos`);
+	const url = new URL(
+		`${USER_API_URL}:${USER_API_PORT}/API/User/${responseData?.userData?.UserId}/todos`
+	);
 
 	const res = await fetch(url, {
 		method: "GET",
-		headers,
+		headers
 	});
 
 	let json: { todos: Todo[] } | undefined = undefined;
-	
+
 	if (res.ok) {
 		json = await res.json();
 	}
@@ -33,11 +35,11 @@ export async function load({ parent, fetch }) {
 }
 
 export const actions = {
-	deleteTodos: async ({ request, params }) => { 
+	deleteTodos: async ({ request, params }) => {
 		const formData = await request.formData();
 		const ids = formData.get("todoIds") as string;
 		// Validate
-		if (!ids) return fail(400, { message: "No ids were selected."})
+		if (!ids) return fail(400, { message: "No ids were selected." });
 
 		return DeleteTodos(ids, params.user);
 	},
@@ -49,5 +51,5 @@ export const actions = {
 		});
 
 		return AddTodo(body, params.user);
-	},
-}
+	}
+};

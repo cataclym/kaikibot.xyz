@@ -28,7 +28,9 @@
 	}
 </script>
 
-<div class="indent flex flex-col justify-between items-center text-gray-100 text-left overflow-visible!">
+<div
+	class="indent flex flex-col justify-between items-center text-gray-100 text-left overflow-visible!"
+>
 	<form
 		class="flex flex-col justify-between h-full p-4"
 		method="POST"

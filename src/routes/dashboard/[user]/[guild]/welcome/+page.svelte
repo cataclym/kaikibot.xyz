@@ -22,7 +22,7 @@
 	<ConfigForm
 		title="Welcome configuration"
 		endpoint="{endpoint}?/welcome"
-		channelOptions={channelOptions}
+		{channelOptions}
 		initial={{
 			channel: data.guild.WelcomeChannel ? String(data.guild.WelcomeChannel) : null,
 			timeout: data.guild.WelcomeTimeout ?? 0,
@@ -33,7 +33,7 @@
 	<ConfigForm
 		title="Bye configuration"
 		endpoint="{endpoint}?/bye"
-		channelOptions={channelOptions}
+		{channelOptions}
 		initial={{
 			channel: data.guild.ByeChannel ? String(data.guild.ByeChannel) : null,
 			timeout: data.guild.ByeTimeout ?? 0,

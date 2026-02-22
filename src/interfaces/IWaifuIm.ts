@@ -1,5 +1,12 @@
 export interface WaifuImJSON {
-	images: Image[];
+	items: Image[];
+	pageNumber: number;
+	totalPages: number;
+	totalCount: number;
+	maxPageSize: number;
+	defaultPageSize: number;
+	hasPreviousPage: boolean;
+	hasNextPage: boolean;
 }
 
 export interface Image {

@@ -6,27 +6,31 @@
 	import IntColorToHex from "../../methods/IntColorToHex.js";
 
 	interface Props {
-		ExcludeRole: undefined | null | { color: number; id: string; name: string, icon: string | null };
+		ExcludeRole:
+			| undefined
+			| null
+			| { color: number; id: string; name: string; icon: string | null };
 		Action: string;
 	}
 
 	let { ExcludeRole, Action }: Props = $props();
-	let excludeRoleObject = $state(ExcludeRole
-		? {
-			name: ExcludeRole.name,
-			color: IntColorToHex(ExcludeRole.color),
-			icon: ExcludeRole.icon
-		}
-		: null
+	let excludeRoleObject = $state(
+		ExcludeRole
+			? {
+					name: ExcludeRole.name,
+					color: IntColorToHex(ExcludeRole.color),
+					icon: ExcludeRole.icon
+				}
+			: null
 	);
 
 	// Save initial state once
 	const savedExcludeRole = ExcludeRole
 		? {
-			name: ExcludeRole.name,
-			color: IntColorToHex(ExcludeRole.color),
-			icon: ExcludeRole.icon
-		}
+				name: ExcludeRole.name,
+				color: IntColorToHex(ExcludeRole.color),
+				icon: ExcludeRole.icon
+			}
 		: null;
 
 	// Derived state to check if current role differs from saved one
@@ -37,9 +41,9 @@
 	// Reset handler
 	function resetAll() {
 		if (savedExcludeRole) {
-		excludeRoleObject = { ...savedExcludeRole }; // clone to trigger reactivity
+			excludeRoleObject = { ...savedExcludeRole }; // clone to trigger reactivity
 		} else {
-		excludeRoleObject = null;
+			excludeRoleObject = null;
 		}
 	}
 </script>
@@ -59,8 +63,18 @@
 			<!-- Exclude Role Form Content -->
 			<div class="flex flex-col flex-grow gap-4">
 				<div class="flex flex-row justify-between gap-4 w-full text-gray-100">
-					<Input minlength={1} maxlength={100} name="excluderolename" type="text" bind:value={excludeRoleObject.name} />
-					<ColorPicker isAlpha={false} name="excluderolecolor" bind:hex={excludeRoleObject.color} />
+					<Input
+						minlength={1}
+						maxlength={100}
+						name="excluderolename"
+						type="text"
+						bind:value={excludeRoleObject.name}
+					/>
+					<ColorPicker
+						isAlpha={false}
+						name="excluderolecolor"
+						bind:hex={excludeRoleObject.color}
+					/>
 				</div>
 			</div>
 			<div class="flex justify-center mt-4">
@@ -83,7 +97,8 @@
 					onclick={resetAll}
 					color="dark"
 					class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-					disabled={excludeRoleState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
+					disabled={excludeRoleState}
+					><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
 				>
 			</div>
 		</form>

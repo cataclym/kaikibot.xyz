@@ -3,13 +3,13 @@
 	"version": "3.0.5",
 	"type": "module",
 	"scripts": {
-		"build": "vite build",
+		"build": "bun x --bun vite build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"dev": "vite dev",
+		"dev": "bun x --bun vite dev",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"preview": "vite preview"
+		"preview": "bun x --bun vite preview"
 	},
 	"dependencies": {
 		"@auth/sveltekit": "^1.11.1",

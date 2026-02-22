@@ -19,7 +19,7 @@
 	} from "flowbite-svelte-icons";
 	import ClickToCopy from "../../../../components/ClickToCopy.svelte";
 	import IntColorToHex from "../../../../methods/IntColorToHex";
-	
+
 	let { data } = $props();
 	const { guild, APIGuild } = data;
 	const { roles, emojis, statsCount } = guild;
@@ -49,7 +49,12 @@ Svelte UI
 	</section>
 
 	<section class="section">
-		<Listgroup active={true} itemClass="bg-gray-600 text-gray-100" items={icons} class="w-fit" />
+		<Listgroup
+			active={true}
+			itemClass="bg-gray-600 text-gray-100"
+			items={icons}
+			class="w-fit"
+		/>
 	</section>
 
 	<Heading tag="h3">Roles</Heading>
@@ -97,7 +102,7 @@ Svelte UI
 				<TableHeadCell class="bg-gray-600 text-gray-100">Name</TableHeadCell>
 				<TableHeadCell class="bg-gray-600 text-gray-100">Image</TableHeadCell>
 				<TableHeadCell class="bg-gray-600 text-gray-100">ID</TableHeadCell>
-				<TableHeadCell  class="bg-gray-600 text-gray-100">Code</TableHeadCell>
+				<TableHeadCell class="bg-gray-600 text-gray-100">Code</TableHeadCell>
 			</TableHead>
 			<TableBody>
 				{#each emojis as emoji}

@@ -2,11 +2,11 @@
 	import { Button, Input, Select, Textarea } from "flowbite-svelte";
 	import { FileCheckSolid, TrashBinSolid } from "flowbite-svelte-icons";
 
-    interface ChannelOption {
+	interface ChannelOption {
 		name: string;
 		value: string | null;
 	}
-	
+
 	interface InitialValues {
 		channel: string | null;
 		timeout: number;
@@ -33,7 +33,7 @@
 	};
 
 	let changed = $derived(
-		JSON.stringify({ channel: (channel), timeout, message }) !== JSON.stringify(saved)
+		JSON.stringify({ channel: channel, timeout, message }) !== JSON.stringify(saved)
 	);
 
 	function resetAll() {
@@ -47,20 +47,20 @@
 	<h6 class="text-center w-full text-lg font-semibold">{title}</h6>
 	<form method="POST" action={endpoint} class="w-full">
 		<Textarea name="endpoint" class="hidden" value={endpoint} />
-        <p class="text-gray-100">Select channel</p>
+		<p class="text-gray-100">Select channel</p>
 		<Select class="mt-2" items={channelOptions} bind:value={channel} name="channel" />
 
 		<p class="text-gray-100 mt-2">Message autodelete delay (Seconds)</p>
 		<Input
 			type="number"
-            bind:value={timeout}
-            min={0}
-            max={600}
-            name="timeout"
-            oninput={(e) => {
-                e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
-            }}
-        />
+			bind:value={timeout}
+			min={0}
+			max={600}
+			name="timeout"
+			oninput={(e) => {
+				e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+			}}
+		/>
 		<p class="text-gray-100 mt-2">Message</p>
 		<Textarea
 			maxlength={6000}

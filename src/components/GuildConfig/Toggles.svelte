@@ -36,18 +36,24 @@
 		<!-- Toggles Section -->
 		<div class="grow flex flex-col gap-4 items-start pb-6">
 			<div class="flex items-center gap-2">
-				<Toggle spanClass="border-primary-600 border" bind:checked={DadBot}><P color="">Dad-mode</P></Toggle>
+				<Toggle spanClass="border-primary-600 border" bind:checked={DadBot}
+					><P color="">Dad-mode</P></Toggle
+				>
 				<input type="hidden" name="dadbot" value={DadBot} />
 			</div>
 			<div class="flex items-center gap-2">
-				<Toggle spanClass="border-primary-600 border" name="Anniversary" bind:checked={Anniversary}
-					><P color="">Anniversary roles</P></Toggle
+				<Toggle
+					spanClass="border-primary-600 border"
+					name="Anniversary"
+					bind:checked={Anniversary}><P color="">Anniversary roles</P></Toggle
 				>
 				<input type="hidden" name="anniversary" value={Anniversary} />
 			</div>
 			<div class="flex items-center gap-2">
-				<Toggle spanClass="border-primary-600 border" name="StickyRoles" bind:checked={StickyRoles}
-					><P color="">Sticky roles</P></Toggle
+				<Toggle
+					spanClass="border-primary-600 border"
+					name="StickyRoles"
+					bind:checked={StickyRoles}><P color="">Sticky roles</P></Toggle
 				>
 				<input type="hidden" name="stickyroles" value={StickyRoles} />
 			</div>

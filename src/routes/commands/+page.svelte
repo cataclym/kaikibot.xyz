@@ -3,7 +3,7 @@
 	import type { Cmd, Cmds } from "../../interfaces/ICommand";
 	import { Input } from "flowbite-svelte";
 	import { SearchOutline } from "flowbite-svelte-icons";
-	
+
 	interface Props {
 		data: {
 			commands: Cmds;
@@ -25,12 +25,18 @@
 			const searchLower = searchText.toLowerCase().trim();
 			return allCommands
 				.map(([key, [catName, cmds]]) => {
-					const filtered = cmds.filter((cmd) => cmd.id.toLowerCase().includes(searchLower));
-					return filtered.length > 0 ? [key, [catName, filtered]] as [string, [string, Cmd[]]] : null;
+					const filtered = cmds.filter((cmd) =>
+						cmd.id.toLowerCase().includes(searchLower)
+					);
+					return filtered.length > 0
+						? ([key, [catName, filtered]] as [string, [string, Cmd[]]])
+						: null;
 				})
 				.filter((item) => item !== null) as [string, [string, Cmd[]]][];
 		} else if (selectedCategory) {
-			return Object.entries(commands).filter((a) => a[1][0].toLowerCase() === selectedCategory);
+			return Object.entries(commands).filter(
+				(a) => a[1][0].toLowerCase() === selectedCategory
+			);
 		} else {
 			return Object.entries(commands);
 		}
@@ -38,9 +44,7 @@
 
 	function selectCategory(categoryElement: string) {
 		if (typeof categoryElement !== "string") return;
-		selectedCategory = selectedCategory === categoryElement
-			? ""
-			: categoryElement;
+		selectedCategory = selectedCategory === categoryElement ? "" : categoryElement;
 	}
 </script>
 
@@ -105,63 +109,63 @@
 		</div>
 	</div>
 
-		{#each categories as commands}
-			{#each commands[1] as category}
-				{#if category.length}
-					{#if typeof category !== "string"}
-						{#each category as cmd}
-							<div class="m-auto flex mb-1 cmdContainer">
-								<div class="cmd">
-									+{cmd.id}
-									<br />
-									{#if cmd.aliases?.length && cmd.aliases[0]}
-										<p class="subText">
-											+{cmd.aliases.join("\n+")}
-										</p>
-									{/if}
-									<p class="subText categoryText">
-										{commands[1][0]}
+	{#each categories as commands}
+		{#each commands[1] as category}
+			{#if category.length}
+				{#if typeof category !== "string"}
+					{#each category as cmd}
+						<div class="m-auto flex mb-1 cmdContainer">
+							<div class="cmd">
+								+{cmd.id}
+								<br />
+								{#if cmd.aliases?.length && cmd.aliases[0]}
+									<p class="subText">
+										+{cmd.aliases.join("\n+")}
 									</p>
-								</div>
-								<div class="cmdDesc">
-									<p class="description">
-										{cmd.description}
-									</p>
-									{#if cmd.ownerOnly}
-										<p class="subText categoryText">Bot Owner Only</p>
-									{/if}
-								</div>
-								<div class="cmdUsage">
-									<p class="description">
-										{#if Array.isArray(cmd.usage)}
-											{#each cmd.usage as usage}
-												<br />+{cmd.id} {usage}
-											{/each}
-										{:else if cmd.usage}
-											+{cmd.id} {cmd.usage}
-										{:else}
-											+{cmd.id}
-										{/if}
-									</p>
-									{#if cmd.userPermissions.length && cmd.userPermissions[0]}
-										<p class="subText categoryText permText">
-											{#each cmd.userPermissions as perm}
-												{perm}<br />
-											{/each}
-										</p>
-									{/if}
-									{#if cmd.channel}
-										<p class="subText categoryText guildText">
-											{cmd.channel}
-										</p>
-									{/if}
-								</div>
+								{/if}
+								<p class="subText categoryText">
+									{commands[1][0]}
+								</p>
 							</div>
-						{/each}
-					{/if}
+							<div class="cmdDesc">
+								<p class="description">
+									{cmd.description}
+								</p>
+								{#if cmd.ownerOnly}
+									<p class="subText categoryText">Bot Owner Only</p>
+								{/if}
+							</div>
+							<div class="cmdUsage">
+								<p class="description">
+									{#if Array.isArray(cmd.usage)}
+										{#each cmd.usage as usage}
+											<br />+{cmd.id} {usage}
+										{/each}
+									{:else if cmd.usage}
+										+{cmd.id} {cmd.usage}
+									{:else}
+										+{cmd.id}
+									{/if}
+								</p>
+								{#if cmd.userPermissions.length && cmd.userPermissions[0]}
+									<p class="subText categoryText permText">
+										{#each cmd.userPermissions as perm}
+											{perm}<br />
+										{/each}
+									</p>
+								{/if}
+								{#if cmd.channel}
+									<p class="subText categoryText guildText">
+										{cmd.channel}
+									</p>
+								{/if}
+							</div>
+						</div>
+					{/each}
 				{/if}
-			{/each}
+			{/if}
 		{/each}
+	{/each}
 </div>
 
 <style>

@@ -6,7 +6,7 @@ export default function CreateHeaders(includeContent = true) {
 	const headers = new Headers();
 
 	if (includeContent) headers.append("Content-Type", "application/json");
-	
+
 	headers.append("Authorization", env.TOKEN);
 	// Security headers
 	headers.append("X-Content-Type-Options", "nosniff");

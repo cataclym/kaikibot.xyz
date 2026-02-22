@@ -2,14 +2,13 @@ import { env } from "$env/dynamic/public";
 import { error } from "@sveltejs/kit";
 
 type Metadata = {
-	name: string,
-	download_url: string,
-	path: string,
-}
+	name: string;
+	download_url: string;
+	path: string;
+};
 
 export async function load({ fetch }) {
-
-	if (!env.PUBLIC_SOURCE) throw error(404, { message: "Repository is not defined"});
+	if (!env.PUBLIC_SOURCE) throw error(404, { message: "Repository is not defined" });
 	const url = new URL(env.PUBLIC_SOURCE);
 
 	const [, owner, repo] = url.pathname.split("/");
@@ -28,5 +27,5 @@ export async function load({ fetch }) {
 	return {
 		documentMetadata,
 		readmeMetadata
-	}
+	};
 }
