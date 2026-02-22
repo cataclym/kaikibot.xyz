@@ -2,8 +2,8 @@ import { error } from "@sveltejs/kit";
 import { marked } from "marked";
 
 export async function load({ params, parent, fetch }) {
-	const parentObject = await parent();
-	const documentUrl = parentObject.documentMetadata.find(
+	const { documentMetadata } = await parent();
+	const documentUrl = documentMetadata.find(
 		(f) => f.name === `${params.doc}.md`
 	)?.download_url;
 
