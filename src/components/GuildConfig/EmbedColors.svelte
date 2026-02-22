@@ -54,6 +54,7 @@
 		<!-- Submit Button -->
 		<div class="flex justify-center space-x-1 mt-4">
 			<Button
+				type="submit"
 				color="primary"
 				class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
 				disabled={colorState}
