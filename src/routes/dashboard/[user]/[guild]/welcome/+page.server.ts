@@ -1,15 +1,16 @@
 import { fail } from "@sveltejs/kit";
+import type { PageServerLoad, Actions } from "./$types";
 import type { RouteParams } from "../$types";
 import { UpdateGuild } from "../../../../../methods/UpdateGuild";
 
-export async function load({ parent }) {
+export const load: PageServerLoad = async ({ parent }) => {
 	const { isAdmin, guild } = await parent();
 
 	return { isAdmin, guild };
-}
+};
 
 // Form actions receives frontend data, sends it to bot
-export const actions = {
+export const actions: Actions = {
 	welcome: async ({ request, params, route }) => sendFormData(request, params, route),
 	bye: async ({ request, params, route }) => sendFormData(request, params, route)
 };

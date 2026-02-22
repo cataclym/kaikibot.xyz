@@ -1,4 +1,5 @@
 import { fail } from "@sveltejs/kit";
+import type { PageServerLoad, Actions } from "./$types";
 import CreateHeaders from "../../../../methods/CreateHeaders";
 import { env } from "$env/dynamic/private";
 import type { Todo } from "kaikiwa-types";
@@ -9,7 +10,7 @@ import SanitizeInput from "../../../../methods/SanitizeInput";
 
 const { USER_API_PORT, USER_API_URL } = env;
 
-export async function load({ parent, fetch }) {
+export const load: PageServerLoad = async ({ parent, fetch }) => {
 	const { responseData } = await parent();
 
 	if (!responseData) return fail(500);
@@ -32,9 +33,9 @@ export async function load({ parent, fetch }) {
 	}
 
 	return { responseData, todos: json?.todos };
-}
+};
 
-export const actions = {
+export const actions: Actions = {
 	deleteTodos: async ({ request, params }) => {
 		const formData = await request.formData();
 		const ids = formData.get("todoIds") as string;

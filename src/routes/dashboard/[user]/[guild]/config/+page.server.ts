@@ -1,18 +1,19 @@
 import { fail } from "@sveltejs/kit";
+import type { PageServerLoad, Actions } from "./$types";
 import { UpdateGuild } from "../../../../../methods/UpdateGuild";
 import SanitizeInput from "../../../../../methods/SanitizeInput";
 
-export async function load({ parent }) {
+export const load: PageServerLoad = async ({ parent }) => {
 	const { isAdmin, guild } = await parent();
 
 	return { isAdmin, guild };
-}
+};
 
 // Form actions receives frontend data, sends it to bot
-export const actions = {
+export const actions: Actions = {
 	prefix: async ({ request, params, route }) => {
 		const formData = await request.formData();
-		const prefix = <string>formData.get("prefix" || "");
+		const prefix = <string>formData.get("prefix") || "";
 
 		if (prefix.length === 0 || prefix.length > 10) throw fail(400);
 

@@ -1,11 +1,12 @@
 import { error } from "@sveltejs/kit";
+import type { LayoutServerLoad } from "./$types";
 import { env } from "$env/dynamic/private";
 import CreateHeaders from "../../../../methods/CreateHeaders";
 import type { GETGuildBody } from "kaikiwa-types";
 
 const { EMBED, USER_API_PORT, USER_API_URL } = env;
 
-export async function load({ params, parent, fetch }) {
+export const load: LayoutServerLoad = async ({ params, parent, fetch }) => {
 	const { responseData } = await parent();
 
 	const url = new URL(USER_API_URL);

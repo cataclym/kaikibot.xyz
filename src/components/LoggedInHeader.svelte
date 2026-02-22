@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import type { DiscordUser } from "$lib/types/discord";
+	import { signOut } from "@auth/sveltekit/client";
 	import {
 		Avatar,
 		Dropdown,
@@ -45,7 +46,7 @@
 				liClass="list-none"
 				href="/dashboard/{user.id}/profile">Profile</DropdownItem
 			>
-			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="/logout"
+			<DropdownItem class="text-gray-200 text-sm" liClass="list-none" href="" onclick={() => signOut()}
 				>Sign out</DropdownItem
 			>
 		</Dropdown>

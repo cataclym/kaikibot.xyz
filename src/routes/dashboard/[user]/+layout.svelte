@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
+	import { signOut } from "@auth/sveltekit/client";
 	import { A, Button, Mark, P } from "flowbite-svelte";
 	import { ArrowLeftOutline, ArrowRightToBracketOutline } from "flowbite-svelte-icons";
 
@@ -13,7 +14,7 @@
 		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-center gap-40 items-center mt-1 mb-1"
 	>
 		{#if !page.url.pathname.endsWith(userId || "")}
-			<A href="../" color={null}><ArrowLeftOutline /> Back</A>
+			<A href="../" color="secondary"><ArrowLeftOutline /> Back</A>
 			<!-- <Button size="sm" href="../" class="text-gray-700">
 				<ArrowLeftOutline /> Back
 			</Button> -->
@@ -25,7 +26,7 @@
 				>{responseData?.user.username}</Mark
 			>
 		</P>
-		<A href="/auth/signout" color={null}>Sign out <ArrowRightToBracketOutline class="ml-1" /></A
+		<A href="" onclick={() => signOut({ redirectTo: "/" })} color="secondary" >Sign out <ArrowRightToBracketOutline class="ml-1" /></A
 		>
 	</div>
 </div>

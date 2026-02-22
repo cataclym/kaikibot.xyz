@@ -29,7 +29,7 @@
 	<P
 		color=""
 		id={random}
-		class="text-center cursor-copy text-sm hover:underline text-gray-200"
+		class="text-center cursor-copy text-sm hover:underline text-gray-200!"
 		onclick={copy}
 	>
 		{@render children?.()}

@@ -90,32 +90,30 @@
 
 <main class="flex flex-col items-center w-full p-4 space-y-8">
 	<!-- User Profile Card -->
-	<Card class="text-center">
-		<div class="flex flex-col items-center space-y-4 p-2">
-			<Avatar size="lg" src={user.image || ""} alt="Avatar" />
-			<Heading tag="h3">{user.name || ""}</Heading>
+	<div class="text-center flex flex-col items-center space-y-4 p-2">
+		<Avatar size="xl" src={user.image || ""} alt="Avatar" />
+		<Heading tag="h3">Profile for {user.name || "User"}</Heading>
 
-			<div class="flex flex-wrap gap-4 justify-center">
-				<Badge class="px-4 py-2 flex items-center gap-1.5" large color="primary">
-					<span class="font-semibold">Balance:</span>
-					<span>💴 {responseData.userData?.Amount || 0}</span>
-				</Badge>
-				<Badge
-					class="px-4 py-2 flex items-center gap-1.5"
-					large
-					color={responseData.userData?.ClaimedDaily ? "green" : "gray"}
-				>
-					<span class="font-semibold">Daily:</span>
-					<span>{responseData.userData?.ClaimedDaily ? "Claimed ✅" : "Not claimed"}</span>
-				</Badge>
-			</div>	
-			{#if responseData.userData?.ClaimedDaily && responseData.userData?.DailyReminder}
-				<P class="text-sm text-gray-400">
-					Daily reminder: {String(responseData.userData.DailyReminder)}
-				</P>
-			{/if}
-		</div>
-	</Card>
+		<div class="flex flex-wrap gap-4 justify-center">
+			<Badge class="px-4 py-2 flex items-center gap-1.5" large color="primary">
+				<span class="font-semibold">Balance:</span>
+				<span>💴 {responseData.userData?.Amount || 0}</span>
+			</Badge>
+			<Badge
+				class="px-4 py-2 flex items-center gap-1.5"
+				large
+				color={responseData.userData?.ClaimedDaily ? "green" : "gray"}
+			>
+				<span class="font-semibold">Daily:</span>
+				<span>{responseData.userData?.ClaimedDaily ? "Claimed ✅" : "Not claimed"}</span>
+			</Badge>
+		</div>	
+		{#if responseData.userData?.ClaimedDaily && responseData.userData?.DailyReminder}
+			<P class="text-sm text-gray-400">
+				Daily reminder: {String(responseData.userData.DailyReminder)}
+			</P>
+		{/if}
+	</div>
 
 	<!-- Available Guilds Section -->
 	{#if availableCachedGuilds.length}

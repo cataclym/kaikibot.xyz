@@ -35,13 +35,11 @@ export async function load({ fetch, setHeaders }) {
 	]);
 
 	if (!docsRes.ok) {
-		const details = await docsRes.text();
-		throw error(docsRes.status, { message: `Failed to fetch docs metadata: ${details}` });
+		throw error(docsRes.status, { message: "Failed to fetch docs metadata" });
 	}
 
 	if (!readmeRes.ok) {
-		const details = await readmeRes.text();
-		throw error(readmeRes.status, { message: `Failed to fetch README.md: ${details}` });
+		throw error(readmeRes.status, { message: "Failed to fetch README.md" });
 	}
 
 	const [documentMetadata, readmeMetadata]: [Metadata[], string] = await Promise.all([

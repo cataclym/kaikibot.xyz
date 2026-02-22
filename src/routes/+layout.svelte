@@ -10,18 +10,12 @@
 	import { Avatar, Heading, Mark } from "flowbite-svelte";
 	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
 	import LoggedInHeader from "../components/LoggedInHeader.svelte";
-	import type { User } from "@auth/sveltekit";
 
 	let { data, children } = $props();
 
 	const { DISCORD, INVITE, KOFI, PUBLIC_SOURCE } = data;
 
-	const session = page.data.session;
-	let user: User | undefined = $state();
-
-	if (session?.user) {
-		user = session.user;
-	}
+	let user = $state(data.session?.user);
 
 	beforeNavigate(() => {
 		navigationState.set(KaikiNavigationState.loading);
@@ -38,7 +32,9 @@
 	}
 
 	function isDash() {
-		return !!page.url.pathname.match("/dashboard")?.length ? "/" : "/dashboard";
+		return user
+			? !!page.url.pathname.match("/dashboard")?.length ? "/" : "/dashboard"
+			: "/auth/signin";
 	}
 
 	function isGenericPath(path: string) {
