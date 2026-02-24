@@ -25,7 +25,7 @@
 	import type OAuthGuildData from "../../../../interfaces/OAuthGuildData";
 	import "../dashboard.css";
 	import { slide } from "svelte/transition";
-	import { DollarOutline } from "flowbite-svelte-icons";
+	import { CreditCardSolid, DollarOutline } from "flowbite-svelte-icons";
 
 	// Access sessions
 	const session = page.data.session;
@@ -95,9 +95,15 @@
 		<Heading tag="h3">Profile for {user.name || "User"}</Heading>
 
 		<div class="flex flex-wrap gap-4 justify-center">
-			<Badge class="px-4 py-2 flex items-center gap-1.5" large color="primary">
+			<Badge
+				class="px-4 py-2 flex items-center gap-1.5 text-white! bg-primary-700!"
+				large
+				color="primary"
+			>
 				<span class="font-semibold">Balance:</span>
-				<span>💴 {responseData.userData?.Amount || 0}</span>
+				<span class="flex items-center gap-1">
+					{Number(responseData.userData?.Amount || 0).toFixed(2)}
+				</span>
 			</Badge>
 			<Badge
 				class="px-4 py-2 flex items-center gap-1.5"

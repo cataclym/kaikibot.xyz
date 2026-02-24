@@ -10,24 +10,40 @@
 </script>
 
 <div class="smol">
-	<div
-		class="h-10 w-full pt-2 pb-2 text-gray-100 bg-gray-500 flex flex-row justify-center gap-40 items-center mt-1 mb-1"
-	>
-		{#if !page.url.pathname.endsWith(userId || "")}
-			<A href="../" color="secondary"><ArrowLeftOutline /> Back</A>
-			<!-- <Button size="sm" href="../" class="text-gray-700">
-				<ArrowLeftOutline /> Back
-			</Button> -->
-		{:else}
-			<div style="width: 87px;"></div>
-		{/if}
-		<P color="text-gray-100"
-			>Logged in as <Mark class="bg-gray-700! text-primary-600!"
-				>{responseData?.user.username}</Mark
-			>
-		</P>
-		<A href="" onclick={() => signOut({ redirectTo: "/" })} color="secondary" >Sign out <ArrowRightToBracketOutline class="ml-1" /></A
-		>
+	<div class="w-full bg-gray-700 mb-1 shadow-md">
+		<div class="mx-auto max-w-4xl pt-4 pb-4 px-4 text-gray-100 grid grid-cols-3 items-center">
+			<div class="justify-self-start">
+				{#if !page.url.pathname.endsWith(userId || "")}
+					<Button size="sm" href="../" role="button" color="light" class="gap-2">
+						<ArrowLeftOutline class="w-4 h-4" /> Back
+					</Button>
+				{/if}
+			</div>
+
+			<div class="justify-self-center">
+				<Button
+					href="/"
+					role="button"
+					color="red"
+					class="font-bold gap-2 bg-red-700! hover:bg-red-600! text-white!"
+				>
+					Exit Dashboard
+				</Button>
+			</div>
+
+			<div class="justify-self-end hover:border-b-black!">
+				<Button
+					href="javascript:void(0)"
+					role="button"
+					color="light"
+					size="sm"
+					onclick={() => signOut({ redirectTo: "/" })}
+					class="gap-2"
+				>
+					Sign out <ArrowRightToBracketOutline class="w-4 h-4" />
+				</Button>
+			</div>
+		</div>
 	</div>
 </div>
 

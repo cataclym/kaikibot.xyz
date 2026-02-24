@@ -156,37 +156,58 @@
 		text-decoration: none;
 	}
 
-	.grid a:hover,
-	a[href="/"]:hover,
+	.grid a:not([role="button"]):hover,
+	a[href="/"]:not([role="button"]):hover,
 	#navigation a:hover {
 		color: var(--accent4) !important;
 	}
 
-	button.layout,
+	.layout-btn,
 	.signInButton > button:last-child {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		background-color: var(--accent2) !important;
 		border: var(--accent2) 2px solid;
 		color: var(--accent1) !important;
 		text-shadow: var(--background) 2px !important;
 		transition: 0.5s;
+		font-weight: 600; /* Improve readability */
+		text-decoration: none; /* Ensure no underline */
+		white-space: nowrap; /* Keep single line for desktop */
 	}
 
-	button:hover.layout,
-	button[aria-current="true"],
+	/* Adjust text size for smaller desktop screens before break */
+	@media (max-width: 1440px) {
+		.layout-btn {
+			font-size: 1rem !important; /* Scale down text */
+			padding: 0 0.5rem; /* Reduce padding */
+		}
+	}
+
+	.layout-btn:hover,
+	.layout-btn[aria-current="page"],
 	.signInButton > button:last-child:hover {
 		cursor: pointer;
 		background-color: var(--background) !important;
 		color: var(--accent1) !important;
-		border: var(--background) 2px solid;
-		transform: scale(101%);
-		transition: 0.1s;
+		border: var(--background) 2px solid; /* Maintain border width to prevent layout shift */
+		transform: translateY(-2px); /* Subtle lift instead of scale */
+		transition: 0.2s ease-in-out;
 		box-shadow: 0 4px var(--accent4);
 	}
 
-	button.invite_link {
+	.invite-link {
 		background-color: var(--accent4) !important;
 		border: var(--accent4) 2px solid;
 		color: var(--background) !important;
+		font-weight: 700;
+	}
+
+	.invite-link:hover {
+		filter: brightness(110%);
+		transform: translateY(-2px);
+		box-shadow: 0 4px var(--accent4);
 	}
 
 	footer {
@@ -205,10 +226,10 @@
 
 	.link_flex {
 		flex-grow: 1;
-		flex-basis: calc(100% / 7.3);
+		flex-basis: calc(100% / 6.3); /* Adjusted for 6 items */
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1280px) {
 		.link_flex {
 			flex-grow: 1;
 			flex-basis: 100%;
@@ -218,6 +239,15 @@
 			flex-direction: column !important;
 		}
 
+		/* Restore height and size for mobile stack */
+		.layout-btn {
+			font-size: 1.25rem !important; /* Restore xl text */
+			width: 100%;
+			white-space: normal; /* Allow wrap on mobile if needed */
+		}
+	}
+
+	@media (max-width: 1024px) {
 		footer {
 			display: none !important;
 		}

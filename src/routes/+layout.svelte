@@ -9,7 +9,7 @@
 	import Capitalize from "../methods/Capitalize";
 	import { Avatar, Heading, Mark } from "flowbite-svelte";
 	import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
-	import LoggedInHeader from "../components/LoggedInHeader.svelte";
+	import Header from "../components/Header.svelte";
 
 	let { data, children } = $props();
 
@@ -41,8 +41,8 @@
 		return page.url.pathname === path ? "/" : path;
 	}
 
-	function ariaCurrent(path: string) {
-		return isGenericPath(path) === "/";
+	function ariaCurrent(path: string): "page" | undefined {
+		return isGenericPath(path) === "/" ? "page" : undefined;
 	}
 </script>
 
@@ -59,8 +59,8 @@
 	</div>
 {/if}
 
-{#if user && !page.params.user}
-	<LoggedInHeader {user} />
+{#if !page.params.user}
+	<Header {user} />
 {/if}
 
 {#if page.url.pathname === "/"}
@@ -80,84 +80,51 @@
 			</h2>
 		</div>
 	</div>
-{:else}
-	<div
-		class="small_title m-auto w-2/12 flex mb-2 mt-2 justify-center items-center content-center"
-		transition:slide={{ duration: 600 }}
-	>
-		<div class="h-full w-full">
-			<Heading tag="h4" class="font-bold text-accent1 text-center">
-				<a class="text-center" href="/">KAIKIBOT</a>
-			</Heading>
-		</div>
-	</div>
 {/if}
-<div class="flex justify-evenly gap-1 smol">
-	<a href={DISCORD} class="link_flex">
-		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-accent1 text-xl full-width layout"
-			>SUPPORT SERVER
-			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
-		</button>
+<nav class="flex justify-evenly gap-1 smol overflow-hidden">
+	<a
+		href={DISCORD}
+		class="link_flex layout-btn h-16 md:h-20 border-b-2 text-accent1 text-xl full-width"
+	>
+		<span class="truncate">SUPPORT SERVER</span>
+		<ArrowUpRightFromSquareOutline size="sm" class="align-top! ml-1 inline-block" />
 	</a>
-	<a class="link_flex" href={isGenericPath("/commands")}>
-		<button
-			aria-current={ariaCurrent("/commands")}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
-		>
-			COMMANDS
-		</button>
+	<a
+		href={isGenericPath("/commands")}
+		aria-current={ariaCurrent("/commands")}
+		class="link_flex layout-btn h-16 md:h-20 border-b-2 text-xl text-accent1 full-width"
+	>
+		<span class="truncate">COMMANDS</span>
 	</a>
-	<a href={isGenericPath("/embed")} class="link_flex">
-		<button
-			aria-current={ariaCurrent("/embed")}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout"
-			><Mark class="bg-primary-600!">NEW</Mark><br />EMBED BUILDER
-		</button>
+	<a
+		href={isGenericPath("/embed")}
+		aria-current={ariaCurrent("/embed")}
+		class="link_flex layout-btn h-16 md:h-20 border-b-2 text-xl text-accent1 full-width"
+	>
+		<Mark class="bg-primary-600! mr-1">NEW</Mark><span class="truncate">EMBED BUILDER</span>
 	</a>
-	<a href={INVITE} class="link_flex">
-		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 full-width layout invite_link"
-			>INVITE KAIKI
-			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
-		</button>
+	<a
+		href={INVITE}
+		class="link_flex layout-btn invite-link h-16 md:h-20 border-b-2 text-xl text-accent1 full-width"
+	>
+		<span class="truncate">INVITE KAIKI</span>
+		<ArrowUpRightFromSquareOutline size="sm" class="align-top! ml-1 inline-block" />
 	</a>
-	{#if user}
-		<a href={isDash()} class="link_flex">
-			<button
-				aria-current={ariaCurrent(isDash())}
-				class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
-			>
-				DASHBOARD
-			</button>
-		</a>
-	{:else}
-		<a href={isDash()} class="link_flex">
-			<button
-				aria-current={ariaCurrent(isDash())}
-				class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 patreon full-width layout"
-			>
-				LOGIN
-			</button>
-		</a>
-	{/if}
-	<a href={PUBLIC_SOURCE} class="link_flex">
-		<button
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 gitlab full-width layout"
-		>
-			SOURCE CODE
-			<ArrowUpRightFromSquareOutline size="sm" class="align-top!" />
-		</button>
+	<a
+		href={PUBLIC_SOURCE}
+		class="link_flex layout-btn gitlab h-16 md:h-20 border-b-2 text-xl text-accent1 full-width"
+	>
+		<span class="truncate">SOURCE CODE</span>
+		<ArrowUpRightFromSquareOutline size="sm" class="align-top! ml-1 inline-block" />
 	</a>
-	<a href={isDocs()} class="link_flex">
-		<button
-			aria-current={ariaCurrent(isDocs())}
-			class="h-16 whitespace-nowrap md:h-20 border-b-2 text-xl text-accent1 paypal full-width layout"
-		>
-			DOCUMENTATION
-		</button>
+	<a
+		href={isDocs()}
+		aria-current={ariaCurrent(isDocs())}
+		class="link_flex layout-btn paypal h-16 md:h-20 border-b-2 text-xl text-accent1 full-width"
+	>
+		<span class="truncate">DOCUMENTATION</span>
 	</a>
-</div>
+</nav>
 
 {@render children?.()}
 <div class="mt-20"></div>
