@@ -113,7 +113,7 @@
 </script>
 
 <main>
-	<div class="container m-auto p-[20px]">
+	<div class="container m-auto p-5">
 		<Heading tag="h2" class="mb-5 mt-5">Embed Builder</Heading>
 		<Alert dismissable color="gray" onclick={setDismissedCookied} hidden={alertStatus}>
 			{#snippet icon()}<InfoCircleSolid class="h-5 w-5" />{/snippet}
@@ -160,8 +160,8 @@
 								isAlpha={false}
 								label=""
 								hex={"#" + embed.color?.toString(16).padStart(6, "0")}
-								on:input={(event) => {
-									const hex = event.detail.hex;
+								onInput={(event) => {
+									const hex = event.hex;
 
 									if (!hex?.startsWith("#")) return;
 
@@ -173,7 +173,7 @@
 						</div>
 					</div>
 					<div
-						class="w-full bg-gray-700 rounded-[0.5rem] col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
+						class="w-full bg-gray-700 rounded-lg col-start-2 col-span-9 mb-5 p-1 grid grid-cols-3 gap-1"
 						style="border-left: 4px solid #{embed.color
 							?.toString(16)
 							.padStart(6, '0') || '000000'}"
@@ -330,9 +330,10 @@
 								type="url"
 								class="bg-gray-800!"
 								id={`url-${embedIndex}`}
+								
 								bind:value={embed.url}
 								placeholder="Embed URL"
-								oninput={() => updateEmbedProperty(embedIndex, "url", embed.title)}
+								oninput={() => updateEmbedProperty(embedIndex, "url", embed.url)}
 							/>
 						</div>
 
