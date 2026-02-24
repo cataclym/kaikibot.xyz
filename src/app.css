@@ -236,14 +236,28 @@
 		}
 
 		.smol {
-			flex-direction: column !important;
+			display: grid !important;
+			grid-template-columns: repeat(2, 1fr) !important;
+			gap: 0.5rem;
 		}
 
 		/* Restore height and size for mobile stack */
 		.layout-btn {
-			font-size: 1.25rem !important; /* Restore xl text */
+			font-size: 1rem !important; /* Smaller text for grid */
 			width: 100%;
 			white-space: normal; /* Allow wrap on mobile if needed */
+			height: 5rem; /* Consistent grid height */
+			padding: 0.25rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.smol {
+			grid-template-columns: 1fr !important;
+		}
+
+		.layout-btn {
+			height: 4rem; /* Slightly shorter for stacked */
 		}
 	}
 

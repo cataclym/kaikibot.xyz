@@ -9,7 +9,7 @@
 	let userId = $derived(page.params.user);
 </script>
 
-<div class="smol">
+<div class="w-full mt-1">
 	<div class="w-full bg-gray-700 mb-1 shadow-md">
 		<div class="mx-auto max-w-4xl pt-4 pb-4 px-4 text-gray-100 grid grid-cols-3 items-center">
 			<div class="justify-self-start">
