@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import { error } from "@sveltejs/kit";
-	import { Avatar, Button, Divider, Heading } from "flowbite-svelte";
+	import { Avatar, Button, Heading } from "flowbite-svelte";
 	import GuildCard from "../../../components/GuildCard.svelte";
 	import type OAuthGuildData from "../../../interfaces/OAuthGuildData";
 	import NaGuildCard from "../../../components/NAGuildCard.svelte";
