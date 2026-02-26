@@ -1,4 +1,4 @@
-## 🌐 kaikibot.xyz — Source Code
+## kaikibot.xyz — Source Code
 
 #### A fast, modern web app for managing your Discord server with SvelteKit & Vite.
 
@@ -8,36 +8,36 @@
 ![Website](https://img.shields.io/website?url=http%3A//kaikibot.xyz)
 ![Live Version](https://img.shields.io/endpoint?url=https%3A%2F%2Fkaikibot.xyz%2Fshields%3Fparam%3Dversion)
 
-### 👷 Embed Builder
+### Embed Builder
 
 Build custom embeds with colorpicker, custom content, multiple embeds in stunning visual user interface.
 
-### 💻 Dashboard Features
+### Dashboard Features
 
-- ✅ Server information
-- ✅ Discord user login
-- ✅ Update settings
-    - 🎉 Greetings (Welcome/Bye)
-    - 🔧 Toggle DadBot, Anniversary, Sticky Roles
-    - 👤 Custom roles for users
-    - 🎨 Embed colors for bot messages
-    - ⚡ Server prefix management
-    - 📋 Copy IDs, emojis, and roles
-- 🌐 Global logged-in layout
+- Server information
+- Discord user login
+- Update settings
+    - Greetings (Welcome/Bye)
+    - Toggle DadBot, Anniversary, Sticky Roles
+    - Custom roles for users
+    - Embed colors for bot messages
+    - Server prefix management
+    - Copy IDs, emojis, and roles
+- Global logged-in layout
 
 <img width=600 src="https://i.imgur.com/k6DIvf8.png" alt="Dashboard screenshot">
 
 _Dashboard KaikiBot configuration dashboard_
 
-### 📑 Command Explorer
+### Command Explorer
 
-- 🔷 **All Commands** – Browse the complete command list at a glance
-- 🗂 **Categories** – Quickly filter commands by category or type
-- 🔍 **Search** – Find commands instantly with a powerful search
-- 📝 **Usage & Description** – Clear explanations and examples for each command
-- ⚡ **Dynamic Updates** – Commands can be updated from the bot client in real-time
+- **All Commands** – Browse the complete command list at a glance
+- **Categories** – Quickly filter commands by category or type
+- **Search** – Find commands instantly with a powerful search
+- **Usage & Description** – Clear explanations and examples for each command
+- **Dynamic Updates** – Commands can be updated from the bot client in real-time
 
-## 📦 Scripts
+## Scripts
 
 - `npm run dev`
 
@@ -47,7 +47,7 @@ _Dashboard KaikiBot configuration dashboard_
 
     Lint with prettier
 
-## 👷 Build and deploy from source
+## Build and deploy from source
 
 1.  Fill `.env` based on `.env.example`
 
@@ -66,7 +66,7 @@ _Dashboard KaikiBot configuration dashboard_
 
         bun build
 
-## 🐋 Docker deployment
+## Docker deployment
 
 1.  Fill `.env` based on `.env.example`
 
@@ -86,6 +86,6 @@ _Dashboard KaikiBot configuration dashboard_
 
 TBA
 
-## 📝 Contributions
+## Contributions
 
 PRs and suggestions are always welcome! Open an issue if you'd like to propose a change.
