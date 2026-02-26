@@ -36,54 +36,57 @@
 	}
 </script>
 
-<div id="guildSettings" class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full">
-	<div class="indent flex flex-col justify-between items-center overflow-visible!">
-		<h3 class="text-center text-xl font-semibold mb-4">User Role</h3>
-		<div class="flex flex-row justify-around w-full">
+<main class="p-4 space-y-8 w-full max-w-4xl mx-auto flex justify-center">
+	<div class="indent flex flex-col justify-between items-center overflow-visible! shadow-lg rounded-lg">
+		<h3 class="text-center text-xl font-semibold mb-4 text-accent3">User Role</h3>
+		<div class="flex flex-row justify-around w-full mb-2 text-gray-200">
 			<h3>Role name</h3>
 			<h3>Role color</h3>
 		</div>
 		<form
-			class="flex flex-col justify-between h-full p-4"
+			class="flex flex-col justify-between h-full p-4 w-full"
 			method="POST"
 			action="{url}?/userrole"
 		>
 			<!-- Exclude Role Form Content -->
 			<div class="flex flex-col flex-grow gap-4">
-				<div class="flex flex-row justify-between gap-2 w-full text-gray-100">
+				<div class="flex flex-row justify-between gap-4 w-full text-gray-100 items-center">
 					<Input
 						maxlength={100}
 						name="rolename"
 						type="text"
 						bind:value={userRoleObject.name}
+						class="flex-1"
 					/>
-					<ColorPicker isAlpha={false} name="rolecolor" bind:hex={userRoleObject.color} />
+					<div class="flex-none">
+						<ColorPicker isAlpha={false} name="rolecolor" bind:hex={userRoleObject.color} />
+					</div>
 					<Textarea class="hidden" name="roleid" value={userRole.id} />
 				</div>
 			</div>
-			<div class="flex justify-center mt-4">
+			<div class="flex justify-center mt-4 text-gray-400 text-sm font-mono">
 				<ClickToCopy>{userRole.id}</ClickToCopy>
 			</div>
 
 			<!-- Submit Button Section -->
-			<div class="flex justify-center space-x-1 mt-4">
+			<div class="flex justify-center space-x-2 mt-6">
 				<Button
 					type="submit"
 					color="primary"
-					class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
+					class="px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all"
 					disabled={userRoleState}
 				>
-					<FileCheckSolid class="shrink-0 h-6 w-6" />
+					<FileCheckSolid class="shrink-0 h-5 w-5 mr-2" />
 					Save
 				</Button>
 				<Button
 					type="button"
-					on:click={resetAll}
+					onclick={resetAll}
 					color="dark"
-					class="px-4 py-2 rounded-md enabled:cursor-pointer border-transparent"
-					disabled={userRoleState}><TrashBinSolid class="shrink-0 h-6 w-6" />Reset</Button
+					class="px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all"
+					disabled={userRoleState}><TrashBinSolid class="shrink-0 h-5 w-5 mr-2" />Reset</Button
 				>
 			</div>
 		</form>
 	</div>
-</div>
+</main>

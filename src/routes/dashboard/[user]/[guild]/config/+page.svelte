@@ -17,14 +17,16 @@
 	const url = page.url.pathname;
 </script>
 
-<div id="guildSettings" class="flex-row mt-2 flex-wrap gap-2 flex justify-center w-full">
-	<PrefixComponent {Prefix} Action={url} />
+<main class="p-4 space-y-8 w-full max-w-6xl mx-auto">
+	<div id="guildSettings" class="flex flex-row flex-wrap gap-4 justify-center w-full">
+		<PrefixComponent {Prefix} Action={url} />
 
-	<Toggles {Anniversary} {DadBot} {StickyRoles} Action={url} />
+		<Toggles {Anniversary} {DadBot} {StickyRoles} Action={url} />
 
-	{#if ExcludeRole}
-		<ExcludedRole {ExcludeRole} Action={url} />
-	{/if}
+		{#if ExcludeRole}
+			<ExcludedRole {ExcludeRole} Action={url} />
+		{/if}
 
-	<EmbedColors {OkColor} {ErrorColor} Action={url} />
-</div>
+		<EmbedColors {OkColor} {ErrorColor} Action={url} />
+	</div>
+</main>

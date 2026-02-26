@@ -1,9 +1,7 @@
 <script lang="ts">
 	import {
-		Button,
 		Heading,
 		Img,
-		Listgroup,
 		Table,
 		TableBody,
 		TableBodyCell,
@@ -39,90 +37,82 @@ Svelte UI
 	Use tabs
 	Skeleton
 -->
-<main class="content-container">
-	<section class="section">
-		<Heading tag="h2">Server Information</Heading>
-		<div>
-			<p color="">Server ID</p>
+<main class="p-4 space-y-8 w-full max-w-4xl mx-auto">
+	<section class="space-y-4">
+		<Heading tag="h2" class="text-accent3">Server Information</Heading>
+		<div class="text-gray-100">
+			<p>Server ID</p>
 			<ClickToCopy text={APIGuild.id}>{APIGuild.id}</ClickToCopy>
 		</div>
 	</section>
 
-	<section class="section">
-		<Listgroup
-			active={true}
-			itemClass="bg-gray-600 text-gray-100"
-			items={icons}
-			class="w-fit"
-		/>
+	<section class="space-y-4">
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+			{#each icons as icon}
+			<div class="flex items-center p-4 bg-gray-600 rounded-lg text-gray-100 shadow-md">
+				<icon.Icon class="w-6 h-6 mr-3 text-accent3" />
+				<span class="font-semibold">{icon.name}</span>
+			</div>
+			{/each}
+		</div>
 	</section>
 
-	<Heading tag="h3">Roles</Heading>
-	<section class="section">
-		<Table border={false} hoverable>
-			<TableHead>
-				<TableHeadCell class="bg-gray-600 text-gray-100">Name</TableHeadCell>
-				<TableHeadCell class="bg-gray-600 text-gray-100">Color</TableHeadCell>
-				<TableHeadCell class="bg-gray-600 text-gray-100">ID</TableHeadCell>
+	<Heading tag="h3" class="text-accent3">Roles</Heading>
+	<section class="overflow-x-auto rounded-lg shadow-md">
+		<Table hoverable striped class="w-full text-sm text-left text-gray-100 bg-gray-800">
+			<TableHead class="text-xs text-gray-100 uppercase bg-gray-600">
+				<TableHeadCell>Name</TableHeadCell>
+				<TableHeadCell>Color</TableHeadCell>
+				<TableHeadCell>ID</TableHeadCell>
 			</TableHead>
-			<TableBody>
+			<TableBody class="bg-gray-700">
 				{#each roles as role}
 					{@const hexClr = IntColorToHex(role.color)}
-					<TableBodyRow>
-						<TableBodyCell
-							><ClickToCopy placement="top-start" header={false}
-								>{role.name}</ClickToCopy
-							></TableBodyCell
-						>
+					<TableBodyRow class="border-b border-gray-600 hover:bg-gray-600">
+						<TableBodyCell class="font-medium text-gray-100 whitespace-nowrap">
+							<ClickToCopy placement="top-start" header={false}>{role.name}</ClickToCopy>
+						</TableBodyCell>
 						<TableBodyCell>
 							<ClickToCopy placement="top-start" text={hexClr} header={false}>
-								<Button
-									outline={false}
-									color="alternative"
-									style="background: {hexClr}10; color: {hexClr}; mix-blend-mode: hard-light;"
-									pill={true}>{hexClr}</Button
-								>
+								<div class="flex items-center gap-2">
+									<div class="w-6 h-6 rounded-full border border-gray-500" style="background-color: {hexClr};"></div>
+									<span class="font-mono">{hexClr}</span>
+								</div>
 							</ClickToCopy>
 						</TableBodyCell>
-						<TableBodyCell
-							><ClickToCopy placement="top-start" header={false}
-								>{role.id}</ClickToCopy
-							></TableBodyCell
-						>
+						<TableBodyCell class="font-mono">
+							<ClickToCopy placement="top-start" header={false}>{role.id}</ClickToCopy>
+						</TableBodyCell>
 					</TableBodyRow>
 				{/each}
 			</TableBody>
 		</Table>
 	</section>
 
-	<Heading tag="h2">Emojis</Heading>
-	<section class="section">
-		<Table border={false} hoverable={true}>
-			<TableHead>
-				<TableHeadCell class="bg-gray-600 text-gray-100">Name</TableHeadCell>
-				<TableHeadCell class="bg-gray-600 text-gray-100">Image</TableHeadCell>
-				<TableHeadCell class="bg-gray-600 text-gray-100">ID</TableHeadCell>
-				<TableHeadCell class="bg-gray-600 text-gray-100">Code</TableHeadCell>
+	<Heading tag="h2" class="text-accent3">Emojis</Heading>
+	<section class="overflow-x-auto rounded-lg shadow-md">
+		<Table hoverable striped class="w-full text-sm text-left text-gray-100 bg-gray-800">
+			<TableHead class="text-xs text-gray-100 uppercase bg-gray-600">
+				<TableHeadCell>Name</TableHeadCell>
+				<TableHeadCell>Image</TableHeadCell>
+				<TableHeadCell>ID</TableHeadCell>
+				<TableHeadCell>Code</TableHeadCell>
 			</TableHead>
-			<TableBody>
+			<TableBody class="bg-gray-700">
 				{#each emojis as emoji}
-					<TableBodyRow>
-						<TableBodyCell
-							><ClickToCopy placement="top-start" header={false}
-								>{emoji.name}</ClickToCopy
-							></TableBodyCell
-						>
-						<TableBodyCell><Img width="50rem" src={emoji.url} /></TableBodyCell>
-						<TableBodyCell
-							><ClickToCopy placement="top-start" header={false}
-								>{emoji.id}</ClickToCopy
-							></TableBodyCell
-						>
-						<TableBodyCell
-							><ClickToCopy placement="top-start" header={false}
-								>{`<${emoji.animated ? "a" : ""}:${emoji.name}:${emoji.id}>`}</ClickToCopy
-							></TableBodyCell
-						>
+					<TableBodyRow class="border-b border-gray-600 hover:bg-gray-600">
+						<TableBodyCell class="font-medium text-gray-100 whitespace-nowrap">
+							<ClickToCopy placement="top-start" header={false}>{emoji.name}</ClickToCopy>
+						</TableBodyCell>
+						<TableBodyCell>
+							<Img width="40" height="40" src={emoji.url} alt={emoji.name} class="rounded object-contain bg-gray-900/50 p-1" />
+						</TableBodyCell>
+						<TableBodyCell class="font-mono">
+							<ClickToCopy placement="top-start" header={false}>{emoji.id}</ClickToCopy>
+						</TableBodyCell>
+						<TableBodyCell class="font-mono text-xs">
+							<ClickToCopy placement="top-start" header={false}>{`<${emoji.animated ? "a" : ""}:${emoji.name}:${emoji.id}>`}</ClickToCopy>
+						</TableBodyCell>
 					</TableBodyRow>
 				{/each}
 			</TableBody>
@@ -130,6 +120,3 @@ Svelte UI
 	</section>
 </main>
 
-<style>
-	@import "./../dashboard.css";
-</style>
