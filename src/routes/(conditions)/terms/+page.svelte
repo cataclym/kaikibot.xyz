@@ -1,12 +1,12 @@
 <h2 id="title" style="text-align: center;"><b>TERMS AND CONDITIONS</b></h2>
-<p>Last updated: 2024-06-29</p>
+<p>Last updated: 2026-06-21</p>
 <p>1. <b>Introduction</b></p>
-<p>Welcome to <b>Cata</b> (“Company”, “we”, “our”, “us”)!</p>
+<p>Welcome to <b>KaikiBot</b> (“Company”, “we”, “our”, “us”)!</p>
 <p>
 	These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at <b
 		>kaikibot.xyz</b
 	>
-	(together or individually “Service”) operated by <b>Cata</b>.
+	(together or individually “Service”) operated by <b>KaikiBot</b>.
 </p>
 <p>
 	Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard
@@ -60,9 +60,9 @@
 	agree that this license includes the right for us to make your Content available to other users
 	of Service, who may also use your Content subject to these Terms.
 </p>
-<p>Cata has the right but not the obligation to monitor and edit all Content provided by users.</p>
+<p>KaikiBot has the right but not the obligation to monitor and edit all Content provided by users.</p>
 <p>
-	In addition, Content found on or through this Service are the property of Cata or used with
+	In addition, Content found on or through this Service are the property of KaikiBot or used with
 	permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said
 	Content, whether in whole or in part, for commercial purposes or for personal gain, without
 	express advance written permission from us.
@@ -136,9 +136,9 @@
 <p>8. <b>Intellectual Property</b></p>
 <p>
 	Service and its original content (excluding Content provided by users), features and
-	functionality are and will remain the exclusive property of Cata and its licensors. Service is
+	functionality are and will remain the exclusive property of KaikiBot and its licensors. Service is
 	protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may
-	not be used in connection with any product or service without the prior written consent of Cata.
+	not be used in connection with any product or service without the prior written consent of KaikiBot.
 </p>
 <p>9. <b>Copyright Policy</b></p>
 <p>
@@ -206,21 +206,12 @@
 <p>12. <b>Links To Other Web Sites</b></p>
 <p>
 	Our Service may contain links to third party web sites or services that are not owned or
-	controlled by Cata.
+	controlled by KaikiBot.
 </p>
 <p>
-	Cata has no control over, and assumes no responsibility for the content, privacy policies, or
+	KaikiBot has no control over, and assumes no responsibility for the content, privacy policies, or
 	practices of any third party web sites or services. We do not warrant the offerings of any of
 	these entities/individuals or their websites.
-</p>
-<p>
-	For example, the outlined <a href="https://policymaker.io/terms-and-conditions/">Terms of Use</a
-	>
-	have been created using <a href="https://policymaker.io/">PolicyMaker.io</a>, a free web
-	application for generating high-quality legal documents. PolicyMaker’s
-	<a href="https://policymaker.io/terms-and-conditions/">Terms and Conditions generator</a> is an easy-to-use
-	free tool for creating an excellent standard Terms of Service template for a website, blog, e-commerce
-	store or app.
 </p>
 <p>
 	YOU ACKNOWLEDGE AND AGREE THAT COMPANY SHALL NOT BE RESPONSIBLE OR LIABLE, DIRECTLY OR
@@ -346,13 +337,6 @@
 		>cata@cata.moe</b
 	>.
 </p>
-<p style="margin-top: 5em; font-size: 0.7em;">
-	These <a href="https://policymaker.io/terms-and-conditions/">Terms of Service</a> were created
-	for
-	<b>kaikibot.xyz</b>
-	by <a href="https://policymaker.io">PolicyMaker.io</a> on 2024-06-29.
-</p>
-
 <style>
 	#title,
 	#title ~ p {
